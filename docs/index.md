@@ -30,7 +30,7 @@ The RazorNet program is **built on SplitsTree** (the [SplitsTree App](https://hu
 readers and writers for the common phylogenetic file formats, and its interactive views for drawing,
 formatting and exporting networks.
 
-Both **RazorNet** and **RazorHaploNet** will also be made available as algorithms **in SplitsTree** itself.
+Both **RazorNet** and **RazorHaploNet** are also available as algorithms **in SplitsTree** itself.
 
 One consequence is that **much of the detailed SplitsTree manual applies to the RazorNet program as well** —
 in particular the sections on importing and exporting data, navigating and formatting the views, selecting
