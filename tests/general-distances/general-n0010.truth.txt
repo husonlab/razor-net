@@ -1,0 +1,27 @@
+# Ground truth for the sibling .dist instance
+seed=3869528714570848026
+type=general
+n=10
+referenceLength=804
+referenceIsOptimal=false
+# General metric: all-pairs shortest-path distances of the random weighted graph below.
+# That graph realizes the distances, so referenceLength is an UPPER BOUND on the optimum
+# (RazorNet should realize the distances with total length <= referenceLength).
+# vertices 0..9 = taxa t1..t10; edges: 'edge u v weight'
+edge 6 2 14
+edge 8 2 9
+edge 0 6 81
+edge 4 2 40
+edge 3 0 95
+edge 1 2 24
+edge 9 3 29
+edge 7 2 60
+edge 5 1 35
+edge 9 6 97
+edge 5 2 25
+edge 4 5 65
+edge 2 0 44
+edge 6 8 29
+edge 4 3 82
+edge 0 7 51
+edge 7 8 24

@@ -1,0 +1,8 @@
+# RazorNet test instance
+# type=reticulate n=5 seed=-4588066762141701118 referenceLength=2980 referenceIsOptimal=false
+5
+t1	0	331	268	230	359
+t2	331	0	277	351	170
+t3	268	277	0	310	305
+t4	230	351	310	0	379
+t5	359	170	305	379	0

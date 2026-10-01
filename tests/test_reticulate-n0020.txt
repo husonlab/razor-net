@@ -1,0 +1,62 @@
+RazorNet analysis log
+=====================
+
+algorithm  : RazorNet2
+taxa       : 20
+options    : Preprocessing=None, SplitFilterPercent=1.0, RandomRestarts=1, MaxPolishRounds=1, FinishingPolish=false, KeepSubsetAtTopLevel=false, KeepSubsetInRecursion=false, KeepUnextendedAtTopLevel=false, KeepUnextendedInRecursion=false, UseRazorNet1Recursion=false, LogFile=test_reticulate-n0020.txt, MaxStretchPercent=50.0, SignificantDigits=3, RandomSeed=0, MaxSeconds=120
+
+1. INPUT METRIC
+   off-diagonal range      : 166 .. 1261
+   quantized size          : 20 (points at distance 0 are merged by Quantization)
+   1 quantized unit        : 0.5 input units
+
+2. INITIAL SLACK  c(x) = min{ (D(x,y)+D(x,z)-D(y,z))/2 > 0 : y,z in S\{x} }, over S = all points
+   (c(x) = 0 needs x on a geodesic between EVERY pair, so it is rare; #pairs is how many attain c(x))
+
+   point          c(x) quant   c(x) input      a minimizer   #pairs
+   ------------------------------------------------------------------
+   t1                    182           91          {t2,t3}       16
+   t2                    128           64         {t1,t12}        2
+   t3                    208          104         {t1,t11}       18
+   t4                    116           58         {t1,t17}       18
+   t5                    136           68         {t1,t10}       18
+   t6                    276          138          {t1,t7}        8
+   t7                    144           72         {t3,t14}       13
+   t8                    272          136         {t1,t13}       18
+   t9                    192           96          {t1,t4}       84
+   t10                   196           98          {t1,t5}       18
+   t11                   176           88          {t1,t3}       18
+   t12                   316          158         {t1,t15}        5
+   t13                   258          129          {t1,t8}       18
+   t14                   194           97          {t1,t7}        5
+   t15                   178           89         {t3,t12}       13
+   t16                   338          169          {t1,t4}       34
+   t17                   224          112          {t1,t4}       18
+   t18                    92           46          {t1,t3}       90
+   t19                   164           82          {t1,t4}       78
+   t20                   216          108          {t1,t4}       48
+   ------------------------------------------------------------------
+   slack points: 20 of 20   <-- ALL: so S \ slacklist is EMPTY and V(G) keeps no point of S
+   c(x) in the order Step 1 processes them: [338, 316, 276, 272, 258, 224, 216, 208, 196, 194, 192, 182, 178, 176, 164, 144, 136, 128, 116, 92]
+
+3. RECURSION TRACE (one restart; extendSubset calls in order)
+   depth      |S| |slacklist|    added  skipped   |V(G)| keptFromS   |E(G)|  settled  unconfirm      |D|  components         c(x) values
+   --------------------------------------------------------------------------------------------------------------------------------------------
+       0       20         20       16        4       16         0       25        6         15       36  10                 338,316,276,272,258,224,216,208,196,194,...
+       1       10          -        -        -        -         -        -        -          -       40  -                  STOPPED: all edges confirmed (stop 2)
+   largest |D| over the whole run: 40
+
+4. RESTART LENGTH DISTRIBUTION
+   restarts recorded : 1
+   min / mean / max  : 3671 / 3671 / 3671
+   distinct values   : 1
+   histogram (value x count):
+             3671  * (1)
+
+5. RESULT
+   length              : 3426
+   nodes / edges       : 38 / 37
+   auxiliary vertices  : 18
+   max realization err : not checked
+   seconds             : 0.03
+   extension counters  : calls=2, ties=0 (0.0% of calls), avg tie size=0.00, coincidence skips=10, points added=20, max |D|=40, cap hits=0

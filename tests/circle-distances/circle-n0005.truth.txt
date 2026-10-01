@@ -1,0 +1,25 @@
+# Ground truth for the sibling .dist instance
+seed=-1488139573943419793
+type=circle
+n=5
+referenceLength=663
+referenceIsOptimal=false
+# Sparse circular (Kalmanson) metric: d(i,j) = sum of weights of the circular splits separating i,j,
+# every split an interval of the circular ordering below -- the class Neighbor-Net provably
+# reconstructs, kept sparse (O(n) splits) so the realization and split network stay tractable.
+circularOrdering: t5 t2 t4 t3 t1
+splits=10 (5 trivial + 5 non-trivial; splitsPerTaxon=1.0)
+# NOTE: referenceLength (663) is the TOTAL SPLIT WEIGHT -- a structural measure,
+# NOT a realizing-network edge length (a realizing network is typically longer). The meaningful
+# check for circle instances is that RazorNet realizes the distances exactly.
+# splits: 'split weight=W sideA={...}' lists taxa on one side of the interval split; the rest are the other side
+split weight=76 sideA={t1}
+split weight=98 sideA={t2}
+split weight=81 sideA={t3}
+split weight=73 sideA={t4}
+split weight=100 sideA={t5}
+split weight=53 sideA={t1,t3}
+split weight=57 sideA={t2,t3,t4}
+split weight=60 sideA={t2,t4}
+split weight=49 sideA={t3,t4}
+split weight=16 sideA={t1,t3,t4}

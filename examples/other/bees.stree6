@@ -1,0 +1,279 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=8 nAlgorithms=5;
+PROGRAM version='SplitsTree App (version 6.7.6, built 16 Mar 2026)';
+WORKFLOW creationDate='1777387829778'; [Tue Apr 28 16:50:29 CEST 2026]
+END; [SPLITSTREE6]
+
+[
+Methods:
+Analysis was performed using SplitsTree App 6.0.0 (Huson and Bryant 2024).
+The original input consisted of 6 taxa and 6 DNA sequences of length 677.
+The Razor Haplo Net method was used (default options) so as to obtain 10 nodes and 9 edges.
+
+References:
+Huson and Bryant 2024: D.H. Huson and D. Bryant. The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods, 2024.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=6;
+TAXLABELS
+	[1] 'A.andrenof'
+	[2] 'A.mellifer'
+	[3] 'A.dorsata'
+	[4] 'A.cerana'
+	[5] 'A.florea'
+	[6] 'A.koschev'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+LINK ALGORITHM = 'Input Data Loader';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=6;
+TAXLABELS
+	[1] 'A.andrenof'
+	[2] 'A.mellifer'
+	[3] 'A.dorsata'
+	[4] 'A.cerana'
+	[5] 'A.florea'
+	[6] 'A.koschev'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN CHARACTERS;
+TITLE 'Input Characters';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=6 nchar=677;
+FORMAT
+	datatype='DNA' missing=? gap=- symbols="acgt" labels=left transpose=no interleave=yes;
+MATRIX
+'A.andrenof' atttctacatgaataatatttatatttcaagagtcaaattcattatatgctgataatttagtatcttttcataacatagt
+'A.mellifer' atttccacatgatttatatttatatttcaagaatcaaattcatattatgctgataatttaatttcatttcataatatagt
+'A.dorsata'  atttcaacatgaataatattaatatttcaagaatcaaattcattttacgcagataatttaatttcatttcataatatagt
+'A.cerana'   atttctacatgattcatatttatgtttcaagaatcaaattcatattatgctgataatttaatttcatttcataatatagt
+'A.florea'   atttctacatgaataatatttatatttcaagagtcaaattcattatatgctgataatttagtatcttttcataacatagt
+'A.koschev'  atttctacatgaataatatttatatttcaagaatcaaactcattttatgctgataatttagtgtcatttcacaatttagt
+
+'A.andrenof' aataatgattgtaattataatttcaacattaacagtttatattatttttgatttatttttaaataaattttcaaatttat
+'A.mellifer' tataataattattattataatttcaacattaactgtatatattattttagatttatttttaaataaattttcaaatttat
+'A.dorsata'  aataacaataattgtaataatttcaacattaacaatttatatcattatagatctattcataaataaattttcaaatttat
+'A.cerana'   aataataattattattataatttctactttaacagtatatattattatagatctatttttaaataaattttcaaatctat
+'A.florea'   aataattattgtaattataatttcaacattaacagtttatattatttttgatttatttttaaataaattttcaaatttat
+'A.koschev'  aataataattattattataatttcaacacttacaatttatattatttttgatttatttataaataaattttcaaatttat
+
+'A.andrenof' atttacttaaaaatcataatattgaaattatctgaacaattgttcctattgttattttattaattatttgttttccatca
+'A.mellifer' atttacttaaaaatcataatattgaaattatttgaacaattattccaattattattctattaattatttgttttccatca
+'A.dorsata'  ttttattaaaaaatcataatattgaaattatttgaacaattattcctatttttgttcttttaataatttgttttccatca
+'A.cerana'   ttttattaaaaaatcataatattgaaatcatttgaacagtaattccaattattattttattaattatttgttttccatca
+'A.florea'   atttacttaaaaatcataatattgaaattatctgaataattgttcctattgttattttattaattatttgttttccatca
+'A.koschev'  ttttattaaaaaatcataatattgaaattatttgaacaattgttcctattgtaattttattaattatttgttttccatca
+
+'A.andrenof' ttaaaaattttatatttaattgatgaaattgtgaatccatttttttctattaaatcaattggtcatcaatgatattgatc
+'A.mellifer' ttaaaaattttatatttaattgatgaaattgtaaatccttttttttcaattaaatcaattggtcatcaatgatattgatc
+'A.dorsata'  ttaaaaattttatatttaattgatgaaattgtaaatccttttttttcaattaaatctattggccaccaatgatattgatc
+'A.cerana'   ttaaaaattttatatttaattgatgaaattgtaaatccattcttttctgtaaaatcaattggtcatcaatgatattgatc
+'A.florea'   ttaaaaattttatatttaattgatgaaattgtgaatccatttttttctattaaatcaattggtcatcaatgatattgatc
+'A.koschev'  ttaaaaattttatatttaattgatgaaattattaatccattcttttctattaaatcaattggacaccaatgatactgatc
+
+'A.andrenof' atatgagtatcctgaatttaataatattgaatttgattcatatatattaaattatagagatttaaatcaatttcgtttat
+'A.mellifer' atatgaatatccagaatttaataatattgaatttgattcatatatactaaattataataatttaaaccaatttcgtttac
+'A.dorsata'  atatgaatatcctgaattcaataatattgaatttgattcatatatattaaattatacaaatttaaatcaatttcgattat
+'A.cerana'   ctatgaatatcctgaatttaataatattgaatttgattcttatatattaaattatagaaatttaaatcaatttcgattat
+'A.florea'   atatgagtatcctgaatttaataatattgaattttattcatatatattaaattatagagatttaaatcaatttcgtttat
+'A.koschev'  atatgaataccctgaatttaataatattgaatttgattcatatatattaaattatagaaatttaaatcaatttcgattat
+
+'A.andrenof' tagaaactgataatcgaataattattcctataaaaattcctttacgattaattactacatcaactgatgtaattcattca
+'A.mellifer' tagaaactgataatcgaatagtaattccaataaaaatcccactacgtttaattacaacatcaacagatgtaattcattca
+'A.dorsata'  tagaaacagataatcgaatagtaattcctataagaatacctatacgtttaattactacatcaacagatgtaattcattca
+'A.cerana'   tagaaactgataatcgaataattatccctataaatattccattacgattaattacaacttctacagatgtaattcattca
+'A.florea'   tagaaactgataatcgaataattattcctataaaaattcctttacgattaattactacatcaactgatgtaattcattca
+'A.koschev'  tagaaactgacaatcgaataattatcccaataaaaattcctatacgattaattactacatcaactgatgtaattcattca
+
+'A.andrenof' tgaactgttccatctttaggaattaaagttgatgcagttccaggacgaattaatcaattgaatttaattagaaaacgacc
+'A.mellifer' tgaacagttccatccttaggtattaaagttgatgcagttccaggacgaattaatcaattaaatttaattagaaaacgtcc
+'A.dorsata'  tgaactgttccatctttaggaattaaagtagatgctgttccaggacgaattaatcaattaaatttaattagaaaacgacc
+'A.cerana'   tgaactgttccatcacttggaattaaagttgatgcagttccaggacgaattaatcaattaaatttaattagaaaacgacc
+'A.florea'   tgaactgttccatctttaggaattaaagttgatgcagttccaggacgaattaatcaattgaatttaattagaaaacgacc
+'A.koschev'  tgaactgtgccttcattaggtattaaagttgatgcagttccaggtcgaattaatcaattaaatttaattagaaaacgtcc
+
+'A.andrenof' tggaattttttttggtcaatgttctgaaatttgtggaataaatcatagatttataccaattatagttgaatcaacatcat
+'A.mellifer' aggaattttttttggtcaatgttcagaaatttgtggtataaatcatagatttataccaattataattgaatcaacttcat
+'A.dorsata'  aggaattttcttcggtcaatgttctgaaatctgtggaataaatcatagatttataccaattataattgaatcaacttcat
+'A.cerana'   tggaatcttttttggtcaatgttcagaaatttgtggtataaatcatagattcataccaattatagtagaatctacatcat
+'A.florea'   tggaattttttttggtcaatgttctgaaatttgtggaataaatcatagatttataccaattatagttgaatcaacatcat
+'A.koschev'  aggaattttttttggtcaatgttcagaaatttgtggaataaatcatagattcatacctattatagttgaatcaacatcat
+
+'A.andrenof' ttaaatattttataaattgaatttataaaataaatta
+'A.mellifer' ttcaatattttttaaattgagtaaataaacaaatcta
+'A.dorsata'  ttaattattttttaaattgagttaataaacaatctta
+'A.cerana'   ttaaatattttcttaattgggtaaataaacaaaataa
+'A.florea'   ttaaatattttataaattgaatttataaaataaatta
+'A.koschev'  ttaaatttttcttaaattgaattaataaacaaaatta
+
+;
+END; [CHARACTERS]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK CHARACTERS = 'Input Characters';
+NAME 'Characters Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN CHARACTERS;
+TITLE 'Working Characters';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=6 nchar=677;
+FORMAT
+	datatype='DNA' missing=? gap=- symbols="acgt" labels=left transpose=no interleave=yes;
+MATRIX
+'A.andrenof' atttctacatgaataatatttatatttcaagagtcaaattcattatatgctgataatttagtatcttttcataacatagt
+'A.mellifer' atttccacatgatttatatttatatttcaagaatcaaattcatattatgctgataatttaatttcatttcataatatagt
+'A.dorsata'  atttcaacatgaataatattaatatttcaagaatcaaattcattttacgcagataatttaatttcatttcataatatagt
+'A.cerana'   atttctacatgattcatatttatgtttcaagaatcaaattcatattatgctgataatttaatttcatttcataatatagt
+'A.florea'   atttctacatgaataatatttatatttcaagagtcaaattcattatatgctgataatttagtatcttttcataacatagt
+'A.koschev'  atttctacatgaataatatttatatttcaagaatcaaactcattttatgctgataatttagtgtcatttcacaatttagt
+
+'A.andrenof' aataatgattgtaattataatttcaacattaacagtttatattatttttgatttatttttaaataaattttcaaatttat
+'A.mellifer' tataataattattattataatttcaacattaactgtatatattattttagatttatttttaaataaattttcaaatttat
+'A.dorsata'  aataacaataattgtaataatttcaacattaacaatttatatcattatagatctattcataaataaattttcaaatttat
+'A.cerana'   aataataattattattataatttctactttaacagtatatattattatagatctatttttaaataaattttcaaatctat
+'A.florea'   aataattattgtaattataatttcaacattaacagtttatattatttttgatttatttttaaataaattttcaaatttat
+'A.koschev'  aataataattattattataatttcaacacttacaatttatattatttttgatttatttataaataaattttcaaatttat
+
+'A.andrenof' atttacttaaaaatcataatattgaaattatctgaacaattgttcctattgttattttattaattatttgttttccatca
+'A.mellifer' atttacttaaaaatcataatattgaaattatttgaacaattattccaattattattctattaattatttgttttccatca
+'A.dorsata'  ttttattaaaaaatcataatattgaaattatttgaacaattattcctatttttgttcttttaataatttgttttccatca
+'A.cerana'   ttttattaaaaaatcataatattgaaatcatttgaacagtaattccaattattattttattaattatttgttttccatca
+'A.florea'   atttacttaaaaatcataatattgaaattatctgaataattgttcctattgttattttattaattatttgttttccatca
+'A.koschev'  ttttattaaaaaatcataatattgaaattatttgaacaattgttcctattgtaattttattaattatttgttttccatca
+
+'A.andrenof' ttaaaaattttatatttaattgatgaaattgtgaatccatttttttctattaaatcaattggtcatcaatgatattgatc
+'A.mellifer' ttaaaaattttatatttaattgatgaaattgtaaatccttttttttcaattaaatcaattggtcatcaatgatattgatc
+'A.dorsata'  ttaaaaattttatatttaattgatgaaattgtaaatccttttttttcaattaaatctattggccaccaatgatattgatc
+'A.cerana'   ttaaaaattttatatttaattgatgaaattgtaaatccattcttttctgtaaaatcaattggtcatcaatgatattgatc
+'A.florea'   ttaaaaattttatatttaattgatgaaattgtgaatccatttttttctattaaatcaattggtcatcaatgatattgatc
+'A.koschev'  ttaaaaattttatatttaattgatgaaattattaatccattcttttctattaaatcaattggacaccaatgatactgatc
+
+'A.andrenof' atatgagtatcctgaatttaataatattgaatttgattcatatatattaaattatagagatttaaatcaatttcgtttat
+'A.mellifer' atatgaatatccagaatttaataatattgaatttgattcatatatactaaattataataatttaaaccaatttcgtttac
+'A.dorsata'  atatgaatatcctgaattcaataatattgaatttgattcatatatattaaattatacaaatttaaatcaatttcgattat
+'A.cerana'   ctatgaatatcctgaatttaataatattgaatttgattcttatatattaaattatagaaatttaaatcaatttcgattat
+'A.florea'   atatgagtatcctgaatttaataatattgaattttattcatatatattaaattatagagatttaaatcaatttcgtttat
+'A.koschev'  atatgaataccctgaatttaataatattgaatttgattcatatatattaaattatagaaatttaaatcaatttcgattat
+
+'A.andrenof' tagaaactgataatcgaataattattcctataaaaattcctttacgattaattactacatcaactgatgtaattcattca
+'A.mellifer' tagaaactgataatcgaatagtaattccaataaaaatcccactacgtttaattacaacatcaacagatgtaattcattca
+'A.dorsata'  tagaaacagataatcgaatagtaattcctataagaatacctatacgtttaattactacatcaacagatgtaattcattca
+'A.cerana'   tagaaactgataatcgaataattatccctataaatattccattacgattaattacaacttctacagatgtaattcattca
+'A.florea'   tagaaactgataatcgaataattattcctataaaaattcctttacgattaattactacatcaactgatgtaattcattca
+'A.koschev'  tagaaactgacaatcgaataattatcccaataaaaattcctatacgattaattactacatcaactgatgtaattcattca
+
+'A.andrenof' tgaactgttccatctttaggaattaaagttgatgcagttccaggacgaattaatcaattgaatttaattagaaaacgacc
+'A.mellifer' tgaacagttccatccttaggtattaaagttgatgcagttccaggacgaattaatcaattaaatttaattagaaaacgtcc
+'A.dorsata'  tgaactgttccatctttaggaattaaagtagatgctgttccaggacgaattaatcaattaaatttaattagaaaacgacc
+'A.cerana'   tgaactgttccatcacttggaattaaagttgatgcagttccaggacgaattaatcaattaaatttaattagaaaacgacc
+'A.florea'   tgaactgttccatctttaggaattaaagttgatgcagttccaggacgaattaatcaattgaatttaattagaaaacgacc
+'A.koschev'  tgaactgtgccttcattaggtattaaagttgatgcagttccaggtcgaattaatcaattaaatttaattagaaaacgtcc
+
+'A.andrenof' tggaattttttttggtcaatgttctgaaatttgtggaataaatcatagatttataccaattatagttgaatcaacatcat
+'A.mellifer' aggaattttttttggtcaatgttcagaaatttgtggtataaatcatagatttataccaattataattgaatcaacttcat
+'A.dorsata'  aggaattttcttcggtcaatgttctgaaatctgtggaataaatcatagatttataccaattataattgaatcaacttcat
+'A.cerana'   tggaatcttttttggtcaatgttcagaaatttgtggtataaatcatagattcataccaattatagtagaatctacatcat
+'A.florea'   tggaattttttttggtcaatgttctgaaatttgtggaataaatcatagatttataccaattatagttgaatcaacatcat
+'A.koschev'  aggaattttttttggtcaatgttcagaaatttgtggaataaatcatagattcatacctattatagttgaatcaacatcat
+
+'A.andrenof' ttaaatattttataaattgaatttataaaataaatta
+'A.mellifer' ttcaatattttttaaattgagtaaataaacaaatcta
+'A.dorsata'  ttaattattttttaaattgagttaataaacaatctta
+'A.cerana'   ttaaatattttcttaattgggtaaataaacaaaataa
+'A.florea'   ttaaatattttataaattgaatttataaaataaatta
+'A.koschev'  ttaaatttttcttaaattgaattaataaacaaaatta
+
+;
+END; [CHARACTERS]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Haplo Net';
+LINK CHARACTERS = 'Working Characters';
+NAME 'Razor Haplo Net';
+OPTIONS
+	DistanceMethod = 'Hamming',
+	RandomRestarts = 100,
+	MaxPolishRounds = 10,
+	RemoveRedundant = 'true',
+	RemoveSuperfluous = 'true',
+	ContractUnlabeled = 'true',
+	RandomSeed = 0;
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Razor Haplo Net';
+DIMENSIONS nVertices=10 nEdges=9;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 188, excess: 109';
+VERTICES
+	id=1 label='A.andrenof' states='ATTTCTACATGAATAATATTTATATTTCAAGAGTCAAATTCATTATATGCTGATAATTTAGTATCTTTTCATAACATAGTAATAATGATTGTAATTATAATTTCAACATTAACAGTTTATATTATTTTTGATTTATTTTTAAATAAATTTTCAAATTTATATTTACTTAAAAATCATAATATTGAAATTATCTGAACAATTGTTCCTATTGTTATTTTATTAATTATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTGTGAATCCATTTTTTTCTATTAAATCAATTGGTCATCAATGATATTGATCATATGAGTATCCTGAATTTAATAATATTGAATTTGATTCATATATATTAAATTATAGAGATTTAAATCAATTTCGTTTATTAGAAACTGATAATCGAATAATTATTCCTATAAAAATTCCTTTACGATTAATTACTACATCAACTGATGTAATTCATTCATGAACTGTTCCATCTTTAGGAATTAAAGTTGATGCAGTTCCAGGACGAATTAATCAATTGAATTTAATTAGAAAACGACCTGGAATTTTTTTTGGTCAATGTTCTGAAATTTGTGGAATAAATCATAGATTTATACCAATTATAGTTGAATCAACATCATTTAAATATTTTATAAATTGAATTTATAAAATAAATTA',
+	id=2 label='A.mellifer' states='ATTTCCACATGATTTATATTTATATTTCAAGAATCAAATTCATATTATGCTGATAATTTAATTTCATTTCATAATATAGTTATAATAATTATTATTATAATTTCAACATTAACTGTATATATTATTTTAGATTTATTTTTAAATAAATTTTCAAATTTATATTTACTTAAAAATCATAATATTGAAATTATTTGAACAATTATTCCAATTATTATTCTATTAATTATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTGTAAATCCTTTTTTTTCAATTAAATCAATTGGTCATCAATGATATTGATCATATGAATATCCAGAATTTAATAATATTGAATTTGATTCATATATACTAAATTATAATAATTTAAACCAATTTCGTTTACTAGAAACTGATAATCGAATAGTAATTCCAATAAAAATCCCACTACGTTTAATTACAACATCAACAGATGTAATTCATTCATGAACAGTTCCATCCTTAGGTATTAAAGTTGATGCAGTTCCAGGACGAATTAATCAATTAAATTTAATTAGAAAACGTCCAGGAATTTTTTTTGGTCAATGTTCAGAAATTTGTGGTATAAATCATAGATTTATACCAATTATAATTGAATCAACTTCATTTCAATATTTTTTAAATTGAGTAAATAAACAAATCTA',
+	id=3 label='A.dorsata' states='ATTTCAACATGAATAATATTAATATTTCAAGAATCAAATTCATTTTACGCAGATAATTTAATTTCATTTCATAATATAGTAATAACAATAATTGTAATAATTTCAACATTAACAATTTATATCATTATAGATCTATTCATAAATAAATTTTCAAATTTATTTTTATTAAAAAATCATAATATTGAAATTATTTGAACAATTATTCCTATTTTTGTTCTTTTAATAATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTGTAAATCCTTTTTTTTCAATTAAATCTATTGGCCACCAATGATATTGATCATATGAATATCCTGAATTCAATAATATTGAATTTGATTCATATATATTAAATTATACAAATTTAAATCAATTTCGATTATTAGAAACAGATAATCGAATAGTAATTCCTATAAGAATACCTATACGTTTAATTACTACATCAACAGATGTAATTCATTCATGAACTGTTCCATCTTTAGGAATTAAAGTAGATGCTGTTCCAGGACGAATTAATCAATTAAATTTAATTAGAAAACGACCAGGAATTTTCTTCGGTCAATGTTCTGAAATCTGTGGAATAAATCATAGATTTATACCAATTATAATTGAATCAACTTCATTTAATTATTTTTTAAATTGAGTTAATAAACAATCTTA',
+	id=4 label='A.cerana' states='ATTTCTACATGATTCATATTTATGTTTCAAGAATCAAATTCATATTATGCTGATAATTTAATTTCATTTCATAATATAGTAATAATAATTATTATTATAATTTCTACTTTAACAGTATATATTATTATAGATCTATTTTTAAATAAATTTTCAAATCTATTTTTATTAAAAAATCATAATATTGAAATCATTTGAACAGTAATTCCAATTATTATTTTATTAATTATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTGTAAATCCATTCTTTTCTGTAAAATCAATTGGTCATCAATGATATTGATCCTATGAATATCCTGAATTTAATAATATTGAATTTGATTCTTATATATTAAATTATAGAAATTTAAATCAATTTCGATTATTAGAAACTGATAATCGAATAATTATCCCTATAAATATTCCATTACGATTAATTACAACTTCTACAGATGTAATTCATTCATGAACTGTTCCATCACTTGGAATTAAAGTTGATGCAGTTCCAGGACGAATTAATCAATTAAATTTAATTAGAAAACGACCTGGAATCTTTTTTGGTCAATGTTCAGAAATTTGTGGTATAAATCATAGATTCATACCAATTATAGTAGAATCTACATCATTTAAATATTTTCTTAATTGGGTAAATAAACAAAATAA',
+	id=5 label='A.florea' states='ATTTCTACATGAATAATATTTATATTTCAAGAGTCAAATTCATTATATGCTGATAATTTAGTATCTTTTCATAACATAGTAATAATTATTGTAATTATAATTTCAACATTAACAGTTTATATTATTTTTGATTTATTTTTAAATAAATTTTCAAATTTATATTTACTTAAAAATCATAATATTGAAATTATCTGAATAATTGTTCCTATTGTTATTTTATTAATTATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTGTGAATCCATTTTTTTCTATTAAATCAATTGGTCATCAATGATATTGATCATATGAGTATCCTGAATTTAATAATATTGAATTTTATTCATATATATTAAATTATAGAGATTTAAATCAATTTCGTTTATTAGAAACTGATAATCGAATAATTATTCCTATAAAAATTCCTTTACGATTAATTACTACATCAACTGATGTAATTCATTCATGAACTGTTCCATCTTTAGGAATTAAAGTTGATGCAGTTCCAGGACGAATTAATCAATTGAATTTAATTAGAAAACGACCTGGAATTTTTTTTGGTCAATGTTCTGAAATTTGTGGAATAAATCATAGATTTATACCAATTATAGTTGAATCAACATCATTTAAATATTTTATAAATTGAATTTATAAAATAAATTA',
+	id=6 label='A.koschev' states='ATTTCTACATGAATAATATTTATATTTCAAGAATCAAACTCATTTTATGCTGATAATTTAGTGTCATTTCACAATTTAGTAATAATAATTATTATTATAATTTCAACACTTACAATTTATATTATTTTTGATTTATTTATAAATAAATTTTCAAATTTATTTTTATTAAAAAATCATAATATTGAAATTATTTGAACAATTGTTCCTATTGTAATTTTATTAATTATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTATTAATCCATTCTTTTCTATTAAATCAATTGGACACCAATGATACTGATCATATGAATACCCTGAATTTAATAATATTGAATTTGATTCATATATATTAAATTATAGAAATTTAAATCAATTTCGATTATTAGAAACTGACAATCGAATAATTATCCCAATAAAAATTCCTATACGATTAATTACTACATCAACTGATGTAATTCATTCATGAACTGTGCCTTCATTAGGTATTAAAGTTGATGCAGTTCCAGGTCGAATTAATCAATTAAATTTAATTAGAAAACGTCCAGGAATTTTTTTTGGTCAATGTTCAGAAATTTGTGGAATAAATCATAGATTCATACCTATTATAGTTGAATCAACATCATTTAAATTTTTCTTAAATTGAATTAATAAACAAAATTA',
+	id=10 states='ATTTCTACATGATTAATATTTATATTTCAAGAATCAAATTCATTTTATGCTGATAATTTAATTTCATTTCATAATATAGTAATAATAATTATTATTATAATTTCAACATTAACAGTTTATATTATTTTAGATTTATTTTTAAATAAATTTTCAAATTTATTTTTATTAAAAAATCATAATATTGAAATTATTTGAACAATTATTCCTATTGTTATTTTATTAATTATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTGTAAATCCATTTTTTTCTATTAAATCAATTGGTCATCAATGATATTGATCATATGAATATCCTGAATTTAATAATATTGAATTTGATTCATATATATTAAATTATAGAAATTTAAATCAATTTCGATTATTAGAAACTGATAATCGAATAATTATTCCTATAAAAATTCCTTTACGATTAATTACTACATCAACAGATGTAATTCATTCATGAACTGTTCCATCTTTAGGAATTAAAGTTGATGCAGTTCCAGGACGAATTAATCAATTAAATTTAATTAGAAAACGACCAGGAATTTTTTTTGGTCAATGTTCAGAAATTTGTGGTATAAATCATAGATTTATACCAATTATAGTTGAATCAACATCATTTAAATATTTTTTAAATTGAGTTAATAAACAAAATTA',
+	id=11 states='ATTTCTACATGAATAATATTTATATTTCAAGAATCAAATTCATTTTATGCTGATAATTTAGTTTCATTTCATAATATAGTAATAATAATTATTATTATAATTTCAACATTAACAGTTTATATTATTTTTGATTTATTTTTAAATAAATTTTCAAATTTATTTTTATTAAAAAATCATAATATTGAAATTATTTGAACAATTGTTCCTATTGTTATTTTATTAATTATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTGTAAATCCATTTTTTTCTATTAAATCAATTGGTCATCAATGATATTGATCATATGAATATCCTGAATTTAATAATATTGAATTTGATTCATATATATTAAATTATAGAAATTTAAATCAATTTCGATTATTAGAAACTGATAATCGAATAATTATTCCTATAAAAATTCCTTTACGATTAATTACTACATCAACTGATGTAATTCATTCATGAACTGTTCCATCTTTAGGAATTAAAGTTGATGCAGTTCCAGGACGAATTAATCAATTAAATTTAATTAGAAAACGACCAGGAATTTTTTTTGGTCAATGTTCAGAAATTTGTGGAATAAATCATAGATTTATACCAATTATAGTTGAATCAACATCATTTAAATATTTTTTAAATTGAGTTAATAAACAAAATTA',
+	id=14 states='ATTTCTACATGAATAATATTTATATTTCAAGAGTCAAATTCATTATATGCTGATAATTTAGTTTCTTTTCATAACATAGTAATAATAATTGTAATTATAATTTCAACATTAACAGTTTATATTATTTTTGATTTATTTTTAAATAAATTTTCAAATTTATATTTACTTAAAAATCATAATATTGAAATTATCTGAACAATTGTTCCTATTGTTATTTTATTAATTATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTGTAAATCCATTTTTTTCTATTAAATCAATTGGTCATCAATGATATTGATCATATGAGTATCCTGAATTTAATAATATTGAATTTGATTCATATATATTAAATTATAGAGATTTAAATCAATTTCGTTTATTAGAAACTGATAATCGAATAATTATTCCTATAAAAATTCCTTTACGATTAATTACTACATCAACTGATGTAATTCATTCATGAACTGTTCCATCTTTAGGAATTAAAGTTGATGCAGTTCCAGGACGAATTAATCAATTGAATTTAATTAGAAAACGACCTGGAATTTTTTTTGGTCAATGTTCTGAAATTTGTGGAATAAATCATAGATTTATACCAATTATAGTTGAATCAACATCATTTAAATATTTTTTAAATTGAATTTATAAAATAAATTA',
+	id=15 states='ATTTCTACATGAATAATATTTATATTTCAAGAATCAAATTCATTTTATGCTGATAATTTAATTTCATTTCATAATATAGTAATAATAATTATTATTATAATTTCAACATTAACAGTTTATATTATTTTAGATTTATTTTTAAATAAATTTTCAAATTTATTTTTATTAAAAAATCATAATATTGAAATTATTTGAACAATTATTCCTATTGTTATTTTATTAATTATTTGTTTTCCATCATTAAAAATTTTATATTTAATTGATGAAATTGTAAATCCATTTTTTTCTATTAAATCAATTGGTCATCAATGATATTGATCATATGAATATCCTGAATTTAATAATATTGAATTTGATTCATATATATTAAATTATAGAAATTTAAATCAATTTCGATTATTAGAAACTGATAATCGAATAATTATTCCTATAAAAATTCCTTTACGATTAATTACTACATCAACAGATGTAATTCATTCATGAACTGTTCCATCTTTAGGAATTAAAGTTGATGCAGTTCCAGGACGAATTAATCAATTAAATTTAATTAGAAAACGACCAGGAATTTTTTTTGGTCAATGTTCAGAAATTTGTGGAATAAATCATAGATTTATACCAATTATAGTTGAATCAACATCATTTAAATATTTTTTAAATTGAGTTAATAAACAAAATTA'
+;
+EDGES
+	id=1 sid=1 tid=14 weight='0.5' sites='63,87,273,652',
+	id=2 sid=2 tid=10 weight='22.5' sites='6,15,44,81,114,117,161,166,168,207,211,217,279,288,333,367,377,378,387,396,400,421,423,429,438,441,442,447,456,486,495,501,558,625,636,643,663,674,675',
+	id=5 sid=5 tid=14 weight='2.5' sites='63,87,197,273,355,652',
+	id=13 sid=10 tid=15 weight='4.5' sites='13,597',
+	id=14 sid=11 tid=14 weight='21.5' sites='33,45,66,75,91,93,161,166,168,192,327,379,396,540,561,585,661,664,670,671',
+	id=19 sid=3 tid=15 weight='36.0' sites='6,21,48,51,86,90,94,96,115,123,127,133,138,139,211,214,217,219,225,279,288,297,303,306,339,377,408,421,423,434,438,442,447,510,516,570,573,585,591,625,636,645,673,674',
+	id=20 sid=4 tid=10 weight='38.5' sites='15,24,44,105,108,117,127,133,157,189,199,201,207,211,282,289,291,321,360,426,435,441,456,459,462,495,496,498,561,567,612,627,633,652,654,660,663,676',
+	id=21 sid=6 tid=11 weight='29.0' sites='39,63,72,76,109,111,115,139,213,271,273,282,303,306,315,330,411,426,429,442,489,492,495,501,525,558,612,618,647,651,661',
+	id=22 sid=11 tid=15 weight='12.0' sites='61,129,202,465'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network';
+LINK ALGORITHM = 'Show Network';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'Hatches',
+	Edits = 'mn:3:-186.05,69.95',
+	LayoutSeed = 1;
+END; [VIEW]

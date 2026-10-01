@@ -1,0 +1,37 @@
+# Ground truth for the sibling .dist instance
+seed=5086654115216342560
+type=cactus
+n=20
+referenceLength=1199
+referenceIsOptimal=false
+# Cactus metric: all-pairs shortest-path distances of the edge-weighted cactus below
+# (a connected graph in which every edge lies in at most one cycle; here 6 cycle(s) + 3 bridge(s)).
+# A cactus is outer-planar, so this metric is circular-decomposable (Kalmanson):
+# cactus metrics are a SUBSET of circular. The cactus realizes the distances, so
+# referenceLength is an UPPER BOUND on the optimum (RazorNet should realize with length <= it).
+# vertices 0..19 = taxa t1..t20; edges: 'edge u v weight'
+edge 0 1 92
+edge 1 2 1
+edge 2 0 24
+edge 2 3 59
+edge 3 4 54
+edge 4 2 53
+edge 4 5 24
+edge 4 6 9
+edge 6 7 79
+edge 7 8 5
+edge 8 4 86
+edge 0 9 55
+edge 9 10 48
+edge 10 0 84
+edge 2 11 30
+edge 11 12 71
+edge 12 13 69
+edge 13 14 30
+edge 14 2 31
+edge 13 15 2
+edge 4 16 12
+edge 16 17 49
+edge 17 18 55
+edge 18 4 77
+edge 9 19 100

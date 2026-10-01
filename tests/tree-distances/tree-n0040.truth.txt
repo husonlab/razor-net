@@ -1,0 +1,86 @@
+# Ground truth for the sibling .dist instance
+seed=5111195811822994797
+type=tree
+n=40
+referenceLength=3886
+referenceIsOptimal=true
+# Additive (tree) metric; the generating tree IS the minimum-length realization.
+# nodes: leaves 0..39 = taxa t1..t40; internal (Steiner) nodes 40..77
+# edges: 'edge u v weight'
+edge 40 1 46
+edge 40 41 87
+edge 43 44 4
+edge 45 3 18
+edge 45 7 26
+edge 0 46 79
+edge 46 8 25
+edge 44 47 37
+edge 47 9 18
+edge 48 6 91
+edge 49 10 86
+edge 50 43 97
+edge 47 51 82
+edge 51 48 51
+edge 51 13 92
+edge 46 52 60
+edge 52 14 53
+edge 41 54 49
+edge 54 53 58
+edge 54 16 18
+edge 52 55 15
+edge 44 56 74
+edge 56 5 31
+edge 56 18 6
+edge 53 57 62
+edge 57 45 14
+edge 57 19 89
+edge 42 58 16
+edge 58 50 24
+edge 58 59 22
+edge 59 20 16
+edge 59 21 81
+edge 49 60 4
+edge 60 22 26
+edge 55 61 25
+edge 61 40 97
+edge 43 62 6
+edge 62 4 74
+edge 62 24 57
+edge 61 63 1
+edge 63 23 49
+edge 64 49 30
+edge 64 26 83
+edge 63 65 81
+edge 65 27 40
+edge 66 64 71
+edge 66 28 93
+edge 50 67 23
+edge 67 29 52
+edge 48 68 74
+edge 68 66 8
+edge 68 30 8
+edge 60 69 22
+edge 69 11 60
+edge 69 31 54
+edge 41 70 51
+edge 70 32 96
+edge 65 71 8
+edge 71 33 59
+edge 53 72 39
+edge 72 15 99
+edge 72 34 83
+edge 70 73 99
+edge 73 42 42
+edge 73 35 37
+edge 71 74 62
+edge 74 25 66
+edge 74 36 99
+edge 67 75 40
+edge 75 12 63
+edge 75 37 90
+edge 55 76 81
+edge 76 17 52
+edge 76 38 55
+edge 42 77 73
+edge 77 2 18
+edge 77 39 9

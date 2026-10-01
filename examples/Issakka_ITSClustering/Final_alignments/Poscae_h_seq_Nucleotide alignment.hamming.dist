@@ -1,0 +1,9 @@
+#Hamming distances from examples/Issakka_ITSClustering/Final_alignments/Poscae_h_seq_Nucleotide alignment.fasta, exactly as RazorHaplotypeNetwork computes them: columns with missing/ambiguous data masked out (284 of 284 kept), gaps kept as ordinary states -- always a metric
+	7
+Hap_1_Alignment_of_2_sequences__CBC065_13800650_A9.ab1_Copy__CBC064_13800643_A9.ab1	0	1	1	0	1	1	9
+Hap_2_Alignment_of_2_sequences__CBC065_13800650_E8.ab1_Copy__CBC064_13800643_E8.ab1	1	0	2	1	0	2	10
+Hap_3_Alignment_of_2_sequences__CBC065_13800650_E8.ab1_Copy__CBC064_13800643_E8.ab1	1	2	0	1	2	0	10
+seq2	0	1	1	0	1	1	9
+seq14	1	0	2	1	0	2	10
+seq16	1	2	0	1	2	0	10
+seq72	9	10	10	9	10	10	0

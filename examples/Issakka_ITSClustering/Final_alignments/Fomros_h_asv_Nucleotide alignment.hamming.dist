@@ -1,0 +1,15 @@
+#Hamming distances from examples/Issakka_ITSClustering/Final_alignments/Fomros_h_asv_Nucleotide alignment.fasta, exactly as RazorHaplotypeNetwork computes them: columns with missing/ambiguous data masked out (278 of 278 kept), gaps kept as ordinary states -- always a metric
+	13
+Hap_1_Alignment_of_2_sequences__CBC063_13800636_H8.ab1_Copy__CBC062_13800629_H8.ab1	0	1	1	2	1	0	1	1	1	1	1	1	2
+Hap_2_Alignment_of_2_sequences__CBC063_13800636_C7.ab1_Copy__CBC062_13800629_C7.ab1	1	0	2	3	2	1	2	0	2	2	2	2	3
+Hap_3_Alignment_of_2_sequences__CBC063_13800636_H7.ab1_Copy__CBC062_13800629_H7.ab1	1	2	0	3	2	1	0	2	2	2	2	2	3
+Hap_4_Alignment_of_2_sequences__CBC063_13800636_H8.ab1_Copy__CBC062_13800629_H8.ab1	2	3	3	0	3	2	3	3	3	3	1	1	0
+Hap_5_Alignment_of_2_sequences__CBC063_13800636_E7.ab1_Copy__CBC062_13800629_E7.ab1	1	2	2	3	0	1	2	2	2	0	2	2	3
+seq6	0	1	1	2	1	0	1	1	1	1	1	1	2
+seq28	1	2	0	3	2	1	0	2	2	2	2	2	3
+seq35	1	0	2	3	2	1	2	0	2	2	2	2	3
+seq41	1	2	2	3	2	1	2	2	0	2	2	2	3
+seq53	1	2	2	3	0	1	2	2	2	0	2	2	3
+seq68	1	2	2	1	2	1	2	2	2	2	0	2	1
+seq74	1	2	2	1	2	1	2	2	2	2	2	0	1
+seq100	2	3	3	0	3	2	3	3	3	3	1	1	0

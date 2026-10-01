@@ -1,0 +1,729 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=12 nAlgorithms=8;
+PROGRAM version='SplitsTree (version dev) - License GPL v3';
+WORKFLOW creationDate='1790599790718'; [Mon Sep 28 14:49:50 CEST 2026]
+END; [SPLITSTREE6]
+
+[
+Methods:
+Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.), (Hayamizu et al, 2026 ; M. Hayamizu, others, DH Huson, in preparation).
+The original input consisted of 17 taxa and 17 DNA sequences of length 951.
+After removal of 911 characters, the input had 40 characters.
+The Razor Haplo Net method was used (default options) so as to obtain 23 nodes and 28 edges.
+The TCS Haplotype Network method (Templeton et al 1992, Leigh & Bryant 2015) was used (default options) so as to obtain 21 nodes and 23 edges.
+The Simplify Filter method was used (default options) so as to obtain 22 nodes and 25 edges.
+
+References:
+Hayamizu et al, 2026: M. Hayamizu, others, DH Huson, in preparation
+Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
+Leigh & Bryant 2015: J.W. Leigh and D. Bryant. PopART: full-feature software for haplotype network construction. Methods in Ecology and Evolution, 6(9):1110-1116, 2015.
+Templeton et al 1992: A.R. Templeton, K.A. Crandall and C.F. Sing. A cladistic analysis of phenotypic associations with haplotypes inferred from restriction endonuclease mapping and DNA sequence data. III. Cladogram estimation. Genetics, 132(2):619-633, 1992.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+DIMENSIONS ntax=17;
+TAXLABELS
+	[1] 'R17'
+	[2] 'R13'
+	[3] 'R05'
+	[4] 'R18'
+	[5] 'R04'
+	[6] 'R16'
+	[7] 'R14'
+	[8] 'R06'
+	[9] 'R07'
+	[10] 'R08'
+	[11] 'R12'
+	[12] 'R11'
+	[13] 'R10'
+	[14] 'R03'
+	[15] 'R02'
+	[16] 'R15'
+	[17] 'PAT-05'
+;
+[DISPLAYLABELS;]
+TAXINFO
+	[1] 'SIG-01,SIG-02,DAN-01,WIL-03,WIL-08,WIL-04,WIL-05,WIL-06,WIL-07,LOU-01,FAL-03,FAL-01,FAL-02,MAR-02,MAR-01'
+	[2] 'DAN-02,DAN-03,DAN-04,DAN-06,DAN-05,GRA-01,WIL-11,WIL-09,WIL-12,WIL-13,WIL-10,WIL-14,WIL-15,WIL-16,WIL-17'
+	[3] 'DEC-02,DEC-01'
+	[4] 'MAR-05,MAR-06,MAR-04,MAR-07'
+	[5] 'GEO-01'
+	[6] 'JAM-01,JAM-05,JAM-02,JAM-06,JAM-07,JAM-08,JAM-03,JAM-04'
+	[7] 'COC-02,COC-03,COC-01,PAT-15,PAT-13'
+	[8] 'HER-01,PAT-01'
+	[9] 'DRO-03,DRO-01'
+	[10] 'DRO-05,DRO-02,DRO-10'
+	[11] 'DRO-06,DRO-07,DRO-11,DRO-12,DRO-08,DRO-09'
+	[12] 'DRO-Sgl'
+	[13] 'DRO-13'
+	[14] 'MRO-01,MRO-02,PEL-01,PEL-02,QML-03,QML-01,QML-02,QML-04,VIC-17,VIC-18,VIC-19,VIC-20,VIC-21,VIC-22,VIC-23,VIC-24,VIC-25,VIC-26,VIC-27,VIC-28,VIC-29,MBL-02,MBL-01,VIC-Sgl-c,VIC-Sgl-e,VIC-Sgl-d'
+	[15] 'VIC-01,VIC-02,VIC-03,VIC-04,VIC-05,VIC-06,VIC-07,VIC-08,VIC-09,VIC-10,VIC-11,VIC-12,VIC-13,VIC-14,VIC-15,VIC-16,VIC-Sgl-a,VIC-Sgl-b'
+	[16] 'PAT-10,PAT-02,PAT-04,PAT-Sgl,PAT-08,PAT-09'
+	[17] 'PAT-05'
+;
+END; [TAXA]
+
+BEGIN TRAITS;
+TITLE 'Input Traits';
+DIMENSIONS [nTax=17] nTraits=17;
+FORMAT labels=yes missing=? separator=Comma;
+TRAITCOLOR #f3edb3ff #ab3263ff #eeb782ff #efe364ff #f0cf80ff #dd6d54ff #efb152ff #d44947ff #e6c8e6ff #e99bbcff #8e2b73ff #d64892ff #a04cb5ff #8ccbe2ff #434299ff #bd9738ff #f3edb3ff;
+TRAITLABELS
+ 'R17' 'R13' 'R05' 'R18' 'R04' 'R16' 'R14' 'R06' 'R07' 'R08' 'R12' 'R11' 'R10' 'R03' 'R02' 'R15' 'PAT-05';
+MATRIX
+[1] 'R17'     15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[2] 'R13'     0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[3] 'R05'     0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[4] 'R18'     0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+[5] 'R04'     0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+[6] 'R16'     0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0
+[7] 'R14'     0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0
+[8] 'R06'     0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0
+[9] 'R07'     0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0
+[10] 'R08'     0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0
+[11] 'R12'     0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0
+[12] 'R11'     0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+[13] 'R10'     0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+[14] 'R03'     0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,0,0
+[15] 'R02'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0
+[16] 'R15'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0
+[17] 'PAT-05'  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+;
+END; [TRAITS]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=17;
+TAXLABELS
+	[1] 'R17'
+	[2] 'R13'
+	[3] 'R05'
+	[4] 'R18'
+	[5] 'R04'
+	[6] 'R16'
+	[7] 'R14'
+	[8] 'R06'
+	[9] 'R07'
+	[10] 'R08'
+	[11] 'R12'
+	[12] 'R11'
+	[13] 'R10'
+	[14] 'R03'
+	[15] 'R02'
+	[16] 'R15'
+	[17] 'PAT-05'
+;
+[DISPLAYLABELS;]
+TAXINFO
+	[1] 'SIG-01,SIG-02,DAN-01,WIL-03,WIL-08,WIL-04,WIL-05,WIL-06,WIL-07,LOU-01,FAL-03,FAL-01,FAL-02,MAR-02,MAR-01'
+	[2] 'DAN-02,DAN-03,DAN-04,DAN-06,DAN-05,GRA-01,WIL-11,WIL-09,WIL-12,WIL-13,WIL-10,WIL-14,WIL-15,WIL-16,WIL-17'
+	[3] 'DEC-02,DEC-01'
+	[4] 'MAR-05,MAR-06,MAR-04,MAR-07'
+	[5] 'GEO-01'
+	[6] 'JAM-01,JAM-05,JAM-02,JAM-06,JAM-07,JAM-08,JAM-03,JAM-04'
+	[7] 'COC-02,COC-03,COC-01,PAT-15,PAT-13'
+	[8] 'HER-01,PAT-01'
+	[9] 'DRO-03,DRO-01'
+	[10] 'DRO-05,DRO-02,DRO-10'
+	[11] 'DRO-06,DRO-07,DRO-11,DRO-12,DRO-08,DRO-09'
+	[12] 'DRO-Sgl'
+	[13] 'DRO-13'
+	[14] 'MRO-01,MRO-02,PEL-01,PEL-02,QML-03,QML-01,QML-02,QML-04,VIC-17,VIC-18,VIC-19,VIC-20,VIC-21,VIC-22,VIC-23,VIC-24,VIC-25,VIC-26,VIC-27,VIC-28,VIC-29,MBL-02,MBL-01,VIC-Sgl-c,VIC-Sgl-e,VIC-Sgl-d'
+	[15] 'VIC-01,VIC-02,VIC-03,VIC-04,VIC-05,VIC-06,VIC-07,VIC-08,VIC-09,VIC-10,VIC-11,VIC-12,VIC-13,VIC-14,VIC-15,VIC-16,VIC-Sgl-a,VIC-Sgl-b'
+	[16] 'PAT-10,PAT-02,PAT-04,PAT-Sgl,PAT-08,PAT-09'
+	[17] 'PAT-05'
+;
+END; [TAXA]
+
+BEGIN TRAITS;
+TITLE 'Working Traits';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS [nTax=17] nTraits=17;
+FORMAT labels=yes missing=? separator=Comma;
+TRAITCOLOR #f3edb3ff #ab3263ff #eeb782ff #efe364ff #f0cf80ff #dd6d54ff #efb152ff #d44947ff #e6c8e6ff #e99bbcff #8e2b73ff #d64892ff #a04cb5ff #8ccbe2ff #434299ff #bd9738ff #f3edb3ff;
+TRAITLABELS
+ 'R17' 'R13' 'R05' 'R18' 'R04' 'R16' 'R14' 'R06' 'R07' 'R08' 'R12' 'R11' 'R10' 'R03' 'R02' 'R15' 'PAT-05';
+MATRIX
+[1] 'R17'     15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[2] 'R13'     0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[3] 'R05'     0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[4] 'R18'     0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+[5] 'R04'     0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+[6] 'R16'     0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0
+[7] 'R14'     0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0
+[8] 'R06'     0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0
+[9] 'R07'     0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0
+[10] 'R08'     0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0
+[11] 'R12'     0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0
+[12] 'R11'     0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+[13] 'R10'     0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+[14] 'R03'     0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,0,0
+[15] 'R02'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0
+[16] 'R15'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0
+[17] 'PAT-05'  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+;
+END; [TRAITS]
+
+BEGIN CHARACTERS;
+TITLE 'Input Characters';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=17 nchar=951;
+FORMAT
+	datatype='DNA' missing=? gap=- symbols="01acgt" labels=left transpose=no interleave=yes;
+MATRIX
+R17      tgggaaggagaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattgcacacacgcaatca---------g
+R13      ttggaaggagaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattgcacacacgcaatcagcagctgctg
+R05      ??????????????????????????????????????????????????????????????????atcagca-----tg
+R18      ??ggaaggagaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattgcacacacgcaatcagcagctgctg
+R04      ??ggaaggagaagtcgtaacaaggtttccgtaggtgaacttgcggaaggatcattgcacacacgcaatcagca-----tg
+R16      ????????????????????????????????????????????????????????????????????????????????
+R14      ????????????????????????????????????????????????????????????????????????????????
+R06      ??ggaaggagaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattgcacacacgcaatca---------g
+R07      ???????????????????????????ccgtaggtgaacctgcggaaggatcattgcacacacgcaatcagcagctgctg
+R08      ?????aggagaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattgcacacacgcaatca---------g
+R12      ????????????????????????????????????????????????????????????????????????????????
+R11      ?????????????????????????????????????????gcggaaggatcattgcacacacgcaatca---------g
+R10      ?gggaaggagaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattgcacacacgcaatca---------g
+R03      tgggaaggagaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattgcacacacgcaatcg-----cgctg
+R02      ?????aggagaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattgcacacacgcaatcg-----cgctg
+R15      ????????????????????????????????????????????????????????????????????????????????
+'PAT-05' tgggaaggagaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattgcacacacgcaatca---------g
+
+R17      caaaccccctagcgaaccgtgaattgtccaaccaaaaagacccccttttgttgtgcaatcaatgttgggt---ggggggg
+R13      caaaccccctagcgaaccgtgaattgtccaaccaaaaagacccctttttgttgtgcaatcaatgttgggt-ggggggggg
+R05      caaaccccctagcgaaccgtgaattgtcccccaaacttaaaccctttttgttgtgcaatcaatgttgggt---ggggggg
+R18      caaaccccctagcgaaccgtgaattgtccaaccaaaaagacccctttttgttgtgcaatcaatgttgggtgggggggggg
+R04      caaaccccctagcgaaccgtgaattgtcccccaaacttaaaccctttttgttgtgcaatcaatgttgggt---ggggggg
+R16      ???????????????????????????????????????acccccttttgttgtgcaatcaatgttgggt---ggggggg
+R14      ???????????????????????????????????????acccccttttgttgtgcaatcaatgttgggt---ggggggg
+R06      caaaccccctagcgaaccgtgaattgtccaaccaaaaagacccctttttgttgtgcaatcaatgttgggt---ggggggg
+R07      caaaccccctagcgaaccgtgaattgtccaaccaaaaagacccctttttgttgtgcaatcaatgttgggt---ggggggg
+R08      caaaccccctagcgaaccgtgaattgtccaaccaaaaagacccctttttgttgtgcaatcaatgttgggt---ggggggg
+R12      ?????????????????????????????????????????ccctttttgttgtgcaatcaatgttgggt---ggggggg
+R11      caaaccccctagcgaaccgtgaattgtccaaccaaaaagacccctttttgttgtgcaatcaatgttgggt---ggggggg
+R10      caaaccccctagcgaaccgtgaattgtccaaccaaaaagacccctttttgttgtgcaatcaatgttgggt---ggggggg
+R03      caaaccccttagcgaaccgtgaattgtcccccaaacttaaaccctttttgttgtgcaatcagt-ttgggt---ggggggg
+R02      caaaccccttagcgaaccgtgaattgtcccccaaacttaaaccctttttgttgtgcaatcagtttgggtg---ggggggg
+R15      ???????????????????????????????????????acccccttttgttgtgcaatcaatgttgggt---ggggggg
+'PAT-05' caaaccccctagcgaaccgtgaattgtccaaccaaaaagacccccttttgttgtgcaatcaatgttgggt---ggggggg
+
+R17      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R13      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R05      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R18      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R04      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R16      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R14      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R06      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R07      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R08      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R12      ctgggacgccactcct----cctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R11      ctgggacgccactcct----cctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R10      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+R03      ctgggacgccactcct----cctgcctgccttg-ctgccaacacaaaggacaaccaacccgatt---gcactatgcatca
+R02      ctgggacgccactcctcctgcctgcctgccttg-ctgccaacacaaaggacaaccaacccgatt---gcactatgcatca
+R15      ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+'PAT-05' ctgggacgccactcctcctgcctgcctgccttgcctgccaacacaaaggacaaccaacccgattgcagcactatgcatca
+
+R17      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R13      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R05      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R18      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R04      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R16      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R14      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R06      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R07      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R08      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R12      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R11      acacatccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R10      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+R03      acacctccaatatgactgagtataaacaaacaaa--------ctctctacctacctcacttaccttttggtgagtgagca
+R02      acacctccaatatgactgagtataaacaaacaaa--------ctctctacctacctcacttaccttttggtgagtgagca
+R15      acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+'PAT-05' acacctccaatatgactgagtataaacaaacaaacaaactctctacctacctcactcactcaccttttggtgagtgagca
+
+R17      agtaa----gtaagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R13      agtaa----gtcagtgagtgagcgagttgtaatattaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R05      agtaa----gtcagtgagtgagcgagttgtaatattaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R18      agtaa----gtaagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R04      agtaa----gtaagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R16      agtaag---gtgagtgagtgagtgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R14      agtaa----gtcagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R06      agtaagtaagtgagtgagtgagtgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R07      agtaagtaagtgagtgagtgagtgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R08      agtaagtaagtgagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R12      agtaa----gtgagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R11      agtaa----gtgagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcatcg
+R10      agtaa----gtaagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R03      agtaa-------agtgagtgagtgagttgtaatataaacaaaaaaaactctcagcaacggatatcttggctcttgcaacg
+R02      agtaa-------agtgagtgagtgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+R15      agtaa----gtcagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+'PAT-05' agtaa----gtcagtgagtgagcgagttgtaatataaacaaaaacaactctcagcaacggatatcttggctcttgcaacg
+
+R17      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R13      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R05      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R18      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcatggtgcg
+R04      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R16      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R14      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R06      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R07      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R08      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R12      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R11      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R10      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R03      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R02      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+R15      atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+'PAT-05' atgaagaacgcagcgaaatgcgatacgtagtgtgaattgcagaattccgcgaatcatcgagtctttgaacgcaagttgcg
+
+R17      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R13      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R05      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R18      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R04      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R16      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R14      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R06      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R07      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R08      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+R12      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttccgagtg---------g
+R11      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttccgagtg---------g
+R10      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttccgagtg---------g
+R03      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttccaagtg---------g
+R02      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttctaagtgggcacataag
+R15      cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+'PAT-05' cccgaggcttgaccaagggcatttctgccagagcgtcaccgcgacacccaccaaacaccacttcccagtg---------g
+
+R17      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacggctacttgggcgcggcagcagattgggt
+R13      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R05      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R18      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacggctacttgggcgcggcagcagattgggt
+R04      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacggctacttgggcgcggcagcagattgggt
+R16      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R14      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R06      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R07      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R08      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R12      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R11      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R10      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+R03      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgctcaacgggtacttgggcgcggcagcagattgggt
+R02      tttgagtgaaactggccatccgaatggg---gccgcgcgcttgtactt-----gtacttgggcgcg---gcagattgggt
+R15      tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacgggtacttgggcgcggcagcagattgggt
+'PAT-05' tttgagtgaaactggccatccgaatggggccgccgcgcgcttgtgcccaacggctacttgggcgcggcagcagattgggt
+
+R17      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R13      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R05      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R18      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R04      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R16      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R14      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R06      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R07      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R08      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R12      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R11      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R10      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R03      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R02      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+R15      tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+'PAT-05' tggctgaaatagagggggatttggccgccgtgttgacacagccagcgatcaggtgatgtgatcttccttctaggtgcaaa
+
+R17      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R13      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R05      ctttgaaggagaactcaaaaagcgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R18      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R04      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R16      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R14      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R06      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R07      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R08      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R12      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R11      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R10      ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+R03      ctttgaaggagaactc---agacgtgcgctggcctaaaccagttggccggactcacaagcaggctcctacttccggcacc
+R02      ctttgaaggagaactc---aaacgtgcgctggcctaaaccagttggccggactcacaagcaggctcctacttccggcacc
+R15      ctttgaaggagaactcaaaaagcgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+'PAT-05' ctttgaaggagaactcaaaaaacgtgcgctggcctaaaccacttggccggactcacaagcaggctcctacttccggcacc
+
+R17      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R13      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R05      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgc?????????
+R18      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R04      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R16      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R14      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R06      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R07      gcttcggccgg-cccgaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R08      gcttcggccgg-cccgaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R12      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R11      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R10      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R03      gcttcggccgg-cccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R02      gcttcggccgg-cccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+R15      gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+'PAT-05' gcttcggccggccccaaaatgccgccgttaccggaaaaataggagggaccctaacccgtcacgcgtcacgcatcagacct
+
+R17      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggag?1?0?1000010?100000
+R13      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggaa000010000010?100000
+R05      ????????????????????????????????????????????????????0010?1000010?100000
+R18      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggag000000000010?100000
+R04      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggagg??0010?1000010?100000
+R16      ctgatcaggaaagactacccgctgagtttaagcatatcacta?????????????0?10000001100000
+R14      ctgatcaggaaagactacccgctgagtttaagcatatcacta?????????????0?1000010?100000
+R06      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggaa?1?0?10000000100000
+R07      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggaa0000?10000000100001
+R08      ctgatcaggaaagactacccgctgagtttaagcatatcact????????????1?0?10000000100001
+R12      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggag???0?1100010?100000
+R11      ctgatca??????????????????????????????????????????????1?0?1100010?100000
+R10      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggaa?1?0?1000010?100000
+R03      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggaa1001?11111?1?100011
+R02      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggaa1000?10111?1?011111
+R15      ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggagga????0?1000010?100000
+'PAT-05' ctgatcaggaaagactacccgctgagtttaagcatatcactaagcggaggag?1?0?1000010?100000
+
+;
+END; [CHARACTERS]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK CHARACTERS = 'Input Characters';
+NAME 'Characters Taxa Filter';
+OPTIONS
+	DisabledCharacters = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 143 144 145 147 148 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 281 282 283 284 287 288 289 290 291 292 295 296 297 298 299 300 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327 328 329 330 331 332 333 334 335 336 337 338 339 340 341 342 344 345 346 347 348 349 350 351 352 353 354 355 357 358 359 360 361 362 363 364 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 399 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 419 420 421 422 423 424 425 426 427 428 429 430 431 432 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449 450 451 452 453 454 455 456 457 458 459 460 461 462 463 464 465 466 467 468 469 470 471 472 473 475 477 478 479 480 481 482 483 484 485 486 487 488 489 490 491 492 493 494 495 496 497 498 499 500 501 502 503 504 505 506 507 508 509 510 511 512 513 514 515 516 517 518 519 520 521 522 523 524 525 526 527 528 529 530 531 532 533 534 535 536 537 538 539 540 541 542 543 544 547 548 549 550 551 552 553 554 555 556 557 558 559 560 561 562 563 564 565 566 567 568 569 570 571 572 573 574 575 576 577 578 579 580 581 582 583 584 585 586 587 588 589 590 591 592 593 594 595 596 597 598 599 600 601 602 603 604 606 609 610 611 612 613 615 616 617 618 619 620 621 622 623 624 625 626 627 628 629 630 631 632 633 634 635 636 637 638 639 640 641 642 643 644 645 646 647 648 649 650 651 652 653 654 655 656 657 658 659 660 661 662 663 664 665 666 667 668 669 670 671 672 673 674 675 676 677 678 679 680 681 682 683 684 685 686 687 688 689 690 691 692 693 694 695 696 697 698 699 700 701 702 703 704 705 706 707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722 723 724 725 726 727 728 729 730 731 732 733 734 735 736 737 738 739 740 743 744 745 746 747 748 749 750 751 752 753 754 755 756 757 758 759 760 761 763 764 765 766 767 768 769 770 771 772 773 774 775 776 777 778 779 780 781 782 783 784 785 786 787 788 789 790 791 792 793 794 795 796 797 798 799 800 801 802 803 804 805 806 807 808 809 810 811 812 813 814 815 817 818 819 820 821 822 823 824 825 826 827 828 829 830 831 832 833 834 835 836 837 838 839 840 841 842 843 844 845 846 847 848 849 850 851 852 853 854 855 856 857 858 859 860 861 862 863 864 865 866 867 868 869 870 871 872 873 874 875 876 877 878 879 880 881 882 883 884 885 886 887 888 889 890 891 892 893 894 895 896 897 898 899 900 901 902 903 904 905 906 907 908 909 910 911 912 913 914 915 916 917 918 919 920 921 922 923 924 925 926 927 928 929 930 931 932 933 934 935 937 943 945;
+END; [ALGORITHM]
+
+BEGIN CHARACTERS;
+TITLE 'Working Characters';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=17 nchar=40;
+FORMAT
+	datatype='DNA' missing=? gap=- symbols="01acgt" labels=left transpose=no interleave=yes;
+MATRIX
+R17      catgtcaccaccacaatccgcccaaca0100000100000
+R13      tatgtcaccacctcaatccgccgaaca0000000100000
+R05      tatgtcaccacctcaatccgccgagca0100000100000
+R18      tatgtcaccaccacatgccgcccaaca0000000100000
+R04      tatgtcaccaccacaatccgcccaaca0100000100000
+R16      catgtcaccactacaatccgccgaaca0100000100000
+R14      catgtcaccaccacaatccgccgaaca0100000100000
+R06      tatgtcaccactacaatccgccgaaca0100000100000
+R07      tatgtcaccactacaatccgccgaacg0100000100001
+R08      tatgtcaccaccacaatccgccgaacg0100000100001
+R12      tatgtcaccaccacaatcggccgaaca0110000100000
+R11      tatgtaaccaccactatcggccgaaca0110000100000
+R10      tatgtcaccaccacaatcggccgaaca0100000100000
+R03      tgtgtcctacttaaaatcagtcggaga1111111100011
+R02      tggtgcctacttacaattaattgaaga0101111011111
+R15      catgtcaccaccacaatccgccgagca0100000100000
+'PAT-05' catgtcaccaccacaatccgcccaaca0100000100000
+
+;
+END; [CHARACTERS]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Haplo Net';
+LINK CHARACTERS = 'Working Characters';
+NAME 'Razor Haplo Net';
+OPTIONS
+	Strategy = 'Both',
+	Labeling = 'MinExcess',
+	RemoveSuperfluous = 'true',
+	ContractUnlabeled = 'true',
+	MissingAsState = 'false',
+	MaxStretchPercent = 0,
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'TCS Haplotype Network';
+LINK CHARACTERS = 'Working Characters';
+NAME 'TCS Haplotype Network';
+OPTIONS
+	RemoveSuperfluous = 'true',
+	ContractUnlabeled = 'true',
+	Labeling = 'MinExcess',
+	MissingAsState = 'false',
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Razor Haplo Net';
+DIMENSIONS nVertices=23 nEdges=28;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 71, excess: 1';
+VERTICES
+	id=1 label='R17' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=2 label='PAT-05' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=3 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
+	id=4 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
+	id=5 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
+	id=6 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=7 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=8 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=9 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=10 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
+	id=11 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
+	id=12 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
+	id=13 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
+	id=14 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
+	id=15 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
+	id=16 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
+	id=17 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
+	id=18 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011',
+	id=19 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
+	id=20 states='TATGTCACCACCACAATCCGCCCAACA0000000100000',
+	id=21 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=22 states='TATGTCACCACCTCAATCCGCCGAACA0100000100000',
+	id=23 states='TATGTCACCACTACAATCCGCCGAACA0100000100001'
+;
+EDGES
+	id=1 sid=3 tid=20 weight='2' sites='356,614',
+	id=2 sid=3 tid=22 weight='1' sites='938',
+	id=3 sid=4 tid=17 weight='2' sites='125,356',
+	id=4 sid=4 tid=22 weight='1' sites='742',
+	id=5 sid=5 tid=20 weight='2' sites='474,476',
+	id=6 sid=6 tid=20 weight='1' sites='938',
+	id=7 sid=6 tid=21 weight='1' sites='614',
+	id=8 sid=7 tid=8 weight='1' sites='343',
+	id=9 sid=7 tid=9 weight='1' sites='125',
+	id=10 sid=8 tid=17 weight='1' sites='742',
+	id=11 sid=8 tid=21 weight='1' sites='125',
+	id=12 sid=9 tid=21 weight='1' sites='343',
+	id=13 sid=9 tid=23 weight='1' sites='951',
+	id=14 sid=10 tid=11 weight='1' sites='343',
+	id=15 sid=10 tid=23 weight='1' sites='816',
+	id=16 sid=11 tid=21 weight='2' sites='816,951',
+	id=17 sid=12 tid=13 weight='2' sites='245,398',
+	id=18 sid=12 tid=14 weight='1' sites='939',
+	id=19 sid=12 tid=19 weight='16' sites='142,285,286,293,294,301,343,546,607,762,940,941,942,944,950,951',
+	id=20 sid=15 tid=19 weight='3' sites='365,741,936',
+	id=21 sid=16 tid=18 weight='10' sites='146,149,150,545,605,608,946,947,948,949',
+	id=22 sid=18 tid=19 weight='1' sites='939',
+	id=23 sid=21 tid=22 weight='1' sites='356',
+	id=24 sid=18 tid=23 weight='14' sites='142,285,286,293,294,301,546,607,762,940,941,942,944,950',
+	id=25 sid=14 tid=21 weight='1' sites='546',
+	id=26 sid=2 tid=1 weight='0' sites='',
+	id=27 sid=6 tid=1 weight='1' sites='125',
+	id=28 sid=8 tid=1 weight='1' sites='614'
+;
+END; [NETWORK]
+
+BEGIN NETWORK;
+TITLE 'Network-2';
+LINK ALGORITHM = 'TCS Haplotype Network';
+DIMENSIONS nVertices=21 nEdges=23;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 66, excess: 93';
+VERTICES
+	id=1 label='R17' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=2 label='PAT-05' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=3 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
+	id=4 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
+	id=5 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
+	id=6 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=7 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=8 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=9 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=10 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
+	id=11 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
+	id=12 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
+	id=13 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
+	id=14 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
+	id=15 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
+	id=16 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
+	id=17 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
+	id=18 states='TATGTCACCACTACAATCCGCCGAACA0100000100001',
+	id=19 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=20 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
+	id=21 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011'
+;
+EDGES
+	id=1 sid=5 tid=6 weight='3' sites='474,476,938',
+	id=2 sid=6 tid=19 weight='1' sites='614',
+	id=3 sid=7 tid=8 weight='1' sites='343',
+	id=4 sid=7 tid=9 weight='1' sites='125',
+	id=5 sid=8 tid=17 weight='1' sites='742',
+	id=6 sid=8 tid=19 weight='1' sites='125',
+	id=7 sid=9 tid=18 weight='1' sites='951',
+	id=8 sid=9 tid=19 weight='1' sites='343',
+	id=9 sid=10 tid=11 weight='1' sites='343',
+	id=10 sid=10 tid=18 weight='1' sites='816',
+	id=11 sid=12 tid=13 weight='2' sites='245,398',
+	id=12 sid=12 tid=14 weight='1' sites='939',
+	id=13 sid=12 tid=20 weight='16' sites='142,285,286,293,294,301,343,546,607,762,940,941,942,944,950,951',
+	id=14 sid=14 tid=19 weight='1' sites='546',
+	id=15 sid=15 tid=20 weight='3' sites='365,741,936',
+	id=16 sid=16 tid=21 weight='10' sites='146,149,150,545,605,608,946,947,948,949',
+	id=17 sid=18 tid=21 weight='14' sites='142,285,286,293,294,301,546,607,762,940,941,942,944,950',
+	id=18 sid=20 tid=21 weight='1' sites='939',
+	id=19 sid=2 tid=1 weight='0' sites='',
+	id=20 sid=6 tid=1 weight='1' sites='125',
+	id=21 sid=8 tid=1 weight='1' sites='614',
+	id=22 sid=3 tid=4 weight='2' sites='742,938',
+	id=23 sid=17 tid=4 weight='2' sites='125,356'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Simplify Filter';
+LINK NETWORK = 'Network';
+NAME 'Simplify Filter';
+OPTIONS
+	Target = 'Balanced',
+	TargetValue = 0,
+	Deviation = 'Auto',
+	DeviationQuantilePercent = 100,
+	ReportTable = 'true';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network-2';
+LINK NETWORK = 'Network-2';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network-3';
+LINK ALGORITHM = 'Show Network';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	ActiveTraits = 'R17' 'R13' 'R05' 'R18' 'R04' 'R16' 'R14' 'R06' 'R07' 'R08' 'R12' 'R11' 'R10' 'R03' 'R02' 'R15' 'PAT-05',
+	TraitLegend = 'Indeterminant',
+	TraitSize = 32,
+	SitesStyle = 'Hatches',
+	Edits = 'mn:11:54.11,18.04' 'mn:7:162.33,0' 'mn:21:54.11,-54.11' 'mn:12:18.04,-18.04' 'mn:14:18.04,-54.11' 'mn:17:216.45,-54.11' 'mn:15:-72.15,288.59' 'mn:3:72.15,-180.37' 'mn:9:108.22,0' 'mn:23:108.22,108.22' 'mn:5:0,-198.41' 'mn:16:252.52,288.59' 'mn:18:108.22,288.59' 'mn:22:162.33,-126.26' 'mn:10:54.11,108.22' 'mn:6:0,-108.22' 'mn:4:216.45,-126.26' 'mn:1:54.11,-108.22' 'mn:19:18.04,288.59' 'mn:2:90.19,-144.3' 'mn:20:0,-144.3' 'mn:8:162.33,-54.11' 'mn:13:-36.07,-18.04' 'ml:13:0,0' 'ml:11:0,0' 'ml:9:0,0',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'ForceDirected';
+END; [VIEW]
+
+BEGIN NETWORK;
+TITLE 'Network-3-2';
+LINK ALGORITHM = 'Simplify Filter';
+DIMENSIONS nVertices=22 nEdges=25;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 67, excess: 5';
+VERTICES
+	id=1 label='R17' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=2 label='PAT-05' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=3 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
+	id=4 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
+	id=5 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
+	id=6 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=7 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=8 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=9 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=10 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
+	id=11 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
+	id=12 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
+	id=13 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
+	id=14 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
+	id=15 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
+	id=16 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
+	id=17 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
+	id=18 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011',
+	id=19 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
+	id=20 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=21 states='TATGTCACCACCTCAATCCGCCGAACA0100000100000',
+	id=22 states='TATGTCACCACTACAATCCGCCGAACA0100000100001'
+;
+EDGES
+	id=1 sid=3 tid=21 weight='1' sites='938',
+	id=2 sid=4 tid=21 weight='1' sites='742',
+	id=3 sid=6 tid=20 weight='1' sites='614',
+	id=4 sid=7 tid=8 weight='1' sites='343',
+	id=5 sid=7 tid=9 weight='1' sites='125',
+	id=6 sid=8 tid=17 weight='1' sites='742',
+	id=7 sid=8 tid=20 weight='1' sites='125',
+	id=8 sid=9 tid=20 weight='1' sites='343',
+	id=9 sid=9 tid=22 weight='1' sites='951',
+	id=10 sid=10 tid=11 weight='1' sites='343',
+	id=11 sid=10 tid=22 weight='1' sites='816',
+	id=12 sid=11 tid=20 weight='2' sites='816,951',
+	id=13 sid=12 tid=13 weight='2' sites='245,398',
+	id=14 sid=12 tid=14 weight='1' sites='939',
+	id=15 sid=12 tid=19 weight='16' sites='142,285,286,293,294,301,343,546,607,762,940,941,942,944,950,951',
+	id=16 sid=15 tid=19 weight='3' sites='365,741,936',
+	id=17 sid=16 tid=18 weight='10' sites='146,149,150,545,605,608,946,947,948,949',
+	id=18 sid=18 tid=19 weight='1' sites='939',
+	id=19 sid=20 tid=21 weight='1' sites='356',
+	id=20 sid=18 tid=22 weight='14' sites='142,285,286,293,294,301,546,607,762,940,941,942,944,950',
+	id=21 sid=14 tid=20 weight='1' sites='546',
+	id=22 sid=2 tid=1 weight='0' sites='',
+	id=23 sid=6 tid=1 weight='1' sites='125',
+	id=24 sid=8 tid=1 weight='1' sites='614',
+	id=25 sid=5 tid=6 weight='3' sites='474,476,938'
+;
+END; [NETWORK]
+
+BEGIN VIEW;
+TITLE 'Network-4';
+LINK ALGORITHM = 'Show Network-2';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	ActiveTraits = 'R17' 'R13' 'R05' 'R18' 'R04' 'R16' 'R14' 'R06' 'R07' 'R08' 'R12' 'R11' 'R10' 'R03' 'R02' 'R15' 'PAT-05',
+	TraitLegend = 'Indeterminant',
+	TraitSize = 32,
+	SitesStyle = 'Hatches',
+	Edits = 'mn:1:160.54,-133.79' 'mn:11:374.6,-26.76' 'mn:5:80.27,-80.27' 'mn:21:267.57,214.06' 'mn:19:214.06,-80.27' 'mn:7:267.57,-133.79' 'mn:15:53.51,214.06' 'mn:4:214.06,-267.57' 'mn:9:267.57,-80.27' 'mn:16:428.12,214.06' 'mn:20:160.54,214.06' 'mn:6:160.54,-80.27' 'mn:13:80.27,0' 'mn:10:321.09,-26.76' 'mn:8:214.06,-133.79' 'mn:17:214.06,-187.3' 'mn:18:267.57,-26.76' 'mn:14:214.06,0' 'mn:3:214.06,-347.84' 'mn:12:160.54,0' 'mn:2:160.54,-187.3',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'ForceDirected';
+END; [VIEW]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network-3';
+LINK NETWORK = 'Network-3-2';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network-5';
+LINK ALGORITHM = 'Show Network-3';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	ActiveTraits = 'R17' 'R13' 'R05' 'R18' 'R04' 'R16' 'R14' 'R06' 'R07' 'R08' 'R12' 'R11' 'R10' 'R03' 'R02' 'R15' 'PAT-05',
+	TraitLegend = 'Indeterminant',
+	TraitSize = 32,
+	SitesStyle = 'Hatches',
+	Edits = 'mn:1:200.84,-178.52' 'mn:2:245.47,-178.52' 'mn:3:44.63,-156.21' 'mn:4:0,-89.26' 'mn:5:111.58,-267.78' 'mn:6:111.58,-178.52' 'mn:7:200.84,-22.32' 'mn:8:200.84,-89.26' 'mn:9:111.58,-22.32' 'mn:10:178.52,111.58' 'mn:11:178.52,44.63' 'mn:12:0,44.63' 'mn:13:-66.95,44.63' 'mn:14:44.63,44.63' 'mn:15:-89.26,267.78' 'mn:16:267.78,267.78' 'mn:17:267.78,-89.26' 'mn:18:111.58,267.78' 'mn:19:0,267.78' 'mn:20:111.58,-89.26' 'mn:21:44.63,-89.26' 'mn:22:111.58,111.58',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'ForceDirected';
+END; [VIEW]

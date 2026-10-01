@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Run the .dist preprocessing utility (classical MDS and/or significant-digit rounding).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+cd "$ROOT/dist-preprocess"
+
+if [ "$#" -eq 0 ]; then
+  exec mvn -q exec:java
+fi
+
+# Pass every argument through to the Java main. printf %q keeps spaces intact.
+ARGS=$(printf '%q ' "$@")
+exec mvn -q exec:java -Dexec.args="${ARGS% }"

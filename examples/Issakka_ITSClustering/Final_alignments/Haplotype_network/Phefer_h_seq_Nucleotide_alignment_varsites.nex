@@ -1,0 +1,32 @@
+#NEXUS
+[TITLE: Written by EMBOSS 18/05/20]
+
+begin data;
+dimensions ntax=9 nchar=5;
+format datatype=DNA missing=N gap=-;
+
+matrix
+Hap_1
+GTTGC
+seq34
+GTTGC
+Hap_2
+AccGC
+seq18
+AccGC
+Hap_3
+GTTAC
+seq42
+GTTAC
+Hap_4
+AccGT
+seq48
+AccGT
+seq10
+GccGC
+;
+
+end;
+begin assumptions;
+options deftype=unord;
+end;

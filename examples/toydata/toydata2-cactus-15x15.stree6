@@ -1,0 +1,371 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=11 nAlgorithms=9;
+PROGRAM version='SplitsTree App (version 6.5.1-j7, built 23 Sep 2025)';
+WORKFLOW creationDate='1758674293063'; [Wed Sep 24 09:38:13 JST 2025]
+END; [SPLITSTREE6]
+
+[
+Methods:
+Analysis was performed using SplitsTree App 6.0.0 (Huson and Bryant 2024).
+The original input consisted of 15 taxa and a 15 x 15 distance matrix.
+The Neighbor Net method (Bryant & Moulton 2004, Bryant & Huson 2023) was used (default options) so as to obtain 28 splits, cyclic.
+The Network Pruning method (Hayamisu) was used (default options) so as to obtain 19 nodes and 21 edges.
+The Razor Net method was used (default options) so as to obtain 19 nodes and 21 edges.
+The Show Splits method was used (default options) so as to obtain a Split Network visualization.
+
+References:
+Bryant & Huson 2023: D. Bryant and DH Huson, NeighborNet- improved algorithms and implementation. Front. Bioinform. 3, 2023.
+Bryant & Moulton 2004: D. Bryant and V. Moulton. Neighbor-net: An agglomerative method for the construction of phylogenetic networks. Molecular Biology and Evolution, 21(2):255– 265, 2004.
+Hayamisu: M. Hayamisu et al, in preparation, 2025.
+Huson and Bryant 2024: D.H. Huson and D. Bryant. The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods, 2024.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=15;
+TAXLABELS
+	[1] 't1'
+	[2] 't2'
+	[3] 't3'
+	[4] 't4'
+	[5] 't5'
+	[6] 't6'
+	[7] 't7'
+	[8] 't8'
+	[9] 't9'
+	[10] 't10'
+	[11] 't11'
+	[12] 't12'
+	[13] 't13'
+	[14] 't14'
+	[15] 't15'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+LINK ALGORITHM = 'Input Data Loader';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=15;
+TAXLABELS
+	[1] 't1'
+	[2] 't2'
+	[3] 't3'
+	[4] 't4'
+	[5] 't5'
+	[6] 't6'
+	[7] 't7'
+	[8] 't8'
+	[9] 't9'
+	[10] 't10'
+	[11] 't11'
+	[12] 't12'
+	[13] 't13'
+	[14] 't14'
+	[15] 't15'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN DISTANCES;
+TITLE 'Input Distances';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=15;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 't1'    0 2 3 8 14 13 14 12 13 13 12 10 6 9 7
+[2] 't2'    2 0 2 7 13 12 13 11 12 12 11 9 5 8 6
+[3] 't3'    3 2 0 5 11 10 11 9 10 10 9 7 3 6 4
+[4] 't4'    8 7 5 0 6 5 6 4 5 5 4 2 8 11 9
+[5] 't5'    14 13 11 6 0 1 2 6 7 7 6 4 12 15 13
+[6] 't6'    13 12 10 5 1 0 1 5 6 6 5 3 11 14 12
+[7] 't7'    14 13 11 6 2 1 0 6 7 7 6 4 12 15 13
+[8] 't8'    12 11 9 4 6 5 6 0 1 2 2 2 10 13 11
+[9] 't9'    13 12 10 5 7 6 7 1 0 1 2 3 11 14 12
+[10] 't10'   13 12 10 5 7 6 7 2 1 0 1 3 11 14 12
+[11] 't11'   12 11 9 4 6 5 6 2 2 1 0 2 10 13 11
+[12] 't12'   10 9 7 2 4 3 4 2 3 3 2 0 8 11 9
+[13] 't13'   6 5 3 8 12 11 12 10 11 11 10 8 0 3 5
+[14] 't14'   9 8 6 11 15 14 15 13 14 14 13 11 3 0 2
+[15] 't15'   7 6 4 9 13 12 13 11 12 12 11 9 5 2 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK DISTANCES = 'Input Distances';
+NAME 'Distances Taxa Filter';
+END; [ALGORITHM]
+
+BEGIN DISTANCES;
+TITLE 'Working Distances';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=15;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 't1'    0 2 3 8 14 13 14 12 13 13 12 10 6 9 7
+[2] 't2'    2 0 2 7 13 12 13 11 12 12 11 9 5 8 6
+[3] 't3'    3 2 0 5 11 10 11 9 10 10 9 7 3 6 4
+[4] 't4'    8 7 5 0 6 5 6 4 5 5 4 2 8 11 9
+[5] 't5'    14 13 11 6 0 1 2 6 7 7 6 4 12 15 13
+[6] 't6'    13 12 10 5 1 0 1 5 6 6 5 3 11 14 12
+[7] 't7'    14 13 11 6 2 1 0 6 7 7 6 4 12 15 13
+[8] 't8'    12 11 9 4 6 5 6 0 1 2 2 2 10 13 11
+[9] 't9'    13 12 10 5 7 6 7 1 0 1 2 3 11 14 12
+[10] 't10'   13 12 10 5 7 6 7 2 1 0 1 3 11 14 12
+[11] 't11'   12 11 9 4 6 5 6 2 2 1 0 2 10 13 11
+[12] 't12'   10 9 7 2 4 3 4 2 3 3 2 0 8 11 9
+[13] 't13'   6 5 3 8 12 11 12 10 11 11 10 8 0 3 5
+[14] 't14'   9 8 6 11 15 14 15 13 14 14 13 11 3 0 2
+[15] 't15'   7 6 4 9 13 12 13 11 12 12 11 9 5 2 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Neighbor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Neighbor Net';
+OPTIONS
+	InferenceAlgorithm = 'ActiveSet';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Network Pruning';
+LINK DISTANCES = 'Working Distances';
+NAME 'Network Pruning';
+OPTIONS
+	Epsilon = 0.1,
+	MinDistance = 0.001;
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Razor Net';
+OPTIONS
+	Epsilon = 0.001,
+	MinDistance = 0.1;
+END; [ALGORITHM]
+
+BEGIN SPLITS;
+TITLE 'Splits';
+LINK ALGORITHM = 'Neighbor Net';
+DIMENSIONS ntax=15 nsplits=28;
+FORMAT labels=no weights=yes confidences=no;
+PROPERTIES fit=100 cyclic;
+CYCLE 1 2 4 12 7 5 6 8 9 10 11 15 14 13 3;
+MATRIX
+[1, size=1] 	 1.5 	 1,
+[2, size=2] 	 1.5 	 1 2,
+[3, size=1] 	 0 	 1 2 4 5 6 7 8 9 10 11 12 13 14 15,
+[4, size=1] 	 0.5 	 1 3 4 5 6 7 8 9 10 11 12 13 14 15,
+[5, size=1] 	 0 	 1 2 3 5 6 7 8 9 10 11 12 13 14 15,
+[6, size=6] 	 5 	 1 2 3 13 14 15,
+[7, size=1] 	 0 	 1 2 3 4 5 6 7 8 9 10 11 13 14 15,
+[8, size=7] 	 1 	 1 2 3 4 13 14 15,
+[9, size=4] 	 1 	 1 2 3 4,
+[10, size=1] 	 1 	 1 2 3 4 5 6 8 9 10 11 12 13 14 15,
+[11, size=3] 	 3 	 1 2 3 4 8 9 10 11 12 13 14 15,
+[12, size=1] 	 1 	 1 2 3 4 6 7 8 9 10 11 12 13 14 15,
+[13, size=1] 	 0 	 1 2 3 4 5 7 8 9 10 11 12 13 14 15,
+[14, size=1] 	 0 	 1 2 3 4 5 6 7 9 10 11 12 13 14 15,
+[15, size=2] 	 0.5 	 1 2 3 4 5 6 7 10 11 12 13 14 15,
+[16, size=3] 	 0.5 	 1 2 3 4 5 6 7 11 12 13 14 15,
+[17, size=4] 	 1 	 1 2 3 4 5 6 7 12 13 14 15,
+[18, size=1] 	 0 	 1 2 3 4 5 6 7 8 10 11 12 13 14 15,
+[19, size=2] 	 0.5 	 1 2 3 4 5 6 7 8 11 12 13 14 15,
+[20, size=3] 	 0.5 	 1 2 3 4 5 6 7 8 12 13 14 15,
+[21, size=1] 	 0 	 1 2 3 4 5 6 7 8 9 11 12 13 14 15,
+[22, size=2] 	 0.5 	 1 2 3 4 5 6 7 8 9 12 13 14 15,
+[23, size=1] 	 0 	 1 2 3 4 5 6 7 8 9 10 12 13 14 15,
+[24, size=1] 	 0 	 1 2 3 4 5 6 7 8 9 10 11 12 13 14,
+[25, size=2] 	 3 	 1 2 3 4 5 6 7 8 9 10 11 12 13,
+[26, size=1] 	 0 	 1 2 3 4 5 6 7 8 9 10 11 12 13 15,
+[27, size=2] 	 2 	 1 2 3 4 5 6 7 8 9 10 11 12 15,
+[28, size=1] 	 0 	 1 2 3 4 5 6 7 8 9 10 11 12 14 15,
+;
+END; [SPLITS]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Network Pruning';
+DIMENSIONS nVertices=19 nEdges=21;
+TYPE Other;
+VERTICES
+	id=1 label='t1' x='-82.4747' y='-605.2091',
+	id=2 x='-102.9393' y='-548.8804',
+	id=3 label='t2' x='-103.4105' y='-562.318',
+	id=4 label='t3' x='-119.9904' y='-472.2215',
+	id=5 label='t4' x='-415.2705' y='-282.3439',
+	id=6 x='-103.4336' y='-435.931',
+	id=7 x='-451.5956' y='-262.8455',
+	id=8 label='t5' x='-539.421' y='-1.099',
+	id=9 label='t6' x='-552.3915' y='-31.7677',
+	id=10 label='t7' x='-577.7853' y='-10.1119',
+	id=11 label='t12' x='-502.5765' y='-239.3597',
+	id=12 label='t8' x='-586.5653' y='-276.7058',
+	id=13 label='t9' x='-622.475' y='-282.2203',
+	id=14 x='-554.1002' y='-250.8605',
+	id=15 label='t10' x='-629.0345' y='-254.0737',
+	id=16 label='t11' x='-594.6561' y='-242.5713',
+	id=17 label='t13' x='-25.8681' y='-402.7791',
+	id=18 label='t14' x='92.1655' y='-385.993',
+	id=19 label='t15' x='45.0269' y='-411.5236'
+;
+EDGES
+	id=1 sid=1 tid=2 weight='1.5',
+	id=2 sid=3 tid=2 weight='0.5',
+	id=3 sid=4 tid=5 weight='5',
+	id=4 sid=4 tid=2 weight='1.5',
+	id=5 sid=4 tid=6 weight='1',
+	id=6 sid=5 tid=7 weight='1',
+	id=7 sid=8 tid=9 weight='1',
+	id=8 sid=9 tid=10 weight='1',
+	id=9 sid=9 tid=11 weight='3',
+	id=10 sid=12 tid=13 weight='1',
+	id=11 sid=12 tid=14 weight='1',
+	id=12 sid=13 tid=15 weight='1',
+	id=13 sid=15 tid=16 weight='1',
+	id=14 sid=16 tid=14 weight='1',
+	id=15 sid=11 tid=14 weight='1',
+	id=16 sid=11 tid=7 weight='1',
+	id=17 sid=17 tid=18 weight='3',
+	id=18 sid=17 tid=6 weight='2',
+	id=19 sid=18 tid=19 weight='2',
+	id=20 sid=19 tid=6 weight='3',
+	id=21 sid=6 tid=7 weight='5'
+;
+END; [NETWORK]
+
+BEGIN NETWORK;
+TITLE 'Network-2';
+LINK ALGORITHM = 'Razor Net';
+DIMENSIONS nVertices=19 nEdges=21;
+TYPE Other;
+VERTICES
+	id=1 label='t1' x='-793.5917' y='-54.5991',
+	id=2 label='t2' x='-754.497' y='-78.0541',
+	id=3 label='t3' x='-693.4767' y='-139.0373',
+	id=4 label='t4' x='-364.3337' y='-128.2794',
+	id=5 label='t5' x='-90.0247' y='-251.7172',
+	id=6 label='t6' x='-121.5807' y='-248.7133',
+	id=7 label='t7' x='-114.9325' y='-279.4801',
+	id=8 label='t8' x='-203.1588' y='-63.7427',
+	id=9 label='t9' x='-182.6064' y='-36.2361',
+	id=10 label='t10' x='-202.8428' y='-17.8093',
+	id=11 label='t11' x='-227.804' y='-41.3276',
+	id=12 label='t12' x='-273.4204' y='-115.2178',
+	id=13 label='t13' x='-728.4032' y='-243.53',
+	id=14 label='t14' x='-811.2247' y='-318.972',
+	id=15 label='t15' x='-789.1877' y='-273.3067',
+	id=16 x='-747.6367' y='-88.6502',
+	id=17 x='-686.739' y='-175.9127',
+	id=18 x='-239.2998' y='-78.7853',
+	id=19 x='-325.6879' y='-124.0892'
+;
+EDGES
+	id=1 sid=1 tid=16 weight='1.5',
+	id=2 sid=2 tid=16 weight='0.5',
+	id=3 sid=3 tid=4 weight='5',
+	id=4 sid=3 tid=16 weight='1.5',
+	id=5 sid=3 tid=17 weight='1',
+	id=6 sid=4 tid=19 weight='1',
+	id=7 sid=5 tid=6 weight='1',
+	id=8 sid=6 tid=7 weight='1',
+	id=9 sid=6 tid=12 weight='3',
+	id=10 sid=8 tid=9 weight='1',
+	id=11 sid=8 tid=18 weight='1',
+	id=12 sid=9 tid=10 weight='1',
+	id=13 sid=10 tid=11 weight='1',
+	id=14 sid=11 tid=18 weight='1',
+	id=15 sid=12 tid=18 weight='1',
+	id=16 sid=12 tid=19 weight='1',
+	id=17 sid=13 tid=14 weight='3',
+	id=18 sid=13 tid=17 weight='2',
+	id=19 sid=14 tid=15 weight='2',
+	id=20 sid=15 tid=17 weight='3',
+	id=21 sid=17 tid=19 weight='5'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Show Splits';
+LINK SPLITS = 'Splits';
+NAME 'Show Splits';
+OPTIONS
+	View = 'SplitNetwork';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network-2';
+LINK NETWORK = 'Network-2';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'SplitNetwork';
+LINK ALGORITHM = 'Show Splits';
+NAME 'SplitNetwork';
+INPUT 'SPLITS';
+OPTIONS
+	Diagram = 'Splits',
+	Orientation = 'Rotate0Deg',
+	Rooting = 'None',
+	ZoomFactor = 0.55044962,
+	FontScaleFactor = 1,
+	RootAngle = 160,
+	OutlineFill = 0xffe6b3ff,
+	LabelSplitsBy = 'None',
+	ShowQRCode = 'false';
+END; [VIEW]
+
+BEGIN VIEW;
+TITLE 'Network';
+LINK ALGORITHM = 'Show Network';
+NAME 'Network';
+INPUT 'SPLITS';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'Weights',
+	Edits = 'mn:1:-44.95,-329.84' 'mn:2:-56.1,-299.14' 'mn:3:-56.36,-306.46' 'mn:4:-65.39,-257.36' 'mn:5:-226.32,-153.88' 'mn:6:-56.37,-237.58' 'mn:7:-246.12,-143.25' 'mn:8:-293.98,-0.6' 'mn:9:-301.05,-17.31' 'mn:10:-314.89,-5.51' 'mn:11:-273.9,-130.45' 'mn:12:-319.68,-150.8' 'mn:13:-339.25,-153.81' 'mn:14:-301.98,-136.72' 'mn:15:-342.82,-138.47' 'mn:16:-324.09,-132.2' 'mn:17:-14.1,-219.51' 'mn:18:50.23,-210.37' 'mn:19:24.54,-224.28';
+END; [VIEW]
+
+BEGIN VIEW;
+TITLE 'Network';
+LINK ALGORITHM = 'Show Network-2';
+NAME 'Network';
+INPUT 'SPLITS';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'Weights',
+	Edits = 'mn:1:-473.03,-32.54' 'mn:2:-449.72,-46.52' 'mn:3:-413.35,-82.87' 'mn:4:-217.16,-76.46' 'mn:5:-53.66,-150.04' 'mn:6:-72.47,-148.25' 'mn:7:-68.51,-166.59' 'mn:8:-121.09,-37.99' 'mn:9:-108.84,-21.6' 'mn:10:-120.91,-10.62' 'mn:11:-135.78,-24.63' 'mn:12:-162.97,-68.68' 'mn:13:-434.17,-145.16' 'mn:14:-483.54,-190.13' 'mn:15:-470.4,-162.91' 'mn:16:-445.63,-52.84' 'mn:17:-409.34,-104.85' 'mn:18:-142.64,-46.96' 'mn:19:-194.13,-73.96';
+END; [VIEW]

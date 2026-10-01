@@ -1,0 +1,26 @@
+# Ground truth for the sibling .dist instance
+seed=-5843495416241995736
+type=tree
+n=10
+referenceLength=898
+referenceIsOptimal=true
+# Additive (tree) metric; the generating tree IS the minimum-length realization.
+# nodes: leaves 0..9 = taxa t1..t10; internal (Steiner) nodes 10..17
+# edges: 'edge u v weight'
+edge 10 1 63
+edge 0 11 91
+edge 11 10 11
+edge 11 12 6
+edge 12 3 90
+edge 12 4 82
+edge 13 5 33
+edge 13 14 43
+edge 14 6 57
+edge 14 15 26
+edge 15 2 23
+edge 15 7 92
+edge 10 16 52
+edge 16 8 66
+edge 16 17 31
+edge 17 13 61
+edge 17 9 71

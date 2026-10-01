@@ -1,0 +1,532 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=12 nAlgorithms=8;
+PROGRAM version='SplitsTree (version dev) - License GPL v3';
+WORKFLOW creationDate='1790582075970'; [Mon Sep 28 09:54:35 CEST 2026]
+END; [SPLITSTREE6]
+
+[
+Methods:
+Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.), (Hayamizu et al, 2026 ; M. Hayamizu, others, DH Huson, in preparation).
+The original input consisted of 4 taxa and 4 DNAwithAmbiguityCodes sequences of length 1,817.
+The Razor Haplo Net method was used (default options) so as to obtain 6 nodes and 6 edges.
+The Median Joining method (Bandelt et al 1999) was used (default options) so as to obtain 6 nodes and 5 edges.
+The TCS Haplotype Network method (Templeton et al 1992, Leigh & Bryant 2015) was used (default options) so as to obtain 6 nodes and 6 edges.
+
+References:
+Bandelt et al 1999: HJ Bandelt, P. Forster, and A. Röhl. Median-joining networks for inferring intraspecific phylogenies. Molecular Biology and Evolution, 16:37–48, 1999.
+Hayamizu et al, 2026: M. Hayamizu, others, DH Huson, in preparation
+Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
+Leigh & Bryant 2015: J.W. Leigh and D. Bryant. PopART: full-feature software for haplotype network construction. Methods in Ecology and Evolution, 6(9):1110-1116, 2015.
+Templeton et al 1992: A.R. Templeton, K.A. Crandall and C.F. Sing. A cladistic analysis of phenotypic associations with haplotypes inferred from restriction endonuclease mapping and DNA sequence data. III. Cladogram estimation. Genetics, 132(2):619-633, 1992.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+DIMENSIONS ntax=4;
+TAXLABELS
+	[1] 'AUS-01'
+	[2] 'TYPE1'
+	[3] 'TYPE2'
+	[4] 'TYPE3'
+;
+[DISPLAYLABELS;]
+TAXINFO
+	[1] 'AUS-01'
+	[2] 'COA-01,DRO-01,DRO-02,DRO-03,DRO-04,DRO-05,DRO-06,DRO-07,DRO-08,DRO-09,DRO-10,DRO-11,DRO-12,DRO-13,MBL-01,MBL-02,MRO-01,MRO-02,PEL-01,PEL-02,QML-01,QML-02,QML-03,QML-04,VIC-01,VIC-02,VIC-03,VIC-04,VIC-05,VIC-06,VIC-07,VIC-08,VIC-09,VIC-10,VIC-11,VIC-12,VIC-13,VIC-14,VIC-15,VIC-16,VIC-17,VIC-18,VIC-19,VIC-20,VIC-21,VIC-22,VIC-23,VIC-24,VIC-25,VIC-26,VIC-27,VIC-28,VIC-29'
+	[3] 'COC-01,COC-02,COC-03,DAN-01,DAN-02,DAN-03,DAN-04,DAN-05,DAN-06,DEC-01,DEC-02,FAL-01,FAL-02,FAL-03,GEO-01,GRA-01,HER-01,JAM-01,JAM-02,JAM-03,JAM-04,JAM-05,JAM-06,JAM-07,JAM-08,LOU-01,MAR-01,MAR-02,MAR-03,MAR-04,MAR-05,MAR-06,MAR-07,PAT-01,PAT-09,PAT-13,SIG-01,SIG-02,WIL-01,WIL-02,WIL-03,WIL-04,WIL-05,WIL-06,WIL-07,WIL-08,WIL-09,WIL-10,WIL-11,WIL-12,WIL-13,WIL-14,WIL-15,WIL-16,WIL-17'
+	[4] 'PAT-02,PAT-05'
+;
+END; [TAXA]
+
+BEGIN TRAITS;
+TITLE 'Input Traits';
+DIMENSIONS [nTax=4] nTraits=4;
+FORMAT labels=yes missing=? separator=Comma;
+TRAITLABELS
+ 'AUS-01' 'TYPE1' 'TYPE2' 'TYPE3';
+MATRIX
+[1] 'AUS-01'  1,0,0,0
+[2] 'TYPE1'   0,53,0,0
+[3] 'TYPE2'   0,0,55,0
+[4] 'TYPE3'   0,0,0,2
+;
+END; [TRAITS]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=4;
+TAXLABELS
+	[1] 'AUS-01'
+	[2] 'TYPE1'
+	[3] 'TYPE2'
+	[4] 'TYPE3'
+;
+[DISPLAYLABELS;]
+TAXINFO
+	[1] 'AUS-01'
+	[2] 'COA-01,DRO-01,DRO-02,DRO-03,DRO-04,DRO-05,DRO-06,DRO-07,DRO-08,DRO-09,DRO-10,DRO-11,DRO-12,DRO-13,MBL-01,MBL-02,MRO-01,MRO-02,PEL-01,PEL-02,QML-01,QML-02,QML-03,QML-04,VIC-01,VIC-02,VIC-03,VIC-04,VIC-05,VIC-06,VIC-07,VIC-08,VIC-09,VIC-10,VIC-11,VIC-12,VIC-13,VIC-14,VIC-15,VIC-16,VIC-17,VIC-18,VIC-19,VIC-20,VIC-21,VIC-22,VIC-23,VIC-24,VIC-25,VIC-26,VIC-27,VIC-28,VIC-29'
+	[3] 'COC-01,COC-02,COC-03,DAN-01,DAN-02,DAN-03,DAN-04,DAN-05,DAN-06,DEC-01,DEC-02,FAL-01,FAL-02,FAL-03,GEO-01,GRA-01,HER-01,JAM-01,JAM-02,JAM-03,JAM-04,JAM-05,JAM-06,JAM-07,JAM-08,LOU-01,MAR-01,MAR-02,MAR-03,MAR-04,MAR-05,MAR-06,MAR-07,PAT-01,PAT-09,PAT-13,SIG-01,SIG-02,WIL-01,WIL-02,WIL-03,WIL-04,WIL-05,WIL-06,WIL-07,WIL-08,WIL-09,WIL-10,WIL-11,WIL-12,WIL-13,WIL-14,WIL-15,WIL-16,WIL-17'
+	[4] 'PAT-02,PAT-05'
+;
+END; [TAXA]
+
+BEGIN TRAITS;
+TITLE 'Working Traits';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS [nTax=4] nTraits=4;
+FORMAT labels=yes missing=? separator=Comma;
+TRAITLABELS
+ 'AUS-01' 'TYPE1' 'TYPE2' 'TYPE3';
+MATRIX
+[1] 'AUS-01'  1,0,0,0
+[2] 'TYPE1'   0,53,0,0
+[3] 'TYPE2'   0,0,55,0
+[4] 'TYPE3'   0,0,0,2
+;
+END; [TRAITS]
+
+BEGIN CHARACTERS;
+TITLE 'Input Characters';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=4 nchar=1817;
+FORMAT
+	datatype='DNAwithAmbiguityCodes' missing=? gap=- symbols="acgt" labels=left transpose=no interleave=yes;
+MATRIX
+'AUS-01' ??ccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttatttttta
+TYPE1    taccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttatttttta
+TYPE2    ????????????gaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttatttttta
+TYPE3    taccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttatttttta
+
+'AUS-01' gttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctga
+TYPE1    gttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctga
+TYPE2    gttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctga
+TYPE3    gttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctga
+
+'AUS-01' ttaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacattttt
+TYPE1    ttaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacattttt
+TYPE2    ttaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacattttt
+TYPE3    ttaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacattttt
+
+'AUS-01' agtaataataacttgagattttttatgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaa
+TYPE1    agtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaa
+TYPE2    agtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaa
+TYPE3    agtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaa
+
+'AUS-01' ctatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcga
+TYPE1    ctatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcga
+TYPE2    ctatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcga
+TYPE3    ctatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcga
+
+'AUS-01' aaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacg
+TYPE1    aaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacg
+TYPE2    aaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacg
+TYPE3    aaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacg
+
+'AUS-01' tacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatact
+TYPE1    tacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatact
+TYPE2    tacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatact
+TYPE3    tacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatact
+
+'AUS-01' gagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaa
+TYPE1    gagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaa
+TYPE2    gagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaa
+TYPE3    gagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaa
+
+'AUS-01' gttcctaaacgacgtattattcttacacgaggtcctcg??????????????????????????????????????????
+TYPE1    gttcctaaacgacgtattattcttacacgaggtcctcg??????????????????????????????????????????
+TYPE2    gttcctaaacgacgtattattcttacacgaggtcctc???????????????????????????????????????????
+TYPE3    gttcctaaacgacgtattattcttacacgaggt???????????????????????????????????????????????
+
+'AUS-01' ????????????????????????tatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataa
+TYPE1    ?????????ttttgttattgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataa
+TYPE2    ???????????????tattgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataa
+TYPE3    ??????????????????tgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataa
+
+'AUS-01' atttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataa
+TYPE1    atttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataa
+TYPE2    atttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataa
+TYPE3    atttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataa
+
+'AUS-01' ctttgtagatgatcctattacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaatcaatc
+TYPE1    ctttgtagatgatcctatcacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaataaatc
+TYPE2    ctttgtagatgatcctatcacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaataaatc
+TYPE3    ctttgtagatgatcctattacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaatcaatc
+
+'AUS-01' attagggaaattttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagcta
+TYPE1    attagggaacttttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagcta
+TYPE2    attaggaaacttttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagcta
+TYPE3    attagggaaattttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagcta
+
+'AUS-01' aatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaagattttagttttgtatccatagattt
+TYPE1    aatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaacattttagttttgtatccatagattt
+TYPE2    aatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaacattttagttttgtatccatagattt
+TYPE3    aatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaagattttagttttgtatccatagattt
+
+'AUS-01' ttagctaaaaaataaatagttttaaaaaaattccgcgttgcttttctcatttgtattattgcaggaattatgcttttctt
+TYPE1    ttagctaaaaaataaatagttttaaaaaaattccgcgttgctttttttatttgtattattgcaggaattatgcttttctt
+TYPE2    ttagctaaaaaataaatagttttaaaaaaattccgcgttgctttttttatttgtattattgcaggaattatgcttttctt
+TYPE3    ttagctaaaaaataaatagttttaaaaaaattccgcgttgcttttctcatttgtattattgcaggaattatgcttttctt
+
+'AUS-01' tttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatt????????????
+TYPE1    tttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccctt?
+TYPE2    tttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccc???
+TYPE3    tttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagacccttt
+
+'AUS-01' ????????????????????????????????????????????????????????tcgaaattggtagacgctgcggac
+TYPE1    ?????????????????????????????????????????????????????????cgaaattggtagacgctgcggac
+TYPE2    ?????????????????????????????????????????????????????????cgaaattggtagacgctgcggac
+TYPE3    aactatatttaaattatttatagaa?????????????????????????????????gaaattggtagacgctgcggac
+
+'AUS-01' ttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaac
+TYPE1    ttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaac
+TYPE2    ttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaac
+TYPE3    ttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaac
+
+'AUS-01' tataagtaatcctgagccaaattttatatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagt
+TYPE1    tataagtaatcctgagccaaattttatatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagt
+TYPE2    tataagtaatcctgagccaaattttctatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagt
+TYPE3    tataagtaatcctgagccaaattttctatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagt
+
+'AUS-01' gtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttaca
+TYPE1    gtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttaca
+TYPE2    gtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttaca
+TYPE3    gtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttaca
+
+'AUS-01' tgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctct
+TYPE1    tgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctct
+TYPE2    tgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctct
+TYPE3    tgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctct
+
+'AUS-01' acccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccg
+TYPE1    acccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccg
+TYPE2    acccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccg
+TYPE3    acccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccg
+
+'AUS-01' gaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttcaaata
+TYPE1    gaatagctcagttggtagagcagaggactgaaaatcctcgtgtcacc??????????
+TYPE2    gaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttc?????
+TYPE3    gaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttcaaata
+
+;
+END; [CHARACTERS]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK CHARACTERS = 'Input Characters';
+NAME 'Characters Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN CHARACTERS;
+TITLE 'Working Characters';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=4 nchar=1817;
+FORMAT
+	datatype='DNAwithAmbiguityCodes' missing=? gap=- symbols="acgt" labels=left transpose=no interleave=yes;
+MATRIX
+'AUS-01' ??ccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttatttttta
+TYPE1    taccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttatttttta
+TYPE2    ????????????gaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttatttttta
+TYPE3    taccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttatttttta
+
+'AUS-01' gttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctga
+TYPE1    gttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctga
+TYPE2    gttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctga
+TYPE3    gttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctga
+
+'AUS-01' ttaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacattttt
+TYPE1    ttaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacattttt
+TYPE2    ttaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacattttt
+TYPE3    ttaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacattttt
+
+'AUS-01' agtaataataacttgagattttttatgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaa
+TYPE1    agtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaa
+TYPE2    agtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaa
+TYPE3    agtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaa
+
+'AUS-01' ctatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcga
+TYPE1    ctatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcga
+TYPE2    ctatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcga
+TYPE3    ctatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcga
+
+'AUS-01' aaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacg
+TYPE1    aaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacg
+TYPE2    aaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacg
+TYPE3    aaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacg
+
+'AUS-01' tacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatact
+TYPE1    tacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatact
+TYPE2    tacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatact
+TYPE3    tacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatact
+
+'AUS-01' gagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaa
+TYPE1    gagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaa
+TYPE2    gagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaa
+TYPE3    gagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaa
+
+'AUS-01' gttcctaaacgacgtattattcttacacgaggtcctcg??????????????????????????????????????????
+TYPE1    gttcctaaacgacgtattattcttacacgaggtcctcg??????????????????????????????????????????
+TYPE2    gttcctaaacgacgtattattcttacacgaggtcctc???????????????????????????????????????????
+TYPE3    gttcctaaacgacgtattattcttacacgaggt???????????????????????????????????????????????
+
+'AUS-01' ????????????????????????tatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataa
+TYPE1    ?????????ttttgttattgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataa
+TYPE2    ???????????????tattgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataa
+TYPE3    ??????????????????tgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataa
+
+'AUS-01' atttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataa
+TYPE1    atttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataa
+TYPE2    atttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataa
+TYPE3    atttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataa
+
+'AUS-01' ctttgtagatgatcctattacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaatcaatc
+TYPE1    ctttgtagatgatcctatcacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaataaatc
+TYPE2    ctttgtagatgatcctatcacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaataaatc
+TYPE3    ctttgtagatgatcctattacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaatcaatc
+
+'AUS-01' attagggaaattttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagcta
+TYPE1    attagggaacttttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagcta
+TYPE2    attaggaaacttttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagcta
+TYPE3    attagggaaattttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagcta
+
+'AUS-01' aatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaagattttagttttgtatccatagattt
+TYPE1    aatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaacattttagttttgtatccatagattt
+TYPE2    aatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaacattttagttttgtatccatagattt
+TYPE3    aatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaagattttagttttgtatccatagattt
+
+'AUS-01' ttagctaaaaaataaatagttttaaaaaaattccgcgttgcttttctcatttgtattattgcaggaattatgcttttctt
+TYPE1    ttagctaaaaaataaatagttttaaaaaaattccgcgttgctttttttatttgtattattgcaggaattatgcttttctt
+TYPE2    ttagctaaaaaataaatagttttaaaaaaattccgcgttgctttttttatttgtattattgcaggaattatgcttttctt
+TYPE3    ttagctaaaaaataaatagttttaaaaaaattccgcgttgcttttctcatttgtattattgcaggaattatgcttttctt
+
+'AUS-01' tttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatt????????????
+TYPE1    tttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccctt?
+TYPE2    tttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccc???
+TYPE3    tttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagacccttt
+
+'AUS-01' ????????????????????????????????????????????????????????tcgaaattggtagacgctgcggac
+TYPE1    ?????????????????????????????????????????????????????????cgaaattggtagacgctgcggac
+TYPE2    ?????????????????????????????????????????????????????????cgaaattggtagacgctgcggac
+TYPE3    aactatatttaaattatttatagaa?????????????????????????????????gaaattggtagacgctgcggac
+
+'AUS-01' ttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaac
+TYPE1    ttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaac
+TYPE2    ttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaac
+TYPE3    ttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaac
+
+'AUS-01' tataagtaatcctgagccaaattttatatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagt
+TYPE1    tataagtaatcctgagccaaattttatatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagt
+TYPE2    tataagtaatcctgagccaaattttctatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagt
+TYPE3    tataagtaatcctgagccaaattttctatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagt
+
+'AUS-01' gtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttaca
+TYPE1    gtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttaca
+TYPE2    gtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttaca
+TYPE3    gtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttaca
+
+'AUS-01' tgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctct
+TYPE1    tgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctct
+TYPE2    tgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctct
+TYPE3    tgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctct
+
+'AUS-01' acccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccg
+TYPE1    acccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccg
+TYPE2    acccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccg
+TYPE3    acccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccg
+
+'AUS-01' gaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttcaaata
+TYPE1    gaatagctcagttggtagagcagaggactgaaaatcctcgtgtcacc??????????
+TYPE2    gaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttc?????
+TYPE3    gaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttcaaata
+
+;
+END; [CHARACTERS]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Haplo Net';
+LINK CHARACTERS = 'Working Characters';
+NAME 'Razor Haplo Net';
+OPTIONS
+	Strategy = 'Both',
+	Labeling = 'MinExcess',
+	RemoveSuperfluous = 'true',
+	ContractUnlabeled = 'true',
+	MissingAsState = 'false',
+	MaxStretchPercent = 0,
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Median Joining';
+LINK CHARACTERS = 'Working Characters';
+NAME 'Median Joining';
+OPTIONS
+	Epsilon = 0;
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'TCS Haplotype Network';
+LINK CHARACTERS = 'Working Characters';
+NAME 'TCS Haplotype Network';
+OPTIONS
+	RemoveSuperfluous = 'true',
+	ContractUnlabeled = 'true',
+	Labeling = 'MinExcess',
+	MissingAsState = 'false',
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Razor Haplo Net';
+DIMENSIONS nVertices=6 nEdges=6;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 16, excess: 0';
+VERTICES
+	id=1 label='AUS-01' label='AUS-01' states='TACCGAGGGTTCGAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTATGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTCCTCGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTTTGTTATTGCCTCTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATTACAAATTTTTAATAACAAAATTTGTAATTACTTCGTTATTTTATTTCTATTCAAATCAATCATTAGGGAAATTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAAGATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTCTCATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTTAAAGACCCTTTAACTATATTTAAATTATTTATAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTATATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACCAGTTCAAATA',
+	id=2 label='TYPE1' label='TYPE1' states='TACCGAGGGTTCGAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTCCTCGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTTTGTTATTGCCTCTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATCACAAATTTTTAATAACAAAATTTGTAATTACTTCGTTATTTTATTTCTATTCAAATAAATCATTAGGGAACTTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAACATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTTTTATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTTAAAGACCCTTTAACTATATTTAAATTATTTATAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTATATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACCAGTTCAAATA',
+	id=3 label='TYPE2' label='TYPE2' states='TACCGAGGGTTCGAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTCCTCGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTTTGTTATTGCCTCTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATCACAAATTTTTAATAACAAAATTTGTAATTACTTCGTTATTTTATTTCTATTCAAATAAATCATTAGGAAACTTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAACATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTTTTATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTTAAAGACCCTTTAACTATATTTAAATTATTTATAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTCTATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACCAGTTCAAATA',
+	id=4 label='TYPE3' label='TYPE3' states='TACCGAGGGTTCGAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTCCTCGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTTTGTTATTGCCTCTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATTACAAATTTTTAATAACAAAATTTGTAATTACTTCGTTATTTTATTTCTATTCAAATCAATCATTAGGGAAATTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAAGATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTCTCATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTTAAAGACCCTTTAACTATATTTAAATTATTTATAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTCTATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACCAGTTCAAATA',
+	id=5 states='TACCGAGGGTTCGAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTCCTCGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTTTGTTATTGCCTCTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATCACAAATTTTTAATAACAAAATTTGTAATTACTTCGTTATTTTATTTCTATTCAAATAAATCATTAGGGAACTTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAACATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTTTTATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTTAAAGACCCTTTAACTATATTTAAATTATTTATAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTCTATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACCAGTTCAAATA',
+	id=6 states='TACCGAGGGTTCGAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTCCTCGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTTTGTTATTGCCTCTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATTACAAATTTTTAATAACAAAATTTGTAATTACTTCGTTATTTTATTTCTATTCAAATCAATCATTAGGGAAATTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAAGATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTCTCATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTTAAAGACCCTTTAACTATATTTAAATTATTTATAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTATATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACCAGTTCAAATA'
+;
+EDGES
+	id=1 sid=1 tid=6 weight='1' sites='266',
+	id=2 sid=2 tid=5 weight='1' sites='1466',
+	id=3 sid=2 tid=6 weight='6' sites='899,956,970,1095,1166,1168',
+	id=4 sid=3 tid=5 weight='1' sites='967',
+	id=5 sid=4 tid=5 weight='6' sites='899,956,970,1095,1166,1168',
+	id=6 sid=4 tid=6 weight='1' sites='1466'
+;
+END; [NETWORK]
+
+BEGIN NETWORK;
+TITLE 'Network-2';
+LINK ALGORITHM = 'Median Joining';
+DIMENSIONS nVertices=6 nEdges=5;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 10, excess: 2';
+VERTICES
+	id=1 label='AUS-01' label='AUS-01' states='??ccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttattttttagttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctgattaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacatttttagtaataataacttgagattttttatgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaactatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcgaaaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacgtacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatactgagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaagttcctaaacgacgtattattcttacacgaggtcctcg????????????????????????????????????????????????????????????tgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataaatttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataactttgtagatgatcctattacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaatcaatcattagggaaattttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagctaaatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaagattttagttttgtatccatagatttttagctaaaaaataaatagttttaaaaaaattccgcgttgcttttctcatttgtattattgcaggaattatgcttttctttttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccc???????????????????????????????????????????????????????????tcgaaattggtagacgctgcggacttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaactataagtaatcctgagccaaattttatatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagtgtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttacatgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctctacccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccggaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttcaaata',
+	id=2 label='TYPE1' label='TYPE1' states='taccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttattttttagttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctgattaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacatttttagtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaactatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcgaaaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacgtacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatactgagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaagttcctaaacgacgtattattcttacacgaggtcctcg???????????????????????????????????????????????????ttttgttattgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataaatttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataactttgtagatgatcctatcacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaataaatcattagggaacttttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagctaaatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaacattttagttttgtatccatagatttttagctaaaaaataaatagttttaaaaaaattccgcgttgctttttttatttgtattattgcaggaattatgcttttctttttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccctt??????????????????????????????????????????????????????????cgaaattggtagacgctgcggacttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaactataagtaatcctgagccaaattttatatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagtgtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttacatgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctctacccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccggaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttc?????',
+	id=3 states='??ccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttattttttagttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctgattaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacatttttagtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaactatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcgaaaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacgtacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatactgagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaagttcctaaacgacgtattattcttacacgaggtcctcg?????????????????????????????????????????????????????????tattgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataaatttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataactttgtagatgatcctatcacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaataaatcattagggaacttttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagctaaatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaacattttagttttgtatccatagatttttagctaaaaaataaatagttttaaaaaaattccgcgttgctttttttatttgtattattgcaggaattatgcttttctttttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccc????????????????????????????????????????????????????????????cgaaattggtagacgctgcggacttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaactataagtaatcctgagccaaattttatatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagtgtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttacatgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctctacccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccggaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttc?????',
+	id=4 label='TYPE2' label='TYPE2' states='??ccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttattttttagttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctgattaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacatttttagtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaactatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcgaaaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacgtacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatactgagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaagttcctaaacgacgtattattcttacacgaggtcctc??????????????????????????????????????????????????????????tattgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataaatttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataactttgtagatgatcctatcacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaataaatcattaggaaacttttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagctaaatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaacattttagttttgtatccatagatttttagctaaaaaataaatagttttaaaaaaattccgcgttgctttttttatttgtattattgcaggaattatgcttttctttttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccc????????????????????????????????????????????????????????????cgaaattggtagacgctgcggacttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaactataagtaatcctgagccaaattttctatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagtgtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttacatgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctctacccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccggaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttc?????',
+	id=5 states='??ccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttattttttagttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctgattaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacatttttagtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaactatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcgaaaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacgtacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatactgagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaagttcctaaacgacgtattattcttacacgaggtcctcg????????????????????????????????????????????????????????????tgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataaatttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataactttgtagatgatcctattacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaatcaatcattagggaaattttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagctaaatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaagattttagttttgtatccatagatttttagctaaaaaataaatagttttaaaaaaattccgcgttgcttttctcatttgtattattgcaggaattatgcttttctttttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccc????????????????????????????????????????????????????????????cgaaattggtagacgctgcggacttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaactataagtaatcctgagccaaattttatatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagtgtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttacatgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctctacccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccggaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttcaaata',
+	id=6 label='TYPE3' label='TYPE3' states='taccgagggttcgaatccctctctttccttatttataaatttttttatatatataaaattaaaactatttttattttttagttaagcttgacgagaataatattctacaactaacaattcatttatttttaaaccaattgattcttgatctagtatctgattaattagtccttttttttctaaagaattaaaagttaaatgatttggtattttagatttttgagaaaaatctacatttttagtaataataacttgagattttttacgatcatttatagtaataaaatcttgaggtttacaacgataacttggaatattaactatacgattatttactaaaatatgtctatgatttactaattgtcttgctccaggaattgtaggagccatacctaatcgaaaaataacattatctaaacgcatttctagtaattgtaataaaatttgccctgttgatccttttgcttttctagcaatacgtacataatttagtagttgtctttctgttattccataatgaaaacgcaatttttgcttttcttctaaacgaatgcgatactgagaaatttttttattagaggttgattgattagtggaactagattttaaatgaggtattttattgcttagtcctggtaaagttcctaaacgacgtattattcttacacgaggtcctc?????????????????????????????????????????????????????????????tgcctctatttcaaaaccgaatatgaaattttaatatcatacggctcctatatggacgataaatttttttattatattaatattaaaataaatccataccacctatgttagttttttattaaatcatttaagtaataaataactttgtagatgatcctattacaaatttttaataacaaaatttgtaattacttcgtt-ttttatttctattcaaatcaatcattagggaaattttttttaccggctttttaaataaaaaataataataaatttagtaaactaaatttgttattttaagctaaatggctttaatttatttacttttatttaattaaagatttagttacgaaaaaaagattttagttttgtatccatagatttttagctaaaaaataaatagttttaaaaaaattccgcgttgcttttctcatttgtattattgcaggaattatgcttttctttttagaaaaaggtttaaatctttttagaaataaaattattggtcaaattttttttttaataaaaaatttaaagaccctttaactatatttaaattatttatagaa????????????????????????????????cgaaattggtagacgctgcggacttaaataatttgagctttagtagaaaaacttactaaatgctagctttcagattcagggaatcttaggttgacaaaaaaactataagtaatcctgagccaaattttctatttaaaaaaacaaaataggtgcagagactcgatggaagctatcctaacgagtgtaaattaaatccaaaaaatttcatgaaattttttggatttaatttacacgcgaggataaagatagagtccaattttacatgttaattttaacaacaatttaaattgtagtaaaaagaaaatccgttggctttattgaccgtgagggttcaagtccctctacccccaaaatatttaattcaaatttttttattgacagaagtttacaatttatgttaggatagactaaagaaaaaagccggaatagctcagttggtagagcagaggactgaaaatcctcgtgtcaccagttcaaata'
+;
+EDGES
+	id=1 sid=1 tid=5 weight='2.0' sites='266,1337',
+	id=2 sid=3 tid=4 weight='3.0' sites='678,967,1466',
+	id=3 sid=2 tid=3 weight='11.0' sites='1,2,730,731,732,733,734,735,1278,1279',
+	id=4 sid=3 tid=5 weight='14.0' sites='736,737,738,899,956,970,1095,1166,1168,1813,1814,1815,1816,1817',
+	id=5 sid=5 tid=6 weight='33.0' sites='1,2,678,1278,1279,1280,1281,1282,1283,1284,1285,1286,1287,1288,1289,1290,1291,1292,1293,1294,1295,1296,1297,1298,1299,1300,1301,1302,1303,1304,1305,1466'
+;
+END; [NETWORK]
+
+BEGIN NETWORK;
+TITLE 'Network-3';
+LINK ALGORITHM = 'TCS Haplotype Network';
+DIMENSIONS nVertices=6 nEdges=6;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 16, excess: 0';
+VERTICES
+	id=1 label='AUS-01' states='GAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTATGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATTACAAATTTTTAATAACAAAATTTGTAATTACTTCGTT-TTTTATTTCTATTCAAATCAATCATTAGGGAAATTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAAGATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTCTCATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTATATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACC',
+	id=2 label='TYPE1' states='GAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATCACAAATTTTTAATAACAAAATTTGTAATTACTTCGTT-TTTTATTTCTATTCAAATAAATCATTAGGGAACTTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAACATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTTTTATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTATATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACC',
+	id=3 label='TYPE2' states='GAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATCACAAATTTTTAATAACAAAATTTGTAATTACTTCGTT-TTTTATTTCTATTCAAATAAATCATTAGGAAACTTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAACATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTTTTATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTCTATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACC',
+	id=4 label='TYPE3' states='GAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATTACAAATTTTTAATAACAAAATTTGTAATTACTTCGTT-TTTTATTTCTATTCAAATCAATCATTAGGGAAATTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAAGATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTCTCATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTCTATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACC',
+	id=5 states='GAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATCACAAATTTTTAATAACAAAATTTGTAATTACTTCGTT-TTTTATTTCTATTCAAATAAATCATTAGGGAACTTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAACATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTTTTATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTCTATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACC',
+	id=6 states='GAATCCCTCTCTTTCCTTATTTATAAATTTTTTTATATATATAAAATTAAAACTATTTTTATTTTTTAGTTAAGCTTGACGAGAATAATATTCTACAACTAACAATTCATTTATTTTTAAACCAATTGATTCTTGATCTAGTATCTGATTAATTAGTCCTTTTTTTTCTAAAGAATTAAAAGTTAAATGATTTGGTATTTTAGATTTTTGAGAAAAATCTACATTTTTAGTAATAATAACTTGAGATTTTTTACGATCATTTATAGTAATAAAATCTTGAGGTTTACAACGATAACTTGGAATATTAACTATACGATTATTTACTAAAATATGTCTATGATTTACTAATTGTCTTGCTCCAGGAATTGTAGGAGCCATACCTAATCGAAAAATAACATTATCTAAACGCATTTCTAGTAATTGTAATAAAATTTGCCCTGTTGATCCTTTTGCTTTTCTAGCAATACGTACATAATTTAGTAGTTGTCTTTCTGTTATTCCATAATGAAAACGCAATTTTTGCTTTTCTTCTAAACGAATGCGATACTGAGAAATTTTTTTATTAGAGGTTGATTGATTAGTGGAACTAGATTTTAAATGAGGTATTTTATTGCTTAGTCCTGGTAAAGTTCCTAAACGACGTATTATTCTTACACGAGGTTATTTCAAAACCGAATATGAAATTTTAATATCATACGGCTCCTATATGGACGATAAATTTTTTTATTATATTAATATTAAAATAAATCCATACCACCTATGTTAGTTTTTTATTAAATCATTTAAGTAATAAATAACTTTGTAGATGATCCTATTACAAATTTTTAATAACAAAATTTGTAATTACTTCGTT-TTTTATTTCTATTCAAATCAATCATTAGGGAAATTTTTTTTACCGGCTTTTTAAATAAAAAATAATAATAAATTTAGTAAACTAAATTTGTTATTTTAAGCTAAATGGCTTTAATTTATTTACTTTTATTTAATTAAAGATTTAGTTACGAAAAAAAGATTTTAGTTTTGTATCCATAGATTTTTAGCTAAAAAATAAATAGTTTTAAAAAAATTCCGCGTTGCTTTTCTCATTTGTATTATTGCAGGAATTATGCTTTTCTTTTTAGAAAAAGGTTTAAATCTTTTTAGAAATAAAATTATTGGTCAAATTTTTTTTTTAATAAAAAATTGAAATTGGTAGACGCTGCGGACTTAAATAATTTGAGCTTTAGTAGAAAAACTTACTAAATGCTAGCTTTCAGATTCAGGGAATCTTAGGTTGACAAAAAAACTATAAGTAATCCTGAGCCAAATTTTATATTTAAAAAAACAAAATAGGTGCAGAGACTCGATGGAAGCTATCCTAACGAGTGTAAATTAAATCCAAAAAATTTCATGAAATTTTTTGGATTTAATTTACACGCGAGGATAAAGATAGAGTCCAATTTTACATGTTAATTTTAACAACAATTTAAATTGTAGTAAAAAGAAAATCCGTTGGCTTTATTGACCGTGAGGGTTCAAGTCCCTCTACCCCCAAAATATTTAATTCAAATTTTTTTATTGACAGAAGTTTACAATTTATGTTAGGATAGACTAAAGAAAAAAGCCGGAATAGCTCAGTTGGTAGAGCAGAGGACTGAAAATCCTCGTGTCACC'
+;
+EDGES
+	id=1 sid=1 tid=6 weight='1' sites='266',
+	id=2 sid=2 tid=5 weight='1' sites='1466',
+	id=3 sid=2 tid=6 weight='6' sites='899,956,970,1095,1166,1168',
+	id=4 sid=3 tid=5 weight='1' sites='967',
+	id=5 sid=4 tid=5 weight='6' sites='899,956,970,1095,1166,1168',
+	id=6 sid=4 tid=6 weight='1' sites='1466'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network-2';
+LINK NETWORK = 'Network-2';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network-3';
+LINK NETWORK = 'Network-3';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network-4';
+LINK ALGORITHM = 'Show Network';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	ActiveTraits = 'AUS-01' 'TYPE1' 'TYPE2' 'TYPE3',
+	TraitLegend = 'True',
+	TraitSize = 32,
+	SitesStyle = 'Hatches',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'MDS';
+END; [VIEW]
+
+BEGIN VIEW;
+TITLE 'Network-5';
+LINK ALGORITHM = 'Show Network-2';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	ActiveTraits = 'AUS-01' 'TYPE1' 'TYPE2' 'TYPE3',
+	TraitLegend = 'True',
+	TraitSize = 32,
+	SitesStyle = 'Labels',
+	Edits = 'mn:1:97.5,-27.84' 'mn:2:-38.87,390.81' 'mn:3:-52.64,65.23' 'mn:4:-227.75,-13.07' 'mn:5:48.15,-31.77' 'mn:6:61.61,-244.37',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'MDS';
+END; [VIEW]
+
+BEGIN VIEW;
+TITLE 'Network-6';
+LINK ALGORITHM = 'Show Network-3';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	ActiveTraits = 'AUS-01' 'TYPE1' 'TYPE2' 'TYPE3',
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'Hatches',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'MDS';
+END; [VIEW]

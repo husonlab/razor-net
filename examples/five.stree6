@@ -1,0 +1,154 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=7 nAlgorithms=5;
+PROGRAM version='SplitsTree (version dev) - License GPL v3';
+WORKFLOW creationDate='1786373122902'; [Mon Aug 10 16:45:22 CEST 2026]
+END; [SPLITSTREE6]
+
+[
+Methods:
+Analysis was performed using RazorNet (version dev)  ((Huson and Bryant 2024) ;  The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods, 2024.), ((Hayamizu et al, 2026 ; M. Hayamizu, others, D.H. Huson, in preparation).
+The original input consisted of 5 taxa and a 5 x 5 distance matrix.
+The Razor Net method was used (default options) so as to obtain 8 nodes and 8 edges.
+
+References:
+(Hayamizu et al, 2026: M. Hayamizu, others, D.H. Huson, in preparation
+(Huson and Bryant 2024):  The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods, 2024.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=5;
+TAXLABELS
+	[1] 'a'
+	[2] 'b'
+	[3] 'c'
+	[4] 'd'
+	[5] 'e'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+LINK ALGORITHM = 'Input Data Loader';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=5;
+TAXLABELS
+	[1] 'a'
+	[2] 'b'
+	[3] 'c'
+	[4] 'd'
+	[5] 'e'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN DISTANCES;
+TITLE 'Input Distances';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=5;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 'a'   0 3 3 4 2
+[2] 'b'   3 0 2 3 3
+[3] 'c'   3 2 0 3 3
+[4] 'd'   4 3 3 0 2
+[5] 'e'   2 3 3 2 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK DISTANCES = 'Input Distances';
+NAME 'Distances Taxa Filter';
+END; [ALGORITHM]
+
+BEGIN DISTANCES;
+TITLE 'Working Distances';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=5;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 'a'   0 3 3 4 2
+[2] 'b'   3 0 2 3 3
+[3] 'c'   3 2 0 3 3
+[4] 'd'   4 3 3 0 2
+[5] 'e'   2 3 3 2 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Razor Net';
+OPTIONS
+	RandomRestarts = 1,
+	MaxPolishRounds = 1,
+	RemoveRedundant = 'true',
+	SignificantDigits = 6,
+	RandomSeed = 42,
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Razor Net';
+DIMENSIONS nVertices=8 nEdges=8;
+TYPE Other;
+PROPERTIES info ='Total length: 8, excess: 0';
+VERTICES
+	id=1 label='a' x='331.2865' y='-394.7391',
+	id=2 label='b' x='337.74' y='231.3243',
+	id=3 label='c' x='25.9139' y='408.5399',
+	id=4 label='d' x='-508.66' y='82.6499',
+	id=5 label='e' x='-154.4231' y='-271.7118',
+	id=6 x='64.3563' y='113.2324',
+	id=7 x='132.2014' y='-187.1239',
+	id=8 x='-228.4151' y='17.8282'
+;
+EDGES
+	id=1 sid=1 tid=7 weight='1',
+	id=2 sid=2 tid=6 weight='1',
+	id=3 sid=3 tid=6 weight='1',
+	id=4 sid=4 tid=8 weight='1',
+	id=5 sid=5 tid=7 weight='1',
+	id=6 sid=5 tid=8 weight='1',
+	id=7 sid=6 tid=7 weight='1',
+	id=8 sid=6 tid=8 weight='1'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network-2';
+LINK ALGORITHM = 'Show Network';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'Weights',
+	Edits = 'mn:1:238.56,-284.25' 'mn:2:243.21,166.58' 'mn:3:18.66,294.19' 'mn:4:-366.29,59.52' 'mn:5:-111.2,-195.66' 'mn:6:46.34,81.54' 'mn:7:95.2,-134.75' 'mn:8:-164.48,12.84',
+	LayoutSeed = 1;
+END; [VIEW]

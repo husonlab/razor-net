@@ -1,0 +1,12 @@
+#Hamming distances from examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNEMNT_Patagonia_Population_Genetics_10_SEQ.fas, exactly as RazorHaplotypeNetwork computes them: columns with missing/ambiguous data masked out (816 of 2789 kept), gaps kept as ordinary states -- always a metric
+	10
+PAT-01	0	8	8	8	8	8	8	7	7	8
+PAT-02	8	0	0	2	0	0	0	1	1	0
+PAT-04	8	0	0	2	0	0	0	1	1	0
+PAT-05	8	2	2	0	2	2	2	1	1	2
+PAT-08	8	0	0	2	0	0	0	1	1	0
+PAT-09	8	0	0	2	0	0	0	1	1	0
+PAT-10	8	0	0	2	0	0	0	1	1	0
+PAT-13	7	1	1	1	1	1	1	0	0	1
+PAT-15	7	1	1	1	1	1	1	0	0	1
+PAT-Sgl	8	0	0	2	0	0	0	1	1	0

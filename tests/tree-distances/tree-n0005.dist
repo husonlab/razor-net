@@ -1,0 +1,8 @@
+# RazorNet test instance
+# type=tree n=5 seed=-5025562857975149833 referenceLength=371 referenceIsOptimal=true
+5
+t1	0	146	167	205	276
+t2	146	0	141	179	250
+t3	167	141	0	96	167
+t4	205	179	96	0	83
+t5	276	250	167	83	0

@@ -1,0 +1,29 @@
+# Ground truth for the sibling .dist instance
+seed=-4588066762141701118
+type=reticulate
+n=5
+referenceLength=2980
+referenceIsOptimal=false
+# Reticulate metric: D = D(tree1) + D(tree2), the SUM of two tree metrics on the same taxa --
+# tree2 is tree1 after 2 SPR move(s) (requested 2), tree2 edge weights scaled by 1.0.
+# The classic 'two conflicting trees' signal that Neighbor-Net is used to display; there is no
+# known minimum realization. referenceLength is the taxa-only (Steiner-free) essential-edge length,
+# a valid UPPER BOUND (RazorNet keeps this candidate, so it realizes D with length <= it).
+# len(tree1)=341  len(tree2)=321
+# nodes: leaves 0..4 = taxa t1..t5; internal (Steiner) nodes have higher ids.
+# tree1 edges: 'tree1 u v weight'
+tree1 0 5 37
+tree1 5 2 53
+tree1 5 6 11
+tree1 6 3 34
+tree1 6 7 62
+tree1 7 1 66
+tree1 7 4 78
+# tree2 edges: 'tree2 u v weight'
+tree2 0 5 57
+tree2 1 6 5
+tree2 2 7 54
+tree2 3 5 91
+tree2 4 6 21
+tree2 5 7 67
+tree2 6 7 26

@@ -1,0 +1,55 @@
+# Ground truth for the sibling .dist instance
+seed=-4613416830416070574
+type=circle
+n=20
+referenceLength=1851
+referenceIsOptimal=false
+# Sparse circular (Kalmanson) metric: d(i,j) = sum of weights of the circular splits separating i,j,
+# every split an interval of the circular ordering below -- the class Neighbor-Net provably
+# reconstructs, kept sparse (O(n) splits) so the realization and split network stay tractable.
+circularOrdering: t20 t8 t5 t1 t4 t16 t14 t6 t7 t18 t9 t11 t10 t12 t17 t15 t19 t3 t2 t13
+splits=40 (20 trivial + 20 non-trivial; splitsPerTaxon=1.0)
+# NOTE: referenceLength (1851) is the TOTAL SPLIT WEIGHT -- a structural measure,
+# NOT a realizing-network edge length (a realizing network is typically longer). The meaningful
+# check for circle instances is that RazorNet realizes the distances exactly.
+# splits: 'split weight=W sideA={...}' lists taxa on one side of the interval split; the rest are the other side
+split weight=81 sideA={t1}
+split weight=39 sideA={t2}
+split weight=42 sideA={t3}
+split weight=41 sideA={t4}
+split weight=74 sideA={t5}
+split weight=42 sideA={t6}
+split weight=77 sideA={t7}
+split weight=10 sideA={t8}
+split weight=100 sideA={t9}
+split weight=6 sideA={t10}
+split weight=88 sideA={t11}
+split weight=38 sideA={t12}
+split weight=61 sideA={t13}
+split weight=36 sideA={t14}
+split weight=22 sideA={t15}
+split weight=48 sideA={t16}
+split weight=18 sideA={t17}
+split weight=1 sideA={t18}
+split weight=48 sideA={t19}
+split weight=34 sideA={t20}
+split weight=82 sideA={t2,t3,t19}
+split weight=99 sideA={t1,t5,t8}
+split weight=88 sideA={t9,t10,t11,t12,t17,t18}
+split weight=38 sideA={t1,t4,t6,t7,t9,t11,t14,t16,t18}
+split weight=36 sideA={t12,t17}
+split weight=46 sideA={t2,t3,t6,t7,t9,t10,t11,t12,t15,t17,t18,t19}
+split weight=33 sideA={t7,t9,t10,t11,t12,t15,t17,t18,t19}
+split weight=76 sideA={t2,t3,t6,t7,t9,t10,t11,t12,t13,t15,t17,t18,t19}
+split weight=35 sideA={t7,t9,t11,t18}
+split weight=86 sideA={t2,t3,t9,t10,t11,t12,t13,t15,t17,t18,t19}
+split weight=2 sideA={t9,t10,t11,t12,t15,t17}
+split weight=32 sideA={t4,t6,t7,t9,t10,t11,t14,t16,t18}
+split weight=31 sideA={t10,t11,t12,t15,t17}
+split weight=49 sideA={t1,t4,t5,t8,t16}
+split weight=36 sideA={t1,t4,t6,t7,t9,t10,t11,t12,t14,t15,t16,t17,t18,t19}
+split weight=41 sideA={t1,t4,t5,t6,t7,t9,t11,t14,t16,t18}
+split weight=24 sideA={t3,t7,t9,t10,t11,t12,t15,t17,t18,t19}
+split weight=31 sideA={t10,t11,t12,t15,t17,t19}
+split weight=14 sideA={t1,t4,t5,t6,t7,t9,t10,t11,t12,t14,t16,t17,t18}
+split weight=66 sideA={t2,t3,t7,t9,t10,t11,t12,t13,t15,t17,t18,t19}

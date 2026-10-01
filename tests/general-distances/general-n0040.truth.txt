@@ -1,0 +1,82 @@
+# Ground truth for the sibling .dist instance
+seed=3176860285874836986
+type=general
+n=40
+referenceLength=3607
+referenceIsOptimal=false
+# General metric: all-pairs shortest-path distances of the random weighted graph below.
+# That graph realizes the distances, so referenceLength is an UPPER BOUND on the optimum
+# (RazorNet should realize the distances with total length <= referenceLength).
+# vertices 0..39 = taxa t1..t40; edges: 'edge u v weight'
+edge 1 27 86
+edge 34 27 13
+edge 14 27 82
+edge 12 34 34
+edge 15 34 100
+edge 21 15 41
+edge 32 14 2
+edge 16 27 65
+edge 23 27 61
+edge 39 21 30
+edge 20 14 32
+edge 4 34 43
+edge 31 16 47
+edge 24 14 77
+edge 13 39 26
+edge 8 15 17
+edge 22 32 19
+edge 17 15 72
+edge 35 31 100
+edge 28 1 49
+edge 10 21 64
+edge 11 23 35
+edge 0 10 42
+edge 37 28 40
+edge 19 39 87
+edge 29 37 86
+edge 33 0 36
+edge 26 37 19
+edge 38 34 28
+edge 6 4 30
+edge 30 23 9
+edge 3 35 10
+edge 36 35 98
+edge 9 33 71
+edge 2 23 17
+edge 7 29 72
+edge 25 24 23
+edge 18 14 62
+edge 5 13 89
+edge 36 31 11
+edge 1 12 92
+edge 33 30 38
+edge 29 22 89
+edge 14 17 6
+edge 17 21 37
+edge 6 20 66
+edge 19 38 54
+edge 19 22 4
+edge 0 38 82
+edge 24 16 73
+edge 31 17 82
+edge 23 31 39
+edge 10 24 76
+edge 15 0 26
+edge 21 2 27
+edge 37 0 18
+edge 35 18 25
+edge 1 15 10
+edge 36 39 25
+edge 29 14 52
+edge 14 19 92
+edge 16 36 72
+edge 10 16 86
+edge 35 38 29
+edge 30 15 56
+edge 19 20 44
+edge 18 32 63
+edge 19 4 76
+edge 28 24 95
+edge 26 36 49
+edge 2 34 45
+edge 8 18 54

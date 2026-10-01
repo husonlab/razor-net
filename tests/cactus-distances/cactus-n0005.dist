@@ -1,0 +1,8 @@
+# RazorNet test instance
+# type=cactus n=5 seed=-1782466964123969572 referenceLength=377 referenceIsOptimal=false
+5
+t1	0	62	56	72	54
+t2	62	0	90	134	116
+t3	56	90	0	128	110
+t4	72	134	128	0	18
+t5	54	116	110	18	0

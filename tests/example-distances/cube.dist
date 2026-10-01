@@ -1,0 +1,13 @@
+# 8 vertices of a 3-cube with unit edges.
+# Distance = shortest-path (Hamming) metric on {0,1}^3: vertex vXYZ has binary coordinates X Y Z,
+# and d(u,v) = number of differing coordinates (1, 2, or 3). The minimum-length realization is the
+# cube itself: 8 nodes, 12 unit edges, total length 12.
+8
+v000 0 1 1 2 1 2 2 3
+v001 1 0 2 1 2 1 3 2
+v010 1 2 0 1 2 3 1 2
+v011 2 1 1 0 3 2 2 1
+v100 1 2 2 3 0 1 1 2
+v101 2 1 3 2 1 0 2 1
+v110 2 3 1 2 1 2 0 1
+v111 3 2 2 1 2 1 1 0

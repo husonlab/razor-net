@@ -1,0 +1,5 @@
+#Hamming distances from examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Australasia_Population_Genetics_03_SEQ.fas, exactly as RazorHaplotypeNetwork computes them: columns with missing/ambiguous data masked out (1710 of 2789 kept), gaps kept as ordinary states -- always a metric
+	3
+AUS-01	0	0	0
+NZE-01	0	0	0
+NZE-02	0	0	0

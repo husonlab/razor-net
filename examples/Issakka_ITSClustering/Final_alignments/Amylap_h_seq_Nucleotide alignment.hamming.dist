@@ -1,0 +1,4 @@
+#Hamming distances from examples/Issakka_ITSClustering/Final_alignments/Amylap_h_seq_Nucleotide alignment.fasta, exactly as RazorHaplotypeNetwork computes them: columns with missing/ambiguous data masked out (308 of 308 kept), gaps kept as ordinary states -- always a metric
+	2
+Amylap_ASV_1	0	0
+Consensus	0	0

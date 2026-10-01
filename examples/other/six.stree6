@@ -1,0 +1,239 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=9 nAlgorithms=6;
+PROGRAM version='SplitsTree App (version 6.5.1-j11, built 01 Oct 2025)';
+WORKFLOW creationDate='1759401958105'; [Thu Oct 02 12:45:58 CEST 2025]
+END; [SPLITSTREE6]
+
+[
+Methods:
+Analysis was performed using SplitsTree App 6.0.0 (Huson and Bryant 2024).
+The original input consisted of 6 taxa and a 6 x 6 distance matrix.
+The Neighbor Net method (Bryant & Moulton 2004, Bryant & Huson 2023) was used (default options) so as to obtain 13 splits, cyclic.
+The Razor Net method was used (default options, except LocalPruning=false, Algorithm2=true) so as to obtain 17 nodes and 23 edges.
+The Show Splits method was used (default options) so as to obtain a Split Network visualization.
+
+References:
+Bryant & Huson 2023: D. Bryant and DH Huson, NeighborNet- improved algorithms and implementation. Front. Bioinform. 3, 2023.
+Bryant & Moulton 2004: D. Bryant and V. Moulton. Neighbor-net: An agglomerative method for the construction of phylogenetic networks. Molecular Biology and Evolution, 21(2):255– 265, 2004.
+Huson and Bryant 2024: D.H. Huson and D. Bryant. The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods, 2024.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+DIMENSIONS ntax=6;
+TAXLABELS
+	[1] 'Lemur_catta'
+	[2] 'Homo_sapiens'
+	[3] 'Pan'
+	[4] 'Gorilla'
+	[5] 'Pongo'
+	[6] 'Hylobates'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=6;
+TAXLABELS
+	[1] 'Lemur_catta'
+	[2] 'Homo_sapiens'
+	[3] 'Pan'
+	[4] 'Gorilla'
+	[5] 'Pongo'
+	[6] 'Hylobates'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN DISTANCES;
+TITLE 'Input Distances';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=6;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 'Lemur_catta'    0 275 276 262 261 264
+[2] 'Homo_sapiens'   275 0 80 93 145 163
+[3] 'Pan'            276 80 0 95 154 169
+[4] 'Gorilla'        262 93 95 0 150 169
+[5] 'Pongo'          261 145 154 150 0 169
+[6] 'Hylobates'      264 163 169 169 169 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK DISTANCES = 'Input Distances';
+NAME 'Distances Taxa Filter';
+END; [ALGORITHM]
+
+BEGIN DISTANCES;
+TITLE 'Working Distances';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=6;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 'Lemur_catta'    0 275 276 262 261 264
+[2] 'Homo_sapiens'   275 0 80 93 145 163
+[3] 'Pan'            276 80 0 95 154 169
+[4] 'Gorilla'        262 93 95 0 150 169
+[5] 'Pongo'          261 145 154 150 0 169
+[6] 'Hylobates'      264 163 169 169 169 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Neighbor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Neighbor Net';
+OPTIONS
+	InferenceAlgorithm = 'ActiveSet';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Razor Net';
+OPTIONS
+	Polish = 'true',
+	LocalPruning = 'false',
+	MinEdgeLength = 0,
+	Epsilon = 0.00001,
+	MinDistance = 0.00001,
+	Algorithm2 = 'true';
+END; [ALGORITHM]
+
+BEGIN SPLITS;
+TITLE 'Splits';
+LINK ALGORITHM = 'Neighbor Net';
+DIMENSIONS ntax=6 nsplits=13;
+FORMAT labels=no weights=yes confidences=no;
+PROPERTIES fit=100 cyclic;
+CYCLE 1 5 4 3 2 6;
+MATRIX
+[1, size=1] 	 177.95746595 	 1,
+[2, size=2] 	 13.20577769 	 1 6,
+[3, size=1] 	 69.811674 	 1 2 3 4 6,
+[4, size=1] 	 78.15114778 	 1 2 3 4 5,
+[5, size=2] 	 0.52916407 	 1 3 4 5,
+[6, size=3] 	 4.43438195 	 1 4 5,
+[7, size=2] 	 2.91359695 	 1 5,
+[8, size=1] 	 36.95746595 	 1 3 4 5 6,
+[9, size=2] 	 6.59021057 	 1 4 5 6,
+[10, size=3] 	 28.0801739 	 1 5 6,
+[11, size=1] 	 40.95746595 	 1 2 4 5 6,
+[12, size=2] 	 1.52916407 	 1 2 5 6,
+[13, size=1] 	 43.00535583 	 1 2 3 5 6,
+;
+END; [SPLITS]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Razor Net';
+DIMENSIONS nVertices=17 nEdges=23;
+TYPE Other;
+VERTICES
+	id=1 label='Lemur_catta' x='-146.5021' y='-128.7339',
+	id=2 label='Homo_sapiens' x='-17.9798' y='116.2225',
+	id=3 label='Pan' x='116.1822' y='62.7782',
+	id=4 label='Gorilla' x='144.5068' y='7.5264',
+	id=5 label='Pongo' x='-151.6836' y='66.0511',
+	id=6 label='Hylobates' x='-11.769' y='-136.7456',
+	id=7 x='-32.3651' y='-33.4869',
+	id=8 x='-2.8219' y='48.637',
+	id=9 x='55.4074' y='20.3196',
+	id=10 x='70.8404' y='10.6372',
+	id=11 x='-68.9559' y='31.5257',
+	id=12 x='-0.3393' y='-38.2975',
+	id=13 x='37.4945' y='7.6219',
+	id=14 x='-36.6562' y='11.1756',
+	id=15 x='-14.4062' y='-66.5827',
+	id=16 x='29.9509' y='34.6991',
+	id=17 x='27.988' y='-14.1101'
+;
+EDGES
+	id=1 sid=1 tid=7 weight='178',
+	id=2 sid=2 tid=8 weight='35.5',
+	id=3 sid=3 tid=9 weight='40.5',
+	id=4 sid=4 tid=10 weight='40',
+	id=5 sid=5 tid=11 weight='65.5',
+	id=6 sid=6 tid=12 weight='76',
+	id=7 sid=7 tid=13 weight='43.5',
+	id=8 sid=7 tid=14 weight='13.5',
+	id=9 sid=7 tid=15 weight='7.5',
+	id=10 sid=8 tid=11 weight='44',
+	id=11 sid=8 tid=12 weight='51.5',
+	id=12 sid=8 tid=16 weight='3.5',
+	id=13 sid=9 tid=17 weight='7',
+	id=14 sid=9 tid=16 weight='0.5',
+	id=15 sid=10 tid=13 weight='0.5',
+	id=16 sid=10 tid=16 weight='14',
+	id=17 sid=11 tid=14 weight='4',
+	id=18 sid=12 tid=15 weight='2.5',
+	id=19 sid=12 tid=16 weight='52',
+	id=20 sid=17 tid=13 weight='7',
+	id=21 sid=17 tid=14 weight='37',
+	id=22 sid=17 tid=15 weight='43',
+	id=23 sid=13 tid=14 weight='40'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Show Splits';
+LINK SPLITS = 'Splits';
+NAME 'Show Splits';
+OPTIONS
+	View = 'SplitNetwork';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'SplitNetwork';
+LINK ALGORITHM = 'Show Splits';
+NAME 'SplitNetwork';
+INPUT 'SPLITS';
+OPTIONS
+	Diagram = 'Splits',
+	Orientation = 'Rotate0Deg',
+	Rooting = 'None',
+	ZoomFactor = 1,
+	FontScaleFactor = 1,
+	RootAngle = 160,
+	OutlineFill = 0xffe6b3ff,
+	LabelSplitsBy = 'None',
+	ShowQRCode = 'false';
+END; [VIEW]
+
+BEGIN VIEW;
+TITLE 'Network';
+LINK ALGORITHM = 'Show Network';
+NAME 'Network';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'Weights',
+	Edits = 'mn:1:-181.47,-140.2' 'mn:2:-35.99,-135.62' 'mn:3:119.16,-127.02' 'mn:4:151.02,93.48' 'mn:5:-187.43,58.62' 'mn:6:66.49,171.6' 'mn:7:-62.36,-3.8' 'mn:8:-12.17,-55.81' 'mn:9:-27.86,12.28' 'mn:10:30.18,-46.64' 'mn:11:72.74,-51.17' 'mn:12:75.29,38.77' 'mn:13:-12.16,54.39' 'mn:14:-51.26,43.15' 'mn:15:-82.66,13.13' 'mn:16:11.4,25.07' 'mn:17:40.38,50.51' 'mn:18:83.77,-2.42' 'mn:19:-92.44,64.67' 'mn:20:2.83,-40.11' 'mn:21:114.62,14.7' 'mn:22:55.47,-16.12',
+	LayoutSeed = 680;
+END; [VIEW]

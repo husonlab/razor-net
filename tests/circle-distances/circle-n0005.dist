@@ -1,0 +1,8 @@
+# RazorNet test instance
+# type=circle n=5 seed=-1488139573943419793 referenceLength=663 referenceIsOptimal=false
+5
+t1	0	360	263	368	245
+t2	360	0	357	236	315
+t3	263	357	0	267	356
+t4	368	236	267	0	355
+t5	245	315	356	355	0
