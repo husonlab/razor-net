@@ -14,7 +14,7 @@ This repository holds:
    module path via `module-info.java` and on the class path via `META-INF/services`. When RazorNet is released,
    SplitsTree6 will offer them too; whether they move into the splitstree6 code base or SplitsTree6 uses
    `razornet-algorithms` as an external dependency is not decided yet.
-2. **The stand-alone RazorNet program** — module `app/`, artifact `razornet`: a JavaFX application built on
+2. **The stand-alone RazorNet program** — module `app/`, artifact `razornet-app`: a JavaFX application built on
    SplitsTree6 through its `IAppProfile` interface (`razornet.main.RazorNet`), the command-line tool
    `razornet.tools.RunRazorNet`, and the test suite `razornet.testsuite`.
 

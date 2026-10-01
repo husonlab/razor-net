@@ -26,12 +26,12 @@
 
     <parent>
         <groupId>org.husonlab</groupId>
-        <artifactId>razornet-parent</artifactId>
+        <artifactId>razornet</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>razornet</artifactId>
+    <artifactId>razornet-app</artifactId>
     <packaging>jar</packaging>
 
     <properties>
