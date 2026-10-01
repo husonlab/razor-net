@@ -63,7 +63,8 @@ java -cp ... razornet.testsuite.RunHaplotypeNet examples/rhabdoviruses/PAegRV.fa
 rather than at `tests`, since `tests/example-distances` holds matrices on which a run without a time budget takes
 very long.
 
-Installers are built by `build-installers` (`apps/razornet/config.json`).
+Installers are built by `build-installers` (`apps/razornet/config.json`) and published as releases of this
+repository, which is where the program's *Check for Updates* looks (`razornet.main.Version.HOME_URL`).
 
 ## Options of RazorNet
 
