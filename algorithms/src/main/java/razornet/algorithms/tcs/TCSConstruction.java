@@ -31,9 +31,10 @@ import java.util.*;
  * order of increasing distance, laying paths of unit steps through intermediate vertices. Candidate attachment
  * points are scored by how many distances between the two components the new path reproduces.
  * <p>
- * Based on the implementation in PopART (Leigh &amp; Bryant 2015, {@code src/networks/TCS.cpp}, GPL-3), modified
- * so that a join that adds nothing is skipped instead of raising an error. The input is an integer distance
- * matrix; the network need not realize it. The 95% parsimony connection limit is not implemented.
+ * Follows the implementation in PopART (Leigh &amp; Bryant 2015, {@code src/networks/TCS.cpp}, GPL-3) step by
+ * step, except that a join is skipped where PopART raises an error because a shorter path already joins the two
+ * attachment points. The input is an integer distance matrix; the network need not realize it. The 95% parsimony
+ * connection limit is not implemented, as in PopART.
  *
  * @author Daniel Huson, 8.2026
  */
@@ -44,15 +45,16 @@ public class TCSConstruction {
 	private static final int SHORTCUT_PENALTY = 10;
 	private static final int LONG_PENALTY = 5;
 
-	private static final int NO_COMPONENT = -1;   // an intermediate vertex: in no component, reusable by both sides
+	// an intermediate vertex laid in the current pass: in no component yet, and usable from both sides
+	private static final int NO_COMPONENT = -1;
 
 	/**
 	 * the result of a run
 	 *
 	 * @param graph         the network, taxa at node ids 0..n-1, edge weights in units of the input distance
 	 * @param intermediates the number of intermediate vertices created (before smoothing)
-	 * @param joinsSkipped  the number of joins that added nothing, because the two components were already at
-	 *                      least as close as the distance being merged
+	 * @param joinsSkipped  the number of joins skipped because a shorter path already joined the two attachment
+	 *                      points, where PopART raises an error
 	 */
 	public record Result(IntGraph graph, int intermediates, int joinsSkipped) {
 	}
@@ -68,7 +70,7 @@ public class TCSConstruction {
 		for (var i = 0; i < ntax; i++)
 			graph.ensureNode(i);
 
-		// component[v] for every vertex; intermediate vertices are in no component (NO_COMPONENT)
+		// component[v] for every vertex; an intermediate vertex is in no component until the pass that laid it ends
 		var component = new ArrayList<Integer>();
 		for (var i = 0; i < ntax; i++)
 			component.add(i);
@@ -123,8 +125,10 @@ public class TCSConstruction {
 				if (componentA == NO_COMPONENT)
 					break;   // nothing left to merge in this bucket
 
+				// the two components and the intermediate vertices laid between them are one component from here on
 				for (var x = 0; x < component.size(); x++) {
-					if (component.get(x).equals(componentB))
+					var c = component.get(x);
+					if (c == componentB || c == NO_COMPONENT)
 						component.set(x, componentA);
 				}
 				pending = deferred;
@@ -137,7 +141,8 @@ public class TCSConstruction {
 	/**
 	 * join the component of {@code u} to the component of {@code v} with a path of {@code distance} unit steps
 	 *
-	 * @return the number of intermediate vertices created, or -1 if the join added nothing
+	 * @return the number of intermediate vertices created, or -1 if the join was skipped because a shorter path
+	 * already joins the two attachment points
 	 */
 	private static int join(IntGraph graph, List<Integer> component, int[][] distances, int u, int v,
 							int distance, int componentA, int componentB) {
@@ -193,13 +198,10 @@ public class TCSConstruction {
 		if (bestScore == Integer.MIN_VALUE)
 			bestGap = distance;   // no admissible attachment: fall back to joining u and v directly
 
-		if (bestI == bestJ)
-			return -1;
-
-		// the two points are already at least as close as the path to be added: nothing to add
+		// a path of this length already joins the two points: nothing to add; a shorter one is an error in PopART
 		var existing = breadthFirst(graph, bestI)[bestJ];
 		if (existing >= 0 && existing <= bestGap)
-			return -1;
+			return existing == bestGap ? 0 : -1;
 
 		var previous = bestI;
 		var created = 0;

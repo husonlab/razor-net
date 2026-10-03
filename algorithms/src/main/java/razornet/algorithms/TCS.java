@@ -45,10 +45,10 @@ import java.util.List;
  * increasing distance by paths of unit steps through intermediate vertices ({@link TCSConstruction}); unlabeled
  * vertices of degree at most two are then suppressed.
  * <p>
- * Based on the implementation in PopART (Leigh &amp; Bryant 2015), modified so that it does not fail when two
- * components are already closer than the distance being merged. The input is a distance matrix that counts
+ * Follows the implementation in PopART (Leigh &amp; Bryant 2015), except that it does not fail where PopART raises
+ * an error because a shorter path already joins two attachment points. The input is a distance matrix that counts
  * mutations; other distances are rounded to integers. The network need not realize the distances. The 95%
- * parsimony connection limit is not implemented.
+ * parsimony connection limit is not implemented, as in PopART.
  *
  * @author Daniel Huson, 8.2026
  */
@@ -142,7 +142,7 @@ public class TCS extends Distances2Network {
 				groups.size(), result.intermediates(), result.intermediates() - smoothed.nodesRemoved(),
 				network.getNumberOfEdges());
 		if (result.joinsSkipped() > 0)
-			System.err.printf("TCS: %,d joins added nothing, the two components already being at least that close "
+			System.err.printf("TCS: %,d joins skipped, a shorter path already joining the two attachment points "
 							  + "(PopART raises an error here)%n", result.joinsSkipped());
 	}
 
