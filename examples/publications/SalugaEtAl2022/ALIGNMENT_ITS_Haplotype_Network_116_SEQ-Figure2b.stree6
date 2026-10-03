@@ -3,17 +3,18 @@
 BEGIN SPLITSTREE6;
 DIMENSIONS nDataNodes=12 nAlgorithms=8;
 PROGRAM version='SplitsTree (version dev) - License GPL v3';
-WORKFLOW creationDate='1790599790718'; [Mon Sep 28 14:49:50 CEST 2026]
+WORKFLOW creationDate='1790950824724'; [Fri Oct 02 16:20:24 CEST 2026]
 END; [SPLITSTREE6]
 
 [
 Methods:
 Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.), (Hayamizu et al, 2026 ; M. Hayamizu, others, DH Huson, in preparation).
 The original input consisted of 17 taxa and 17 DNA sequences of length 951.
+After removal of one taxon, the input consisted of 16 taxa and 16 DNA sequences of length 40.
 After removal of 911 characters, the input had 40 characters.
-The Razor Haplo Net method was used (default options) so as to obtain 23 nodes and 28 edges.
-The TCS Haplotype Network method (Templeton et al 1992, Leigh & Bryant 2015) was used (default options) so as to obtain 21 nodes and 23 edges.
-The Simplify Filter method was used (default options) so as to obtain 22 nodes and 25 edges.
+The Razor Haplo Net method was used (default options) so as to obtain 22 nodes and 27 edges.
+The TCS Haplotype Network method (Templeton et al 1992, Leigh & Bryant 2015) was used (default options) so as to obtain 20 nodes and 22 edges.
+The Simplify Filter method was used (default options) so as to obtain 21 nodes and 23 edges.
 
 References:
 Hayamizu et al, 2026: M. Hayamizu, others, DH Huson, in preparation
@@ -98,13 +99,13 @@ BEGIN ALGORITHM;
 TITLE 'Taxa Filter';
 NAME 'Taxa Filter';
 OPTIONS
-;
+	DisabledTaxa = 'PAT-05';
 END; [ALGORITHM]
 
 BEGIN TAXA;
 TITLE 'Working Taxa';
 LINK ALGORITHM = 'Taxa Filter';
-DIMENSIONS ntax=17;
+DIMENSIONS ntax=16;
 TAXLABELS
 	[1] 'R17'
 	[2] 'R13'
@@ -122,7 +123,6 @@ TAXLABELS
 	[14] 'R03'
 	[15] 'R02'
 	[16] 'R15'
-	[17] 'PAT-05'
 ;
 [DISPLAYLABELS;]
 TAXINFO
@@ -142,36 +142,34 @@ TAXINFO
 	[14] 'MRO-01,MRO-02,PEL-01,PEL-02,QML-03,QML-01,QML-02,QML-04,VIC-17,VIC-18,VIC-19,VIC-20,VIC-21,VIC-22,VIC-23,VIC-24,VIC-25,VIC-26,VIC-27,VIC-28,VIC-29,MBL-02,MBL-01,VIC-Sgl-c,VIC-Sgl-e,VIC-Sgl-d'
 	[15] 'VIC-01,VIC-02,VIC-03,VIC-04,VIC-05,VIC-06,VIC-07,VIC-08,VIC-09,VIC-10,VIC-11,VIC-12,VIC-13,VIC-14,VIC-15,VIC-16,VIC-Sgl-a,VIC-Sgl-b'
 	[16] 'PAT-10,PAT-02,PAT-04,PAT-Sgl,PAT-08,PAT-09'
-	[17] 'PAT-05'
 ;
 END; [TAXA]
 
 BEGIN TRAITS;
 TITLE 'Working Traits';
 LINK ALGORITHM = 'Taxa Filter';
-DIMENSIONS [nTax=17] nTraits=17;
+DIMENSIONS [nTax=16] nTraits=17;
 FORMAT labels=yes missing=? separator=Comma;
 TRAITCOLOR #f3edb3ff #ab3263ff #eeb782ff #efe364ff #f0cf80ff #dd6d54ff #efb152ff #d44947ff #e6c8e6ff #e99bbcff #8e2b73ff #d64892ff #a04cb5ff #8ccbe2ff #434299ff #bd9738ff #f3edb3ff;
 TRAITLABELS
  'R17' 'R13' 'R05' 'R18' 'R04' 'R16' 'R14' 'R06' 'R07' 'R08' 'R12' 'R11' 'R10' 'R03' 'R02' 'R15' 'PAT-05';
 MATRIX
-[1] 'R17'     15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-[2] 'R13'     0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-[3] 'R05'     0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-[4] 'R18'     0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0
-[5] 'R04'     0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
-[6] 'R16'     0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0
-[7] 'R14'     0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0
-[8] 'R06'     0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0
-[9] 'R07'     0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0
-[10] 'R08'     0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0
-[11] 'R12'     0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0
-[12] 'R11'     0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
-[13] 'R10'     0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-[14] 'R03'     0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,0,0
-[15] 'R02'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0
-[16] 'R15'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0
-[17] 'PAT-05'  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+[1] 'R17'  15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[2] 'R13'  0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[3] 'R05'  0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[4] 'R18'  0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+[5] 'R04'  0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+[6] 'R16'  0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0
+[7] 'R14'  0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0
+[8] 'R06'  0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0
+[9] 'R07'  0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0
+[10] 'R08'  0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0
+[11] 'R12'  0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0
+[12] 'R11'  0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+[13] 'R10'  0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+[14] 'R03'  0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,0,0
+[15] 'R02'  0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,0
+[16] 'R15'  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0
 ;
 END; [TRAITS]
 
@@ -412,27 +410,26 @@ END; [ALGORITHM]
 BEGIN CHARACTERS;
 TITLE 'Working Characters';
 LINK ALGORITHM = 'Input Data Filter';
-DIMENSIONS ntax=17 nchar=40;
+DIMENSIONS ntax=16 nchar=40;
 FORMAT
 	datatype='DNA' missing=? gap=- symbols="01acgt" labels=left transpose=no interleave=yes;
 MATRIX
-R17      catgtcaccaccacaatccgcccaaca0100000100000
-R13      tatgtcaccacctcaatccgccgaaca0000000100000
-R05      tatgtcaccacctcaatccgccgagca0100000100000
-R18      tatgtcaccaccacatgccgcccaaca0000000100000
-R04      tatgtcaccaccacaatccgcccaaca0100000100000
-R16      catgtcaccactacaatccgccgaaca0100000100000
-R14      catgtcaccaccacaatccgccgaaca0100000100000
-R06      tatgtcaccactacaatccgccgaaca0100000100000
-R07      tatgtcaccactacaatccgccgaacg0100000100001
-R08      tatgtcaccaccacaatccgccgaacg0100000100001
-R12      tatgtcaccaccacaatcggccgaaca0110000100000
-R11      tatgtaaccaccactatcggccgaaca0110000100000
-R10      tatgtcaccaccacaatcggccgaaca0100000100000
-R03      tgtgtcctacttaaaatcagtcggaga1111111100011
-R02      tggtgcctacttacaattaattgaaga0101111011111
-R15      catgtcaccaccacaatccgccgagca0100000100000
-'PAT-05' catgtcaccaccacaatccgcccaaca0100000100000
+R17 catgtcaccaccacaatccgcccaaca0100000100000
+R13 tatgtcaccacctcaatccgccgaaca0000000100000
+R05 tatgtcaccacctcaatccgccgagca0100000100000
+R18 tatgtcaccaccacatgccgcccaaca0000000100000
+R04 tatgtcaccaccacaatccgcccaaca0100000100000
+R16 catgtcaccactacaatccgccgaaca0100000100000
+R14 catgtcaccaccacaatccgccgaaca0100000100000
+R06 tatgtcaccactacaatccgccgaaca0100000100000
+R07 tatgtcaccactacaatccgccgaacg0100000100001
+R08 tatgtcaccaccacaatccgccgaacg0100000100001
+R12 tatgtcaccaccacaatcggccgaaca0110000100000
+R11 tatgtaaccaccactatcggccgaaca0110000100000
+R10 tatgtcaccaccacaatcggccgaaca0100000100000
+R03 tgtgtcctacttaaaatcagtcggaga1111111100011
+R02 tggtgcctacttacaattaattgaaga0101111011111
+R15 catgtcaccaccacaatccgccgagca0100000100000
 
 ;
 END; [CHARACTERS]
@@ -447,7 +444,6 @@ OPTIONS
 	RemoveSuperfluous = 'true',
 	ContractUnlabeled = 'true',
 	MissingAsState = 'false',
-	MaxStretchPercent = 0,
 	MaxSeconds = 60;
 END; [ALGORITHM]
 
@@ -466,119 +462,115 @@ END; [ALGORITHM]
 BEGIN NETWORK;
 TITLE 'Network';
 LINK ALGORITHM = 'Razor Haplo Net';
-DIMENSIONS nVertices=23 nEdges=28;
+DIMENSIONS nVertices=22 nEdges=27;
 TYPE HaplotypeNetwork;
 PROPERTIES info ='Total length: 71, excess: 1';
 VERTICES
 	id=1 label='R17' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
-	id=2 label='PAT-05' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
-	id=3 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
-	id=4 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
-	id=5 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
-	id=6 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
-	id=7 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
-	id=8 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
-	id=9 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
-	id=10 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
-	id=11 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
-	id=12 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
-	id=13 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
-	id=14 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
-	id=15 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
-	id=16 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
-	id=17 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
-	id=18 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011',
-	id=19 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
+	id=2 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
+	id=3 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
+	id=4 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
+	id=5 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=6 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=7 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=8 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=9 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
+	id=10 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
+	id=11 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
+	id=12 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
+	id=13 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
+	id=14 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
+	id=15 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
+	id=16 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
+	id=17 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011',
+	id=18 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
 	id=20 states='TATGTCACCACCACAATCCGCCCAACA0000000100000',
-	id=21 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
-	id=22 states='TATGTCACCACCTCAATCCGCCGAACA0100000100000',
-	id=23 states='TATGTCACCACTACAATCCGCCGAACA0100000100001'
+	id=21 states='TATGTCACCACTACAATCCGCCGAACA0100000100001',
+	id=22 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=23 states='TATGTCACCACCTCAATCCGCCGAACA0100000100000'
 ;
 EDGES
-	id=1 sid=3 tid=20 weight='2' sites='356,614',
-	id=2 sid=3 tid=22 weight='1' sites='938',
-	id=3 sid=4 tid=17 weight='2' sites='125,356',
-	id=4 sid=4 tid=22 weight='1' sites='742',
-	id=5 sid=5 tid=20 weight='2' sites='474,476',
-	id=6 sid=6 tid=20 weight='1' sites='938',
-	id=7 sid=6 tid=21 weight='1' sites='614',
-	id=8 sid=7 tid=8 weight='1' sites='343',
-	id=9 sid=7 tid=9 weight='1' sites='125',
-	id=10 sid=8 tid=17 weight='1' sites='742',
-	id=11 sid=8 tid=21 weight='1' sites='125',
-	id=12 sid=9 tid=21 weight='1' sites='343',
-	id=13 sid=9 tid=23 weight='1' sites='951',
-	id=14 sid=10 tid=11 weight='1' sites='343',
-	id=15 sid=10 tid=23 weight='1' sites='816',
-	id=16 sid=11 tid=21 weight='2' sites='816,951',
-	id=17 sid=12 tid=13 weight='2' sites='245,398',
-	id=18 sid=12 tid=14 weight='1' sites='939',
-	id=19 sid=12 tid=19 weight='16' sites='142,285,286,293,294,301,343,546,607,762,940,941,942,944,950,951',
-	id=20 sid=15 tid=19 weight='3' sites='365,741,936',
-	id=21 sid=16 tid=18 weight='10' sites='146,149,150,545,605,608,946,947,948,949',
-	id=22 sid=18 tid=19 weight='1' sites='939',
-	id=23 sid=21 tid=22 weight='1' sites='356',
-	id=24 sid=18 tid=23 weight='14' sites='142,285,286,293,294,301,546,607,762,940,941,942,944,950',
-	id=25 sid=14 tid=21 weight='1' sites='546',
-	id=26 sid=2 tid=1 weight='0' sites='',
-	id=27 sid=6 tid=1 weight='1' sites='125',
-	id=28 sid=8 tid=1 weight='1' sites='614'
+	id=1 sid=1 tid=5 weight='1' sites='1',
+	id=2 sid=1 tid=7 weight='1' sites='23',
+	id=3 sid=2 tid=20 weight='2' sites='13,23',
+	id=4 sid=2 tid=23 weight='1' sites='29',
+	id=5 sid=3 tid=16 weight='2' sites='1,13',
+	id=6 sid=3 tid=23 weight='1' sites='25',
+	id=7 sid=4 tid=20 weight='2' sites='16,17',
+	id=8 sid=5 tid=20 weight='1' sites='29',
+	id=9 sid=5 tid=22 weight='1' sites='23',
+	id=10 sid=6 tid=7 weight='1' sites='12',
+	id=11 sid=6 tid=8 weight='1' sites='1',
+	id=12 sid=7 tid=16 weight='1' sites='25',
+	id=13 sid=7 tid=22 weight='1' sites='1',
+	id=14 sid=8 tid=21 weight='1' sites='40',
+	id=15 sid=8 tid=22 weight='1' sites='12',
+	id=16 sid=9 tid=10 weight='1' sites='12',
+	id=17 sid=9 tid=21 weight='1' sites='27',
+	id=18 sid=10 tid=22 weight='2' sites='27,40',
+	id=19 sid=11 tid=12 weight='2' sites='6,15',
+	id=20 sid=11 tid=13 weight='1' sites='30',
+	id=21 sid=11 tid=18 weight='16' sites='2,7,8,9,10,11,12,19,21,26,31,32,33,34,39,40',
+	id=23 sid=14 tid=18 weight='3' sites='14,24,28',
+	id=24 sid=15 tid=17 weight='10' sites='3,4,5,18,20,22,35,36,37,38',
+	id=25 sid=17 tid=18 weight='1' sites='30',
+	id=29 sid=22 tid=23 weight='1' sites='13',
+	id=31 sid=17 tid=21 weight='14' sites='2,7,8,9,10,11,19,21,26,31,32,33,34,39',
+	id=32 sid=13 tid=22 weight='1' sites='19'
 ;
 END; [NETWORK]
 
 BEGIN NETWORK;
 TITLE 'Network-2';
 LINK ALGORITHM = 'TCS Haplotype Network';
-DIMENSIONS nVertices=21 nEdges=23;
+DIMENSIONS nVertices=20 nEdges=22;
 TYPE HaplotypeNetwork;
-PROPERTIES info ='Total length: 66, excess: 93';
+PROPERTIES info ='Total length: 66, excess: 89';
 VERTICES
 	id=1 label='R17' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
-	id=2 label='PAT-05' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
-	id=3 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
-	id=4 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
-	id=5 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
-	id=6 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
-	id=7 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
-	id=8 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
-	id=9 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
-	id=10 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
-	id=11 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
-	id=12 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
-	id=13 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
-	id=14 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
-	id=15 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
-	id=16 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
-	id=17 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
+	id=2 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
+	id=3 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
+	id=4 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
+	id=5 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=6 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=7 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=8 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=9 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
+	id=10 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
+	id=11 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
+	id=12 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
+	id=13 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
+	id=14 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
+	id=15 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
+	id=16 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
 	id=18 states='TATGTCACCACTACAATCCGCCGAACA0100000100001',
 	id=19 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
 	id=20 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
 	id=21 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011'
 ;
 EDGES
-	id=1 sid=5 tid=6 weight='3' sites='474,476,938',
-	id=2 sid=6 tid=19 weight='1' sites='614',
-	id=3 sid=7 tid=8 weight='1' sites='343',
-	id=4 sid=7 tid=9 weight='1' sites='125',
-	id=5 sid=8 tid=17 weight='1' sites='742',
-	id=6 sid=8 tid=19 weight='1' sites='125',
-	id=7 sid=9 tid=18 weight='1' sites='951',
-	id=8 sid=9 tid=19 weight='1' sites='343',
-	id=9 sid=10 tid=11 weight='1' sites='343',
-	id=10 sid=10 tid=18 weight='1' sites='816',
-	id=11 sid=12 tid=13 weight='2' sites='245,398',
-	id=12 sid=12 tid=14 weight='1' sites='939',
-	id=13 sid=12 tid=20 weight='16' sites='142,285,286,293,294,301,343,546,607,762,940,941,942,944,950,951',
-	id=14 sid=14 tid=19 weight='1' sites='546',
-	id=15 sid=15 tid=20 weight='3' sites='365,741,936',
-	id=16 sid=16 tid=21 weight='10' sites='146,149,150,545,605,608,946,947,948,949',
-	id=17 sid=18 tid=21 weight='14' sites='142,285,286,293,294,301,546,607,762,940,941,942,944,950',
-	id=18 sid=20 tid=21 weight='1' sites='939',
-	id=19 sid=2 tid=1 weight='0' sites='',
-	id=20 sid=6 tid=1 weight='1' sites='125',
-	id=21 sid=8 tid=1 weight='1' sites='614',
-	id=22 sid=3 tid=4 weight='2' sites='742,938',
-	id=23 sid=17 tid=4 weight='2' sites='125,356'
+	id=1 sid=1 tid=5 weight='1' sites='1',
+	id=2 sid=1 tid=7 weight='1' sites='23',
+	id=5 sid=4 tid=5 weight='3' sites='16,17,29',
+	id=6 sid=5 tid=19 weight='1' sites='23',
+	id=7 sid=6 tid=7 weight='1' sites='12',
+	id=8 sid=6 tid=8 weight='1' sites='1',
+	id=9 sid=7 tid=16 weight='1' sites='25',
+	id=10 sid=7 tid=19 weight='1' sites='1',
+	id=11 sid=8 tid=18 weight='1' sites='40',
+	id=12 sid=8 tid=19 weight='1' sites='12',
+	id=13 sid=9 tid=10 weight='1' sites='12',
+	id=14 sid=9 tid=18 weight='1' sites='27',
+	id=15 sid=11 tid=12 weight='2' sites='6,15',
+	id=16 sid=11 tid=13 weight='1' sites='30',
+	id=17 sid=11 tid=20 weight='16' sites='2,7,8,9,10,11,12,19,21,26,31,32,33,34,39,40',
+	id=18 sid=13 tid=19 weight='1' sites='19',
+	id=19 sid=14 tid=20 weight='3' sites='14,24,28',
+	id=20 sid=15 tid=21 weight='10' sites='3,4,5,18,20,22,35,36,37,38',
+	id=22 sid=18 tid=21 weight='14' sites='2,7,8,9,10,11,19,21,26,31,32,33,34,39',
+	id=23 sid=20 tid=21 weight='1' sites='30',
+	id=24 sid=2 tid=3 weight='2' sites='25,29',
+	id=25 sid=16 tid=3 weight='2' sites='1,13'
 ;
 END; [NETWORK]
 
@@ -622,7 +614,7 @@ OPTIONS
 	TraitLegend = 'Indeterminant',
 	TraitSize = 32,
 	SitesStyle = 'Hatches',
-	Edits = 'mn:11:54.11,18.04' 'mn:7:162.33,0' 'mn:21:54.11,-54.11' 'mn:12:18.04,-18.04' 'mn:14:18.04,-54.11' 'mn:17:216.45,-54.11' 'mn:15:-72.15,288.59' 'mn:3:72.15,-180.37' 'mn:9:108.22,0' 'mn:23:108.22,108.22' 'mn:5:0,-198.41' 'mn:16:252.52,288.59' 'mn:18:108.22,288.59' 'mn:22:162.33,-126.26' 'mn:10:54.11,108.22' 'mn:6:0,-108.22' 'mn:4:216.45,-126.26' 'mn:1:54.11,-108.22' 'mn:19:18.04,288.59' 'mn:2:90.19,-144.3' 'mn:20:0,-144.3' 'mn:8:162.33,-54.11' 'mn:13:-36.07,-18.04' 'ml:13:0,0' 'ml:11:0,0' 'ml:9:0,0',
+	Edits = 'mn:10:-90.72,-60.48' 'mn:17:-30.24,181.43' 'mn:2:-241.91,-181.43' 'mn:15:151.2,181.43' 'mn:7:30.24,-181.43' 'mn:1:0,-302.39' 'mn:6:30.24,-120.96' 'mn:22:-90.72,-181.43' 'mn:16:60.48,-241.91' 'mn:8:-30.24,-120.96' 'mn:18:-151.2,181.43' 'mn:20:-181.43,-302.39' 'mn:23:-181.43,-181.43' 'mn:11:-151.2,-60.48' 'mn:9:-90.72,0' 'mn:14:-272.15,181.43' 'mn:4:-241.91,-423.35' 'mn:5:-90.72,-302.39' 'mn:21:-30.24,-60.48' 'mn:13:-151.2,-120.96' 'mn:12:-272.15,-60.48' 'mn:3:-151.2,-241.91',
 	LayoutSeed = 1,
 	LayoutAlgorithm = 'ForceDirected';
 END; [VIEW]
@@ -630,59 +622,56 @@ END; [VIEW]
 BEGIN NETWORK;
 TITLE 'Network-3-2';
 LINK ALGORITHM = 'Simplify Filter';
-DIMENSIONS nVertices=22 nEdges=25;
+DIMENSIONS nVertices=21 nEdges=23;
 TYPE HaplotypeNetwork;
-PROPERTIES info ='Total length: 67, excess: 5';
+PROPERTIES info ='Total length: 66, excess: 9';
 VERTICES
 	id=1 label='R17' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
-	id=2 label='PAT-05' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
-	id=3 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
-	id=4 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
-	id=5 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
-	id=6 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
-	id=7 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
-	id=8 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
-	id=9 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
-	id=10 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
-	id=11 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
-	id=12 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
-	id=13 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
-	id=14 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
-	id=15 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
-	id=16 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
-	id=17 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
-	id=18 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011',
-	id=19 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
-	id=20 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
-	id=21 states='TATGTCACCACCTCAATCCGCCGAACA0100000100000',
-	id=22 states='TATGTCACCACTACAATCCGCCGAACA0100000100001'
+	id=2 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
+	id=3 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
+	id=4 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
+	id=5 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=6 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=7 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=8 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=9 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
+	id=10 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
+	id=11 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
+	id=12 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
+	id=13 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
+	id=14 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
+	id=15 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
+	id=16 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
+	id=17 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011',
+	id=18 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
+	id=21 states='TATGTCACCACTACAATCCGCCGAACA0100000100001',
+	id=22 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=23 states='TATGTCACCACCTCAATCCGCCGAACA0100000100000'
 ;
 EDGES
-	id=1 sid=3 tid=21 weight='1' sites='938',
-	id=2 sid=4 tid=21 weight='1' sites='742',
-	id=3 sid=6 tid=20 weight='1' sites='614',
-	id=4 sid=7 tid=8 weight='1' sites='343',
-	id=5 sid=7 tid=9 weight='1' sites='125',
-	id=6 sid=8 tid=17 weight='1' sites='742',
-	id=7 sid=8 tid=20 weight='1' sites='125',
-	id=8 sid=9 tid=20 weight='1' sites='343',
-	id=9 sid=9 tid=22 weight='1' sites='951',
-	id=10 sid=10 tid=11 weight='1' sites='343',
-	id=11 sid=10 tid=22 weight='1' sites='816',
-	id=12 sid=11 tid=20 weight='2' sites='816,951',
-	id=13 sid=12 tid=13 weight='2' sites='245,398',
-	id=14 sid=12 tid=14 weight='1' sites='939',
-	id=15 sid=12 tid=19 weight='16' sites='142,285,286,293,294,301,343,546,607,762,940,941,942,944,950,951',
-	id=16 sid=15 tid=19 weight='3' sites='365,741,936',
-	id=17 sid=16 tid=18 weight='10' sites='146,149,150,545,605,608,946,947,948,949',
-	id=18 sid=18 tid=19 weight='1' sites='939',
-	id=19 sid=20 tid=21 weight='1' sites='356',
-	id=20 sid=18 tid=22 weight='14' sites='142,285,286,293,294,301,546,607,762,940,941,942,944,950',
-	id=21 sid=14 tid=20 weight='1' sites='546',
-	id=22 sid=2 tid=1 weight='0' sites='',
-	id=23 sid=6 tid=1 weight='1' sites='125',
-	id=24 sid=8 tid=1 weight='1' sites='614',
-	id=25 sid=5 tid=6 weight='3' sites='474,476,938'
+	id=2 sid=1 tid=7 weight='1' sites='23',
+	id=4 sid=2 tid=23 weight='1' sites='29',
+	id=6 sid=3 tid=23 weight='1' sites='25',
+	id=9 sid=5 tid=22 weight='1' sites='23',
+	id=10 sid=6 tid=7 weight='1' sites='12',
+	id=11 sid=6 tid=8 weight='1' sites='1',
+	id=12 sid=7 tid=16 weight='1' sites='25',
+	id=13 sid=7 tid=22 weight='1' sites='1',
+	id=14 sid=8 tid=21 weight='1' sites='40',
+	id=15 sid=8 tid=22 weight='1' sites='12',
+	id=16 sid=9 tid=10 weight='1' sites='12',
+	id=17 sid=9 tid=21 weight='1' sites='27',
+	id=18 sid=10 tid=22 weight='2' sites='27,40',
+	id=19 sid=11 tid=12 weight='2' sites='6,15',
+	id=20 sid=11 tid=13 weight='1' sites='30',
+	id=21 sid=11 tid=18 weight='16' sites='2,7,8,9,10,11,12,19,21,26,31,32,33,34,39,40',
+	id=23 sid=14 tid=18 weight='3' sites='14,24,28',
+	id=24 sid=15 tid=17 weight='10' sites='3,4,5,18,20,22,35,36,37,38',
+	id=25 sid=17 tid=18 weight='1' sites='30',
+	id=29 sid=22 tid=23 weight='1' sites='13',
+	id=31 sid=17 tid=21 weight='14' sites='2,7,8,9,10,11,19,21,26,31,32,33,34,39',
+	id=32 sid=13 tid=22 weight='1' sites='19',
+	id=33 sid=4 tid=5 weight='3' sites='16,17,29'
 ;
 END; [NETWORK]
 
@@ -698,7 +687,7 @@ OPTIONS
 	TraitLegend = 'Indeterminant',
 	TraitSize = 32,
 	SitesStyle = 'Hatches',
-	Edits = 'mn:1:160.54,-133.79' 'mn:11:374.6,-26.76' 'mn:5:80.27,-80.27' 'mn:21:267.57,214.06' 'mn:19:214.06,-80.27' 'mn:7:267.57,-133.79' 'mn:15:53.51,214.06' 'mn:4:214.06,-267.57' 'mn:9:267.57,-80.27' 'mn:16:428.12,214.06' 'mn:20:160.54,214.06' 'mn:6:160.54,-80.27' 'mn:13:80.27,0' 'mn:10:321.09,-26.76' 'mn:8:214.06,-133.79' 'mn:17:214.06,-187.3' 'mn:18:267.57,-26.76' 'mn:14:214.06,0' 'mn:3:214.06,-347.84' 'mn:12:160.54,0' 'mn:2:160.54,-187.3',
+	Edits = 'mn:1:-203.7,-203.7' 'mn:2:135.8,-203.7' 'mn:3:33.95,-203.7' 'mn:4:-237.65,-271.6' 'mn:5:-237.65,-169.75' 'mn:6:-135.8,-101.85' 'mn:7:-135.8,-203.7' 'mn:8:-135.8,0' 'mn:9:-67.9,-67.9' 'mn:10:-67.9,-135.8' 'mn:11:-237.65,33.95' 'mn:12:-339.5,33.95' 'mn:13:-237.65,-33.95' 'mn:14:-339.5,271.6' 'mn:15:135.8,271.6' 'mn:16:-67.9,-203.7' 'mn:18:-67.9,0' 'mn:19:-237.65,-101.85' 'mn:20:-237.65,271.6' 'mn:21:-67.9,271.6',
 	LayoutSeed = 1,
 	LayoutAlgorithm = 'ForceDirected';
 END; [VIEW]
@@ -723,7 +712,7 @@ OPTIONS
 	TraitLegend = 'Indeterminant',
 	TraitSize = 32,
 	SitesStyle = 'Hatches',
-	Edits = 'mn:1:200.84,-178.52' 'mn:2:245.47,-178.52' 'mn:3:44.63,-156.21' 'mn:4:0,-89.26' 'mn:5:111.58,-267.78' 'mn:6:111.58,-178.52' 'mn:7:200.84,-22.32' 'mn:8:200.84,-89.26' 'mn:9:111.58,-22.32' 'mn:10:178.52,111.58' 'mn:11:178.52,44.63' 'mn:12:0,44.63' 'mn:13:-66.95,44.63' 'mn:14:44.63,44.63' 'mn:15:-89.26,267.78' 'mn:16:267.78,267.78' 'mn:17:267.78,-89.26' 'mn:18:111.58,267.78' 'mn:19:0,267.78' 'mn:20:111.58,-89.26' 'mn:21:44.63,-89.26' 'mn:22:111.58,111.58',
+	Edits = 'mn:1:189.75,-189.75' 'mn:13:63.25,0' 'mn:23:126.5,-126.5' 'mn:4:-63.25,-63.25' 'mn:2:126.5,-189.75' 'mn:10:126.5,31.62' 'mn:9:126.5,94.87' 'mn:16:253,-253' 'mn:14:-63.25,347.87' 'mn:21:189.75,94.87' 'mn:8:189.75,-63.25' 'mn:18:63.25,347.87' 'mn:5:63.25,-63.25' 'mn:17:189.75,347.87' 'mn:11:63.25,63.25' 'mn:6:253,-63.25' 'mn:3:63.25,-126.5' 'mn:7:253,-189.75' 'mn:15:347.87,347.87' 'mn:12:-31.62,63.25' 'mn:22:126.5,-63.25',
 	LayoutSeed = 1,
 	LayoutAlgorithm = 'ForceDirected';
 END; [VIEW]
