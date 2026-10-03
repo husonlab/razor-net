@@ -1,0 +1,105 @@
+file	sequences	haplotypes	sites	method	status	seconds	nodes	auxiliary	edges	cycles	mutations	excess	exactPairs	maxRatio
+examples/rhabdoviruses/CCapSV.fas	19	15	1277	TCS	ok	0.25	24	9	26	3	52	4	0.9810	1.1667
+examples/rhabdoviruses/CCapSV.fas	19	15	1277	RazorHaploNet	ok	0.71	26	11	28	3	53	0	1.0000	1.0000
+examples/rhabdoviruses/CCapSV.fas	19	15	1277	RazorHaploNet+Simplify	ok	0.72	24	9	24	1	50	28	0.8667	1.3333
+examples/rhabdoviruses/CCapSV.fas	19	15	1277	MedianJoining	ok	0.03	22	7	23	2	51	20	0.9429	1.4444
+examples/rhabdoviruses/DImmSV.fas	87	43	1277	TCS	ok	0.29	46	3	46	1	70	30	0.9823	1.5714
+examples/rhabdoviruses/DImmSV.fas	87	43	1277	RazorHaploNet	ok	2.67	46	3	48	3	84	4	0.9956	1.1111
+examples/rhabdoviruses/DImmSV.fas	87	43	1277	RazorHaploNet+Simplify	ok	2.68	46	3	46	1	75	12	0.9922	2.0000
+examples/rhabdoviruses/DImmSV.fas	87	43	1277	MedianJoining	ok	0.04	46	3	46	1	70	30	0.9823	1.5714
+examples/rhabdoviruses/PAegRV.fas	131	90	1246	TCS	ok	0.49	121	31	128	8	423	15798	0.5493	2.5000
+examples/rhabdoviruses/PAegRV.fas	131	90	1246	RazorHaploNet	ok	57.28	214	124	315	102	1967	490	0.9199	1.4000
+examples/rhabdoviruses/PAegRV.fas	131	90	1246	RazorHaploNet+Simplify	ok	61.79	133	43	140	8	526	1791	0.8027	3.2000
+examples/rhabdoviruses/PAegRV.fas	131	90	1246	MedianJoining	ok	0.17	122	32	124	3	336	8934	0.5970	2.4000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Haplotype_Network_116_SEQ.fasta	116	16	712	TCS	ok	0.25	20	4	22	3	66	89	0.7333	2.5000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Haplotype_Network_116_SEQ.fasta	116	16	712	RazorHaploNet	ok	0.85	22	6	27	6	71	1	0.9917	1.0385
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Haplotype_Network_116_SEQ.fasta	116	16	712	RazorHaploNet+Simplify	ok	0.86	21	5	23	3	66	9	0.9583	3.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Haplotype_Network_116_SEQ.fasta	116	16	712	MedianJoining	ok	0.02	21	5	24	4	52	32	0.8583	1.6667
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_cpDNA_Haplotype_Network_111_SEQ.fasta	111	4	925	TCS	ok	0.23	6	2	6	1	16	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_cpDNA_Haplotype_Network_111_SEQ.fasta	111	4	925	RazorHaploNet	ok	0.09	6	2	6	1	16	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_cpDNA_Haplotype_Network_111_SEQ.fasta	111	4	925	RazorHaploNet+Simplify	ok	0.10	5	1	4	0	10	2	0.8333	1.2857
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_cpDNA_Haplotype_Network_111_SEQ.fasta	111	4	925	MedianJoining	ok	0.01	6	2	6	1	16	0	1.0000	1.0000
+examples/publications/XuEtAl2026/Diamond_Princess.phy	482	257	444	TCS	ok	0.81	281	24	292	12	495	1289	0.9817	2.0000
+examples/publications/XuEtAl2026/Diamond_Princess.phy	482	257	444	RazorHaploNet	ok	57.18	302	45	328	27	539	57	0.9983	1.2500
+examples/publications/XuEtAl2026/Diamond_Princess.phy	482	257	444	RazorHaploNet+Simplify	ok	59.65	275	18	278	4	490	183	0.9966	3.0000
+examples/publications/XuEtAl2026/Diamond_Princess.phy	482	257	444	MedianJoining	ok	0.36	281	24	291	11	489	1415	0.9800	2.5000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Population_Genetics_120_SEQ.fasta	120	10	477	TCS	ok	0.23	15	5	16	2	42	4	0.9556	1.3333
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Population_Genetics_120_SEQ.fasta	120	10	477	RazorHaploNet	ok	0.36	15	5	16	2	45	4	0.9111	1.0435
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Population_Genetics_120_SEQ.fasta	120	10	477	RazorHaploNet+Simplify	ok	0.37	13	3	12	0	37	18	0.7778	1.1667
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Population_Genetics_120_SEQ.fasta	120	10	477	MedianJoining	ok	0.02	15	5	16	2	40	12	0.8667	1.0870
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_rps4_Population_Genetics_123_SEQ.fasta	123	2	323	TCS	ok	0.22	2	0	1	0	1	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_rps4_Population_Genetics_123_SEQ.fasta	123	2	323	RazorHaploNet	ok	0.04	2	0	1	0	1	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_rps4_Population_Genetics_123_SEQ.fasta	123	2	323	RazorHaploNet+Simplify	ok	0.04	2	0	1	0	1	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_rps4_Population_Genetics_123_SEQ.fasta	123	2	323	MedianJoining	ok	0.01	2	0	1	0	1	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_tRNAGly_Population_Genetics_111_SEQ.fas	111	4	357	TCS	ok	0.22	4	0	3	0	8	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_tRNAGly_Population_Genetics_111_SEQ.fas	111	4	357	RazorHaploNet	ok	0.07	4	0	3	0	8	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_tRNAGly_Population_Genetics_111_SEQ.fas	111	4	357	RazorHaploNet+Simplify	ok	0.07	4	0	3	0	8	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_tRNAGly_Population_Genetics_111_SEQ.fas	111	4	357	MedianJoining	ok	0.01	4	0	3	0	8	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_trnLF_Population_Genetics_117_SEQ.fasta	117	2	246	TCS	ok	0.22	2	0	1	0	1	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_trnLF_Population_Genetics_117_SEQ.fasta	117	2	246	RazorHaploNet	ok	0.04	2	0	1	0	1	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_trnLF_Population_Genetics_117_SEQ.fasta	117	2	246	RazorHaploNet+Simplify	ok	0.04	2	0	1	0	1	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_trnLF_Population_Genetics_117_SEQ.fasta	117	2	246	MedianJoining	ok	0.01	2	0	1	0	1	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Concatenated_Population_Genetics_120_SEQ.fasta	120	10	465	TCS	ok	0.22	13	3	13	1	25	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Concatenated_Population_Genetics_120_SEQ.fasta	120	10	465	RazorHaploNet	ok	0.32	12	2	11	0	24	6	0.8667	1.2500
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Concatenated_Population_Genetics_120_SEQ.fasta	120	10	465	RazorHaploNet+Simplify	ok	0.32	12	2	11	0	24	6	0.8667	1.2500
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Concatenated_Population_Genetics_120_SEQ.fasta	120	10	465	MedianJoining	ok	0.01	13	3	13	1	25	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Continental_Antarctic_Population_Genetics_58_SEQ.fas	58	6	560	TCS	ok	0.22	8	2	8	1	16	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Continental_Antarctic_Population_Genetics_58_SEQ.fas	58	6	560	RazorHaploNet	ok	0.25	8	2	8	1	16	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Continental_Antarctic_Population_Genetics_58_SEQ.fas	58	6	560	RazorHaploNet+Simplify	ok	0.25	7	1	6	0	14	8	0.7333	1.4286
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Continental_Antarctic_Population_Genetics_58_SEQ.fas	58	6	560	MedianJoining	ok	0.02	12	6	16	5	21	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Maritime_Antarctic_Population_Genetics_49_SEQ.fas	49	8	1757	TCS	ok	0.23	9	1	8	0	13	24	0.5714	2.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Maritime_Antarctic_Population_Genetics_49_SEQ.fas	49	8	1757	RazorHaploNet	ok	0.27	12	4	14	3	20	3	0.8929	1.3333
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Maritime_Antarctic_Population_Genetics_49_SEQ.fas	49	8	1757	RazorHaploNet+Simplify	ok	0.27	11	3	11	1	15	8	0.8214	2.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_Maritime_Antarctic_Population_Genetics_49_SEQ.fas	49	8	1757	MedianJoining	ok	0.02	11	3	11	1	14	18	0.7143	2.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNEMNT_Patagonia_Population_Genetics_10_SEQ.fas	10	4	787	TCS	ok	0.21	4	0	3	0	5	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNEMNT_Patagonia_Population_Genetics_10_SEQ.fas	10	4	787	RazorHaploNet	ok	0.07	4	0	3	0	5	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNEMNT_Patagonia_Population_Genetics_10_SEQ.fas	10	4	787	RazorHaploNet+Simplify	ok	0.07	4	0	3	0	5	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNEMNT_Patagonia_Population_Genetics_10_SEQ.fas	10	4	787	MedianJoining	ok	0.01	4	0	3	0	5	0	1.0000	1.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Phylogeography_127_SEQ.fasta	127	13	410	TCS	ok	0.27	22	9	24	3	190	140	0.5769	1.3421
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Phylogeography_127_SEQ.fasta	127	13	410	RazorHaploNet	ok	1.84	31	18	38	8	216	102	0.5641	2.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Phylogeography_127_SEQ.fasta	127	13	410	RazorHaploNet+Simplify	ok	1.86	25	12	27	3	200	115	0.5641	2.0000
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_ITS_Phylogeography_127_SEQ.fasta	127	13	410	MedianJoining	ok	0.03	33	20	46	14	198	236	0.4615	1.3158
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_cpDNA_Phylogeography_115_SEQ.fasta	115	6	904	TCS	ok	0.24	10	4	10	1	43	8	0.7333	1.1176
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_cpDNA_Phylogeography_115_SEQ.fasta	115	6	904	RazorHaploNet	ok	0.23	10	4	10	1	43	8	0.7333	1.1176
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_cpDNA_Phylogeography_115_SEQ.fasta	115	6	904	RazorHaploNet+Simplify	ok	0.23	9	3	8	0	37	10	0.6667	1.2857
+examples/publications/SalugaEtAl2022/doi_10_5061_dryad_h18931zp3__v20220812/ALIGNMENT_cpDNA_Phylogeography_115_SEQ.fasta	115	6	904	MedianJoining	ok	0.02	11	5	11	1	40	8	0.8667	1.2857
+examples/Issakka_ITSClustering/Final_alignments/Antser_h_seq_Nucleotide alignment.fasta	8	4	188	TCS	ok	0.21	4	0	3	0	3	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Antser_h_seq_Nucleotide alignment.fasta	8	4	188	RazorHaploNet	ok	0.07	4	0	3	0	3	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Antser_h_seq_Nucleotide alignment.fasta	8	4	188	RazorHaploNet+Simplify	ok	0.07	4	0	3	0	3	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Antser_h_seq_Nucleotide alignment.fasta	8	4	188	MedianJoining	ok	0.01	4	0	3	0	3	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Fompin_h_seq_Nucleotide alignment.fasta	13	9	229	TCS	ok	0.21	9	0	9	1	9	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Fompin_h_seq_Nucleotide alignment.fasta	13	9	229	RazorHaploNet	ok	0.21	9	0	9	1	9	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Fompin_h_seq_Nucleotide alignment.fasta	13	9	229	RazorHaploNet+Simplify	ok	0.21	9	0	8	0	8	2	0.9722	3.0000
+examples/Issakka_ITSClustering/Final_alignments/Fompin_h_seq_Nucleotide alignment.fasta	13	9	229	MedianJoining	ok	0.01	9	0	9	1	9	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Fomros_h_asv_Nucleotide alignment.fasta	13	7	277	TCS	ok	0.20	7	0	7	1	7	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Fomros_h_asv_Nucleotide alignment.fasta	13	7	277	RazorHaploNet	ok	0.20	7	0	7	1	7	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Fomros_h_asv_Nucleotide alignment.fasta	13	7	277	RazorHaploNet+Simplify	ok	0.20	7	0	6	0	6	2	0.9524	3.0000
+examples/Issakka_ITSClustering/Final_alignments/Fomros_h_asv_Nucleotide alignment.fasta	13	7	277	MedianJoining	ok	0.01	7	0	7	1	7	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Glosep_h_asv_Nucleotide alignment.fasta	10	6	271	TCS	ok	0.20	6	0	5	0	5	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Glosep_h_asv_Nucleotide alignment.fasta	10	6	271	RazorHaploNet	ok	0.11	6	0	5	0	5	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Glosep_h_asv_Nucleotide alignment.fasta	10	6	271	RazorHaploNet+Simplify	ok	0.11	6	0	5	0	5	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Glosep_h_asv_Nucleotide alignment.fasta	10	6	271	MedianJoining	ok	0.01	6	0	5	0	5	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phecen_h_asv_Nucleotide alignment.fasta	6	4	265	TCS	ok	0.21	4	0	3	0	9	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phecen_h_asv_Nucleotide alignment.fasta	6	4	265	RazorHaploNet	ok	0.06	4	0	3	0	9	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phecen_h_asv_Nucleotide alignment.fasta	6	4	265	RazorHaploNet+Simplify	ok	0.07	4	0	3	0	9	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phecen_h_asv_Nucleotide alignment.fasta	6	4	265	MedianJoining	ok	0.01	4	0	3	0	9	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phefer_h_seq_Nucleotide alignment.fasta	9	4	280	TCS	ok	0.21	4	0	3	0	3	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phefer_h_seq_Nucleotide alignment.fasta	9	4	280	RazorHaploNet	ok	0.07	4	0	3	0	3	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phefer_h_seq_Nucleotide alignment.fasta	9	4	280	RazorHaploNet+Simplify	ok	0.07	4	0	3	0	3	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phefer_h_seq_Nucleotide alignment.fasta	9	4	280	MedianJoining	ok	0.01	4	0	3	0	3	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phenig_h_seq_Nucleotide alignment.fasta	13	10	292	TCS	ok	0.22	13	3	16	4	19	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phenig_h_seq_Nucleotide alignment.fasta	13	10	292	RazorHaploNet	ok	0.30	13	3	15	3	18	2	0.9556	1.5000
+examples/Issakka_ITSClustering/Final_alignments/Phenig_h_seq_Nucleotide alignment.fasta	13	10	292	RazorHaploNet+Simplify	ok	0.31	12	2	12	1	15	6	0.9111	2.0000
+examples/Issakka_ITSClustering/Final_alignments/Phenig_h_seq_Nucleotide alignment.fasta	13	10	292	MedianJoining	ok	0.01	13	3	15	3	17	2	0.9778	2.0000
+examples/Issakka_ITSClustering/Final_alignments/Phevit_h_seq_Nucleotide alignment.fasta	10	5	281	TCS	ok	0.20	5	0	4	0	4	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phevit_h_seq_Nucleotide alignment.fasta	10	5	281	RazorHaploNet	ok	0.08	5	0	4	0	4	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phevit_h_seq_Nucleotide alignment.fasta	10	5	281	RazorHaploNet+Simplify	ok	0.08	5	0	4	0	4	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Phevit_h_seq_Nucleotide alignment.fasta	10	5	281	MedianJoining	ok	0.01	5	0	4	0	4	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Poscae_h_seq_Nucleotide alignment.fasta	7	4	280	TCS	ok	0.21	4	0	3	0	7	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Poscae_h_seq_Nucleotide alignment.fasta	7	4	280	RazorHaploNet	ok	0.07	4	0	3	0	7	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Poscae_h_seq_Nucleotide alignment.fasta	7	4	280	RazorHaploNet+Simplify	ok	0.07	4	0	3	0	7	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Poscae_h_seq_Nucleotide alignment.fasta	7	4	280	MedianJoining	ok	0.01	4	0	3	0	7	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Triabi_h_seq_Nucleotide alignment.fasta	11	7	266	TCS	ok	0.21	8	1	8	1	9	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Triabi_h_seq_Nucleotide alignment.fasta	11	7	266	RazorHaploNet	ok	0.19	8	1	8	1	9	0	1.0000	1.0000
+examples/Issakka_ITSClustering/Final_alignments/Triabi_h_seq_Nucleotide alignment.fasta	11	7	266	RazorHaploNet+Simplify	ok	0.20	8	1	7	0	7	2	0.9524	2.0000
+examples/Issakka_ITSClustering/Final_alignments/Triabi_h_seq_Nucleotide alignment.fasta	11	7	266	MedianJoining	ok	0.01	8	1	7	0	7	2	0.9524	2.0000
