@@ -57,7 +57,14 @@ java -cp ... razornet.tools.RunRazorNet -i examples/manhattan_distances_20x20.di
 java -cp ... razornet.testsuite.RunTestSuite --input tests --maxSize 20 --maxSeconds 0
 java -cp ... razornet.testsuite.CompareStrategies --input tests/tree-distances --maxSize 20
 java -cp ... razornet.testsuite.RunHaplotypeNet examples/rhabdoviruses/PAegRV.fas --strategy Both -t 60
+java -cp ... razornet.testsuite.CompareDistanceMethods examples/manhattan_distances_20x20.dist
+java -cp ... razornet.testsuite.CompareHaplotypeMethods examples/rhabdoviruses/CCapSV.fas
 ```
+
+`CompareDistanceMethods` compares NeighborNet with RazorNet, and `CompareHaplotypeMethods` median joining and TCS
+with RazorHaploNet, each also followed by the Simplify filter. `SimulateTreeMixtures` and `SimulateHaplotypes`
+generate data sets with a known truth for them (sequences are evolved with AliSim of IQ-TREE 2, which has to be
+installed), and `--truth` then reports how the quartet supports displayed by a network compare with the true ones.
 
 `CompareStrategies` is restart-bound by default; point it at the generated tiers (`tests/<tier>-distances`)
 rather than at `tests`, since `tests/example-distances` holds matrices on which a run without a time budget takes
