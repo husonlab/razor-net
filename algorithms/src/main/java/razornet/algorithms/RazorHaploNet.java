@@ -47,7 +47,7 @@ import java.util.function.ToDoubleFunction;
  * removed and unlabeled edges are contracted. Columns with missing or ambiguous data are masked; a gap is a state.
  * <p>
  * The engine that realizes the distances is obtained from {@link #getEngine()}, which
- * {@link TightSpanHaplotypeNetwork} and {@link TCSHaplotypeNetwork} override.
+ * {@link TCSHaplotypeNetwork} overrides.
  * <p>
  * Source: Hayamizu et al., RazorNet, in preparation; see {@code docs/algorithm.md}.
  *
@@ -62,10 +62,6 @@ public class RazorHaploNet extends Characters2Network {
 	private final IntegerProperty optionRandomRestarts = new SimpleIntegerProperty(this, "optionRandomRestarts", 1000);
 
 	private final BooleanProperty optionRemoveRedundant = new SimpleBooleanProperty(this, "optionRemoveRedundant", true);
-
-	// lossy post-processing, passed on to RazorNet: remove edges while no pairwise distance grows by more than this
-	// percent (0 = off)
-	private final DoubleProperty optionMaxStretchPercent = new SimpleDoubleProperty(this, "optionMaxStretchPercent", 0.0);
 
 	// extend+polish cycles per restart, passed on to RazorNet
 	private final IntegerProperty optionMaxPolishRounds = new SimpleIntegerProperty(this, "optionMaxPolishRounds", 1);
@@ -94,7 +90,6 @@ public class RazorHaploNet extends Characters2Network {
 	{
 		ProgramProperties.track(KEY + optionSignificantDigits.getName(), optionSignificantDigits, 6);
 		ProgramProperties.track(KEY + optionRandomRestarts.getName(), optionRandomRestarts, 1000);
-		ProgramProperties.track(KEY + optionMaxStretchPercent.getName(), optionMaxStretchPercent, 0.0);
 		ProgramProperties.track(KEY + optionRandomSeed.getName(), optionRandomSeed, 0);
 		ProgramProperties.track(KEY + optionMaxSeconds.getName(), optionMaxSeconds, 60);
 		// not tracked, so they start at their defaults in every session: optionMaxPolishRounds, optionRemoveRedundant
@@ -110,7 +105,6 @@ public class RazorHaploNet extends Characters2Network {
 		try {
 			optionStrategy.set(razorNet.getOptionStrategy());
 			optionRemoveRedundant.set(razorNet.getOptionRemoveRedundant());
-			optionMaxStretchPercent.set(razorNet.getOptionMaxStretchPercent());
 			optionRandomRestarts.set(razorNet.getOptionRandomRestarts());
 			optionMaxPolishRounds.set(razorNet.getOptionMaxPolishRounds());
 			optionSignificantDigits.set(razorNet.getOptionSignificantDigits());
@@ -152,7 +146,6 @@ public class RazorHaploNet extends Characters2Network {
 		try {
 			razorNet.optionStrategyProperty().set(getOptionStrategy());
 			razorNet.optionRemoveRedundantProperty().set(getOptionRemoveRedundant());
-			razorNet.optionMaxStretchPercentProperty().set(getOptionMaxStretchPercent());
 			razorNet.optionRandomRestartsProperty().set(getOptionRandomRestarts());
 			razorNet.optionMaxPolishRoundsProperty().set(getOptionMaxPolishRounds());
 			razorNet.optionSignificantDigitsProperty().set(getOptionSignificantDigits());
@@ -166,7 +159,7 @@ public class RazorHaploNet extends Characters2Network {
 	public List<String> listOptions() {
 		// the basic options; in advanced mode, a separator and the advanced options follow (see AdvancedOptions)
 		var list = new java.util.ArrayList<>(List.of(optionStrategy.getName(), optionLabeling.getName(), optionRemoveSuperfluous.getName(),
-				optionContractUnlabeled.getName(), optionMissingAsState.getName(), optionMaxStretchPercent.getName(), optionMaxSeconds.getName()));
+				optionContractUnlabeled.getName(), optionMissingAsState.getName(), optionMaxSeconds.getName()));
 		if (razornet.algorithms.utils.AdvancedOptions.enabled()) {
 			list.add(splitstree6.options.Option.SEPARATOR);
 			list.addAll(List.of(optionRandomRestarts.getName(), optionRandomSeed.getName()));
@@ -515,14 +508,6 @@ public class RazorHaploNet extends Characters2Network {
 
 	public BooleanProperty optionRemoveRedundantProperty() {
 		return optionRemoveRedundant;
-	}
-
-	public double getOptionMaxStretchPercent() {
-		return optionMaxStretchPercent.get();
-	}
-
-	public DoubleProperty optionMaxStretchPercentProperty() {
-		return optionMaxStretchPercent;
 	}
 
 	public int getOptionRandomRestarts() {

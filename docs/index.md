@@ -13,8 +13,8 @@ total edge length as possible. To do so it may introduce additional (Steiner / m
 let it represent the same distances with less total length.
 
 This is what distinguishes RazorNet from methods such as Neighbor-Net, which fit an *approximate* split
-network to the distances: a RazorNet is an exact realization of the metric — or, on request, a
-representation with a controlled amount of distortion (see **Max stretch percent** below).
+network to the distances: a RazorNet is an exact realization of the metric. A network that is too complex to
+read can be simplified afterwards, with a controlled amount of distortion (see **Simplifying a network** below).
 
 ## 2. What is RazorHaploNet?
 
@@ -48,10 +48,8 @@ established methods:
   (Bandelt, Forster & Röhl, 1999).
 - **Minimum spanning network** — a haplotype network built from minimum spanning trees
   (Excoffier & Smouse, 1994).
-- **Tight Span Walker** and **TCS** — two further methods, for distances and for sequences, implemented after
-  PopART (Leigh & Bryant, 2015). The Tight Span Walker realizes the distances exactly, as RazorNet does, but
-  does not minimize the length of the network; TCS (Templeton, Crandall & Sing, 1992) joins haplotypes in
-  order of increasing distance.
+- **TCS** — a further method for distances and for sequences, implemented after PopART (Leigh & Bryant,
+  2015): TCS (Templeton, Crandall & Sing, 1992) joins haplotypes in order of increasing distance.
 
 ## 5. The RazorNet algorithm (distances → network)
 
@@ -62,7 +60,6 @@ randomized restarts and keeps the shortest valid network found within the time b
 |---|---|---|
 | **Preprocessing** | None | Optionally transform the distances before the search. **ClassicalMDS2D / ClassicalMDS3D** embed the distances in the plane (or in 3-space) by classical multidimensional scaling — useful when the data are close to low-dimensional, e.g. geographic distances; pair with a low **Significant digits** and a **Max stretch percent** for a sparse, map-like network. **PruneSmallSplits** denoises the metric via split decomposition, dropping the weakest splits so that a "generic" (tie-poor) metric does not cause the search to over-expand. |
 | **Strategy** | Both | How the search chooses the points at which it adds auxiliary nodes. **Strict** adds them only at taxa that lie on no shortest path between two others; it is fast and nearly deterministic. **Relaxed** also adds them at taxa that lie between others, and explores the many alternatives by randomized restarts; this is what grid-like distances and alignments with sampled intermediate haplotypes need. **Both** runs both strategies, the one that is likely to do better first, and keeps the shorter network. |
-| **Max stretch percent** | 0 | Optional *lossy* simplification. After the exact network is built, edges are greedily removed as long as no pairwise distance is inflated by more than this percentage of the input, giving a sparser, more legible network. `0` keeps the representation exact. |
 | **Significant digits** | 6 | The precision at which the distances are quantized before the search. Continuous or noisy metrics usually call for a **low** value (e.g. 2–3), which keeps the search sparse. |
 | **Max seconds** | 60 | Wall-clock time budget for the search; the best network found so far is returned when it is reached (`0` = no limit). |
 
@@ -73,14 +70,28 @@ Each drawn network reports its **total length** and its **distortion** — the w
 of realized-versus-input pairwise distances (a distortion of 1 means an exact representation; larger values
 mean the network stretches some pairs relative to others).
 
+### Simplifying a network
+
+A RazorNet displays the distances exactly, and for noisy distances that can be a complex network. Two filters,
+applied to the network after it has been computed, trade exactness for a sparser network:
+
+- The **Simplify filter** removes edges one at a time, always the edge whose removal costs least, and stops at
+  a chosen target. The default target, *Balanced*, stops where further simplification would cost more than it
+  gains; other targets are a maximal deviation, a number of edges, a number of cycles (0 gives a tree) or a
+  percentage of the edges. The cost is the distortion of the distances or, for a haplotype network, the excess
+  of the mutations displayed over the sequence differences.
+- The **Stretch filter** removes edges, heaviest first, as long as no pairwise distance grows by more than a
+  given percentage.
+
+Both report the distortion they introduce.
+
 ## 6. The RazorHaploNet algorithm (sequences → haplotype network)
 
 RazorHaploNet builds a RazorNet from the Hamming distances between aligned sequences and then labels its
 edges with the inferred sequence changes. A gap counts as a character state; columns in which a sequence has
 missing or ambiguous data are left out.
 
-In addition to **Strategy**, **Max stretch percent** and **Max seconds** (which behave as for RazorNet,
-above), it offers:
+In addition to **Strategy** and **Max seconds** (which behave as for RazorNet, above), it offers:
 
 | Option | Default | Meaning |
 |---|---|---|

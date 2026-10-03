@@ -33,11 +33,11 @@ import java.util.TreeMap;
 /**
  * Runs {@code RazorHaploNet} on an alignment, without a GUI, and reports the network: its length and size, the
  * agreement of the mutations drawn on each edge with its weight, and the excess of the displayed distances over
- * the sequence differences. {@code --engine} selects RazorNet (the default), the Tight Span Walker ({@code tsw})
- * or TCS ({@code tcs}); {@code --strategy} selects the strategy of RazorNet.
+ * the sequence differences. {@code --engine} selects RazorNet (the default) or TCS ({@code tcs});
+ * {@code --strategy} selects the strategy of RazorNet.
  *
  * <pre>
- * RunHaplotypeNet alignment [--engine razornet|tsw|tcs] [--strategy Strict|Relaxed|Both] [--seed N]
+ * RunHaplotypeNet alignment [--engine razornet|tcs] [--strategy Strict|Relaxed|Both] [--seed N]
  *                 [--maxSeconds N] [--restarts N] [--labeling MinExcess|Parsimony] [--raw|--noRemove|--noContract]
  *                 [--missingAsState] [--silent] [--set optionName=value]*
  * </pre>
@@ -109,7 +109,7 @@ public class RunHaplotypeNet {
 	private static void setOptionByName(splitstree6.options.IOptionsCarrier algorithm, String name, Object value) {
 		var option = splitstree6.options.Option.getName2Options(algorithm).get(name);
 		if (option == null)
-			return;   // this engine has no such option, e.g. TSW has no restarts or seed
+			return;   // this engine has no such option, e.g. TCS has no restarts or seed
 		var toSet = (option.getOptionValueType() == splitstree6.options.OptionValueType.Enum
 				? option.getEnumValueForName(String.valueOf(value)) : value);
 		((javafx.beans.property.Property<Object>) option.getProperty()).setValue(toSet);
@@ -118,7 +118,7 @@ public class RunHaplotypeNet {
 	public static void main(String[] args) throws Exception {
 		razornet.algorithms.utils.AdvancedOptions.enable(); // --set reaches every option, basic and advanced
 		if (args.length == 0 || args[0].startsWith("-")) {
-			System.err.println("Usage: RunHaplotypeNet alignment [--engine razornet|tsw|tcs] [--strategy Strict|Relaxed|Both] [--seed N] [--maxSeconds N] [--restarts N] [--labeling M] [--raw|--noRemove|--noContract] [--missingAsState] [--silent] [--set optionName=value]*");
+			System.err.println("Usage: RunHaplotypeNet alignment [--engine razornet|tcs] [--strategy Strict|Relaxed|Both] [--seed N] [--maxSeconds N] [--restarts N] [--labeling M] [--raw|--noRemove|--noContract] [--missingAsState] [--silent] [--set optionName=value]*");
 			System.exit(2);
 		}
 		var input = args[0];
@@ -130,7 +130,7 @@ public class RunHaplotypeNet {
 		var noContract = false;
 		var missingAsState = false;
 		var silent = false;
-		var engine = "razornet";   // RazorNet; "tsw" TightSpanWalker, "tcs" TCS
+		var engine = "razornet";   // RazorNet; "tcs" TCS
 		var strategy = "";         // RazorNet's strategy; empty = the algorithm's default (Both)
 		var seed = 0;
 		// any further option, as name=value, so it needs no flag of its own here
@@ -174,7 +174,6 @@ public class RunHaplotypeNet {
 
 		// the options are set by name, as the algorithms have no common supertype that declares them
 		splitstree6.algorithms.characters.characters2network.Characters2Network algorithm = switch (engine.toLowerCase()) {
-			case "tsw", "tightspan" -> new razornet.algorithms.TightSpanHaplotypeNetwork();
 			case "tcs" -> new razornet.algorithms.TCSHaplotypeNetwork();
 			default -> new razornet.algorithms.RazorHaploNet();
 		};

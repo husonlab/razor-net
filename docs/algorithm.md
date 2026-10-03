@@ -7,7 +7,7 @@ runs, the guarantees that can be proved for them, how the two are combined, and 
 meant to be read on its own.
 
 **Contents.** §1 the problem · §2 definitions · §3 the pipeline · §4 the Strict strategy · §5 what can be
-proved · §6 the Relaxed strategy · §7 the combination · §8 polishing, edge removal, stretch · §9 the haplotype
+proved · §6 the Relaxed strategy · §7 the combination · §8 polishing, edge removal · §9 the haplotype
 network · Appendix A measurements · Appendix B symbols ↔ code · references.
 
 ---
@@ -84,7 +84,6 @@ for each strategy to run, in that order:
             polish G (and extend D accordingly)                            // §8
         greedy global edge removal on G; record
     finishing polish of this strategy's own best graph with its own core; record
-optional stretch filter on the overall best                                 // §8, lossy, off by default
 report: the order and why; restarts used, best length and seconds per strategy; the winner
 ```
 
@@ -210,8 +209,8 @@ and pairs of two new points never lower a later slack by the same computation. A
 already present, which Lemma 5(ii) identifies with the neighbour of `x_j`. ∎
 
 **Theorem 7 (exactness, floor, termination).** For every input, RazorNet returns a graph that realizes the
-input exactly on the taxa (unless the lossy stretch filter is on), of length at most that of the taxa-only
-realization `G(D)`, after finitely many steps; each strategy's working matrix never exceeds twice its cap.
+input exactly on the taxa, of length at most that of the taxa-only realization `G(D)`, after finitely many
+steps; each strategy's working matrix never exceeds twice its cap.
 
 *Proof.* Extension only appends rows and columns (Lemma 2(b)); realization is exact (Lemma 4); greedy removal
 and polishing keep a realization by construction, and the pipeline re-checks the result. The floor is recorded
@@ -307,7 +306,7 @@ setting) and the **relaxed strategy** of §6 (the `Relaxed` setting).
 The result: the guarantees of the strict strategy are inherited (Corollary in §5), the reach of the relaxed strategy is
 kept where the data call for it, and the cost of the combination is the second strategy's share of the budget.
 
-## 8 · Polishing, edge removal, the stretch filter
+## 8 · Polishing and edge removal
 
 **Polishing** (`PolishGraph`, one copy per strategy, differing only in the slack they resolve): for every
 vertex `v` of degree at least 3, take `N_v = {v} ∪ neighbours of v`, compactify the slack points of the metric
@@ -321,8 +320,10 @@ degree ≤ 2.
 every pairwise distance is preserved and the result is a minimal realization. Applied once per restart and
 inside each finishing-polish cycle.
 
-**Stretch filter** (optional, off by default): greedily remove edges, heaviest first, while every taxon pair
-stays within a factor `(1 + p/100)` of its input distance. Lossy; the only step that gives up exactness.
+Giving up exactness for a sparser network is not part of the algorithm. It is done afterwards, by one of two
+filters of SplitsTree applied to the network: the stretch filter, which greedily removes edges, heaviest first,
+while every taxon pair stays within a factor `(1 + p/100)` of its distance, and the simplify filter, which
+removes edges in order of increasing cost and stops at a chosen target.
 
 ## 9 · The haplotype network
 
@@ -331,9 +332,9 @@ masked out (a gap is an indel and counts as a state), so the Hamming distances o
 true metric; RazorNet realizes them (with the chosen strategy); the sequences of the auxiliary vertices are
 inferred by parsimony, weighting each edge by its geodesic betweenness so that changes are kept off high-traffic
 edges (`MinExcess`) or uniformly (`Parsimony`); from then on an edge's weight *is* its number of mutations;
-superfluous edges (equal-length alternative path) are removed, unlabeled edges contracted. The Tight Span Walker
-and TCS variants swap the engine and keep everything else, so the three methods can be compared on one
-alignment under the same labeling.
+superfluous edges (equal-length alternative path) are removed, unlabeled edges contracted. The TCS variant
+swaps the engine and keeps everything else, so the two methods can be compared on one alignment under the same
+labeling.
 
 ---
 
@@ -414,7 +415,7 @@ recovers it.
 | one point per call, fresh order                                       | `relaxed.DistanceMatrixExtension.extendSubset`, `pickBestNonCoincidingSlack`               |
 | realization `G(D')`, the taxa-only floor                              | `utils.GraphFromDistances.realizeFromDistances`, `realizeTaxaOnly`                         |
 | polishing                                                             | `strict.PolishGraph`, `relaxed.PolishGraph`                                                |
-| greedy global edge removal, stretch filter                            | `utils.GreedyGlobalEdgeRemoval`, `utils.GreedyStretchEdgeRemoval`                          |
+| greedy global edge removal                                            | `utils.GreedyGlobalEdgeRemoval`                                                            |
 | the analysis log (both slack tables, trace, distribution, strategies) | `utils.AnalysisLog`, `utils.ExtensionTrace`                                                |
 | haplotype network                                                     | `razornet.algorithms.RazorHaploNet`, `utils.ParsimonyLabeler`, `utils.GeodesicBetweenness` |
 

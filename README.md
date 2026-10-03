@@ -9,11 +9,11 @@ This repository holds:
 
 1. **The algorithms** — module `algorithms/`, Maven artifact `razornet-algorithms`, Java module
    `razornet.algorithms`: `RazorNet` (distances → network), `RazorHaploNet` (sequences → haplotype
-   network), and, for comparison on the same data under the same labeling, the **Tight Span Walker** and **TCS**
-   with their haplotype variants. They register with SplitsTree6 through its `AlgorithmProvider` service, on the
-   module path via `module-info.java` and on the class path via `META-INF/services`. When RazorNet is released,
-   SplitsTree6 will offer them too; whether they move into the splitstree6 code base or SplitsTree6 uses
-   `razornet-algorithms` as an external dependency is not decided yet.
+   network), and, for comparison on the same data under the same labeling, **TCS** with its haplotype variant.
+   They register with SplitsTree6 through its `AlgorithmProvider` service, on the module path via
+   `module-info.java` and on the class path via `META-INF/services`. When RazorNet is released, SplitsTree6 will
+   offer them too; whether they move into the splitstree6 code base or SplitsTree6 uses `razornet-algorithms` as
+   an external dependency is not decided yet.
 2. **The stand-alone RazorNet program** — module `app/`, artifact `razornet-app`: a JavaFX application built on
    SplitsTree6 through its `IAppProfile` interface (`razornet.main.RazorNet`), the command-line tool
    `razornet.tools.RunRazorNet`, and the test suite `razornet.testsuite`.
@@ -77,7 +77,6 @@ mode with non-default advanced values loads in basic mode with those values back
 |---|---|---|
 | `Preprocessing` | `None` | optional distance preprocessing (classical MDS, split pruning) |
 | `Strategy` | `Both` | `Strict` (strict strategy), `Relaxed` (relaxed strategy), or `Both` (both, the likely winner first; shorter wins) |
-| `MaxStretchPercent` | 0 | optional lossy post-processing; 0 keeps the distances exact |
 | `SignificantDigits` | 6 | precision of the integer quantization; fewer digits give a coarser, sparser network |
 | `MaxSeconds` | 60 | wall-clock budget (0 = none) |
 
@@ -91,8 +90,12 @@ mode with non-default advanced values loads in basic mode with those values back
 | `RandomSeed` | 0 | seed |
 | `LogFile` | empty | write an analysis log: slack tables under both definitions, a recursion trace, the restart-length distribution, what each strategy achieved |
 
-`RazorHaploNet` shows `Strategy`, `Labeling`, `RemoveSuperfluous`, `ContractUnlabeled`, `MissingAsState`,
-`MaxStretchPercent` and `MaxSeconds`; `RandomRestarts` and `RandomSeed` are advanced.
+`RazorHaploNet` shows `Strategy`, `Labeling`, `RemoveSuperfluous`, `ContractUnlabeled`, `MissingAsState` and
+`MaxSeconds`; `RandomRestarts` and `RandomSeed` are advanced.
+
+Both algorithms return a network that displays the input distances exactly. A sparser network at the price of
+some distortion is obtained afterwards, by applying SplitsTree's `SimplifyFilter` or `StretchFilter` to the
+network; the program offers both.
 
 A run reports what each strategy achieved and which one produced the network:
 

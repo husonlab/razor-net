@@ -102,7 +102,7 @@ public final class MetricCheck {
 						r.worstI(), r.worstK(), r.worstK(), r.worstJ(),
 						StringUtils.trim(d[r.worstI()][r.worstK()] + d[r.worstK()][r.worstJ()]));
 			System.err.printf("         No realization exists, so the network cannot reproduce all distances. Consider%n");
-			System.err.printf("         preprocessing (e.g. ClassicalMDS2D) or a max stretch. Continuing anyway.%n");
+			System.err.printf("         preprocessing (e.g. ClassicalMDS2D). Continuing anyway.%n");
 		}
 		return r;
 	}

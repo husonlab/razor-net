@@ -32,7 +32,7 @@ import java.util.Map;
 
 /**
  * Provides the RazorNet algorithms to SplitsTree6 and to the RazorNet program: {@link RazorNet} and
- * {@link RazorHaploNet} and, for comparison, the Tight Span Walker and TCS with their haplotype variants.
+ * {@link RazorHaploNet} and, for comparison, TCS with its haplotype variant.
  *
  * @author Daniel Huson and Momoko Hayamizu, 2026
  */
@@ -40,14 +40,12 @@ public class RazorNetProvider implements AlgorithmProvider {
 	@Override
 	public List<Algorithm<?, ?>> getAlgorithms() {
 		return List.of(createRazorNet(Map.of()), createRazorHaploNet(Map.of()),
-				createTightSpanWalker(Map.of()), createTightSpanHaplotypeNetwork(Map.of()),
 				createTCS(Map.of()), createTCSHaplotypeNetwork(Map.of()));
 	}
 
 	@Override
 	public boolean provides(String simpleClassName) {
 		return simpleClassName.equals("RazorNet") || simpleClassName.equals("RazorHaploNet")
-			   || simpleClassName.equals("TightSpanWalker") || simpleClassName.equals("TightSpanHaplotypeNetwork")
 			   || simpleClassName.equals("TCS") || simpleClassName.equals("TCSHaplotypeNetwork");
 	}
 
@@ -56,8 +54,6 @@ public class RazorNetProvider implements AlgorithmProvider {
 		return switch (simpleClassName) {
 			case "RazorNet" -> createRazorNet(parameters);
 			case "RazorHaploNet" -> createRazorHaploNet(parameters);
-			case "TightSpanWalker" -> createTightSpanWalker(parameters);
-			case "TightSpanHaplotypeNetwork" -> createTightSpanHaplotypeNetwork(parameters);
 			case "TCS" -> createTCS(parameters);
 			case "TCSHaplotypeNetwork" -> createTCSHaplotypeNetwork(parameters);
 			default -> null;
@@ -72,16 +68,6 @@ public class RazorNetProvider implements AlgorithmProvider {
 	/** the haplotype network on RazorNet */
 	public Algorithm<CharactersBlock, NetworkBlock> createRazorHaploNet(Map<String, String> parameters) {
 		return new RazorHaploNet();
-	}
-
-	/** the Tight Span Walker, after PopART (Leigh &amp; Bryant 2015) */
-	public Algorithm<DistancesBlock, NetworkBlock> createTightSpanWalker(Map<String, String> parameters) {
-		return new TightSpanWalker();
-	}
-
-	/** the haplotype network on the Tight Span Walker */
-	public Algorithm<CharactersBlock, NetworkBlock> createTightSpanHaplotypeNetwork(Map<String, String> parameters) {
-		return new TightSpanHaplotypeNetwork();
 	}
 
 	/** TCS (Templeton, Crandall &amp; Sing 1992), after PopART (Leigh &amp; Bryant 2015) */

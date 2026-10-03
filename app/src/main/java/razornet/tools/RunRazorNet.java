@@ -30,10 +30,10 @@ import jloda.util.progress.ProgressListener;
 import jloda.util.progress.ProgressPercentage;
 import jloda.util.progress.ProgressSilent;
 import razornet.algorithms.TCS;
-import razornet.algorithms.TightSpanWalker;
 import razornet.algorithms.utils.AnalysisLog;
 import razornet.algorithms.utils.ExtensionTrace;
 import splitstree6.algorithms.distances.distances2network.CheckPairwiseDistances;
+import splitstree6.algorithms.network.network2network.StretchFilter;
 import splitstree6.data.DistancesBlock;
 import splitstree6.data.NetworkBlock;
 import splitstree6.data.TaxaBlock;
@@ -52,10 +52,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Runs RazorNet, the Tight Span Walker or TCS on one or more distance files, without a GUI, and writes the
+ * Runs RazorNet or TCS on one or more distance files, without a GUI, and writes the
  * resulting networks and an optional report. Naming several algorithms runs each of them on every input. The
  * options of the algorithms are obtained from their {@code listOptions()} and offered as command-line options.
- * The exit status is 0 if every network was computed and realizes its input, 1 if not, and 2 on a usage error.
+ * {@code --maxStretch} applies SplitsTree's stretch filter to each network, which then no longer realizes its
+ * input. The exit status is 0 if every network was computed and realizes its input, 1 if not, and 2 on a usage
+ * error.
  *
  * @author Daniel Huson, 2026
  */
@@ -64,8 +66,7 @@ public class RunRazorNet {
 	private static final Map<String, String[]> OPTION_ALIASES = Map.of(
 			"RandomRestarts", new String[]{"-rs", "restarts"},
 			"RandomSeed", new String[]{"-sd", "seed"},
-			"MaxSeconds", new String[]{"-t", "maxSeconds"},
-			"MaxStretchPercent", new String[]{"-ms", "maxStretch"});
+			"MaxSeconds", new String[]{"-t", "maxSeconds"});
 
 	/** Absolute tolerance when checking that the network realizes the input distances; as in {@code RunTestSuite}. */
 	private static final double REALIZE_TOLERANCE = 1e-3;
@@ -125,7 +126,7 @@ public class RunRazorNet {
 		// legal values are checked in createAlgorithms rather than by ArgsOptions, so that both
 		// '-a RazorNet TCS' and '-a RazorNet,TCS' are accepted
 		final var algorithmNames = expandCommas(options.getOption("-a", "algorithm",
-				"Algorithm(s) to run: RazorNet, TightSpanWalker, TCS; naming several runs and compares them (RazorNet's strategy: -strategy)",
+				"Algorithm(s) to run: RazorNet, TCS; naming both runs and compares them (RazorNet's strategy: -strategy)",
 				new String[]{"RazorNet"}));
 		final var algorithms = createAlgorithms(algorithmNames);
 		setupAlgorithmOptions(options, algorithms);
@@ -134,6 +135,7 @@ public class RunRazorNet {
 		final var inputExtension = options.getOption("-x", "inputExt", "File extension of input files (when input is a directory)", "");
 		final var recursive = options.getOption("-r", "recursive", "Recursively visit all sub-directories (when input is a directory)", false);
 		final var check = options.getOption("-c", "check", "Check that each network realizes its input distances", true);
+		final var maxStretch = options.getOption("-ms", "maxStretch", "Post-processing with the stretch filter: remove edges while every pairwise distance stays within this percent of its value (0 = off)", 0.0);
 		ProgramExecutorService.setNumberOfCoresToUse(options.getOption("-th", "threads", "Maximum number of threads to use (0=all available)", 0));
 		final var propertiesFile = options.getOption("-p", "propertiesFile", "Properties file, to run with the GUI's saved option defaults", "");
 		final var silent = options.getOption("-s", "silent", "Silent mode (hide all stderr output)", false);
@@ -164,7 +166,7 @@ public class RunRazorNet {
 				var output = outputs.get(outputs.size() > 1 ? i : 0);
 				if (algorithms.size() > 1 && !output.equals("stdout"))
 					output = FileUtils.replaceFileSuffix(output, "-" + algorithm.getClass().getSimpleName() + FileUtils.getFileSuffix(output));
-				results.add(runOne(inputFile, output, inputFormat, exportFormat, algorithm, check, silent, writeLog));
+				results.add(runOne(inputFile, output, inputFormat, exportFormat, algorithm, maxStretch, check, silent, writeLog));
 			}
 		}
 
@@ -185,7 +187,7 @@ public class RunRazorNet {
 	 * result, so that a batch continues.
 	 */
 	private Result runOne(String inputFile, String outputFile, String inputFormat, String exportFormat,
-						  Algorithm<DistancesBlock, NetworkBlock> algorithm, boolean check, boolean silent, boolean writeLog) {
+						  Algorithm<DistancesBlock, NetworkBlock> algorithm, double maxStretch, boolean check, boolean silent, boolean writeLog) {
 		// the class name, as getName() is the display name
 		final var name = algorithm.getClass().getSimpleName();
 		final var seed = intOption(algorithm, "RandomSeed");
@@ -206,6 +208,14 @@ public class RunRazorNet {
 				ExtensionTrace.start();
 			try (ProgressListener progress = (silent ? new ProgressSilent() : new ProgressPercentage())) {
 				algorithm.compute(progress, taxaBlock, distancesBlock, networkBlock);
+				if (maxStretch > 0) {
+					var filter = new StretchFilter();
+					filter.setOptionMaxStretchPercent(maxStretch);
+					var filtered = new NetworkBlock();
+					filter.compute(progress, taxaBlock, networkBlock, filtered);
+					networkBlock = filtered;
+					System.err.printf("  stretch filter: %s%n", filter.getShortDescription());
+				}
 			}
 			var seconds = (System.currentTimeMillis() - start) / 1000.0;
 
@@ -229,9 +239,8 @@ public class RunRazorNet {
 						intOption(algorithm, "SignificantDigits"), graph, seconds, maxError, true, "");
 			}
 
-			// under a max stretch the network is not exact, so the realization check does not apply
-			var stretchPercent = doubleOption(algorithm, "MaxStretchPercent");
-			var error = (check && stretchPercent == 0 && maxError > REALIZE_TOLERANCE)
+			// after the stretch filter the network is not exact, so the realization check does not apply
+			var error = (check && maxStretch == 0 && maxError > REALIZE_TOLERANCE)
 					? "does not realize its distances (max error %.3g)".formatted(maxError) : null;
 
 			return new Result(inputFile, name, taxaBlock.getNtax(), length, graph.getNumberOfNodes(),
@@ -337,7 +346,6 @@ public class RunRazorNet {
 		for (var name : names) {
 			switch (name) {
 				case "RazorNet" -> algorithms.add(new razornet.algorithms.RazorNet());
-				case "TightSpanWalker" -> algorithms.add(new TightSpanWalker());
 				case "TCS" -> algorithms.add(new TCS());
 				default -> throw new UsageException("Unknown algorithm: " + name);
 			}
@@ -470,10 +478,5 @@ public class RunRazorNet {
 	private static int intOption(Algorithm<?, ?> algorithm, String name) {
 		var option = Option.getName2Options(algorithm).get(name);
 		return option == null ? 0 : ((Number) option.getProperty().getValue()).intValue();
-	}
-
-	private static double doubleOption(Algorithm<?, ?> algorithm, String name) {
-		var option = Option.getName2Options(algorithm).get(name);
-		return option == null ? 0 : ((Number) option.getProperty().getValue()).doubleValue();
 	}
 }

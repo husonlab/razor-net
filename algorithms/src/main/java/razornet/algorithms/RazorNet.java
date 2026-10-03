@@ -43,10 +43,9 @@ import java.util.*;
  * <p>
  * The input is quantized to even integers and the taxa-only realization is recorded. A best-of-N random-restart
  * search then extends the distance matrix by auxiliary points, realizes it as a graph, polishes it and removes
- * redundant edges; each strategy's best graph gets a finishing polish; an optional stretch filter removes
- * further edges. The extension has two strategies ({@link Strategy}): Strict compactifies exactly the points
- * that lie on no geodesic between two others, Relaxed also points that lie between others; Both runs both, the
- * likely winner first, and keeps the shorter network. The result is exact unless the stretch filter is on.
+ * redundant edges; each strategy's best graph gets a finishing polish. The extension has two strategies
+ * ({@link Strategy}): Strict compactifies exactly the points that lie on no geodesic between two others, Relaxed
+ * also points that lie between others; Both runs both, the likely winner first, and keeps the shorter network.
  * <p>
  * Source: Hayamizu et al., RazorNet, in preparation; see {@code docs/algorithm.md}.
  *
@@ -64,7 +63,7 @@ public class RazorNet extends Distances2Network {
 
 	private static final int MAX_FINISH_ROUNDS = 100;   // cap on the cycles of a finishing polish
 	private static final int FINISH_FALLBACK_SECONDS = 30; // deadline of a finishing polish when there is no time budget
-	private static final double SEARCH_BUDGET_FRACTION = 0.95; // share of maxSeconds for the search; the rest is for the stretch filter and the final check
+	private static final double SEARCH_BUDGET_FRACTION = 0.95; // share of maxSeconds for the search; the rest is for the final check
 	// in Both, the first phase (restarts and finishing polish) may use this share of the search budget
 	private static final double FIRST_PHASE_BUDGET_FRACTION = 0.8;
 	// within a phase, the restarts may use this share of the phase's window; the finishing polish gets the rest
@@ -72,7 +71,6 @@ public class RazorNet extends Distances2Network {
 	// in Both, the relaxed strategy runs first if at least this fraction of the taxa lie between two others
 	private static final double RELAXED_FIRST_INTERIOR_FRACTION = 0.1;
 	private static final int INTERIOR_COUNT_MAX_TAXA = 1000; // above this, the O(n^3) interior count is skipped and the strict strategy runs first
-	private static final int STRETCH_UNBOUNDED_MAX_NODES = 2000; // up to this size, the stretch filter runs without a time limit
 	private static final int EXPLOSION_NODES_PER_TAXON = 6;      // above this node-to-taxon ratio, the user is advised
 
 	private final ObjectProperty<Strategy> optionStrategy = new SimpleObjectProperty<>(this, "optionStrategy", Strategy.Both);
@@ -92,9 +90,6 @@ public class RazorNet extends Distances2Network {
 	private final IntegerProperty optionMaxNonImprovingRestarts = new SimpleIntegerProperty(this, "optionMaxNonImprovingRestarts", 3);
 
 	private final BooleanProperty optionRemoveRedundant = new SimpleBooleanProperty(this, "optionRemoveRedundant", true);
-
-	// lossy post-processing: remove edges while no pairwise distance grows by more than this percent (0 = off)
-	private final DoubleProperty optionMaxStretchPercent = new SimpleDoubleProperty(this, "optionMaxStretchPercent", 0.0);
 
 	// extend+polish cycles per restart
 	private final IntegerProperty optionMaxPolishRounds = new SimpleIntegerProperty(this, "optionMaxPolishRounds", 1);
@@ -116,7 +111,6 @@ public class RazorNet extends Distances2Network {
 		ProgramProperties.track(KEY + optionSignificantDigits.getName(), optionSignificantDigits, 6);
 		ProgramProperties.track(KEY + optionRandomRestarts.getName(), optionRandomRestarts, 1000);
 		ProgramProperties.track(KEY + optionMaxNonImprovingRestarts.getName(), optionMaxNonImprovingRestarts, 3);
-		ProgramProperties.track(KEY + optionMaxStretchPercent.getName(), optionMaxStretchPercent, 0.0);
 		ProgramProperties.track(KEY + optionSplitFilterPercent.getName(), optionSplitFilterPercent, 1.0);
 		ProgramProperties.track(KEY + optionRandomSeed.getName(), optionRandomSeed, 0);
 		ProgramProperties.track(KEY + optionMaxSeconds.getName(), optionMaxSeconds, 60);
@@ -135,7 +129,7 @@ public class RazorNet extends Distances2Network {
 	 */
 	@Override
 	public List<String> listOptions() {
-		var list = new ArrayList<>(List.of(optionPreprocessing.getName(), optionStrategy.getName(), optionMaxStretchPercent.getName(),
+		var list = new ArrayList<>(List.of(optionPreprocessing.getName(), optionStrategy.getName(),
 				optionSignificantDigits.getName(), optionMaxSeconds.getName()));
 		if (AdvancedOptions.enabled()) {
 			list.add(Option.SEPARATOR);
@@ -147,7 +141,7 @@ public class RazorNet extends Distances2Network {
 
 	/** all option properties, basic and advanced */
 	private List<javafx.beans.property.Property<?>> allOptionProperties() {
-		return List.of(optionPreprocessing, optionStrategy, optionMaxStretchPercent, optionSignificantDigits, optionMaxSeconds,
+		return List.of(optionPreprocessing, optionStrategy, optionSignificantDigits, optionMaxSeconds,
 				optionRandomRestarts, optionMaxNonImprovingRestarts, optionMaxPolishRounds, optionFinishingPolish,
 				optionSplitFilterPercent, optionRandomSeed, optionLogFile);
 	}
@@ -173,8 +167,6 @@ public class RazorNet extends Distances2Network {
 			return "diagnostic: if set to a file path, write an analysis log there -- the initial slack values under both definitions, a recursion trace, the distribution of lengths over the restarts, what each strategy achieved, and the result. Leave empty for no log";
 		else if (optionFinishingPolish.getName().equals(optionName))
 			return "after the restart search, keep polishing the single best network until its length stops decreasing; recovers metrics that need several extend+polish cycles (default on)";
-		else if (optionMaxStretchPercent.getName().equals(optionName))
-			return "lossy post-processing: remove edges while keeping every pairwise distance within this percent of the input (0 = keep distances exact)";
 		else if (optionRandomRestarts.getName().equals(optionName))
 			return "number of random restarts per strategy (the Strict strategy may stop earlier, see max non-improving restarts)";
 		else if (optionSignificantDigits.getName().equals(optionName))
@@ -494,24 +486,6 @@ public class RazorNet extends Distances2Network {
 		System.err.println(winnerLine);
 		runSummary.append(winnerLine);
 
-		// optional lossy post-processing of the best graph (in permuted, quantized coordinates); if it is cancelled,
-		// the edges removed so far stay removed
-		if (getOptionMaxStretchPercent() > 0) {
-			// the stretch filter runs on its own clock: without a limit for graphs of up to STRETCH_UNBOUNDED_MAX_NODES
-			// nodes or when there is no time budget, otherwise with a budget of maxSeconds
-			ProgressListener stretchProgress;
-			if (getOptionMaxSeconds() <= 0 || search.bestGraph().getNumberOfNodes() <= STRETCH_UNBOUNDED_MAX_NODES)
-				stretchProgress = progress;
-			else
-				stretchProgress = new TimeoutProgress(progress, getOptionMaxSeconds());
-			try {
-				GreedyStretchEdgeRemoval.apply(search.bestGraph(), quantization.isLabeled(),
-						(u, v) -> quantMatrix[u][v], getOptionMaxStretchPercent() / 100.0, stretchProgress);
-			} catch (CanceledException ignored) {
-				// cancelled or out of time: keep the reduction achieved
-			}
-		}
-
 		var finalGraph = canonicalPermutation.unpermuteGraph(search.bestGraph(), quantization.size());
 		var network = networkBlock.getGraph();
 
@@ -548,7 +522,7 @@ public class RazorNet extends Distances2Network {
 		if (network.getNumberOfNodes() > EXPLOSION_NODES_PER_TAXON * ntax) {
 			var lever = getOptionSignificantDigits() > 2
 					? "try fewer significant digits (e.g. 2 or 3)"
-					: "try a max stretch, or MDS preprocessing";
+					: "try MDS preprocessing, or apply the Simplify or Stretch filter to the network";
 			System.err.printf("RazorNet: the network has %,d nodes for %,d taxa --- the distances look generic (few "
 							+ "ties) at %d significant digits, so the extension over-expands. For a sparser network, %s.%n",
 					network.getNumberOfNodes(), ntax, getOptionSignificantDigits(), lever);
@@ -844,14 +818,6 @@ public class RazorNet extends Distances2Network {
 
 	public void setOptionLogFile(String value) {
 		optionLogFile.set(value);
-	}
-
-	public double getOptionMaxStretchPercent() {
-		return optionMaxStretchPercent.get();
-	}
-
-	public DoubleProperty optionMaxStretchPercentProperty() {
-		return optionMaxStretchPercent;
 	}
 
 	public int getOptionRandomRestarts() {

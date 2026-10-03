@@ -16,5 +16,4 @@ module razornet.algorithms {
 	exports razornet.algorithms.utils;
 	exports razornet.algorithms.preprocessing;
 	exports razornet.algorithms.tcs;
-	exports razornet.algorithms.tightspan;
 }

@@ -46,7 +46,7 @@ public class RazorNetProfile implements IAppProfile {
 			"CharactersTaxaFilter", "DistancesTaxaFilter", "CharactersFilter",
 			"NetworkTaxaFilter", "StretchFilter", "SimplifyFilter",
 			// The RazorNet algorithms
-			"RazorNet", "RazorHaploNet", "TightSpanWalker", "TightSpanHaplotypeNetwork", "TCS", "TCSHaplotypeNetwork",
+			"RazorNet", "RazorHaploNet", "TCS", "TCSHaplotypeNetwork",
 			// related:
 			"NeighborNet", "MedianJoining", "MinSpanningNetwork",
 			// Viewer
