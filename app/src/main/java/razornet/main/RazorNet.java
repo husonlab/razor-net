@@ -144,7 +144,7 @@ public class RazorNet extends Application {
 			SplashScreen.showSplash(Duration.ofSeconds(3));
 		try {
 			stage.setTitle("Untitled - " + ProgramProperties.getProgramName());
-			NotificationManager.setShowNotifications(false);
+			NotificationManager.setShowNotifications(true);
 			final var window = new MainWindow();
 			WindowGeometry.setToStage(stage);
 			window.show(stage, stage.getX(), stage.getY(), stage.getWidth(), stage.getHeight());
