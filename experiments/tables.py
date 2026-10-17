@@ -46,9 +46,11 @@ def alignments(results, tables):
             name = name.replace(old, '')
         first = next(iter(methods.values()))
         cells = []
+        best = min(int(methods[m]['excess']) for m in ('MedianJoining', 'TCS', 'RazorHaploNet', 'RazorHaploNet+Simplify'))
         for method in ('MedianJoining', 'TCS', 'RazorHaploNet', 'RazorHaploNet+Simplify'):
             row = methods[method]
-            cells.append(f"{row['mutations']} & {row['cycles']} & {row['excess']}")
+            excess = row['excess'] if int(row['excess']) > best else rf"\textbf{{{row['excess']}}}"  # the smallest excess in bold
+            cells.append(f"{row['mutations']} & {row['cycles']} & {excess}")
         lines.append(rf"\texttt{{{tex(name)}}} & {first['sequences']} & {first['haplotypes']} & {first['sites']} & "
                      + ' & '.join(cells) + r' \\')
     with open(os.path.join(tables, 'alignments-rows.tex'), 'w') as f:
