@@ -61,7 +61,7 @@ java -cp ... razornet.testsuite.CompareDistanceMethods examples/manhattan_distan
 java -cp ... razornet.testsuite.CompareHaplotypeMethods examples/rhabdoviruses/CCapSV.fas
 ```
 
-`CompareDistanceMethods` compares NeighborNet with RazorNet, and `CompareHaplotypeMethods` median joining and TCS
+`CompareDistanceMethods` compares NeighborNet with RazorNet (`CharactersToDistances` turns an alignment into the Hamming distances of its distinct sequences for it), and `CompareHaplotypeMethods` median joining and TCS
 with RazorHaploNet, each also followed by the Simplify filter. `SimulateTreeMixtures` and `SimulateHaplotypes`
 generate data sets with a known truth for them (sequences are evolved with AliSim of IQ-TREE 2, which has to be
 installed), and `--truth` then reports how the quartet supports displayed by a network compare with the true ones.
