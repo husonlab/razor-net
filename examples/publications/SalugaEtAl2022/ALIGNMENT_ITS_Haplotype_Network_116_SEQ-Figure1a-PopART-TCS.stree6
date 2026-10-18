@@ -1,0 +1,306 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=6 nAlgorithms=3;
+PROGRAM version='SplitsTree (version 6.9.7) - License GPL v3';
+WORKFLOW creationDate='1792326896084'; [Sun Oct 18 14:34:56 CEST 2026]
+END; [SPLITSTREE6]
+
+[
+Methods:
+Analysis was performed using SplitsTree (version 6.9.7)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.).
+The original input consisted of 17 taxa and 22 nodes and 24 edges.
+
+References:
+Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+DIMENSIONS ntax=16;
+TAXLABELS
+	[1] 'R17'
+	[2] 'R13'
+	[3] 'R05'
+	[4] 'R18'
+	[5] 'R04'
+	[6] 'R16'
+	[7] 'R14'
+	[8] 'R06'
+	[9] 'R07'
+	[10] 'R08'
+	[11] 'R12'
+	[12] 'R11'
+	[13] 'R10'
+	[14] 'R03'
+	[15] 'R02'
+	[16] 'R15'
+;
+[DISPLAYLABELS;]
+TAXINFO
+	[1] 'SIG-01,SIG-02,DAN-01,WIL-03,WIL-08,WIL-04,WIL-05,WIL-06,WIL-07,LOU-01,FAL-03,FAL-01,FAL-02,MAR-02,MAR-01,PAT-05'
+	[2] 'DAN-02,DAN-03,DAN-04,DAN-06,DAN-05,GRA-01,WIL-11,WIL-09,WIL-12,WIL-13,WIL-10,WIL-14,WIL-15,WIL-16,WIL-17'
+	[3] 'DEC-02,DEC-01'
+	[4] 'MAR-05,MAR-06,MAR-04,MAR-07'
+	[5] 'GEO-01'
+	[6] 'JAM-01,JAM-05,JAM-02,JAM-06,JAM-07,JAM-08,JAM-03,JAM-04'
+	[7] 'COC-02,COC-03,COC-01,PAT-15,PAT-13'
+	[8] 'HER-01,PAT-01'
+	[9] 'DRO-03,DRO-01'
+	[10] 'DRO-05,DRO-02,DRO-10'
+	[11] 'DRO-06,DRO-07,DRO-11,DRO-12,DRO-08,DRO-09'
+	[12] 'DRO-Sgl'
+	[13] 'DRO-13'
+	[14] 'MRO-01,MRO-02,PEL-01,PEL-02,QML-03,QML-01,QML-02,QML-04,VIC-17,VIC-18,VIC-19,VIC-20,VIC-21,VIC-22,VIC-23,VIC-24,VIC-25,VIC-26,VIC-27,VIC-28,VIC-29,MBL-02,MBL-01,VIC-Sgl-c,VIC-Sgl-e,VIC-Sgl-d'
+	[15] 'VIC-01,VIC-02,VIC-03,VIC-04,VIC-05,VIC-06,VIC-07,VIC-08,VIC-09,VIC-10,VIC-11,VIC-12,VIC-13,VIC-14,VIC-15,VIC-16,VIC-Sgl-a,VIC-Sgl-b'
+	[16] 'PAT-10,PAT-02,PAT-04,PAT-Sgl,PAT-08,PAT-09'
+;
+END; [TAXA]
+
+BEGIN TRAITS;
+TITLE 'Input Traits';
+DIMENSIONS [nTax=16] nTraits=16;
+FORMAT labels=yes missing=? separator=Comma;
+TRAITCOLOR #f3edb3ff #ab3263ff #eeb782ff #efe364ff #f0cf80ff #dd6d54ff #efb152ff #d44947ff #e6c8e6ff #e99bbcff #8e2b73ff #d64892ff #a04cb5ff #8ccbe2ff #434299ff #bd9738ff;
+TRAITLABELS
+ 'R17' 'R13' 'R05' 'R18' 'R04' 'R16' 'R14' 'R06' 'R07' 'R08' 'R12' 'R11' 'R10' 'R03' 'R02' 'R15';
+MATRIX
+[1] 'R17'     16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[2] 'R13'     0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[3] 'R05'     0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0
+[4] 'R18'     0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0
+[5] 'R04'     0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+[6] 'R16'     0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0
+[7] 'R14'     0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0
+[8] 'R06'     0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0
+[9] 'R07'     0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0
+[10] 'R08'     0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0
+[11] 'R12'     0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0
+[12] 'R11'     0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+[13] 'R10'     0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+[14] 'R03'     0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,0
+[15] 'R02'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0
+[16] 'R15'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6
+;
+END; [TRAITS]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=16;
+TAXLABELS
+	[1] 'R17'
+	[2] 'R13'
+	[3] 'R05'
+	[4] 'R18'
+	[5] 'R04'
+	[6] 'R16'
+	[7] 'R14'
+	[8] 'R06'
+	[9] 'R07'
+	[10] 'R08'
+	[11] 'R12'
+	[12] 'R11'
+	[13] 'R10'
+	[14] 'R03'
+	[15] 'R02'
+	[16] 'R15'
+;
+[DISPLAYLABELS;]
+TAXINFO
+	[1] 'SIG-01,SIG-02,DAN-01,WIL-03,WIL-08,WIL-04,WIL-05,WIL-06,WIL-07,LOU-01,FAL-03,FAL-01,FAL-02,MAR-02,MAR-01,PAT-05'
+	[2] 'DAN-02,DAN-03,DAN-04,DAN-06,DAN-05,GRA-01,WIL-11,WIL-09,WIL-12,WIL-13,WIL-10,WIL-14,WIL-15,WIL-16,WIL-17'
+	[3] 'DEC-02,DEC-01'
+	[4] 'MAR-05,MAR-06,MAR-04,MAR-07'
+	[5] 'GEO-01'
+	[6] 'JAM-01,JAM-05,JAM-02,JAM-06,JAM-07,JAM-08,JAM-03,JAM-04'
+	[7] 'COC-02,COC-03,COC-01,PAT-15,PAT-13'
+	[8] 'HER-01,PAT-01'
+	[9] 'DRO-03,DRO-01'
+	[10] 'DRO-05,DRO-02,DRO-10'
+	[11] 'DRO-06,DRO-07,DRO-11,DRO-12,DRO-08,DRO-09'
+	[12] 'DRO-Sgl'
+	[13] 'DRO-13'
+	[14] 'MRO-01,MRO-02,PEL-01,PEL-02,QML-03,QML-01,QML-02,QML-04,VIC-17,VIC-18,VIC-19,VIC-20,VIC-21,VIC-22,VIC-23,VIC-24,VIC-25,VIC-26,VIC-27,VIC-28,VIC-29,MBL-02,MBL-01,VIC-Sgl-c,VIC-Sgl-e,VIC-Sgl-d'
+	[15] 'VIC-01,VIC-02,VIC-03,VIC-04,VIC-05,VIC-06,VIC-07,VIC-08,VIC-09,VIC-10,VIC-11,VIC-12,VIC-13,VIC-14,VIC-15,VIC-16,VIC-Sgl-a,VIC-Sgl-b'
+	[16] 'PAT-10,PAT-02,PAT-04,PAT-Sgl,PAT-08,PAT-09'
+;
+END; [TAXA]
+
+BEGIN TRAITS;
+TITLE 'Working Traits';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS [nTax=16] nTraits=16;
+FORMAT labels=yes missing=? separator=Comma;
+TRAITCOLOR #f3edb3ff #ab3263ff #eeb782ff #efe364ff #f0cf80ff #dd6d54ff #efb152ff #d44947ff #e6c8e6ff #e99bbcff #8e2b73ff #d64892ff #a04cb5ff #8ccbe2ff #434299ff #bd9738ff;
+TRAITLABELS
+ 'R17' 'R13' 'R05' 'R18' 'R04' 'R16' 'R14' 'R06' 'R07' 'R08' 'R12' 'R11' 'R10' 'R03' 'R02' 'R15';
+MATRIX
+[1] 'R17'     16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[2] 'R13'     0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[3] 'R05'     0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0
+[4] 'R18'     0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0
+[5] 'R04'     0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+[6] 'R16'     0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0
+[7] 'R14'     0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0
+[8] 'R06'     0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0
+[9] 'R07'     0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0
+[10] 'R08'     0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0
+[11] 'R12'     0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0
+[12] 'R11'     0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+[13] 'R10'     0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+[14] 'R03'     0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,0
+[15] 'R02'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0
+[16] 'R15'     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6
+;
+END; [TRAITS]
+
+BEGIN NETWORK;
+TITLE 'Input Network';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS nVertices=21 nEdges=23;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 65, excess: 63, shortfall: 2';
+VERTICES
+	id=1 label='R17' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=3 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
+	id=4 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
+	id=5 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
+	id=6 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=7 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=8 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=9 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=10 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
+	id=11 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
+	id=12 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
+	id=13 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
+	id=14 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
+	id=15 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
+	id=16 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
+	id=17 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
+	id=18 states='TATGTCACCACTACAATCCGCCGAACA0100000100001',
+	id=19 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=20 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
+	id=21 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011',
+	id=22
+;
+EDGES
+	id=1 sid=5 tid=6 weight='3' sites='474,476,938',
+	id=2 sid=6 tid=19 weight='1' sites='614',
+	id=3 sid=7 tid=8 weight='1' sites='343',
+	id=4 sid=7 tid=9 weight='1' sites='125',
+	id=5 sid=8 tid=17 weight='1' sites='742',
+	id=6 sid=8 tid=19 weight='1' sites='125',
+	id=7 sid=9 tid=18 weight='1' sites='951',
+	id=8 sid=9 tid=19 weight='1' sites='343',
+	id=9 sid=10 tid=11 weight='1' sites='343',
+	id=10 sid=10 tid=18 weight='1' sites='816',
+	id=11 sid=12 tid=13 weight='2' sites='245,398',
+	id=12 sid=12 tid=14 weight='1' sites='939',
+	id=13 sid=12 tid=20 weight='16' sites='142,285,286,293,294,301,343,546,607,762,940,941,942,944,950,951',
+	id=14 sid=14 tid=19 weight='1' sites='546',
+	id=15 sid=15 tid=20 weight='3' sites='365,741,936',
+	id=16 sid=16 tid=21 weight='10' sites='146,149,150,545,605,608,946,947,948,949',
+	id=17 sid=18 tid=21 weight='14' sites='142,285,286,293,294,301,546,607,762,940,941,942,944,950',
+	id=18 sid=20 tid=21 weight='1' sites='939',
+	id=20 sid=6 tid=1 weight='1' sites='125',
+	id=21 sid=8 tid=1 weight='1' sites='614',
+	id=22 sid=3 tid=22 weight='1',
+	id=23 sid=4 tid=22 weight='1',
+	id=24 sid=17 tid=22 weight='1'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK NETWORK = 'Input Network';
+NAME 'Network Taxa Filter';
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Working Network';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS nVertices=21 nEdges=23;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 65';
+VERTICES
+	id=1 label='R17' states='CATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=3 label='R13' states='TATGTCACCACCTCAATCCGCCGAACA0000000100000',
+	id=4 label='R05' states='TATGTCACCACCTCAATCCGCCGAGCA0100000100000',
+	id=5 label='R18' states='TATGTCACCACCACATGCCGCCCAACA0000000100000',
+	id=6 label='R04' states='TATGTCACCACCACAATCCGCCCAACA0100000100000',
+	id=7 label='R16' states='CATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=8 label='R14' states='CATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=9 label='R06' states='TATGTCACCACTACAATCCGCCGAACA0100000100000',
+	id=10 label='R07' states='TATGTCACCACTACAATCCGCCGAACG0100000100001',
+	id=11 label='R08' states='TATGTCACCACCACAATCCGCCGAACG0100000100001',
+	id=12 label='R12' states='TATGTCACCACCACAATCGGCCGAACA0110000100000',
+	id=13 label='R11' states='TATGTAACCACCACTATCGGCCGAACA0110000100000',
+	id=14 label='R10' states='TATGTCACCACCACAATCGGCCGAACA0100000100000',
+	id=15 label='R03' states='TGTGTCCTACTTAAAATCAGTCGGAGA1111111100011',
+	id=16 label='R02' states='TGGTGCCTACTTACAATTAATTGAAGA0101111011111',
+	id=17 label='R15' states='CATGTCACCACCACAATCCGCCGAGCA0100000100000',
+	id=18 states='TATGTCACCACTACAATCCGCCGAACA0100000100001',
+	id=19 states='TATGTCACCACCACAATCCGCCGAACA0100000100000',
+	id=20 states='TGTGTCCTACTTACAATCAGTCGAAGA0111111100011',
+	id=21 states='TGTGTCCTACTTACAATCAGTCGAAGA0101111100011',
+	id=22 x='166.0081' y='-44.2711'
+;
+EDGES
+	id=1 sid=5 tid=6 weight='3' sites='474,476,938',
+	id=2 sid=6 tid=19 weight='1' sites='614',
+	id=3 sid=7 tid=8 weight='1' sites='343',
+	id=4 sid=7 tid=9 weight='1' sites='125',
+	id=5 sid=8 tid=17 weight='1' sites='742',
+	id=6 sid=8 tid=19 weight='1' sites='125',
+	id=7 sid=9 tid=18 weight='1' sites='951',
+	id=8 sid=9 tid=19 weight='1' sites='343',
+	id=9 sid=10 tid=11 weight='1' sites='343',
+	id=10 sid=10 tid=18 weight='1' sites='816',
+	id=11 sid=12 tid=13 weight='2' sites='245,398',
+	id=12 sid=12 tid=14 weight='1' sites='939',
+	id=13 sid=12 tid=20 weight='16' sites='142,285,286,293,294,301,343,546,607,762,940,941,942,944,950,951',
+	id=14 sid=14 tid=19 weight='1' sites='546',
+	id=15 sid=15 tid=20 weight='3' sites='365,741,936',
+	id=16 sid=16 tid=21 weight='10' sites='146,149,150,545,605,608,946,947,948,949',
+	id=17 sid=18 tid=21 weight='14' sites='142,285,286,293,294,301,546,607,762,940,941,942,944,950',
+	id=18 sid=20 tid=21 weight='1' sites='939',
+	id=20 sid=6 tid=1 weight='1' sites='125',
+	id=21 sid=8 tid=1 weight='1' sites='614',
+	id=22 sid=3 tid=22 weight='1',
+	id=23 sid=4 tid=22 weight='1',
+	id=24 sid=17 tid=22 weight='1'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Working Network';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network';
+LINK ALGORITHM = 'Show Network';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	ActiveTraits = 'R17' 'R13' 'R05' 'R18' 'R04' 'R16' 'R14' 'R06' 'R07' 'R08' 'R12' 'R11' 'R10' 'R03' 'R02' 'R15',
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'Hatches',
+	Edits = 'mn:1:98.95,-395.79' 'mn:3:-148.42,-321.58' 'mn:4:-148.42,-470' 'mn:5:247.37,-296.84' 'mn:6:98.95,-296.84' 'mn:7:24.74,-346.31' 'mn:8:-24.74,-395.79' 'mn:9:24.74,-247.37' 'mn:10:74.21,-197.89' 'mn:11:123.68,-197.89' 'mn:12:-24.74,-148.42' 'mn:13:-98.95,-148.42' 'mn:14:-24.74,-197.89' 'mn:15:-148.42,24.74' 'mn:16:173.16,24.74' 'mn:17:-98.95,-395.79' 'mn:18:24.74,-197.89' 'mn:19:-24.74,-296.84' 'mn:20:-24.74,24.74' 'mn:21:24.74,24.74' 'mn:22:-148.42,-395.79' 'ml:8:0,0' 'ml:1:0,0' 'ml:17:0,0' 'ml:9:45,-24' 'ml:6:32,19' 'ml:10:33,18' 'ml:13:0,0' 'ml:14:-43,-25' 'ml:12:-13,7',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'ForceDirected';
+END; [VIEW]
