@@ -44,7 +44,10 @@ import java.util.function.ToDoubleFunction;
  * RazorHaploNet: computes a haplotype network from an alignment. The Hamming distances of the sequences are
  * realized by {@link RazorNet}; sequences are then assigned to the auxiliary vertices by weighted parsimony
  * ({@link ParsimonyLabeler}), the weight of every edge is set to its number of mutations, superfluous edges are
- * removed and unlabeled edges are contracted. Columns with missing or ambiguous data are masked; a gap is a state.
+ * removed and unlabeled edges are contracted. Columns with missing or ambiguous data are masked; a gap is a state,
+ * unless the option Mask Gap Sites masks its column too, as PopART does. Sequences that are identical on the sites
+ * kept are one haplotype: the engine, the labeling and the cleanup see one taxon per haplotype, and the other
+ * sequences of a haplotype hang off its node by a zero-length edge in the end.
  * <p>
  * The engine that realizes the distances is obtained from {@link #getEngine()}, which
  * {@link TCSHaplotypeNetwork} overrides.
@@ -82,6 +85,9 @@ public class RazorHaploNet extends Characters2Network {
 	// treat '?', 'N' and the IUPAC ambiguity codes as ordinary states, instead of masking their columns
 	private final BooleanProperty optionMissingAsState = new SimpleBooleanProperty(this, "optionMissingAsState", false);
 
+	// mask every column in which any sequence has a gap, as PopART does, instead of treating a gap as a state
+	private final BooleanProperty optionMaskGapSites = new SimpleBooleanProperty(this, "optionMaskGapSites", false);
+
 	private final RazorNet razorNet;
 
 	/** prefix of the keys under which the options are saved in the program properties */
@@ -96,7 +102,7 @@ public class RazorHaploNet extends Characters2Network {
 
 		ProgramProperties.track(KEY + optionContractUnlabeled.getName(), optionContractUnlabeled, true);
 		ProgramProperties.track(KEY + optionRemoveSuperfluous.getName(), optionRemoveSuperfluous, true);
-		// not tracked: optionLabeling (an enum) and optionMissingAsState (to be chosen anew in every session)
+		// not tracked: optionLabeling (an enum), optionMissingAsState and optionMaskGapSites (to be chosen anew in every session)
 	}
 
 	public RazorHaploNet() {
@@ -130,6 +136,9 @@ public class RazorHaploNet extends Characters2Network {
 		else if (optionMissingAsState.getName().equals(optionName))
 			return "treat '?', 'N' and ambiguity codes as ordinary states rather than masking out their columns; "
 				   + "unknown positions then count as mutations - only for data where masking leaves too little";
+		else if (optionMaskGapSites.getName().equals(optionName))
+			return "mask out every column in which any sequence has a gap, as PopART does; "
+				   + "otherwise a gap is a state of its own and an indel counts as a mutation";
 		else return getEngine().getToolTip(optionName); // the shared options are the engine's, so are their tooltips
 	}
 
@@ -159,7 +168,7 @@ public class RazorHaploNet extends Characters2Network {
 	public List<String> listOptions() {
 		// the basic options; in advanced mode, a separator and the advanced options follow (see AdvancedOptions)
 		var list = new java.util.ArrayList<>(List.of(optionStrategy.getName(), optionLabeling.getName(), optionRemoveSuperfluous.getName(),
-				optionContractUnlabeled.getName(), optionMissingAsState.getName(), optionMaxSeconds.getName()));
+				optionContractUnlabeled.getName(), optionMissingAsState.getName(), optionMaskGapSites.getName(), optionMaxSeconds.getName()));
 		if (razornet.algorithms.utils.AdvancedOptions.enabled()) {
 			list.add(splitstree6.options.Option.SEPARATOR);
 			list.addAll(List.of(optionRandomRestarts.getName(), optionRandomSeed.getName()));
@@ -202,21 +211,19 @@ public class RazorHaploNet extends Characters2Network {
 		// Gaps and missing data: a gap is an ordinary state (an indel) and counts as a difference. A column in which
 		// any sequence has '?', 'N' or an IUPAC ambiguity code is masked out for all sequences, so that all pairs are
 		// compared on the same sites and the Hamming distances are a metric. With optionMissingAsState nothing is
-		// masked and every character is a state of its own. The labeling follows the same convention.
-		final int[] keptSites;
-		if (getOptionMissingAsState()) {
-			keptSites = allSites(charactersBlock);
+		// masked and every character is a state of its own; with optionMaskGapSites a column in which any sequence
+		// has a gap is masked out as well, as PopART does. The labeling follows the same convention.
+		final int[] keptSites = keptSites(charactersBlock, !getOptionMissingAsState(), getOptionMaskGapSites());
+		if (getOptionMissingAsState())
 			warnMissingAsState(charactersBlock);
-		} else {
-			keptSites = keptSites(charactersBlock);
-			if (keptSites.length < charactersBlock.getNchar())
-				System.err.printf("Masked %,d of %,d sites carrying missing or ambiguous data; %,d remain%n",
-						charactersBlock.getNchar() - keptSites.length, charactersBlock.getNchar(), keptSites.length);
-			if (keptSites.length == 0)
-				throw new IOException(("All %,d sites carry missing or ambiguous data: nothing left to compute on. "
-									   + "Turn on 'Missing As State' to keep them, at the cost of counting unknown "
-									   + "positions as mutations.").formatted(charactersBlock.getNchar()));
-		}
+		var masked = (getOptionMissingAsState() ? "a gap" : getOptionMaskGapSites() ? "missing or ambiguous data or a gap" : "missing or ambiguous data");
+		if (keptSites.length < charactersBlock.getNchar())
+			System.err.printf("Masked %,d of %,d sites carrying %s; %,d remain%n",
+					charactersBlock.getNchar() - keptSites.length, charactersBlock.getNchar(), masked, keptSites.length);
+		if (keptSites.length == 0)
+			throw new IOException(("All %,d sites carry %s: nothing left to compute on. "
+								   + "Turn on 'Missing As State' to keep them, at the cost of counting unknown "
+								   + "positions as mutations.").formatted(charactersBlock.getNchar(), masked));
 
 		var sequences = maskedRows(charactersBlock, keptSites);   // one masked sequence per taxon, 0-based
 		// site positions in the original alignment, for the edge labels
@@ -226,13 +233,27 @@ public class RazorHaploNet extends Characters2Network {
 		var utils = new NetworkSequencesAnalyzer(charactersBlock.getGapCharacter(), charactersBlock.getMissingCharacter(),
 				charactersBlock.isHasAmbiguityCodes(), true);
 
+		// sequences that are identical on the kept sites are one haplotype, represented by the first of them (1-based
+		// taxon ids); the engine, the labeling and the cleanup run on the representatives, so that neither the
+		// construction (TCS joins taxa in order of distance) nor the minimum-excess labeling (which weighs pairs of
+		// taxa) sees a haplotype several times; the other members are attached at the end
+		var groups = new LinkedHashMap<String, List<Integer>>();
+		for (var t = 1; t <= taxaBlock.getNtax(); t++)
+			groups.computeIfAbsent(sequences[t - 1], k -> new ArrayList<>()).add(t);
+		var representatives = groups.values().stream().mapToInt(members -> members.get(0)).toArray();
+		var engineTaxa = new TaxaBlock();
+		engineTaxa.addTaxaByNames(Arrays.stream(representatives).mapToObj(taxaBlock::getLabel).toList());
+		if (representatives.length < taxaBlock.getNtax())
+			System.err.printf("Merged %,d sequences into %,d distinct haplotypes; the other sequences of a haplotype hang off its node by a zero-length edge%n",
+					taxaBlock.getNtax(), representatives.length);
+
 		var distancesBlock = new DistancesBlock();
-		distancesBlock.setNtax(taxaBlock.getNtax());
+		distancesBlock.setNtax(representatives.length);
 		{
 			var d = distancesBlock.getDistances();
-			for (var i = 0; i < taxaBlock.getNtax(); i++)
-				for (var j = i + 1; j < taxaBlock.getNtax(); j++)
-					d[i][j] = d[j][i] = utils.differences(sequences[i], sequences[j]);
+			for (var i = 0; i < representatives.length; i++)
+				for (var j = i + 1; j < representatives.length; j++)
+					d[i][j] = d[j][i] = utils.differences(sequences[representatives[i] - 1], sequences[representatives[j] - 1]);
 		}
 
 		// Hamming distances on equal sites are a metric; this check is a safeguard
@@ -240,9 +261,21 @@ public class RazorHaploNet extends Characters2Network {
 
 		applyEngineOptions();
 
-		getEngine().compute(progress, taxaBlock, distancesBlock, networkBlock);
+		getEngine().compute(progress, engineTaxa, distancesBlock, networkBlock);
 
 		var network = networkBlock.getGraph();
+
+		// the engine attached the representatives by their ids in engineTaxa: give every node its original taxon id
+		for (var v : network.nodes()) {
+			if (network.hasTaxa(v)) {
+				var ids = new ArrayList<Integer>();
+				for (var r : network.getTaxa(v))
+					ids.add(representatives[r - 1]);
+				network.clearTaxa(v);
+				for (var t : ids)
+					network.addTaxon(v, t);
+			}
+		}
 
 		progress.setSubtask(getOptionLabeling() == LabelingMethod.MinExcess ? "Minimum-excess labeling" : "Parsimony labeling");
 
@@ -402,7 +435,25 @@ public class RazorHaploNet extends Characters2Network {
 		for (var e : network.edges())
 			networkBlock.getEdgeData(e).put("weight", StringUtils.trim(network.getWeight(e)));
 
-		warnIfExcessNegative(taxaBlock, distancesBlock, networkBlock);
+		warnIfExcessNegative(taxaBlock, distancesBlock, representatives, networkBlock);
+
+		// the other sequences of each haplotype hang off its node by a zero-length edge, with the same states
+		for (var members : groups.values()) {
+			if (members.size() > 1) {
+				var v = network.getTaxon2Node(members.get(0));
+				var states = networkBlock.getNodeData(v).get(NetworkBlock.NODE_STATES_KEY);
+				for (var t : members.subList(1, members.size())) {
+					var w = network.newNode();
+					network.addTaxon(w, t);
+					network.setLabel(w, taxaBlock.getLabel(t));
+					networkBlock.getNodeData(w).put(NetworkBlock.NODE_STATES_KEY, states);
+					var e = network.newEdge(w, v);
+					network.setWeight(e, 0);
+					networkBlock.getEdgeData(e).put("weight", "0");
+					networkBlock.getEdgeData(e).put(NetworkBlock.EDGE_SITES_KEY, "");
+				}
+			}
+		}
 	}
 
 	/**
@@ -486,6 +537,14 @@ public class RazorHaploNet extends Characters2Network {
 		return optionMissingAsState;
 	}
 
+	public boolean getOptionMaskGapSites() {
+		return optionMaskGapSites.get();
+	}
+
+	public BooleanProperty optionMaskGapSitesProperty() {
+		return optionMaskGapSites;
+	}
+
 	public int getOptionMaxPolishRounds() {
 		return optionMaxPolishRounds.get();
 	}
@@ -550,7 +609,11 @@ public class RazorHaploNet extends Characters2Network {
 	 * over all pairs of taxa. Warns if a pair of taxa is displayed with fewer mutations than its sequences differ
 	 * by, which must not happen.
 	 */
-	private static void warnIfExcessNegative(TaxaBlock taxaBlock, DistancesBlock distancesBlock, NetworkBlock networkBlock) {
+	private static void warnIfExcessNegative(TaxaBlock taxaBlock, DistancesBlock distancesBlock, int[] representatives, NetworkBlock networkBlock) {
+		// the distances are those of the representatives, indexed by their position; the nodes carry original taxon ids
+		var reducedIndex = new int[taxaBlock.getNtax() + 1];
+		for (var i = 0; i < representatives.length; i++)
+			reducedIndex[representatives[i]] = i + 1;
 		var graph = networkBlock.getGraph();
 		var nodes = new ArrayList<Node>();
 		var taxonOf = new ArrayList<Integer>();
@@ -566,7 +629,7 @@ public class RazorHaploNet extends Characters2Network {
 			// one shortest-path computation per taxon
 			var distanceFromA = CheckPairwiseDistances.graphDistances(graph, nodes.get(a));
 			for (var b = a + 1; b < nodes.size(); b++) {
-				var expected = distancesBlock.get(taxonOf.get(a), taxonOf.get(b));
+				var expected = distancesBlock.get(reducedIndex[taxonOf.get(a)], reducedIndex[taxonOf.get(b)]);
 				double shown = distanceFromA.get(nodes.get(b));
 				totalExcess += shown - expected;
 				pairs++;
@@ -589,9 +652,11 @@ public class RazorHaploNet extends Characters2Network {
 
 
 	/**
-	 * the 0-based columns in which no taxon has missing or ambiguous data; a gap is not missing data
+	 * the 0-based columns that are kept: with {@code maskMissing}, a column in which any sequence has the missing
+	 * character, 'N' or an IUPAC ambiguity code is dropped; with {@code maskGaps}, a column in which any sequence has
+	 * a gap is dropped as well, as PopART does
 	 */
-	private static int[] keptSites(CharactersBlock charactersBlock) {
+	private static int[] keptSites(CharactersBlock charactersBlock, boolean maskMissing, boolean maskGaps) {
 		var gap = Character.toUpperCase(charactersBlock.getGapCharacter());
 		var missing = Character.toUpperCase(charactersBlock.getMissingCharacter());
 		var kept = new ArrayList<Integer>();
@@ -599,7 +664,7 @@ public class RazorHaploNet extends Characters2Network {
 			var ok = true;
 			for (var i = 1; i <= charactersBlock.getNtax() && ok; i++) {
 				var c = Character.toUpperCase(charactersBlock.get(i, j));
-				if (c != gap && (c == missing || c == 'N' || "RYSWKMBDHV".indexOf(c) >= 0))
+				if (c == gap ? maskGaps : maskMissing && (c == missing || c == 'N' || "RYSWKMBDHV".indexOf(c) >= 0))
 					ok = false;
 			}
 			if (ok) kept.add(j - 1);
@@ -609,16 +674,9 @@ public class RazorHaploNet extends Characters2Network {
 		return result;
 	}
 
-	/** all 0-based columns, in order */
-	private static int[] allSites(CharactersBlock charactersBlock) {
-		var result = new int[charactersBlock.getNchar()];
-		for (var i = 0; i < result.length; i++) result[i] = i;
-		return result;
-	}
-
 	/** warns that 'Missing As State' is on, and says what that means for the network */
 	private static void warnMissingAsState(CharactersBlock charactersBlock) {
-		var wouldMask = charactersBlock.getNchar() - keptSites(charactersBlock).length;
+		var wouldMask = charactersBlock.getNchar() - keptSites(charactersBlock, true, false).length;
 		System.err.printf("WARNING (RazorHaploNet): 'Missing As State' is on. All %,d sites are kept, including%n",
 				charactersBlock.getNchar());
 		System.err.printf("         the %,d that carry missing or ambiguous data and would otherwise be masked out (%.1f%%).%n",

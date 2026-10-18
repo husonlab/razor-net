@@ -92,7 +92,7 @@ public class TCSHaplotypeNetwork extends RazorHaploNet {
 	@Override
 	public List<String> listOptions() {
 		return List.of(optionRemoveSuperfluousProperty().getName(), optionContractUnlabeledProperty().getName(),
-				optionLabelingProperty().getName(), optionMissingAsStateProperty().getName(),
+				optionLabelingProperty().getName(), optionMissingAsStateProperty().getName(), optionMaskGapSitesProperty().getName(),
 				optionMaxSecondsProperty().getName());
 	}
 }

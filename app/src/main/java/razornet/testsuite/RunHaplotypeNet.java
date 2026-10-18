@@ -53,18 +53,17 @@ public class RunHaplotypeNet {
 	 * {@code missingAsState}.
 	 */
 	private static void reportRealization(TaxaBlock taxa, CharactersBlock characters, NetworkBlock networkBlock,
-										  boolean missingAsState) {
+										  boolean missingAsState, boolean maskGapSites) {
 		var graph = networkBlock.getGraph();
 		var gap = Character.toUpperCase(characters.getGapCharacter());
 		var missing = Character.toUpperCase(characters.getMissingCharacter());
 		var kept = new ArrayList<Integer>();
 		for (var j = 1; j <= characters.getNchar(); j++) {
 			var ok = true;
-			if (!missingAsState)
-				for (var i = 1; i <= taxa.getNtax() && ok; i++) {
-					var c = Character.toUpperCase(characters.get(i, j));
-					if (c != gap && (c == missing || c == 'N' || "RYSWKMBDHV".indexOf(c) >= 0)) ok = false;
-				}
+			for (var i = 1; i <= taxa.getNtax() && ok; i++) {
+				var c = Character.toUpperCase(characters.get(i, j));
+				if (c == gap ? maskGapSites : !missingAsState && (c == missing || c == 'N' || "RYSWKMBDHV".indexOf(c) >= 0)) ok = false;
+			}
 			if (ok) kept.add(j);
 		}
 		var nodes = new ArrayList<jloda.graph.Node>();
@@ -247,7 +246,8 @@ public class RunHaplotypeNet {
 		for (var entry : mismatch.entrySet())
 			System.out.printf("  edges with %s: %d%n", entry.getKey(), entry.getValue());
 		// the excess and the shortfall of the final network, after edge removal and contraction
-		reportRealization(taxa, characters, networkBlock, missingAsState);
+		reportRealization(taxa, characters, networkBlock, missingAsState,
+				algorithm instanceof razornet.algorithms.RazorHaploNet haploNet && haploNet.getOptionMaskGapSites());
 
 		if (weightOfUnlabelled > 0)
 			System.out.printf("  total weight carried by UNLABELED edges: %s%n",

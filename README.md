@@ -97,8 +97,11 @@ mode with non-default advanced values loads in basic mode with those values back
 | `RandomSeed` | 0 | seed |
 | `LogFile` | empty | write an analysis log: slack tables under both definitions, a recursion trace, the restart-length distribution, what each strategy achieved |
 
-`RazorHaploNet` shows `Strategy`, `Labeling`, `RemoveSuperfluous`, `ContractUnlabeled`, `MissingAsState` and
-`MaxSeconds`; `RandomRestarts` and `RandomSeed` are advanced.
+`RazorHaploNet` shows `Strategy`, `Labeling`, `RemoveSuperfluous`, `ContractUnlabeled`, `MissingAsState`,
+`MaskGapSites` (mask every column in which any sequence has a gap, as PopART does, instead of treating a gap as a
+state; off by default) and `MaxSeconds`; `RandomRestarts` and `RandomSeed` are advanced. Sequences that are
+identical on the sites kept are one haplotype: the network is computed on one taxon per haplotype, and the other
+sequences of a haplotype hang off its node by a zero-length edge.
 
 Both algorithms return a network that displays the input distances exactly. A sparser network at the price of
 some distortion is obtained afterwards, by applying SplitsTree's `SimplifyFilter` or `StretchFilter` to the
