@@ -3,18 +3,17 @@
 BEGIN SPLITSTREE6;
 DIMENSIONS nDataNodes=9 nAlgorithms=5;
 PROGRAM version='SplitsTree (version dev) - License GPL v3';
-WORKFLOW creationDate='1792385190210'; [Mon Oct 19 06:46:30 CEST 2026]
+WORKFLOW creationDate='1792412476357'; [Mon Oct 19 14:21:16 CEST 2026]
 END; [SPLITSTREE6]
 
 [
 Methods:
-Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.), (Hayamizu et al, 2026 ; M. Hayamizu, others, DH Huson, in preparation).
+Analysis was performed using SplitsTree (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.).
 The original input consisted of 16 taxa and 16 DNA sequences of length 951.
 The Razor Haplo Net method was used (default options, except MaskGapSites=true) so as to obtain 22 nodes and 27 edges.
 The Simplify Filter method was used (default options) so as to obtain 21 nodes and 23 edges.
 
 References:
-Hayamizu et al, 2026: M. Hayamizu, others, DH Huson, in preparation
 Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
 ]
 
@@ -39,7 +38,24 @@ TAXLABELS
 	[15] 'R02'
 	[16] 'R15'
 ;
-[DISPLAYLABELS;]
+DISPLAYLABELS
+	[1] '<size "18.0">R17'
+	[2] '<size "18.0">R13'
+	[3] '<size "18.0">R05'
+	[4] '<size "18.0">R18'
+	[5] '<size "18.0">R04'
+	[6] '<size "18.0">R16'
+	[7] '<size "18.0">R14'
+	[8] '<size "18.0">R06'
+	[9] '<size "18.0">R07'
+	[10] '<size "18.0">R08'
+	[11] '<size "18.0">R12'
+	[12] '<size "18.0">R11'
+	[13] '<size "18.0">R10'
+	[14] '<size "18.0">R03'
+	[15] '<size "18.0">R02'
+	[16] '<size "18.0">R15'
+;
 TAXINFO
 	[1] 'SIG-01,SIG-02,DAN-01,WIL-03,WIL-08,WIL-04,WIL-05,WIL-06,WIL-07,LOU-01,FAL-03,FAL-01,FAL-02,MAR-02,MAR-01,PAT-05'
 	[2] 'DAN-02,DAN-03,DAN-04,DAN-06,DAN-05,GRA-01,WIL-11,WIL-09,WIL-12,WIL-13,WIL-10,WIL-14,WIL-15,WIL-16,WIL-17'
@@ -116,7 +132,24 @@ TAXLABELS
 	[15] 'R02'
 	[16] 'R15'
 ;
-[DISPLAYLABELS;]
+DISPLAYLABELS
+	[1] '<size "18.0">R17'
+	[2] '<size "18.0">R13'
+	[3] '<size "18.0">R05'
+	[4] '<size "18.0">R18'
+	[5] '<size "18.0">R04'
+	[6] '<size "18.0">R16'
+	[7] '<size "18.0">R14'
+	[8] '<size "18.0">R06'
+	[9] '<size "18.0">R07'
+	[10] '<size "18.0">R08'
+	[11] '<size "18.0">R12'
+	[12] '<size "18.0">R11'
+	[13] '<size "18.0">R10'
+	[14] '<size "18.0">R03'
+	[15] '<size "18.0">R02'
+	[16] '<size "18.0">R15'
+;
 TAXINFO
 	[1] 'SIG-01,SIG-02,DAN-01,WIL-03,WIL-08,WIL-04,WIL-05,WIL-06,WIL-07,LOU-01,FAL-03,FAL-01,FAL-02,MAR-02,MAR-01,PAT-05'
 	[2] 'DAN-02,DAN-03,DAN-04,DAN-06,DAN-05,GRA-01,WIL-11,WIL-09,WIL-12,WIL-13,WIL-10,WIL-14,WIL-15,WIL-16,WIL-17'

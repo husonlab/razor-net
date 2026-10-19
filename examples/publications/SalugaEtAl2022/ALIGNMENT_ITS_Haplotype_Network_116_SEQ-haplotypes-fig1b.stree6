@@ -3,17 +3,16 @@
 BEGIN SPLITSTREE6;
 DIMENSIONS nDataNodes=8 nAlgorithms=4;
 PROGRAM version='SplitsTree (version dev) - License GPL v3';
-WORKFLOW creationDate='1792385212269'; [Mon Oct 19 06:46:52 CEST 2026]
+WORKFLOW creationDate='1792412484387'; [Mon Oct 19 14:21:24 CEST 2026]
 END; [SPLITSTREE6]
 
 [
 Methods:
-Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.), (Hayamizu et al, 2026 ; M. Hayamizu, others, DH Huson, in preparation).
+Analysis was performed using SplitsTree (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.).
 The original input consisted of 16 taxa and 16 DNA sequences of length 951.
 The Razor Haplo Net method was used (default options, except MaskGapSites=true) so as to obtain 22 nodes and 27 edges.
 
 References:
-Hayamizu et al, 2026: M. Hayamizu, others, DH Huson, in preparation
 Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
 ]
 
@@ -38,7 +37,24 @@ TAXLABELS
 	[15] 'R02'
 	[16] 'R15'
 ;
-[DISPLAYLABELS;]
+DISPLAYLABELS
+	[1] '<size "18.0">R17'
+	[2] '<size "18.0">R13'
+	[3] '<size "18.0">R05'
+	[4] '<size "18.0">R18'
+	[5] '<size "18.0">R04'
+	[6] '<size "18.0">R16'
+	[7] '<size "18.0">R14'
+	[8] '<size "18.0">R06'
+	[9] '<size "18.0">R07'
+	[10] '<size "18.0">R08'
+	[11] '<size "18.0">R12'
+	[12] '<size "18.0">R11'
+	[13] '<size "18.0">R10'
+	[14] '<size "18.0">R03'
+	[15] '<size "18.0">R02'
+	[16] '<size "18.0">R15'
+;
 TAXINFO
 	[1] 'SIG-01,SIG-02,DAN-01,WIL-03,WIL-08,WIL-04,WIL-05,WIL-06,WIL-07,LOU-01,FAL-03,FAL-01,FAL-02,MAR-02,MAR-01,PAT-05'
 	[2] 'DAN-02,DAN-03,DAN-04,DAN-06,DAN-05,GRA-01,WIL-11,WIL-09,WIL-12,WIL-13,WIL-10,WIL-14,WIL-15,WIL-16,WIL-17'
@@ -115,7 +131,24 @@ TAXLABELS
 	[15] 'R02'
 	[16] 'R15'
 ;
-[DISPLAYLABELS;]
+DISPLAYLABELS
+	[1] '<size "18.0">R17'
+	[2] '<size "18.0">R13'
+	[3] '<size "18.0">R05'
+	[4] '<size "18.0">R18'
+	[5] '<size "18.0">R04'
+	[6] '<size "18.0">R16'
+	[7] '<size "18.0">R14'
+	[8] '<size "18.0">R06'
+	[9] '<size "18.0">R07'
+	[10] '<size "18.0">R08'
+	[11] '<size "18.0">R12'
+	[12] '<size "18.0">R11'
+	[13] '<size "18.0">R10'
+	[14] '<size "18.0">R03'
+	[15] '<size "18.0">R02'
+	[16] '<size "18.0">R15'
+;
 TAXINFO
 	[1] 'SIG-01,SIG-02,DAN-01,WIL-03,WIL-08,WIL-04,WIL-05,WIL-06,WIL-07,LOU-01,FAL-03,FAL-01,FAL-02,MAR-02,MAR-01,PAT-05'
 	[2] 'DAN-02,DAN-03,DAN-04,DAN-06,DAN-05,GRA-01,WIL-11,WIL-09,WIL-12,WIL-13,WIL-10,WIL-14,WIL-15,WIL-16,WIL-17'
@@ -695,7 +728,7 @@ OPTIONS
 	TraitLegend = 'False',
 	TraitSize = 32,
 	SitesStyle = 'Hatches',
-	Edits = 'lp:1:21.1,21.1' 'mn:1:170.22,-238.3' 'mn:2:-68.09,-34.04' 'mn:3:-68.09,-136.17' 'mn:4:306.39,-102.13' 'mn:5:170.22,-102.13' 'mn:6:136.17,-136.17' 'mn:7:34.04,-238.3' 'mn:8:136.17,-34.04' 'mn:9:238.3,34.04' 'mn:10:238.3,-34.04' 'mn:11:34.04,34.04' 'mn:12:-34.04,34.04' 'mn:13:34.04,-34.04' 'mn:14:-68.09,204.26' 'mn:15:306.39,204.26' 'mn:16:-68.09,-238.3' 'mn:17:136.17,204.26' 'mn:18:34.04,204.26' 'mn:20:238.3,-102.13' 'mn:21:34.04,-102.13' 'mn:22:136.17,34.04' 'mn:23:-68.09,-102.13' 'lp:2:20.54,20.54' 'lp:3:9.63,9.63' 'lp:4:12.23,12.23' 'lp:5:12.79,-29.21' 'lp:6:-55.1,-23.1' 'lp:7:19.28,-26.72' 'lp:8:9.63,9.63' 'lp:9:9.63,9.63' 'lp:10:11.04,11.04' 'lp:11:14.22,14.22' 'lp:12:7.79,7.79' 'lp:13:7.79,7.79' 'lp:14:25.98,25.98' 'lp:15:22.18,22.18' 'lp:16:14.22,14.22',
+	Edits = 'lp:1:21.1,21.1' 'mn:1:170.22,-238.3' 'mn:2:-68.09,-34.04' 'mn:3:-68.09,-136.17' 'mn:4:306.39,-102.13' 'mn:5:170.22,-102.13' 'mn:6:136.17,-136.17' 'mn:7:34.04,-238.3' 'mn:8:136.17,-34.04' 'mn:9:204.26,34.04' 'mn:10:204.26,-34.04' 'mn:11:34.04,34.04' 'mn:12:-34.04,34.04' 'mn:13:34.04,-34.04' 'mn:14:-68.09,204.26' 'mn:15:306.39,204.26' 'mn:16:-68.09,-238.3' 'mn:17:136.17,204.26' 'mn:18:34.04,204.26' 'mn:20:238.3,-102.13' 'mn:21:34.04,-102.13' 'mn:22:136.17,34.04' 'mn:23:-68.09,-102.13' 'lp:2:20.54,20.54' 'lp:3:9.63,9.63' 'lp:4:12.23,12.23' 'lp:5:12.79,-29.21' 'lp:6:-55.1,-23.1' 'lp:7:19.28,-26.72' 'lp:8:9.63,9.63' 'lp:9:9.63,9.63' 'lp:10:11.04,11.04' 'lp:11:14.22,14.22' 'lp:12:7.79,7.79' 'lp:13:7.79,7.79' 'lp:14:25.98,25.98' 'lp:15:22.18,22.18' 'lp:16:14.22,14.22',
 	LayoutSeed = 1,
 	LayoutAlgorithm = 'ForceDirected';
 END; [VIEW]
