@@ -3,7 +3,7 @@
 BEGIN SPLITSTREE6;
 DIMENSIONS nDataNodes=8 nAlgorithms=4;
 PROGRAM version='SplitsTree (version dev) - License GPL v3';
-WORKFLOW creationDate='1792341004200'; [Sun Oct 18 18:30:04 CEST 2026]
+WORKFLOW creationDate='1792385212269'; [Mon Oct 19 06:46:52 CEST 2026]
 END; [SPLITSTREE6]
 
 [
@@ -676,7 +676,7 @@ EDGES
 END; [NETWORK]
 
 BEGIN ALGORITHM;
-TITLE 'Show Network-2';
+TITLE 'Show Network';
 LINK NETWORK = 'Network';
 NAME 'Show Network';
 OPTIONS
@@ -685,7 +685,7 @@ END; [ALGORITHM]
 
 BEGIN VIEW;
 TITLE 'Network-2';
-LINK ALGORITHM = 'Show Network-2';
+LINK ALGORITHM = 'Show Network';
 NAME 'NetworkView';
 INPUT 'NETWORK';
 OPTIONS
@@ -695,7 +695,7 @@ OPTIONS
 	TraitLegend = 'False',
 	TraitSize = 32,
 	SitesStyle = 'Hatches',
-	Edits = 'mn:1:170.22,-238.3' 'mn:2:-68.09,-34.04' 'mn:3:-68.09,-136.17' 'mn:4:306.39,-102.13' 'mn:5:170.22,-102.13' 'mn:6:136.17,-136.17' 'mn:7:34.04,-238.3' 'mn:8:136.17,-34.04' 'mn:9:238.3,34.04' 'mn:10:238.3,-34.04' 'mn:11:34.04,34.04' 'mn:12:-34.04,34.04' 'mn:13:34.04,-34.04' 'mn:14:-68.09,204.26' 'mn:15:306.39,204.26' 'mn:16:-68.09,-238.3' 'mn:17:136.17,204.26' 'mn:18:34.04,204.26' 'mn:20:238.3,-102.13' 'mn:21:34.04,-102.13' 'mn:22:136.17,34.04' 'mn:23:-68.09,-102.13' 'ml:14:58,-9' 'ml:10:58,27' 'ml:6:-100,-17' 'ml:5:75,44' 'ml:13:32,31' 'ml:8:54,23' 'ml:9:41,-6' 'ml:12:46,26' 'ml:3:0,0' 'ml:11:41,46' 'ml:2:47,64' 'ml:7:26,46' 'ml:16:0,33' 'ml:1:0,24' 'ml:4:4,28',
+	Edits = 'lp:1:21.1,21.1' 'mn:1:170.22,-238.3' 'mn:2:-68.09,-34.04' 'mn:3:-68.09,-136.17' 'mn:4:306.39,-102.13' 'mn:5:170.22,-102.13' 'mn:6:136.17,-136.17' 'mn:7:34.04,-238.3' 'mn:8:136.17,-34.04' 'mn:9:238.3,34.04' 'mn:10:238.3,-34.04' 'mn:11:34.04,34.04' 'mn:12:-34.04,34.04' 'mn:13:34.04,-34.04' 'mn:14:-68.09,204.26' 'mn:15:306.39,204.26' 'mn:16:-68.09,-238.3' 'mn:17:136.17,204.26' 'mn:18:34.04,204.26' 'mn:20:238.3,-102.13' 'mn:21:34.04,-102.13' 'mn:22:136.17,34.04' 'mn:23:-68.09,-102.13' 'lp:2:20.54,20.54' 'lp:3:9.63,9.63' 'lp:4:12.23,12.23' 'lp:5:12.79,-29.21' 'lp:6:-55.1,-23.1' 'lp:7:19.28,-26.72' 'lp:8:9.63,9.63' 'lp:9:9.63,9.63' 'lp:10:11.04,11.04' 'lp:11:14.22,14.22' 'lp:12:7.79,7.79' 'lp:13:7.79,7.79' 'lp:14:25.98,25.98' 'lp:15:22.18,22.18' 'lp:16:14.22,14.22',
 	LayoutSeed = 1,
 	LayoutAlgorithm = 'ForceDirected';
 END; [VIEW]

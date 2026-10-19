@@ -3,7 +3,7 @@
 BEGIN SPLITSTREE6;
 DIMENSIONS nDataNodes=9 nAlgorithms=5;
 PROGRAM version='SplitsTree (version dev) - License GPL v3';
-WORKFLOW creationDate='1792340993574'; [Sun Oct 18 18:29:53 CEST 2026]
+WORKFLOW creationDate='1792385190210'; [Mon Oct 19 06:46:30 CEST 2026]
 END; [SPLITSTREE6]
 
 [
@@ -689,7 +689,7 @@ OPTIONS
 END; [ALGORITHM]
 
 BEGIN NETWORK;
-TITLE 'Network-3';
+TITLE 'Network-2';
 LINK ALGORITHM = 'Simplify Filter';
 DIMENSIONS nVertices=21 nEdges=23;
 TYPE HaplotypeNetwork;
@@ -745,16 +745,16 @@ EDGES
 END; [NETWORK]
 
 BEGIN ALGORITHM;
-TITLE 'Show Network-3';
-LINK NETWORK = 'Network-3';
+TITLE 'Show Network';
+LINK NETWORK = 'Network-2';
 NAME 'Show Network';
 OPTIONS
 	View = 'Network';
 END; [ALGORITHM]
 
 BEGIN VIEW;
-TITLE 'Network-2';
-LINK ALGORITHM = 'Show Network-3';
+TITLE 'Network-3';
+LINK ALGORITHM = 'Show Network';
 NAME 'NetworkView';
 INPUT 'NETWORK';
 OPTIONS
@@ -764,7 +764,7 @@ OPTIONS
 	TraitLegend = 'False',
 	TraitSize = 32,
 	SitesStyle = 'Hatches',
-	Edits = 'mn:1:-70.53,-329.13' 'mn:2:-305.62,-117.55' 'mn:3:-305.62,-235.09' 'mn:4:47.02,-188.07' 'mn:5:-70.53,-188.07' 'mn:6:-117.55,-235.09' 'mn:7:-211.58,-329.13' 'mn:8:-117.55,-117.55' 'mn:9:-23.51,-47.02' 'mn:10:-23.51,-117.55' 'mn:11:-211.58,-47.02' 'mn:12:-282.11,-47.02' 'mn:13:-211.58,-117.55' 'mn:14:-305.62,141.05' 'mn:15:47.02,141.05' 'mn:16:-305.62,-329.13' 'mn:17:-117.55,141.05' 'mn:18:-211.58,141.05' 'mn:21:-211.58,-188.07' 'mn:22:-117.55,-47.02' 'mn:23:-305.62,-188.07' 'ml:8:31,-5' 'ml:11:-29,-2' 'ml:5:10,-3' 'ml:13:-48,-24' 'ml:2:6,-9' 'ml:12:0,0' 'ml:10:28,0' 'ml:16:35,56' 'ml:1:21,71' 'ml:3:-2,12' 'ml:9:77,-6' 'ml:7:4,10' 'ml:14:101,14' 'ml:15:92,49' 'ml:6:51,56' 'ml:4:-1,33',
+	Edits = 'lp:1:21.1,21.1' 'mn:1:-70.53,-329.13' 'mn:2:-305.62,-117.55' 'mn:3:-305.62,-235.09' 'mn:4:47.02,-188.07' 'mn:5:-70.53,-188.07' 'mn:6:-117.55,-235.09' 'mn:7:-211.58,-329.13' 'mn:8:-117.55,-117.55' 'mn:9:-23.51,-47.02' 'mn:10:-23.51,-117.55' 'mn:11:-211.58,-47.02' 'mn:12:-282.11,-47.02' 'mn:13:-211.58,-117.55' 'mn:14:-305.62,141.05' 'mn:15:47.02,141.05' 'mn:16:-305.62,-329.13' 'mn:17:-117.55,141.05' 'mn:18:-211.58,141.05' 'mn:21:-211.58,-188.07' 'mn:22:-117.55,-47.02' 'mn:23:-305.62,-188.07' 'lp:2:20.54,20.54' 'lp:3:9.63,9.63' 'lp:4:12.23,12.23' 'lp:5:7.79,7.79' 'lp:6:15.9,15.9' 'lp:7:21.28,-28.72' 'lp:8:9.63,9.63' 'lp:9:9.63,9.63' 'lp:10:11.04,11.04' 'lp:11:14.22,14.22' 'lp:12:7.79,7.79' 'lp:13:7.79,7.79' 'lp:14:25.98,25.98' 'lp:15:22.18,22.18' 'lp:16:14.22,14.22',
 	LayoutSeed = 1,
 	LayoutAlgorithm = 'ForceDirected';
 END; [VIEW]
