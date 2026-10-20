@@ -117,7 +117,7 @@ public class RazorNetProfile implements IAppProfile {
 
 	private static final Set<String> KEEP_MENU_IDS = Set.of("newMenuItem", "openMenuItem", "openRecentMenu", "replaceDataMenuItem",
 			"editInputMenuItem", "importDialogMenuItem", "importHaplotypeMenuItem", "importTaxonDisplayMenuItem", "importTaxonTraitsMenuItem",
-			"saveMenuItem", "saveAsMenuItem", "exportImageMenuItem", "exportTaxonTraitsMenuItem", "exportTaxonDisplayLabelsMenuItem",
+			"saveMenuItem", "saveAsMenuItem", "exportImageMenuItem", "exportTaxonDisplayLabelsMenuItem", "exportTaxonTraitsMenuItem",
 			"exportWorkflowMenuItem", "pageSetupMenuItem", "printMenuItem", "closeMenuItem", "quitMenuItem",
 			"undoMenuItem", "redoMenuItem", "cutMenuItem", "copyMenuItem", "copyImageMenuItem",
 			"pasteMenuItem", "duplicateMenuItem", "deleteMenuItem", "findAgainMenuItem", "gotoLineMenuItem",
