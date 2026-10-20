@@ -23,6 +23,15 @@ unique haplotypes**.
 | `Diamond_Princess-traits-matrix.tsv` | the traits as a matrix with a `Coordinates` row, for routes 2 and 3 below |
 | `make-traits.py` | regenerates the two files above from the `.phy` and `.tsv` |
 
+### Workflow files
+
+| File | What it holds |
+|---|---|
+| `Diamond_Princess-four-razornet.stree6` | the 257 haplotypes with their traits; RazorHaploNet (default options), then the Simplify filter at its default target, Balanced: the network of Figure 2 of the manuscript, drawn with the sampling locations as a legend (the months are not shown) |
+| `Diamond_Princess-median-joining.stree6` | the same haplotypes under median joining |
+| `Diamond_Princess-four.stree6` | RazorHaploNet (100 restarts), median joining, TCS, and RazorHaploNet with the Simplify filter, side by side |
+| `Diamond_Princess.stree6` | RazorHaploNet (100 restarts), median joining, and RazorHaploNet with the Stretch filter |
+
 ## Three ways to load it
 
 1. **Open `Diamond_Princess.nex`.** Everything in one file, nothing to collapse or
