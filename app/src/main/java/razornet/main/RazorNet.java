@@ -23,6 +23,7 @@ package razornet.main;
 import javafx.application.Application;
 import javafx.geometry.Point2D;
 import javafx.stage.Stage;
+import jloda.fx.message.MessageWindow;
 import jloda.fx.util.ArgsOptions;
 import jloda.fx.util.Icebergs;
 import jloda.fx.util.ProgramProperties;
@@ -150,6 +151,8 @@ public class RazorNet extends Application {
 			window.show(stage, stage.getX(), stage.getY(), stage.getWidth(), stage.getHeight());
 			WindowGeometry.listenToStage(stage);
 			MainWindowManager.getInstance().addMainWindow(window);
+			MessageWindow.getInstance().setVisible(true);
+			MessageWindow.getInstance().setVisible(false);
 		} catch (Exception ex) {
 			Basic.caught(ex);
 			throw ex;
