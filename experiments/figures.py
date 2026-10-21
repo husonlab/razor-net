@@ -106,7 +106,7 @@ def draw_series(ax, xs, values, method, positions=None, use_median=False):
     where = positions if positions is not None else xs
     if method in STYLE:
         colour, marker = STYLE[method]
-        ax.errorbar(where, means, yerr=errors, fmt='none', ecolor=colour, elinewidth=0.7, capsize=0, zorder=3)
+        ax.errorbar(where, means, yerr=errors, fmt='none', ecolor=colour, elinewidth=1.0, capsize=2.5, capthick=1.0, zorder=3)
         ax.plot(where, means, color=colour, linewidth=1.5, marker=marker, markersize=6, markeredgecolor='white',
                 markeredgewidth=1.2, label=NAMES[method], zorder=4)
     else:  # a reference, not a method: thin and grey
