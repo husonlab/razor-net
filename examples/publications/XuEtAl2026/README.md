@@ -21,7 +21,8 @@ unique haplotypes**.
 | `Diamond_Princess.vcf` | *as received* — the same variants as VCF (not used below) |
 | **`Diamond_Princess.nex`** | **self-contained NEXUS: TAXA + CHARACTERS + TRAITS. Start here.** |
 | `Diamond_Princess-traits-matrix.tsv` | the traits as a matrix with a `Coordinates` row, for routes 2 and 3 below |
-| `make-traits.py` | regenerates the two files above from the `.phy` and `.tsv` |
+| `Diamond_Princess-popart.nex` | the same sequences and the eight location traits in the NEXUS dialect that PopART reads: no `ntax` in the CHARACTERS block (PopART refuses it: "ntax only allowed in characters block along with new taxa"), PopART's own TRAITS block in the shape of PopART's example file (nothing quoted, no comments, one space between a name and its data, no trait coordinates), `/`, `-` and `.` in sequence names replaced by `_`; the month bins are left out because PopART draws every trait of the block into one pie |
+| `make-traits.py` | regenerates the three files above from the `.phy` and `.tsv` |
 
 ### Workflow files
 

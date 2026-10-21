@@ -9,6 +9,8 @@ Writes Diamond_Princess.nex                  TAXA + CHARACTERS + TRAITS, self-co
        Diamond_Princess-traits-matrix.tsv    trait matrix with a Coordinates row; read by
                                              the Open Haplotype Data dialog and by
                                              File -> Import -> Taxon Traits alike
+       Diamond_Princess-popart.nex           the same sequences and the eight location
+                                             traits in the NEXUS dialect PopART reads
 
 By default the exact collection date is carried only by the three numerical month-bin
 traits. Pass --with-date to add the categorical 'Date' trait holding the exact value per
@@ -21,6 +23,7 @@ Daniel Huson / AI agent, 8.2026
 """
 
 import os
+import re
 import sys
 from collections import Counter, OrderedDict
 
@@ -234,6 +237,51 @@ def main():
         for name in names:
             w.write(name + "\t" + "\t".join(row_values(name)) + "\n")
 
+    # --- NEXUS for PopART ------------------------------------------------------
+    #
+    # PopART's parser differs from SplitsTree's: ntax may not appear in the CHARACTERS
+    # block ("ntax only allowed in characters block along with new taxa"), and its TRAITS
+    # block is its own dialect (Dimensions NTRAITS, TraitLabels, a Matrix of comma-separated
+    # counts), written here exactly in the shape of PopART's example file: no comments,
+    # nothing quoted, one space between a name and its data, and labels of letters, digits
+    # and '_' only ('/', '-' and '.' of the strain names become '_'). The trait coordinates
+    # are left out, since they only feed PopART's map view. PopART draws every trait of the
+    # block into one pie, so the file carries one kind of trait, the eight locations; the
+    # month bins are left out.
+    def popart_label(name):
+        return re.sub(r"[^A-Za-z0-9_]", "_", name)
+
+    popart_names = [popart_label(n) for n in names]
+    if len(set(popart_names)) != len(popart_names):
+        sys.exit("replacing '/' by '_' makes two taxon labels coincide")
+    out3 = os.path.join(HERE, "Diamond_Princess-popart.nex")
+    with open(out3, "w") as w:
+        w.write("#NEXUS\n\n")
+        w.write("BEGIN TAXA;\n")
+        w.write("DIMENSIONS NTAX=%d;\n" % ntax)
+        w.write("TAXLABELS\n")
+        for name in popart_names:
+            w.write("%s\n" % name)
+        w.write(";\n")
+        w.write("END;\n\n")
+        w.write("BEGIN CHARACTERS;\n")
+        w.write("DIMENSIONS NCHAR=%d;\n" % nchar)
+        w.write("FORMAT DATATYPE=DNA MISSING=? GAP=-;\n")
+        w.write("MATRIX\n")
+        for name, pname in zip(names, popart_names):
+            w.write("%s %s\n" % (pname, seqs[name].upper()))
+        w.write(";\n")
+        w.write("END;\n\n")
+        w.write("BEGIN TRAITS;\n")
+        w.write("Dimensions NTRAITS=%d;\n" % len(LOCATION_ORDER))
+        w.write("Format labels=yes missing=? separator=Comma;\n")
+        w.write("TraitLabels " + " ".join(LOCATION_ORDER) + ";\n")
+        w.write("Matrix\n")
+        for name, pname in zip(names, popart_names):
+            w.write("%s %s\n" % (pname, ",".join(row_values(name)[:len(LOCATION_ORDER)])))
+        w.write(";\n")
+        w.write("END;\n")
+
     # --- report --------------------------------------------------------------
     print("taxa %d, characters %d, traits %d" % (ntax, nchar, len(trait_labels)))
     print("\n%-16s %6s  %10s %11s" % ("location", "n", "latitude", "longitude"))
@@ -248,7 +296,7 @@ def main():
                                                 for c, n in breakdown[region].most_common())))
     print("\ncategorical 'Date' trait: %s" %
           ("included (--with-date)" if with_date else "omitted; pass --with-date to include it"))
-    print("\nwrote:\n  %s\n  %s" % (out, out2))
+    print("\nwrote:\n  %s\n  %s\n  %s" % (out, out2, out3))
 
 
 if __name__ == "__main__":
