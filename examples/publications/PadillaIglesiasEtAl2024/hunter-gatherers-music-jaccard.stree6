@@ -1,0 +1,427 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=11 nAlgorithms=9;
+PROGRAM version='SplitsTree (version dev) - License GPL v3';
+WORKFLOW creationDate='1792650834510'; [Thu Oct 22 08:33:54 CEST 2026]
+END; [SPLITSTREE6]
+
+[
+Methods:
+Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.), (Hayamizu et al, 2026 ; M. Hayamizu, others, DH Huson, in preparation).
+The original input consisted of 10 taxa and a 10 x 10 distance matrix.
+The Razor Net method was used (default options) so as to obtain 46 nodes and 59 edges.
+The Neighbor Net method (Bryant & Moulton 2004, Bryant & Huson 2023) was used (default options) so as to obtain 23 splits, circular.
+The Show Splits method was used (default options) so as to obtain a Split Network visualization.
+The Simplify Filter method was used (default options) so as to obtain 22 nodes and 23 edges.
+
+References:
+Bryant & Huson 2023: D. Bryant and DH Huson, NeighborNet- improved algorithms and implementation. Front. Bioinform. 3, 2023.
+Bryant & Moulton 2004: D. Bryant and V. Moulton. Neighbor-net: An agglomerative method for the construction of phylogenetic networks. Molecular Biology and Evolution, 21(2):255– 265, 2004.
+Hayamizu et al, 2026: M. Hayamizu, others, DH Huson, in preparation
+Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=10;
+TAXLABELS
+	[1] 'Aka'
+	[2] 'Babongo'
+	[3] 'Baka'
+	[4] 'Bakola'
+	[5] 'Bakoya'
+	[6] 'Batwa (East)'
+	[7] 'Batwa (West)'
+	[8] 'Bedzan'
+	[9] 'Efe'
+	[10] 'Sua'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+LINK ALGORITHM = 'Input Data Loader';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=10;
+TAXLABELS
+	[1] 'Aka'
+	[2] 'Babongo'
+	[3] 'Baka'
+	[4] 'Bakola'
+	[5] 'Bakoya'
+	[6] 'Batwa (East)'
+	[7] 'Batwa (West)'
+	[8] 'Bedzan'
+	[9] 'Efe'
+	[10] 'Sua'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN DISTANCES;
+TITLE 'Input Distances';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=10;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 'Aka'            0 0.6 0.263158 0.736842 0.647059 0.708333 0.833333 0.833333 0.608696 0.833333
+[2] 'Babongo'        0.6 0 0.434783 0.772727 0.761905 0.64 0.708333 0.652174 0.653846 0.76
+[3] 'Baka'           0.263158 0.434783 0 0.75 0.666667 0.666667 0.791667 0.73913 0.565217 0.791667
+[4] 'Bakola'         0.736842 0.772727 0.75 0 0.636364 0.904762 0.823529 0.666667 0.857143 0.95
+[5] 'Bakoya'         0.647059 0.761905 0.666667 0.636364 0 0.777778 0.8125 0.882353 0.722222 0.882353
+[6] 'Batwa (East)'   0.708333 0.64 0.666667 0.904762 0.777778 0 0.826087 0.772727 0.45 0.65
+[7] 'Batwa (West)'   0.833333 0.708333 0.791667 0.823529 0.8125 0.826087 0 0.736842 0.833333 0.863636
+[8] 'Bedzan'         0.833333 0.652174 0.73913 0.666667 0.882353 0.772727 0.736842 0 0.833333 0.863636
+[9] 'Efe'            0.608696 0.653846 0.565217 0.857143 0.722222 0.45 0.833333 0.833333 0 0.444444
+[10] 'Sua'            0.833333 0.76 0.791667 0.95 0.882353 0.65 0.863636 0.863636 0.444444 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK DISTANCES = 'Input Distances';
+NAME 'Distances Taxa Filter';
+END; [ALGORITHM]
+
+BEGIN DISTANCES;
+TITLE 'Working Distances';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=10;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 'Aka'            0 0.6 0.263158 0.736842 0.647059 0.708333 0.833333 0.833333 0.608696 0.833333
+[2] 'Babongo'        0.6 0 0.434783 0.772727 0.761905 0.64 0.708333 0.652174 0.653846 0.76
+[3] 'Baka'           0.263158 0.434783 0 0.75 0.666667 0.666667 0.791667 0.73913 0.565217 0.791667
+[4] 'Bakola'         0.736842 0.772727 0.75 0 0.636364 0.904762 0.823529 0.666667 0.857143 0.95
+[5] 'Bakoya'         0.647059 0.761905 0.666667 0.636364 0 0.777778 0.8125 0.882353 0.722222 0.882353
+[6] 'Batwa (East)'   0.708333 0.64 0.666667 0.904762 0.777778 0 0.826087 0.772727 0.45 0.65
+[7] 'Batwa (West)'   0.833333 0.708333 0.791667 0.823529 0.8125 0.826087 0 0.736842 0.833333 0.863636
+[8] 'Bedzan'         0.833333 0.652174 0.73913 0.666667 0.882353 0.772727 0.736842 0 0.833333 0.863636
+[9] 'Efe'            0.608696 0.653846 0.565217 0.857143 0.722222 0.45 0.833333 0.833333 0 0.444444
+[10] 'Sua'            0.833333 0.76 0.791667 0.95 0.882353 0.65 0.863636 0.863636 0.444444 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Razor Net';
+OPTIONS
+	Preprocessing = 'None',
+	Strategy = 'Both',
+	SignificantDigits = 6,
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Neighbor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Neighbor Net';
+OPTIONS
+	InferenceAlgorithm = 'ActiveSet';
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Razor Net';
+DIMENSIONS nVertices=46 nEdges=59;
+TYPE DistanceNetwork;
+PROPERTIES info ='Total length: 5.737395, distortion: 1';
+VERTICES
+	id=1 label='Aka' x='224.8573' y='22.1261',
+	id=2 label='Babongo' x='128.3805' y='12.1101',
+	id=3 label='Baka' x='172.7212' y='-127.7454',
+	id=4 label='Bakola' x='-9.2489' y='266.6811',
+	id=5 label='Bakoya' x='116.8432' y='226.5582',
+	id=6 label='Batwa (East)' x='-171.1222' y='-137.5233',
+	id=7 label='Batwa (West)' x='-137.6214' y='197.3055',
+	id=8 label='Bedzan' x='-232.6287' y='87.4979',
+	id=9 label='Efe' x='76.1936' y='-222.5094',
+	id=10 label='Sua' x='-121.5181' y='-203.9389',
+	id=11 x='-57.5873' y='98.9792',
+	id=12 x='-140.2727' y='67.9867',
+	id=13 x='56.7056' y='149.4659',
+	id=14 x='-57.6446' y='-129.8805',
+	id=15 x='-4.1782' y='181.1322',
+	id=16 x='-91.7526' y='-95.3891',
+	id=17 x='30.4679' y='-54.2904',
+	id=18 x='158.8871' y='3.3903',
+	id=19 x='55.0722' y='-160.8321',
+	id=20 x='-14.1811' y='125.3936',
+	id=21 x='34.2096' y='95.4628',
+	id=22 x='132.426' y='-100.7421',
+	id=23 x='-82.9496' y='55.5524',
+	id=24 x='54.4399' y='51.2383',
+	id=25 x='-21.0942' y='-148.235',
+	id=26 x='142.194' y='-35.0275',
+	id=27 x='35.2207' y='13.1061',
+	id=28 x='142.1023' y='-60.4956',
+	id=29 x='-47.9871' y='-33.7345',
+	id=30 x='-49.5961' y='-100.0851',
+	id=31 x='25.6631' y='-146.9209',
+	id=32 x='-0.3512' y='-58.4488',
+	id=33 x='-83.157' y='93.7346',
+	id=34 x='-82.7718' y='-16.1403',
+	id=35 x='-112.042' y='70.0736',
+	id=36 x='-116.6888' y='28.3295',
+	id=37 x='-110.411' y='-18.2284',
+	id=38 x='-63.9493' y='47.3609',
+	id=39 x='91.9344' y='57.9244',
+	id=40 x='63.4445' y='90.3601',
+	id=41 x='-23.9489' y='-65.356',
+	id=42 x='36.6163' y='-26.5053',
+	id=43 x='11.1591' y='1.1171',
+	id=44 x='-36.8242' y='2.3496',
+	id=45 x='79.3649' y='-5.892',
+	id=46 x='0.6236' y='-97.3156'
+;
+EDGES
+	id=1 sid=1 tid=18 weight='0.121775',
+	id=2 sid=2 tid=17 weight='0.173914',
+	id=3 sid=3 tid=22 weight='0.048971',
+	id=4 sid=4 tid=15 weight='0.210339',
+	id=5 sid=5 tid=13 weight='0.250722',
+	id=6 sid=6 tid=16 weight='0.194697',
+	id=7 sid=7 tid=11 weight='0.333495',
+	id=8 sid=8 tid=12 weight='0.267316',
+	id=9 sid=9 tid=19 weight='0.108997',
+	id=10 sid=10 tid=14 weight='0.237374',
+	id=11 sid=11 tid=21 weight='0.165893',
+	id=12 sid=11 tid=23 weight='0.034927',
+	id=13 sid=12 tid=35 weight='0.005741',
+	id=14 sid=12 tid=36 weight='0.074425',
+	id=15 sid=13 tid=15 weight='0.175304',
+	id=16 sid=13 tid=21 weight='0.062392',
+	id=17 sid=14 tid=25 weight='0.031277',
+	id=18 sid=14 tid=44 weight='0.194445',
+	id=19 sid=15 tid=20 weight='0.074749',
+	id=20 sid=16 tid=30 weight='0.02338',
+	id=21 sid=16 tid=37 weight='0.18418',
+	id=22 sid=17 tid=22 weight='0.211899',
+	id=23 sid=17 tid=29 weight='0.06243',
+	id=24 sid=18 tid=26 weight='0.030637',
+	id=25 sid=18 tid=39 weight='0.154676',
+	id=26 sid=19 tid=28 weight='0.346381',
+	id=27 sid=19 tid=31 weight='0.013225',
+	id=28 sid=20 tid=33 weight='0.090883',
+	id=29 sid=20 tid=40 weight='0.099529',
+	id=30 sid=21 tid=24 weight='0.034927',
+	id=31 sid=22 tid=28 weight='0.060869',
+	id=32 sid=23 tid=36 weight='0.02668',
+	id=33 sid=23 tid=38 weight='0.000162',
+	id=34 sid=24 tid=27 weight='0.030637',
+	id=35 sid=24 tid=39 weight='0.022569',
+	id=36 sid=25 tid=31 weight='0.053572',
+	id=37 sid=25 tid=41 weight='0.201093',
+	id=38 sid=26 tid=28 weight='0.000907',
+	id=39 sid=26 tid=45 weight='0.121931',
+	id=40 sid=27 tid=43 weight='0.01653',
+	id=41 sid=27 tid=46 weight='0.146324',
+	id=42 sid=29 tid=34 weight='0.017639',
+	id=43 sid=29 tid=41 weight='0.053913',
+	id=44 sid=30 tid=32 weight='0.129167',
+	id=45 sid=30 tid=46 weight='0.034701',
+	id=46 sid=31 tid=46 weight='0.075',
+	id=47 sid=32 tid=41 weight='0.0025',
+	id=48 sid=32 tid=42 weight='0.044423',
+	id=49 sid=33 tid=35 weight='0.017639',
+	id=50 sid=33 tid=38 weight='0.078976',
+	id=51 sid=34 tid=35 weight='0.125135',
+	id=52 sid=34 tid=37 weight='0.007141',
+	id=53 sid=36 tid=37 weight='0.052109',
+	id=54 sid=38 tid=44 weight='0.063236',
+	id=55 sid=39 tid=40 weight='0.075775',
+	id=56 sid=40 tid=45 weight='0.132707',
+	id=57 sid=42 tid=43 weight='0.02952',
+	id=58 sid=42 tid=45 weight='0.042324',
+	id=59 sid=43 tid=44 weight='0.055329'
+;
+END; [NETWORK]
+
+BEGIN SPLITS;
+TITLE 'Splits';
+LINK ALGORITHM = 'Neighbor Net';
+DIMENSIONS ntax=10 nsplits=23;
+FORMAT labels=no weights=yes confidences=no;
+PROPERTIES fit=99.8 circular;
+CYCLE 1 3 2 7 8 4 5 10 9 6;
+MATRIX
+[1, size=1] 	 0.14762923 	 1,
+[2, size=2] 	 0.15269547 	 1 3,
+[3, size=3] 	 0.00533323 	 1 2 3,
+[4, size=3] 	 0.10131796 	 1 2 3 4 5 7 8,
+[5, size=2] 	 0.01953376 	 1 2 3 4 5 7 8 10,
+[6, size=1] 	 0.24093005 	 1 2 3 4 5 7 8 9 10,
+[7, size=1] 	 0.04880263 	 1 2 4 5 6 7 8 9 10,
+[8, size=2] 	 0.06576053 	 1 4 5 6 7 8 9 10,
+[9, size=5] 	 0.00083027 	 1 5 6 9 10,
+[10, size=1] 	 0.18095412 	 1 3 4 5 6 7 8 9 10,
+[11, size=3] 	 0.0348681 	 1 3 4 5 6 9 10,
+[12, size=4] 	 0.01688699 	 1 3 5 6 9 10,
+[13, size=1] 	 0.37292611 	 1 2 3 4 5 6 8 9 10,
+[14, size=3] 	 0.03189572 	 1 2 3 5 6 9 10,
+[15, size=5] 	 0.03170495 	 1 2 3 6 9,
+[16, size=1] 	 0.28664847 	 1 2 3 4 5 6 7 9 10,
+[17, size=2] 	 0.07349693 	 1 2 3 5 6 7 9 10,
+[18, size=1] 	 0.23803894 	 1 2 3 5 6 7 8 9 10,
+[19, size=2] 	 0.10748941 	 1 2 3 6 7 8 9 10,
+[20, size=1] 	 0.27467271 	 1 2 3 4 6 7 8 9 10,
+[21, size=1] 	 0.2710093 	 1 2 3 4 5 6 7 8 9,
+[22, size=2] 	 0.08665898 	 1 2 3 4 5 6 7 8,
+[23, size=1] 	 0.12259593 	 1 2 3 4 5 6 7 8 10,
+;
+END; [SPLITS]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Simplify Filter';
+LINK NETWORK = 'Network';
+NAME 'Simplify Filter';
+OPTIONS
+	Target = 'Balanced',
+	TargetValue = 0,
+	Deviation = 'Auto',
+	DeviationQuantilePercent = 100,
+	ReportTable = 'true';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Show Splits';
+LINK SPLITS = 'Splits';
+NAME 'Show Splits';
+OPTIONS
+	View = 'SplitNetwork';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network-2';
+LINK ALGORITHM = 'Show Network';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'None',
+	Edits = 'lp:1:13.47,-4' 'lp:2:15.73,2.84' 'lp:3:15.78,-18.4' 'lp:4:-22.23,13.98' 'lp:5:-11.66,14.98' 'lp:6:-96.92,-16.73' 'lp:7:-54,14.74' 'lp:8:-61.18,-4.93' 'lp:9:-5.97,-28.89' 'lp:10:-24.86,-30.03',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'MDS';
+END; [VIEW]
+
+BEGIN NETWORK;
+TITLE 'Network-2-2';
+LINK ALGORITHM = 'Simplify Filter';
+DIMENSIONS nVertices=22 nEdges=23;
+TYPE DistanceNetwork;
+PROPERTIES info ='Total length: 3.764544, distortion: 1.288381';
+VERTICES
+	id=1 label='Aka' x='224.8573' y='22.1261',
+	id=2 label='Babongo' x='128.3805' y='12.1101',
+	id=3 label='Baka' x='172.7212' y='-127.7454',
+	id=4 label='Bakola' x='-9.2489' y='266.6811',
+	id=5 label='Bakoya' x='116.8432' y='226.5582',
+	id=6 label='Batwa (East)' x='-171.1222' y='-137.5233',
+	id=7 label='Batwa (West)' x='-137.6214' y='197.3055',
+	id=8 label='Bedzan' x='-232.6287' y='87.4979',
+	id=9 label='Efe' x='76.1936' y='-222.5094',
+	id=10 label='Sua' x='-121.5181' y='-203.9389',
+	id=13 x='56.7056' y='149.4659',
+	id=15 x='-4.1782' y='181.1322',
+	id=17 x='30.4679' y='-54.2904',
+	id=18 x='158.8871' y='3.3903',
+	id=22 x='132.426' y='-100.7421',
+	id=23 x='-82.9496' y='55.5524',
+	id=24 x='54.4399' y='51.2383',
+	id=29 x='-47.9871' y='-33.7345',
+	id=30 x='-49.5961' y='-100.0851',
+	id=31 x='25.6631' y='-146.9209',
+	id=33 x='-83.157' y='93.7346',
+	id=46 x='0.6236' y='-97.3156'
+;
+EDGES
+	id=1 sid=1 tid=18 weight='0.121775',
+	id=2 sid=2 tid=17 weight='0.173914',
+	id=3 sid=3 tid=22 weight='0.048971',
+	id=4 sid=4 tid=15 weight='0.210339',
+	id=5 sid=5 tid=13 weight='0.250722',
+	id=15 sid=13 tid=15 weight='0.175304',
+	id=22 sid=17 tid=22 weight='0.211899',
+	id=23 sid=17 tid=29 weight='0.06243',
+	id=45 sid=30 tid=46 weight='0.034701',
+	id=46 sid=31 tid=46 weight='0.075',
+	id=60 sid=7 tid=23 weight='0.368421',
+	id=63 sid=6 tid=30 weight='0.218077',
+	id=64 sid=9 tid=31 weight='0.122222',
+	id=65 sid=15 tid=33 weight='0.165632',
+	id=66 sid=13 tid=24 weight='0.097318',
+	id=67 sid=31 tid=10 weight='0.322222',
+	id=69 sid=24 tid=46 weight='0.17696',
+	id=70 sid=22 tid=18 weight='0.092413',
+	id=73 sid=33 tid=8 weight='0.290696',
+	id=75 sid=29 tid=23 weight='0.103569',
+	id=76 sid=23 tid=33 weight='0.079137',
+	id=77 sid=18 tid=24 weight='0.177244',
+	id=78 sid=29 tid=30 weight='0.185579'
+;
+END; [NETWORK]
+
+BEGIN VIEW;
+TITLE 'SplitNetwork';
+LINK ALGORITHM = 'Show Splits';
+NAME 'SplitNetworkView';
+INPUT 'SPLITS';
+OPTIONS
+	Diagram = 'Splits',
+	Orientation = 'Rotate0Deg',
+	Rooting = 'None',
+	ZoomFactor = 0.80339621,
+	FontScaleFactor = 1,
+	RootAngle = 160,
+	OutlineFill = 0xa9a9a9ff,
+	LabelSplitsBy = 'None',
+	ShowQRCode = 'false';
+END; [VIEW]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network-2';
+LINK NETWORK = 'Network-2-2';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network-3';
+LINK ALGORITHM = 'Show Network-2';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'None',
+	Edits = 'lp:1:-40.85,-16.83' 'lp:2:13.5,-11.52' 'lp:3:-16.31,-29.64' 'lp:4:-30.79,16.52' 'lp:5:-60.35,-4.71' 'lp:6:-45.28,13' 'lp:7:12.89,-2.36' 'lp:8:-19.38,13.3' 'lp:9:14.71,-19.84' 'lp:10:-12.13,-29.64' 'mn:1:-127.29,-91.98' 'mn:33:30.98,101.8' 'mn:2:130.97,-38.52' 'mn:3:-32.92,-107.67' 'mn:4:-78.06,166.15' 'mn:5:-163.81,56.72' 'mn:6:-10.06,38.46' 'mn:7:154.07,107.49' 'mn:8:58.3,185.22' 'mn:9:72.38,-120.94' 'mn:10:32.09,-188.72' 'mn:13:-82.97,38.29' 'mn:46:7.02,-46.68' 'mn:15:-41.76,102.3' 'mn:17:63.16,-19.92' 'mn:18:-79.83,-66.42' 'mn:22:-32.13,-77' 'mn:23:59.37,67.37' 'mn:24:-65.11,-9.18' 'mn:29:60.22,15.07' 'mn:30:15.69,-25.79' 'mn:31:29.68,-86.04',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'MDS';
+END; [VIEW]

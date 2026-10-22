@@ -3,7 +3,7 @@
 BEGIN SPLITSTREE6;
 DIMENSIONS nDataNodes=11 nAlgorithms=9;
 PROGRAM version='SplitsTree (version dev) - License GPL v3';
-WORKFLOW creationDate='1792611465538'; [Wed Oct 21 21:37:45 CEST 2026]
+WORKFLOW creationDate='1792653125256'; [Thu Oct 22 09:12:05 CEST 2026]
 END; [SPLITSTREE6]
 
 [
@@ -43,20 +43,20 @@ TAXLABELS
 	[14] 'PUTORANA'
 ;
 DISPLAYLABELS
-	[1] '<b><c 0x4d1a4dff>KAMCHATKA_S'
-	[2] '<b><c 0xcc99ccff>KAMCHATKA_N'
-	[3] '<b><c 0x4d804dff>KORYAK'
-	[4] '<b><c 0xe6804dff>CHUKOTKA'
-	[5] '<b><c gray>OKHOTSK'
-	[6] '<b><c 0x1a3399ff>MOMSKY'
-	[7] '<b><c 0x669999ff>SELENNYAKH'
-	[8] '<b><c 0x80801aff>CHERSKY'
-	[9] '<b><c 0x99b3ffff>SUNTAR_KHAYATA'
-	[10] '<b><c 0x994d00ff>YABLONOV'
-	[11] '<b><c 0xb31a1aff>VERKHOYANSK'
-	[12] '<b><c 0x99cc99ff>ORULGAN'
-	[13] '<c 0xb3b31aff><b>KHARAULAKH'
-	[14] '<c 0x999933ff><b>PUTORANA'
+	[1] '<b><c 0x8a008bff><mark shape="Circle" fill="#8a008bff" height="6" width="6" stroke="black" node="true">KAMCHATKA_S'
+	[2] '<b><c 0xdea0ddff><mark shape="Circle" fill="#dea0ddff" height="6" width="6" stroke="black" node="true">KAMCHATKA_N'
+	[3] '<b><c 0x2e8a57ff><mark shape="Circle" fill="#2e8a57ff" height="6" width="6" stroke="black" node="true">KORYAK'
+	[4] '<b><c 0xfd8b01ff><mark shape="Circle" fill="#fd8b01ff" height="6" width="6" stroke="black" node="true">CHUKOTKA'
+	[5] '<b><c 0x898989ff><mark shape="Circle" fill="#898989ff" height="6" width="6" stroke="black" node="true">OKHOTSK'
+	[6] '<b><c 0x26418cff><mark shape="Circle" fill="#26418cff" height="6" width="6" stroke="black" node="true">MOMSKY'
+	[7] '<b><c 0x5f9fa0ff><mark shape="Circle" fill="#5f9fa0ff" height="6" width="6" stroke="black" node="true">SELENNYAKH'
+	[8] '<b><c 0xdaa520ff><mark shape="Circle" fill="#daa520ff" height="6" width="6" stroke="black" node="true">CHERSKY'
+	[9] '<b><c 0x63b7ffff><mark shape="Circle" fill="#63b7ffff" height="6" width="6" stroke="black" node="true">SUNTAR_KHAYATA'
+	[10] '<b><c 0x8b5a2cff><mark shape="Circle" fill="#8b5a2cff" height="6" width="6" stroke="black" node="true">YABLONOV'
+	[11] '<b><c 0xee2e2dff><mark shape="Circle" fill="#ee2e2dff" height="6" width="6" stroke="black" node="true">VERKHOYANSK'
+	[12] '<b><c 0x9bcd31ff><mark shape="Circle" fill="#9bcd31ff" height="6" width="6" stroke="black" node="true">ORULGAN'
+	[13] '<b><c 0xfed703ff><mark shape="Circle" fill="#fed703ff" height="6" width="6" stroke="black" node="true">KHARAULAKH'
+	[14] '<b><c 0xbdb76bff><mark shape="Circle" fill="#bdb76bff" height="6" width="6" stroke="black" node="true">PUTORANA'
 ;
 [TAXINFO;]
 END; [TAXA]
@@ -90,20 +90,20 @@ TAXLABELS
 	[14] 'PUTORANA'
 ;
 DISPLAYLABELS
-	[1] '<b><c 0x4d1a4dff>KAMCHATKA_S'
-	[2] '<b><c 0xcc99ccff>KAMCHATKA_N'
-	[3] '<b><c 0x4d804dff>KORYAK'
-	[4] '<b><c 0xe6804dff>CHUKOTKA'
-	[5] '<b><c gray>OKHOTSK'
-	[6] '<b><c 0x1a3399ff>MOMSKY'
-	[7] '<b><c 0x669999ff>SELENNYAKH'
-	[8] '<b><c 0x80801aff>CHERSKY'
-	[9] '<b><c 0x99b3ffff>SUNTAR_KHAYATA'
-	[10] '<b><c 0x994d00ff>YABLONOV'
-	[11] '<b><c 0xb31a1aff>VERKHOYANSK'
-	[12] '<b><c 0x99cc99ff>ORULGAN'
-	[13] '<c 0xb3b31aff><b>KHARAULAKH'
-	[14] '<c 0x999933ff><b>PUTORANA'
+	[1] '<b><c 0x8a008bff><mark shape="Circle" fill="#8a008bff" height="6" width="6" stroke="black" node="true">KAMCHATKA_S'
+	[2] '<b><c 0xdea0ddff><mark shape="Circle" fill="#dea0ddff" height="6" width="6" stroke="black" node="true">KAMCHATKA_N'
+	[3] '<b><c 0x2e8a57ff><mark shape="Circle" fill="#2e8a57ff" height="6" width="6" stroke="black" node="true">KORYAK'
+	[4] '<b><c 0xfd8b01ff><mark shape="Circle" fill="#fd8b01ff" height="6" width="6" stroke="black" node="true">CHUKOTKA'
+	[5] '<b><c 0x898989ff><mark shape="Circle" fill="#898989ff" height="6" width="6" stroke="black" node="true">OKHOTSK'
+	[6] '<b><c 0x26418cff><mark shape="Circle" fill="#26418cff" height="6" width="6" stroke="black" node="true">MOMSKY'
+	[7] '<b><c 0x5f9fa0ff><mark shape="Circle" fill="#5f9fa0ff" height="6" width="6" stroke="black" node="true">SELENNYAKH'
+	[8] '<b><c 0xdaa520ff><mark shape="Circle" fill="#daa520ff" height="6" width="6" stroke="black" node="true">CHERSKY'
+	[9] '<b><c 0x63b7ffff><mark shape="Circle" fill="#63b7ffff" height="6" width="6" stroke="black" node="true">SUNTAR_KHAYATA'
+	[10] '<b><c 0x8b5a2cff><mark shape="Circle" fill="#8b5a2cff" height="6" width="6" stroke="black" node="true">YABLONOV'
+	[11] '<b><c 0xee2e2dff><mark shape="Circle" fill="#ee2e2dff" height="6" width="6" stroke="black" node="true">VERKHOYANSK'
+	[12] '<b><c 0x9bcd31ff><mark shape="Circle" fill="#9bcd31ff" height="6" width="6" stroke="black" node="true">ORULGAN'
+	[13] '<b><c 0xfed703ff><mark shape="Circle" fill="#fed703ff" height="6" width="6" stroke="black" node="true">KHARAULAKH'
+	[14] '<b><c 0xbdb76bff><mark shape="Circle" fill="#bdb76bff" height="6" width="6" stroke="black" node="true">PUTORANA'
 ;
 [TAXINFO;]
 END; [TAXA]
@@ -186,67 +186,67 @@ DIMENSIONS nVertices=61 nEdges=83;
 TYPE DistanceNetwork;
 PROPERTIES info ='Total length: 2.408, distortion: 1.248394';
 VERTICES
-	id=1 label='KAMCHATKA_S' x='-89.1022' y='122.8542',
-	id=2 label='KAMCHATKA_N' x='-1.5848' y='134.4372',
-	id=3 label='KORYAK' x='-2.8815' y='64.625',
-	id=4 label='CHUKOTKA' x='29.6545' y='58.8368',
-	id=5 label='OKHOTSK' x='113.084' y='54.2198',
-	id=6 label='MOMSKY' x='247.063' y='65.7489',
-	id=7 label='SELENNYAKH' x='255.5607' y='-22.7443',
-	id=8 label='CHERSKY' x='184.8956' y='12.6713',
-	id=9 label='SUNTAR_KHAYATA' x='101.7065' y='-36.7497',
-	id=10 label='YABLONOV' x='170.3855' y='59.6245',
-	id=11 label='VERKHOYANSK' x='117.1682' y='-101.9225',
-	id=12 label='ORULGAN' x='-25.6959' y='-86.1411',
-	id=13 label='KHARAULAKH' x='-59.3785' y='-108.8892',
-	id=14 label='PUTORANA' x='-114.0311' y='-107.4768',
-	id=15 x='-24.908' y='-31.2554',
-	id=16 x='125.266' y='-0.5516',
-	id=17 x='-34.3774' y='86.7667',
-	id=18 x='208.4171' y='-12.8825',
-	id=19 x='207.4094' y='45.6489',
-	id=20 x='9.2227' y='-60.1652',
-	id=21 x='57.9983' y='48.9105',
-	id=22 x='-4.9385' y='-8.3738',
-	id=23 x='15.1837' y='87.9679',
-	id=24 x='34.8316' y='-11.3096',
-	id=25 x='58.278' y='112.758',
-	id=26 x='-11.7317' y='110.7101',
-	id=27 x='87.8325' y='100.4338',
-	id=28 x='37.1832' y='-46.7213',
-	id=29 x='71.1886' y='-42.8214',
-	id=30 x='71.7641' y='67.386',
-	id=31 x='110.4919' y='-78.3577',
-	id=32 x='118.5207' y='-53.8361',
-	id=33 x='86.2133' y='25.0398',
-	id=34 x='116.9566' y='-29.6936',
-	id=35 x='209.0933' y='19.0339',
-	id=36 x='97.6604' y='80.7292',
-	id=37 x='133.0132' y='43.8787',
-	id=38 x='186.0627' y='33.7471',
-	id=39 x='142.125' y='-18.304',
-	id=40 x='155.6037' y='-54.9806',
-	id=41 x='131.759' y='16.5164',
-	id=42 x='11.2023' y='-4.1332',
-	id=43 x='35.8147' y='101.8792',
-	id=44 x='131.6816' y='-49.5697',
-	id=45 x='98.807' y='-52.6783',
-	id=46 x='125.5026' y='-61.0951',
-	id=47 x='128.4467' y='-28.5018',
-	id=48 x='138.4305' y='-74.0791',
-	id=49 x='163.1419' y='-30.7358',
-	id=50 x='100.7955' y='-9.9492',
-	id=51 x='154.5186' y='58.9454',
-	id=52 x='112.8129' y='31.54',
-	id=53 x='73.222' y='-13.7984',
-	id=54 x='145.1419' y='45.7068',
-	id=55 x='47.2185' y='82.681',
-	id=56 x='163.8429' y='2.2479',
-	id=57 x='177.8998' y='-39.2038',
-	id=58 x='115.1708' y='-11.7964',
-	id=59 x='94.4789' y='-29.6361',
-	id=60 x='100.2615' y='10.1985',
-	id=61 x='152.7247' y='-43.3454'
+	id=1 label='KAMCHATKA_S' x='204.3922' y='298.3646',
+	id=2 label='KAMCHATKA_N' x='242.5459' y='121.8223',
+	id=3 label='KORYAK' x='187.8426' y='92.0872',
+	id=4 label='CHUKOTKA' x='202.771' y='-185.0387',
+	id=5 label='OKHOTSK' x='99.8572' y='-130.4751',
+	id=6 label='MOMSKY' x='-35.9185' y='160.2102',
+	id=7 label='SELENNYAKH' x='-240.9424' y='60.5054',
+	id=8 label='CHERSKY' x='-20.1973' y='-86.3218',
+	id=9 label='SUNTAR_KHAYATA' x='-51.3071' y='-57.4407',
+	id=10 label='YABLONOV' x='17.1768' y='-255.1545',
+	id=11 label='VERKHOYANSK' x='-172.9377' y='-142.3168',
+	id=12 label='ORULGAN' x='-144.4496' y='216.5996',
+	id=13 label='KHARAULAKH' x='-195.8959' y='270.5806',
+	id=14 label='PUTORANA' x='-18.2163' y='381.4373',
+	id=15 x='1.6414' y='183.6446',
+	id=16 x='16.5076' y='-101.6498',
+	id=17 x='152.0369' y='197.1496',
+	id=18 x='-139.7027' y='41.0563',
+	id=19 x='-20.978' y='61.2101',
+	id=20 x='-97.6655' y='160.2342',
+	id=21 x='157.8263' y='-147.0047',
+	id=22 x='41.3876' y='136.8015',
+	id=23 x='197.5145' y='41.1094',
+	id=24 x='12.6412' y='70.8862',
+	id=25 x='206.0915' y='-26.3938',
+	id=26 x='198.3251' y='155.7341',
+	id=27 x='158.3157' y='-20.7376',
+	id=28 x='-96.5345' y='109.7148',
+	id=29 x='-106.7149' y='57.6602',
+	id=30 x='95.946' y='48.7049',
+	id=31 x='-151.5215' y='-99.8583',
+	id=32 x='-53.0601' y='-114.3433',
+	id=33 x='87.1951' y='-180.907',
+	id=34 x='-14.4363' y='-140.9588',
+	id=35 x='-66.4131' y='34.1994',
+	id=36 x='132.0776' y='15.6481',
+	id=37 x='95.6778' y='-69.8378',
+	id=38 x='-26.9716' y='-19.4887',
+	id=39 x='-90.8989' y='-66.9724',
+	id=40 x='-120.7929' y='-128.9667',
+	id=41 x='-1.2784' y='-56.2034',
+	id=42 x='-10.9259' y='115.3629',
+	id=43 x='217.4101' y='-2.8494',
+	id=44 x='-116.4151' y='-79.4261',
+	id=45 x='-132.6426' y='14.3016',
+	id=46 x='-158.3459' y='-35.6286',
+	id=47 x='-109.6661' y='-30.3325',
+	id=48 x='-99.4023' y='-160.6468',
+	id=49 x='-84.5347' y='-123.3941',
+	id=50 x='-59.3266' y='-0.8777',
+	id=51 x='85.9024' y='-21.0225',
+	id=52 x='66.0673' y='-160.0536',
+	id=53 x='-0.8513' y='-0.7587',
+	id=54 x='37.6215' y='-19.4944',
+	id=55 x='137.4268' y='72.0268',
+	id=56 x='-25.7796' y='-136.0738',
+	id=57 x='-182.5594' y='-7.4683',
+	id=58 x='-59.5584' y='-26.3721',
+	id=59 x='-31.5326' y='-175.0627',
+	id=60 x='40.754' y='-55.4386',
+	id=61 x='-154.5787' y='-52.0818'
 ;
 EDGES
 	id=1 sid=1 tid=17 weight='0.1105',
@@ -422,9 +422,9 @@ OPTIONS
 	TraitLegend = 'False',
 	TraitSize = 32,
 	SitesStyle = 'None',
-	Edits = 'lp:1:-120.11,2.64' 'lp:2:-58.09,12.84' 'lp:3:-71.53,-3.11' 'lp:4:-157.07,19.94' 'lp:5:-44,16.3' 'lp:6:16.95,0.77' 'lp:7:13.7,-10.69' 'lp:8:15.86,-18.28' 'lp:9:-78.1,-29.72' 'lp:10:-27.12,15.2' 'lp:11:-55.91,-29.39' 'lp:12:-20.74,-35.22' 'lp:13:-123.09,-26.85' 'lp:14:-122.62,-46.17',
+	Edits = 'lp:1:-43.39,16.88' 'lp:2:13.21,-3.18' 'lp:3:58.82,44.92' 'lp:4:14.5,-20.09' 'lp:5:12.94,-13.16' 'lp:6:-33.2,13.84' 'lp:7:-107.89,-5.18' 'lp:8:14,-7.9' 'lp:9:13.01,-13' 'lp:10:-38.45,-29.64' 'lp:11:-119.31,-13.65' 'lp:12:14.2,4.81' 'lp:13:-60.57,13.75' 'lp:14:-40.29,13.93',
 	LayoutSeed = 1,
-	LayoutAlgorithm = 'ForceDirected';
+	LayoutAlgorithm = 'MDS';
 END; [VIEW]
 
 BEGIN NETWORK;
@@ -434,40 +434,40 @@ DIMENSIONS nVertices=34 nEdges=40;
 TYPE DistanceNetwork;
 PROPERTIES info ='Total length: 1.76, distortion: 1.341542';
 VERTICES
-	id=1 label='KAMCHATKA_S' x='-89.1022' y='122.8542',
-	id=2 label='KAMCHATKA_N' x='-1.5848' y='134.4372',
-	id=3 label='KORYAK' x='-2.8815' y='64.625',
-	id=4 label='CHUKOTKA' x='29.6545' y='58.8368',
-	id=5 label='OKHOTSK' x='113.084' y='54.2198',
-	id=6 label='MOMSKY' x='247.063' y='65.7489',
-	id=7 label='SELENNYAKH' x='255.5607' y='-22.7443',
-	id=8 label='CHERSKY' x='184.8956' y='12.6713',
-	id=9 label='SUNTAR_KHAYATA' x='101.7065' y='-36.7497',
-	id=10 label='YABLONOV' x='170.3855' y='59.6245',
-	id=11 label='VERKHOYANSK' x='117.1682' y='-101.9225',
-	id=12 label='ORULGAN' x='-25.6959' y='-86.1411',
-	id=13 label='KHARAULAKH' x='-59.3785' y='-108.8892',
-	id=14 label='PUTORANA' x='-114.0311' y='-107.4768',
-	id=16 x='125.266' y='-0.5516',
-	id=17 x='-34.3774' y='86.7667',
-	id=18 x='208.4171' y='-12.8825',
-	id=21 x='57.9983' y='48.9105',
-	id=22 x='-4.9385' y='-8.3738',
-	id=24 x='34.8316' y='-11.3096',
-	id=25 x='58.278' y='112.758',
-	id=28 x='37.1832' y='-46.7213',
-	id=32 x='118.5207' y='-53.8361',
-	id=33 x='86.2133' y='25.0398',
-	id=34 x='116.9566' y='-29.6936',
-	id=35 x='209.0933' y='19.0339',
-	id=38 x='186.0627' y='33.7471',
-	id=42 x='11.2023' y='-4.1332',
-	id=43 x='35.8147' y='101.8792',
-	id=46 x='125.5026' y='-61.0951',
-	id=48 x='138.4305' y='-74.0791',
-	id=52 x='112.8129' y='31.54',
-	id=54 x='145.1419' y='45.7068',
-	id=56 x='163.8429' y='2.2479'
+	id=1 label='KAMCHATKA_S' x='204.3922' y='298.3646',
+	id=2 label='KAMCHATKA_N' x='242.5459' y='121.8223',
+	id=3 label='KORYAK' x='187.8426' y='92.0872',
+	id=4 label='CHUKOTKA' x='202.771' y='-185.0387',
+	id=5 label='OKHOTSK' x='99.8572' y='-130.4751',
+	id=6 label='MOMSKY' x='-35.9185' y='160.2102',
+	id=7 label='SELENNYAKH' x='-240.9424' y='60.5054',
+	id=8 label='CHERSKY' x='-20.1973' y='-86.3218',
+	id=9 label='SUNTAR_KHAYATA' x='-51.3071' y='-57.4407',
+	id=10 label='YABLONOV' x='17.1768' y='-255.1545',
+	id=11 label='VERKHOYANSK' x='-172.9377' y='-142.3168',
+	id=12 label='ORULGAN' x='-144.4496' y='216.5996',
+	id=13 label='KHARAULAKH' x='-195.8959' y='270.5806',
+	id=14 label='PUTORANA' x='-18.2163' y='381.4373',
+	id=16 x='16.5076' y='-101.6498',
+	id=17 x='152.0369' y='197.1496',
+	id=18 x='-139.7027' y='41.0563',
+	id=21 x='157.8263' y='-147.0047',
+	id=22 x='41.3876' y='136.8015',
+	id=24 x='12.6412' y='70.8862',
+	id=25 x='206.0915' y='-26.3938',
+	id=28 x='-96.5345' y='109.7148',
+	id=32 x='-53.0601' y='-114.3433',
+	id=33 x='87.1951' y='-180.907',
+	id=34 x='-14.4363' y='-140.9588',
+	id=35 x='-66.4131' y='34.1994',
+	id=38 x='-26.9716' y='-19.4887',
+	id=42 x='-10.9259' y='115.3629',
+	id=43 x='217.4101' y='-2.8494',
+	id=46 x='-158.3459' y='-35.6286',
+	id=48 x='-99.4023' y='-160.6468',
+	id=52 x='66.0673' y='-160.0536',
+	id=54 x='37.6215' y='-19.4944',
+	id=56 x='-25.7796' y='-136.0738'
 ;
 EDGES
 	id=1 sid=1 tid=17 weight='0.1105',
@@ -520,9 +520,9 @@ NAME 'SplitNetworkView';
 INPUT 'SPLITS';
 OPTIONS
 	Diagram = 'Splits',
-	Orientation = 'FlipRotate285Deg',
+	Orientation = 'FlipRotate280Deg',
 	Rooting = 'None',
-	ZoomFactor = 1.17257864,
+	ZoomFactor = 0.63272764,
 	FontScaleFactor = 1,
 	RootAngle = 160,
 	OutlineFill = 0xa9a9a9ff,
@@ -549,7 +549,7 @@ OPTIONS
 	TraitLegend = 'False',
 	TraitSize = 32,
 	SitesStyle = 'None',
-	Edits = 'mn:14:-288.38,-96.13' 'mn:1:-336.45,120.16' 'mn:2:-178.06,105.04' 'mn:3:-86.48,161.3' 'mn:4:74.82,247.78' 'mn:5:183.14,112.52' 'mn:6:184.34,-176.86' 'mn:7:94.86,-257.06' 'mn:8:147.83,-35.31' 'mn:9:-26.03,21.85' 'mn:10:237.31,44.89' 'mn:11:8.38,-95.76' 'mn:12:-126.89,-204.09' 'mn:13:-170.58,-256.16' 'mn:16:93.67,32.32' 'mn:17:-221.75,52.97' 'mn:18:62.54,-163.39' 'mn:21:81.1,175.96' 'mn:22:-123.89,37.41' 'mn:24:-95.76,-8.38' 'mn:25:-34.41,117.61' 'mn:28:-85.29,-128.08' 'mn:32:21.85,26.03' 'mn:33:109.23,130.17' 'mn:34:43.69,52.07' 'mn:35:108.33,-135.26' 'mn:38:125.99,-61.35' 'mn:42:-115.51,-58.35' 'mn:43:-38.6,165.49' 'mn:46:-11.37,-145.74' 'mn:48:49.98,-19.75' 'mn:52:137.36,84.39' 'mn:54:71.82,6.28' 'mn:56:121.8,-13.47' 'lp:1:-121.86,-10.48' 'lp:2:-102.68,16.6' 'lp:3:-67.61,10.58' 'lp:4:-36.8,13.62' 'lp:5:12.96,-2.53' 'lp:6:16.34,-17.52' 'lp:7:-45.5,-29.37' 'lp:8:14,-7.49' 'lp:9:-62.11,-22.29' 'lp:10:13.95,-6.68' 'lp:11:-50.55,8.68' 'lp:12:-86.47,2.89' 'lp:13:-59.95,-31.68' 'lp:14:-106.68,-12.36',
+	Edits = 'lp:1:-122.08,-6.83' 'lp:2:-57.85,13.58' 'lp:3:-33.77,13.57' 'lp:4:-31,16.71' 'lp:5:13.89,-6.06' 'lp:6:-18.23,-29.24' 'lp:7:-49.15,-29.61' 'lp:8:13.6,-11.13' 'lp:9:-66.46,13.98' 'lp:10:13.77,-10.33' 'lp:11:-4.02,-27.08' 'lp:12:-47.77,14.41' 'lp:13:-113.53,-20.68' 'lp:14:-94.3,-9.26' 'mn:10:223.71,-24.1' 'mn:1:-288.79,98.31' 'mn:2:-129.84,131.77' 'mn:3:-30.9,168.87' 'mn:4:131.3,190.58' 'mn:5:187.01,56.23' 'mn:6:125.12,-194.18' 'mn:7:20.85,-240.25' 'mn:8:118.92,-71.1' 'mn:9:-28.14,18.03' 'mn:11:-21.45,-94.07' 'mn:12:-155.9,-147.09' 'mn:13:-205.52,-192.72' 'mn:14:-279.27,-14.91' 'mn:16:93.25,15.35' 'mn:17:-183.47,90.86' 'mn:18:26,-161.96' 'mn:21:105.44,142.85' 'mn:22:-106.66,72.9' 'mn:24:-89.58,14.24' 'mn:25:0,110.84' 'mn:28:-102,-103.79' 'mn:32:14.64,10.31' 'mn:33:117.18,86.66' 'mn:34:52.14,36.3' 'mn:35:70.58,-138.29' 'mn:38:87.27,-92.97' 'mn:42:-119.27,-22.81' 'mn:43:12.49,150.21' 'mn:46:-52.71,-121.58' 'mn:48:28.09,-37.77' 'mn:52:145.81,51.01' 'mn:54:70.8,-22.65' 'mn:56:100.27,-36.08',
 	LayoutSeed = 1,
 	LayoutAlgorithm = 'MDS';
 END; [VIEW]

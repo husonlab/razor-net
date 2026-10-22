@@ -3,7 +3,7 @@
 BEGIN SPLITSTREE6;
 DIMENSIONS nDataNodes=8 nAlgorithms=4;
 PROGRAM version='SplitsTree (version dev) - License GPL v3';
-WORKFLOW creationDate='1792412484387'; [Mon Oct 19 14:21:24 CEST 2026]
+WORKFLOW creationDate='1792653187637'; [Thu Oct 22 09:13:07 CEST 2026]
 END; [SPLITSTREE6]
 
 [
