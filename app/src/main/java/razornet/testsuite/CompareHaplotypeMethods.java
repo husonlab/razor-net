@@ -26,7 +26,7 @@ import jloda.util.ProgramExecutorService;
 import jloda.util.progress.ProgressSilent;
 import splitstree6.algorithms.characters.characters2network.Characters2Network;
 import splitstree6.algorithms.characters.characters2network.MedianJoining;
-import splitstree6.algorithms.network.network2network.SimplifyFilter;
+import splitstree6.algorithms.network.network2network.ShaveFilter;
 import splitstree6.data.CharactersBlock;
 import splitstree6.data.NetworkBlock;
 import splitstree6.data.TaxaBlock;
@@ -44,7 +44,7 @@ import java.util.List;
 
 /**
  * Compares haplotype network methods on alignments, without a GUI: median joining (SplitsTree), TCS, RazorHaploNet
- * and RazorHaploNet followed by the Simplify filter.
+ * and RazorHaploNet followed by the Shave filter.
  * <p>
  * All methods get the same input: the alignment without the columns that contain a gap, a missing or an ambiguous
  * character, and with identical sequences merged into one haplotype. For each input and method the tool reports
@@ -57,13 +57,13 @@ import java.util.List;
  * as a network.
  *
  * <pre>
- * CompareHaplotypeMethods [--methods Distances,Truth,MedianJoining,TCS,RazorHaploNet,RazorHaploNet+Simplify]
+ * CompareHaplotypeMethods [--methods Distances,Truth,MedianJoining,TCS,RazorHaploNet,RazorHaploNet+Shave]
  *                         [--truth treeName sequencesName] [--epsilon N] [--strategy S] [--restarts N]
  *                         [--maxSeconds N] [--timeLimit N] [--seed N] [--threads N] [--maxQuartets N]
  *                         [--report file] [--networks directory] [--silent] alignment...
  * </pre>
  * {@code --maxSeconds} is the time budget of RazorHaploNet and TCS; {@code --timeLimit} ends median joining or the
- * Simplify filter after that many seconds, which is then reported as a timeout.
+ * Shave filter after that many seconds, which is then reported as a timeout.
  * {@code --truth} names two files next to each input: the genealogy in Newick format with all nodes named, and the
  * sequences of all its nodes in FASTA format.
  *
@@ -76,7 +76,7 @@ public class CompareHaplotypeMethods {
 
 	public static void main(String[] args) throws Exception {
 		razornet.algorithms.utils.AdvancedOptions.enable();
-		var methods = List.of("MedianJoining", "TCS", "RazorHaploNet", "RazorHaploNet+Simplify");
+		var methods = List.of("MedianJoining", "TCS", "RazorHaploNet", "RazorHaploNet+Shave");
 		var truthTree = "";
 		var truthSequences = "";
 		var epsilon = 0;
@@ -119,7 +119,7 @@ public class CompareHaplotypeMethods {
 			}
 		}
 		if (inputs.isEmpty()) {
-			System.err.println("Usage: CompareHaplotypeMethods [--methods Distances,Truth,MedianJoining,TCS,RazorHaploNet,RazorHaploNet+Simplify] [--truth treeName sequencesName] [--epsilon N] [--strategy S] [--restarts N] [--maxSeconds N] [--timeLimit N] [--seed N] [--threads N] [--maxQuartets N] [--report file] [--networks directory] [--silent] alignment...");
+			System.err.println("Usage: CompareHaplotypeMethods [--methods Distances,Truth,MedianJoining,TCS,RazorHaploNet,RazorHaploNet+Shave] [--truth treeName sequencesName] [--epsilon N] [--strategy S] [--restarts N] [--maxSeconds N] [--timeLimit N] [--seed N] [--threads N] [--maxQuartets N] [--report file] [--networks directory] [--silent] alignment...");
 			System.exit(2);
 		}
 		ProgramExecutorService.setNumberOfCoresToUse(threads);
@@ -243,7 +243,7 @@ public class CompareHaplotypeMethods {
 						network = TimeLimit.call(() -> compute(algorithm, taxa, characters), timeLimit);
 						seconds = (System.currentTimeMillis() - start) / 1000.0;
 					}
-					case "RazorHaploNet", "RazorHaploNet+Simplify" -> {
+					case "RazorHaploNet", "RazorHaploNet+Shave" -> {
 						if (razorNetwork == null) {
 							var algorithm = new razornet.algorithms.RazorHaploNet();
 							algorithm.optionRandomRestartsProperty().set(restarts);
@@ -257,10 +257,10 @@ public class CompareHaplotypeMethods {
 						}
 						network = razorNetwork;
 						seconds = razorSeconds;
-						if (method.endsWith("+Simplify")) {
+						if (method.endsWith("+Shave")) {
 							var input0 = razorNetwork;
 							network = TimeLimit.call(() -> {
-								var filter = new SimplifyFilter();
+								var filter = new ShaveFilter();
 								filter.optionReportTableProperty().set(false);
 								var result = new NetworkBlock();
 								filter.compute(new ProgressSilent(), taxa, input0, result);

@@ -75,7 +75,7 @@ mean the network stretches some pairs relative to others).
 A RazorNet displays the distances exactly, and for noisy distances that can be a complex network. Two filters,
 applied to the network after it has been computed, trade exactness for a sparser network:
 
-- The **Simplify filter** removes edges one at a time, always the edge whose removal costs least, and stops at
+- The **Shave filter** removes edges one at a time, always the edge whose removal costs least, and stops at
   a chosen target. The default target, *Balanced*, stops where further simplification would cost more than it
   gains; other targets are a maximal deviation, a number of edges, a number of cycles (0 gives a tree) or a
   percentage of the edges. The cost is the distortion of the distances or, for a haplotype network, the excess

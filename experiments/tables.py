@@ -11,8 +11,8 @@ import csv
 import os
 import sys
 
-METHOD = {'NeighborNet': r'\NN', 'RazorNet': r'\RN', 'RazorNet+Simplify': r'\RN, Simplify', 'Distances': 'distances',
-          'MedianJoining': r'\MJ', 'TCS': r'\TCS', 'RazorHaploNet': r'\RHN', 'RazorHaploNet+Simplify': r'\RHN, Simplify',
+METHOD = {'NeighborNet': r'\NN', 'RazorNet': r'\RN', 'RazorNet+Shave': r'\RN, Shave', 'Distances': 'distances',
+          'MedianJoining': r'\MJ', 'TCS': r'\TCS', 'RazorHaploNet': r'\RHN', 'RazorHaploNet+Shave': r'\RHN, Shave',
           'Truth': 'true tree'}
 SETTING = {'inf': 'infinite sites', 'low': 'low', 'mid': 'medium', 'high': 'high', 'finite': 'finite sites'}
 
@@ -46,8 +46,8 @@ def alignments(results, tables):
             name = name.replace(old, '')
         first = next(iter(methods.values()))
         cells = []
-        best = min(int(methods[m]['excess']) for m in ('MedianJoining', 'TCS', 'RazorHaploNet', 'RazorHaploNet+Simplify'))
-        for method in ('MedianJoining', 'TCS', 'RazorHaploNet', 'RazorHaploNet+Simplify'):
+        best = min(int(methods[m]['excess']) for m in ('MedianJoining', 'TCS', 'RazorHaploNet', 'RazorHaploNet+Shave'))
+        for method in ('MedianJoining', 'TCS', 'RazorHaploNet', 'RazorHaploNet+Shave'):
             row = methods[method]
             excess = row['excess'] if int(row['excess']) > best else rf"\textbf{{{row['excess']}}}"  # the smallest excess in bold
             cells.append(f"{row['mutations']} & {row['cycles']} & {excess}")

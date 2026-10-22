@@ -1,5 +1,5 @@
 #!/bin/bash
-# Neighbor-Net, RazorNet and RazorNet with the Simplify filter on published distance data (Table 2 of the paper and
+# Neighbor-Net, RazorNet and RazorNet with the Shave filter on published distance data (Table 2 of the paper and
 # the candidates listed in its TODO). Alignments and character matrices enter as the Hamming distances of their
 # distinct sequences or profiles, prepared as for the haplotype comparison (CharactersToDistances); the distance
 # matrices of SplitsTree's examples enter as they are. Run from the root of the repository:
@@ -29,6 +29,6 @@ cp -n "$ST/publications/WolfEtAl2021/Cochlearia-distances.nex" "$OUT/distances/c
 cp -n "$ST/publications/McVayEtAl2017/gen-2016-0206supplb.txt" "$OUT/distances/oaks.nex" 2>/dev/null
 cp -n examples/publications/DotsevEtAl2026/snow-sheep-fst.nex "$OUT/distances/snow-sheep.nex" 2>/dev/null
 java -Xmx8g -Djava.awt.headless=true -cp "$JAVA_CP" razornet.testsuite.CompareDistanceMethods \
-  --methods NeighborNet,RazorNet,RazorNet+Simplify --restarts 100 --maxSeconds 60 --threads 4 --seed 0 --timeLimit 120 \
+  --methods NeighborNet,RazorNet,RazorNet+Shave --restarts 100 --maxSeconds 60 --threads 4 --seed 0 --timeLimit 120 \
   --networks "$OUT/networks" --report "$OUT/report.tsv" "$OUT"/distances/*.nex > "$OUT/log.txt" 2>&1
 sed "s#$OUT/distances/##" "$OUT/report.tsv" > "$HERE/results/published-distances.tsv"

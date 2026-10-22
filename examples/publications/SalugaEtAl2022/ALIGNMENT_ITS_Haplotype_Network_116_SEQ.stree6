@@ -12,7 +12,7 @@ Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH
 The original input consisted of 16 taxa and 16 DNA sequences of length 951.
 The Razor Haplo Net method was used (default options, except MaskGapSites=true) so as to obtain 22 nodes and 27 edges.
 The TCS Haplotype Network method (Templeton et al 1992, Leigh & Bryant 2015) was used (default options, except MaskGapSites=true) so as to obtain 20 nodes and 22 edges.
-The Simplify Filter method was used (default options) so as to obtain 21 nodes and 23 edges.
+The Shave Filter method was used (default options) so as to obtain 21 nodes and 23 edges.
 
 References:
 Hayamizu et al, 2026: M. Hayamizu, others, DH Huson, in preparation
@@ -755,9 +755,9 @@ OPTIONS
 END; [ALGORITHM]
 
 BEGIN ALGORITHM;
-TITLE 'Simplify Filter';
+TITLE 'Shave Filter';
 LINK NETWORK = 'Network';
-NAME 'Simplify Filter';
+NAME 'Shave Filter';
 OPTIONS
 	Target = 'Balanced',
 	TargetValue = 0,
@@ -793,7 +793,7 @@ END; [VIEW]
 
 BEGIN NETWORK;
 TITLE 'Network-3-2';
-LINK ALGORITHM = 'Simplify Filter';
+LINK ALGORITHM = 'Shave Filter';
 DIMENSIONS nVertices=21 nEdges=23;
 TYPE HaplotypeNetwork;
 PROPERTIES info ='Total length: 66, excess: 9';

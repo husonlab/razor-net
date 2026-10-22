@@ -1,9 +1,9 @@
 #nexus [SplitsTree6]
 
 BEGIN SPLITSTREE6;
-DIMENSIONS nDataNodes=11 nAlgorithms=9;
+DIMENSIONS nDataNodes=11 nAlgorithms=8;
 PROGRAM version='SplitsTree (version dev) - License GPL v3';
-WORKFLOW creationDate='1792653125256'; [Thu Oct 22 09:12:05 CEST 2026]
+WORKFLOW creationDate='1792671109366'; [Thu Oct 22 14:11:49 CEST 2026]
 END; [SPLITSTREE6]
 
 [
@@ -13,7 +13,7 @@ The original input consisted of 14 taxa and a 14 x 14 distance matrix.
 The Razor Net method was used (default options) so as to obtain 61 nodes and 83 edges.
 The Neighbor Net method (Bryant & Moulton 2004, Bryant & Huson 2023) was used (default options) so as to obtain 37 splits, circular.
 The Show Splits method was used (default options) so as to obtain a Split Network visualization.
-The Simplify Filter method was used (default options) so as to obtain 34 nodes and 40 edges.
+The Shave Filter method was used (default options) so as to obtain 34 nodes and 40 edges.
 
 References:
 Bryant & Huson 2023: D. Bryant and DH Huson, NeighborNet- improved algorithms and implementation. Front. Bioinform. 3, 2023.
@@ -24,7 +24,6 @@ Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive a
 
 BEGIN TAXA;
 TITLE 'Input Taxa';
-LINK ALGORITHM = 'Input Data Loader';
 DIMENSIONS ntax=14;
 TAXLABELS
 	[1] 'KAMCHATKA_S'
@@ -63,7 +62,6 @@ END; [TAXA]
 
 BEGIN ALGORITHM;
 TITLE 'Taxa Filter';
-LINK ALGORITHM = 'Input Data Loader';
 NAME 'Taxa Filter';
 OPTIONS
 ;
@@ -110,7 +108,7 @@ END; [TAXA]
 
 BEGIN DISTANCES;
 TITLE 'Input Distances';
-LINK ALGORITHM = 'Input Data Loader';
+LINK ALGORITHM = 'Taxa Filter';
 DIMENSIONS ntax=14;
 FORMAT labels=left diagonal triangle=Both;
 MATRIX
@@ -392,9 +390,9 @@ OPTIONS
 END; [ALGORITHM]
 
 BEGIN ALGORITHM;
-TITLE 'Simplify Filter';
+TITLE 'Shave Filter';
 LINK NETWORK = 'Network';
-NAME 'Simplify Filter';
+NAME 'Shave Filter';
 OPTIONS
 	Target = 'Balanced',
 	TargetValue = 0,
@@ -429,7 +427,7 @@ END; [VIEW]
 
 BEGIN NETWORK;
 TITLE 'Network-2-2';
-LINK ALGORITHM = 'Simplify Filter';
+LINK ALGORITHM = 'Shave Filter';
 DIMENSIONS nVertices=34 nEdges=40;
 TYPE DistanceNetwork;
 PROPERTIES info ='Total length: 1.76, distortion: 1.341542';
@@ -522,7 +520,7 @@ OPTIONS
 	Diagram = 'Splits',
 	Orientation = 'FlipRotate280Deg',
 	Rooting = 'None',
-	ZoomFactor = 0.63272764,
+	ZoomFactor = 0.53426097,
 	FontScaleFactor = 1,
 	RootAngle = 160,
 	OutlineFill = 0xa9a9a9ff,

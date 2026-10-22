@@ -13,7 +13,7 @@ The original input consisted of 257 taxa and 257 DNA sequences of length 444.
 The Razor Haplo Net method was used (default options, except RandomRestarts=100) so as to obtain 302 nodes and 328 edges.
 The Median Joining method (Bandelt et al 1999) was used (default options) so as to obtain 281 nodes and 291 edges.
 The TCS Haplotype Network method (Templeton et al 1992, Leigh & Bryant 2015, Hayamizu & Huson 2026) was used (default options) so as to obtain 281 nodes and 292 edges.
-The Simplify Filter method was used (default options) so as to obtain 275 nodes and 278 edges.
+The Shave Filter method was used (default options) so as to obtain 275 nodes and 278 edges.
 
 References:
 Bandelt et al 1999: HJ Bandelt, P. Forster, and A. Röhl. Median-joining networks for inferring intraspecific phylogenies. Molecular Biology and Evolution, 16:37–48, 1999.
@@ -6598,9 +6598,9 @@ OPTIONS
 END; [ALGORITHM]
 
 BEGIN ALGORITHM;
-TITLE 'Simplify Filter';
+TITLE 'Shave Filter';
 LINK NETWORK = 'Network';
-NAME 'Simplify Filter';
+NAME 'Shave Filter';
 OPTIONS
 	Target = 'Balanced',
 	TargetValue = 0,
@@ -6643,7 +6643,7 @@ END; [VIEW]
 
 BEGIN NETWORK;
 TITLE 'Network-3-2';
-LINK ALGORITHM = 'Simplify Filter';
+LINK ALGORITHM = 'Shave Filter';
 DIMENSIONS nVertices=275 nEdges=278;
 TYPE HaplotypeNetwork;
 PROPERTIES info ='Total length: 490, excess: 183';

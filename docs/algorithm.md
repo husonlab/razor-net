@@ -321,8 +321,8 @@ every pairwise distance is preserved and the result is a minimal realization. Ap
 inside each finishing-polish cycle.
 
 Giving up exactness for a sparser network is not part of the algorithm. It is done afterwards, by one of two
-filters of SplitsTree applied to the network: the stretch filter, which greedily removes edges, heaviest first,
-while every taxon pair stays within a factor `(1 + p/100)` of its distance, and the simplify filter, which
+filters of SplitsTree applied to the network: the Stretch filter, which greedily removes edges, heaviest first,
+while every taxon pair stays within a factor `(1 + p/100)` of its distance, and the Shave filter, which
 removes edges in order of increasing cost and stops at a chosen target.
 
 ## 9 · The haplotype network

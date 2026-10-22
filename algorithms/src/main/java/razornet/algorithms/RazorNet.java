@@ -522,7 +522,7 @@ public class RazorNet extends Distances2Network {
 		if (network.getNumberOfNodes() > EXPLOSION_NODES_PER_TAXON * ntax) {
 			var lever = getOptionSignificantDigits() > 2
 					? "try fewer significant digits (e.g. 2 or 3)"
-					: "try MDS preprocessing, or apply the Simplify or Stretch filter to the network";
+					: "try MDS preprocessing, or apply the Shave or Stretch filter to the network";
 			System.err.printf("RazorNet: the network has %,d nodes for %,d taxa --- the distances look generic (few "
 							+ "ties) at %d significant digits, so the extension over-expands. For a sparser network, %s.%n",
 					network.getNumberOfNodes(), ntax, getOptionSignificantDigits(), lever);

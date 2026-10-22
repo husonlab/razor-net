@@ -32,7 +32,7 @@ i=0
   report=$OUT/reports/$(printf %02d $i).tsv
   [ -s "$report" ] && continue
   java -Xmx6g -Djava.awt.headless=true -cp "$JAVA_CP" razornet.testsuite.CompareHaplotypeMethods \
-    --methods TCS,RazorHaploNet,RazorHaploNet+Simplify,MedianJoining --restarts 1000 --maxSeconds 60 --threads 0 \
+    --methods TCS,RazorHaploNet,RazorHaploNet+Shave,MedianJoining --restarts 1000 --maxSeconds 60 --threads 0 \
     --timeLimit 300 --silent --networks "$OUT/networks" --report "$report.tmp" "$alignment" > "${report%.tsv}.log" 2>&1 \
     && mv "$report.tmp" "$report"
 done

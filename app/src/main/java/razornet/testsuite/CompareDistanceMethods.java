@@ -26,7 +26,7 @@ import jloda.util.FileUtils;
 import jloda.util.ProgramExecutorService;
 import jloda.util.progress.ProgressSilent;
 import splitstree6.algorithms.distances.distances2splits.NeighborNet;
-import splitstree6.algorithms.network.network2network.SimplifyFilter;
+import splitstree6.algorithms.network.network2network.ShaveFilter;
 import splitstree6.data.DistancesBlock;
 import splitstree6.data.NetworkBlock;
 import splitstree6.data.SplitsBlock;
@@ -45,19 +45,19 @@ import java.util.BitSet;
 import java.util.List;
 
 /**
- * Compares NeighborNet with RazorNet, and with RazorNet followed by the Simplify filter, on distance matrices,
+ * Compares NeighborNet with RazorNet, and with RazorNet followed by the Shave filter, on distance matrices,
  * without a GUI. For each input and method it reports one row: the size and length of the network, how well the
  * distances it displays agree with the input, the time and, if the trees that generated the distances are given,
  * how the quartet supports it displays compare with those of the trees ({@link QuartetDisplay}). The method
  * {@code Distances} reports the quartet supports that the input distances give by themselves.
  *
  * <pre>
- * CompareDistanceMethods [--truth name] [--methods Distances,NeighborNet,RazorNet,RazorNet+Simplify] [--strategy S]
+ * CompareDistanceMethods [--truth name] [--methods Distances,NeighborNet,RazorNet,RazorNet+Shave] [--strategy S]
  *                        [--restarts N] [--maxSeconds N] [--seed N] [--threads N] [--maxQuartets N]
  *                        [--set option=value]* [--tag text] [--report file] [--networks directory] [--silent] file...
  * </pre>
  * {@code --set} sets a further option of RazorNet by name, and {@code --tag} is appended to its method name in the
- * report. {@code --timeLimit} ends the Simplify filter after that many seconds, which is then reported as a timeout.
+ * report. {@code --timeLimit} ends the Shave filter after that many seconds, which is then reported as a timeout.
  * {@code --truth} names a file next to each input that holds the generating trees in Newick format, one per line,
  * with the number of mutations on each edge as its length.
  *
@@ -76,7 +76,7 @@ public class CompareDistanceMethods {
 	public static void main(String[] args) throws Exception {
 		razornet.algorithms.utils.AdvancedOptions.enable();
 		var truthName = "";
-		var methods = List.of("Distances", "NeighborNet", "RazorNet", "RazorNet+Simplify");
+		var methods = List.of("Distances", "NeighborNet", "RazorNet", "RazorNet+Shave");
 		var strategy = "";
 		var restarts = 100;
 		var maxSeconds = 0;
@@ -119,7 +119,7 @@ public class CompareDistanceMethods {
 			}
 		}
 		if (inputs.isEmpty()) {
-			System.err.println("Usage: CompareDistanceMethods [--truth name] [--methods Distances,NeighborNet,RazorNet,RazorNet+Simplify] [--strategy S] [--restarts N] [--maxSeconds N] [--seed N] [--threads N] [--maxQuartets N] [--report file] [--networks directory] [--silent] file...");
+			System.err.println("Usage: CompareDistanceMethods [--truth name] [--methods Distances,NeighborNet,RazorNet,RazorNet+Shave] [--strategy S] [--restarts N] [--maxSeconds N] [--seed N] [--threads N] [--maxQuartets N] [--report file] [--networks directory] [--silent] file...");
 			System.exit(2);
 		}
 		ProgramExecutorService.setNumberOfCoresToUse(threads);
@@ -187,7 +187,7 @@ public class CompareDistanceMethods {
 						outcomes.add(new Outcome(method, TaxonGraph.of(graph, taxa::getLabel, e -> splits.get(graph.getSplit(e)).getWeight()),
 								QuartetDisplay.ofSplits(sides, weights, n), splits.getNsplits(), seconds));
 					}
-					case "RazorNet", "RazorNet+Simplify" -> {
+					case "RazorNet", "RazorNet+Shave" -> {
 						if (razorNetwork == null) {
 							var algorithm = new razornet.algorithms.RazorNet();
 							algorithm.optionRandomRestartsProperty().set(restarts);
@@ -211,10 +211,10 @@ public class CompareDistanceMethods {
 						}
 						var network = razorNetwork;
 						var seconds = razorSeconds;
-						if (method.endsWith("+Simplify")) {
+						if (method.endsWith("+Shave")) {
 							var input0 = razorNetwork;
 							network = TimeLimit.call(() -> {
-								var filter = new SimplifyFilter();
+								var filter = new ShaveFilter();
 								filter.optionReportTableProperty().set(false);
 								var result = new NetworkBlock();
 								filter.compute(new ProgressSilent(), taxa, input0, result);

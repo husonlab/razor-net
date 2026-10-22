@@ -20,7 +20,7 @@
 
 package razornet.main;
 
-import splitstree6.algorithms.network.network2network.SimplifyFilter;
+import splitstree6.algorithms.network.network2network.ShaveFilter;
 import splitstree6.algorithms.network.network2view.ShowNetwork;
 import splitstree6.algorithms.source.source2characters.CharactersLoader;
 import splitstree6.algorithms.source.source2distances.DistancesLoader;
@@ -45,7 +45,7 @@ public class RazorNetProfile implements IAppProfile {
 			"CharactersLoader", "DistancesLoader", "NetworkLoader", "TaxaFilter",
 			// Filters
 			"CharactersTaxaFilter", "DistancesTaxaFilter", "CharactersFilter",
-			"NetworkTaxaFilter", "StretchFilter", "SimplifyFilter",
+			"NetworkTaxaFilter", "StretchFilter", "ShaveFilter",
 			// The RazorNet algorithms
 			"RazorNet", "RazorHaploNet", "TCS", "TCSHaplotypeNetwork",
 			// related:
@@ -67,7 +67,7 @@ public class RazorNetProfile implements IAppProfile {
 	@Override
 	public boolean setupWorkflow(Workflow workflow, Class<? extends DataBlock> inputType, SourceBlock sourceBlock) {
 		if (inputType.equals(CharactersBlock.class)) {
-			// an alignment is shown simplified: RazorHaploNet -> Simplify filter (default target) -> network view
+			// an alignment is shown simplified: RazorHaploNet -> Shave filter (default target) -> network view
 			workflow.setupInputAndWorkingNodes(sourceBlock, new CharactersLoader(),
 					new TaxaBlock(), new CharactersBlock());
 			var networkNode = workflow.newDataNode(new NetworkBlock());
@@ -75,7 +75,7 @@ public class RazorNetProfile implements IAppProfile {
 					workflow.getWorkingTaxaNode(),
 					workflow.getWorkingDataNode(), networkNode);
 			var simplifiedNode = workflow.newDataNode(new NetworkBlock());
-			workflow.newAlgorithmNode(new SimplifyFilter(),
+			workflow.newAlgorithmNode(new ShaveFilter(),
 					workflow.getWorkingTaxaNode(), networkNode, simplifiedNode);
 			var viewerNode = workflow.newDataNode(new ViewBlock());
 			workflow.newAlgorithmNode(new ShowNetwork(),
@@ -83,7 +83,7 @@ public class RazorNetProfile implements IAppProfile {
 			return true;
 		}
 		if (inputType.equals(DistancesBlock.class)) {
-			// a distance matrix is shown simplified: RazorNet -> Simplify filter (default target) -> network view
+			// a distance matrix is shown simplified: RazorNet -> Shave filter (default target) -> network view
 			workflow.setupInputAndWorkingNodes(sourceBlock, new DistancesLoader(),
 					new TaxaBlock(), new DistancesBlock());
 			var networkNode = workflow.newDataNode(new NetworkBlock());
@@ -91,7 +91,7 @@ public class RazorNetProfile implements IAppProfile {
 					workflow.getWorkingTaxaNode(),
 					workflow.getWorkingDataNode(), networkNode);
 			var simplifiedNode = workflow.newDataNode(new NetworkBlock());
-			workflow.newAlgorithmNode(new SimplifyFilter(),
+			workflow.newAlgorithmNode(new ShaveFilter(),
 					workflow.getWorkingTaxaNode(), networkNode, simplifiedNode);
 			var viewerNode = workflow.newDataNode(new ViewBlock());
 			workflow.newAlgorithmNode(new ShowNetwork(),

@@ -27,13 +27,13 @@ REFERENCE = '#9b9a94'
 STYLE = {
     'RazorNet': ('#2a78d6', 'o'), 'RazorHaploNet': ('#2a78d6', 'o'),
     'NeighborNet': ('#eb6834', 's'), 'MedianJoining': ('#eb6834', 's'),
-    'RazorNet+Simplify': ('#1baf7a', '^'), 'RazorHaploNet+Simplify': ('#1baf7a', '^'),
+    'RazorNet+Shave': ('#1baf7a', '^'), 'RazorHaploNet+Shave': ('#1baf7a', '^'),
     'TCS': ('#eda100', 'D'),
 }
 NAMES = {
-    'RazorNet': 'RazorNet', 'RazorNet+Simplify': 'RazorNet + Simplify', 'NeighborNet': 'Neighbor-Net',
+    'RazorNet': 'RazorNet', 'RazorNet+Shave': 'RazorNet + Shave', 'NeighborNet': 'Neighbor-Net',
     'Distances': 'the distances themselves', 'RazorHaploNet': 'RazorHaploNet',
-    'RazorHaploNet+Simplify': 'RazorHaploNet + Simplify', 'MedianJoining': 'Median joining', 'TCS': 'TCS',
+    'RazorHaploNet+Shave': 'RazorHaploNet + Shave', 'MedianJoining': 'Median joining', 'TCS': 'TCS',
     'Truth': 'True tree',
 }
 
@@ -121,7 +121,7 @@ def percent(value, _):
 # study 1: conflicting gene trees
 # ---------------------------------------------------------------------------------------------------------
 SETTINGS_1 = [('inf', 'infinite sites'), ('low', 'low divergence'), ('mid', 'medium divergence'), ('high', 'high divergence')]
-METHODS_1 = ['Distances', 'NeighborNet', 'RazorNet', 'RazorNet+Simplify']
+METHODS_1 = ['Distances', 'NeighborNet', 'RazorNet', 'RazorNet+Shave']
 
 
 def study1(rows, figure_directory, table_directory):
@@ -198,7 +198,7 @@ def study1(rows, figure_directory, table_directory):
     # numbers for the text: averages over all numbers of taxa
     macros = {}
     for setting, word in (('inf', 'Inf'), ('low', 'Low'), ('mid', 'Mid'), ('high', 'High')):
-        for method, short in (('Distances', 'D'), ('NeighborNet', 'NN'), ('RazorNet', 'RN'), ('RazorNet+Simplify', 'RNS')):
+        for method, short in (('Distances', 'D'), ('NeighborNet', 'NN'), ('RazorNet', 'RN'), ('RazorNet+Shave', 'RNS')):
             ok = [r for r in done if r['setting'] == setting and r['method'] == method]
             several = [r for r in ok if r['k'] >= 2]
             one = [r for r in ok if r['k'] == 1]
@@ -211,7 +211,7 @@ def study1(rows, figure_directory, table_directory):
             if method != 'Distances':
                 macros[name + 'Cycles'] = f'{mean([number(r["cycles"]) for r in ok]):.0f}'
                 macros[name + 'Length'] = f'{mean([number(r["length"]) for r in ok]):.0f}'
-        timeouts = [r for r in rows if r['setting'] == setting and r['method'] == 'RazorNet+Simplify' and r['status'] != 'ok']
+        timeouts = [r for r in rows if r['setting'] == setting and r['method'] == 'RazorNet+Shave' and r['status'] != 'ok']
         macros['simT' + word + 'Timeouts'] = str(len(timeouts))
     counts = collections.Counter((r['setting'], r['n'], r['k']) for r in rows if r['method'] == 'NeighborNet')
     macros['simTReplicates'] = str(min(counts.values())) if counts else '0'
@@ -222,7 +222,7 @@ def study1(rows, figure_directory, table_directory):
 # ---------------------------------------------------------------------------------------------------------
 # study 2: samples from a population
 # ---------------------------------------------------------------------------------------------------------
-METHODS_2 = ['MedianJoining', 'TCS', 'RazorHaploNet', 'RazorHaploNet+Simplify']
+METHODS_2 = ['MedianJoining', 'TCS', 'RazorHaploNet', 'RazorHaploNet+Shave']
 PANELS_2 = [('linkRecall', 'true links found'), ('linkPrecision', 'links that are true'),
             ('mutationRatio', 'mutations drawn\n(relative to the truth)'), ('exactPairs', 'pairs displayed exactly')]
 
@@ -289,7 +289,7 @@ def study2(rows, figure_directory, table_directory):
     words = {5: 'Five', 10: 'Ten', 20: 'Twenty', 50: 'Fifty'}
     for model, word in (('inf', 'Inf'), ('finite', 'Fin')):
         for theta in thetas:
-            for method, short in (('Truth', 'True'), ('MedianJoining', 'MJ'), ('TCS', 'TCS'), ('RazorHaploNet', 'RHN'), ('RazorHaploNet+Simplify', 'RHNS')):
+            for method, short in (('Truth', 'True'), ('MedianJoining', 'MJ'), ('TCS', 'TCS'), ('RazorHaploNet', 'RHN'), ('RazorHaploNet+Shave', 'RHNS')):
                 ok = [r for r in done if r['setting'] == model and r['theta'] == theta and r['method'] == method]
                 name = 'simH' + word + words[theta] + short
                 macros[name + 'LinkRecall'] = f'{100 * median([r["linkRecall"] for r in ok]):.0f}'
@@ -301,7 +301,7 @@ def study2(rows, figure_directory, table_directory):
         every = [r for r in rows if r['setting'] == model and r['method'] == 'MedianJoining']
         macros['simH' + word + 'MJTimeouts'] = str(len([r for r in every if r['status'] != 'ok']))
         # samples for which a method does not return the true haplotype tree
-        for method, short in (('MedianJoining', 'MJ'), ('TCS', 'TCS'), ('RazorHaploNet', 'RHN'), ('RazorHaploNet+Simplify', 'RHNS')):
+        for method, short in (('MedianJoining', 'MJ'), ('TCS', 'TCS'), ('RazorHaploNet', 'RHN'), ('RazorHaploNet+Shave', 'RHNS')):
             ok = [r for r in done if r['setting'] == model and r['method'] == method]
             macros['simH' + word + short + 'NotTheTree'] = str(len([r for r in ok if r['linkRecall'] < 1 or r['linkPrecision'] < 1]))
             macros['simH' + word + short + 'Samples'] = str(len(ok))

@@ -62,7 +62,7 @@ java -cp ... razornet.testsuite.CompareHaplotypeMethods examples/rhabdoviruses/C
 ```
 
 `CompareDistanceMethods` compares NeighborNet with RazorNet (`CharactersToDistances` turns an alignment into the Hamming distances of its distinct sequences for it), and `CompareHaplotypeMethods` median joining and TCS
-with RazorHaploNet, each also followed by the Simplify filter. `SimulateTreeMixtures` and `SimulateHaplotypes`
+with RazorHaploNet, each also followed by the Shave filter. `SimulateTreeMixtures` and `SimulateHaplotypes`
 generate data sets with a known truth for them (sequences are evolved with AliSim of IQ-TREE 2, which has to be
 installed), and `--truth` then reports how the quartet supports displayed by a network compare with the true ones.
 
@@ -104,7 +104,7 @@ identical on the sites kept are one haplotype: the network is computed on one ta
 sequences of a haplotype hang off its node by a zero-length edge.
 
 Both algorithms return a network that displays the input distances exactly. A sparser network at the price of
-some distortion is obtained afterwards, by applying SplitsTree's `SimplifyFilter` or `StretchFilter` to the
+some distortion is obtained afterwards, by applying SplitsTree's `ShaveFilter` or `StretchFilter` to the
 network; the program offers both.
 
 A run reports what each strategy achieved and which one produced the network:

@@ -13,7 +13,7 @@ The original input consisted of 10 taxa and a 10 x 10 distance matrix.
 The Razor Net method was used (default options) so as to obtain 50 nodes and 66 edges.
 The Neighbor Net method (Bryant & Moulton 2004, Bryant & Huson 2023) was used (default options) so as to obtain 26 splits, circular.
 The Show Splits method was used (default options) so as to obtain a Split Network visualization.
-The Simplify Filter method was used (default options) so as to obtain 28 nodes and 32 edges.
+The Shave Filter method was used (default options) so as to obtain 28 nodes and 32 edges.
 
 References:
 Bryant & Huson 2023: D. Bryant and DH Huson, NeighborNet- improved algorithms and implementation. Front. Bioinform. 3, 2023.
@@ -307,9 +307,9 @@ OPTIONS
 END; [ALGORITHM]
 
 BEGIN ALGORITHM;
-TITLE 'Simplify Filter';
+TITLE 'Shave Filter';
 LINK NETWORK = 'Network';
-NAME 'Simplify Filter';
+NAME 'Shave Filter';
 OPTIONS
 	Target = 'Balanced',
 	TargetValue = 0,
@@ -344,7 +344,7 @@ END; [VIEW]
 
 BEGIN NETWORK;
 TITLE 'Network-2-2';
-LINK ALGORITHM = 'Simplify Filter';
+LINK ALGORITHM = 'Shave Filter';
 DIMENSIONS nVertices=28 nEdges=32;
 TYPE DistanceNetwork;
 PROPERTIES info ='Total length: 3.578083, distortion: 1.152491';

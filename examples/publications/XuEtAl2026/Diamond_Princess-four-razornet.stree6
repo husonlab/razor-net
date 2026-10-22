@@ -11,7 +11,7 @@ Methods:
 Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.), (Hayamizu et al, 2026 ; M. Hayamizu, others, DH Huson, in preparation).
 The original input consisted of 257 taxa and 257 DNA sequences of length 444.
 The Razor Haplo Net method was used (default options) so as to obtain 302 nodes and 328 edges.
-The Simplify Filter method was used (default options) so as to obtain 275 nodes and 278 edges.
+The Shave Filter method was used (default options) so as to obtain 275 nodes and 278 edges.
 
 References:
 Hayamizu et al, 2026: M. Hayamizu, others, DH Huson, in preparation
@@ -5918,9 +5918,9 @@ OPTIONS
 END; [ALGORITHM]
 
 BEGIN ALGORITHM;
-TITLE 'Simplify Filter';
+TITLE 'Shave Filter';
 LINK NETWORK = 'Network';
-NAME 'Simplify Filter';
+NAME 'Shave Filter';
 OPTIONS
 	Target = 'Balanced',
 	TargetValue = 0,
@@ -5948,7 +5948,7 @@ END; [VIEW]
 
 BEGIN NETWORK;
 TITLE 'Network-2-2';
-LINK ALGORITHM = 'Simplify Filter';
+LINK ALGORITHM = 'Shave Filter';
 DIMENSIONS nVertices=275 nEdges=278;
 TYPE HaplotypeNetwork;
 PROPERTIES info ='Total length: 490, excess: 183';

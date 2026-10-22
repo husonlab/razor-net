@@ -26,7 +26,7 @@ done
 one() {
   d=$(dirname "$1")
   [ -s "$d/report.tsv" ] && return
-  run razornet.testsuite.CompareHaplotypeMethods --methods Distances,Truth,TCS,RazorHaploNet,RazorHaploNet+Simplify,MedianJoining \
+  run razornet.testsuite.CompareHaplotypeMethods --methods Distances,Truth,TCS,RazorHaploNet,RazorHaploNet+Shave,MedianJoining \
     --truth genealogy.nwk nodes.fasta --restarts 1000 --maxSeconds 20 --threads 4 --timeLimit 120 --silent \
     --networks "$d/nets" --report "$d/report.tmp" "$1" > "$d/run.log" 2>&1 && mv "$d/report.tmp" "$d/report.tsv"
 }
