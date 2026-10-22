@@ -49,8 +49,8 @@ public class RazorNetProfile implements IAppProfile {
 			"RazorNet", "RazorHaploNet", "TCS", "TCSHaplotypeNetwork",
 			// related:
 			"NeighborNet", "MedianJoining", "MinSpanningNetwork",
-			// Viewer
-			"ShowNetwork"
+			// Viewers: a saved workflow names them, and the loader can only create what the filter lets through
+			"ShowNetwork", "ShowSplits"
 	);
 
 	@Override
