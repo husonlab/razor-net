@@ -27,6 +27,7 @@ cp -n "$ST/publications/FitchMargoliash1967/table3.nex" "$OUT/distances/cytochro
 cp -n "$ST/publications/Additional/SaitouNei1987-Table1.nex" "$OUT/distances/saitou-nei-1987.nex" 2>/dev/null
 cp -n "$ST/publications/WolfEtAl2021/Cochlearia-distances.nex" "$OUT/distances/cochlearia.nex" 2>/dev/null
 cp -n "$ST/publications/McVayEtAl2017/gen-2016-0206supplb.txt" "$OUT/distances/oaks.nex" 2>/dev/null
+cp -n examples/publications/DotsevEtAl2026/snow-sheep-fst.nex "$OUT/distances/snow-sheep.nex" 2>/dev/null
 java -Xmx8g -Djava.awt.headless=true -cp "$JAVA_CP" razornet.testsuite.CompareDistanceMethods \
   --methods NeighborNet,RazorNet,RazorNet+Simplify --restarts 100 --maxSeconds 60 --threads 4 --seed 0 --timeLimit 120 \
   --networks "$OUT/networks" --report "$OUT/report.tsv" "$OUT"/distances/*.nex > "$OUT/log.txt" 2>&1

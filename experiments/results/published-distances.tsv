@@ -41,3 +41,6 @@ diamond-princess.nex	257	RazorNet+Simplify	ok	58.56	277	284	8	490	0	99.805	1.000
 PAegRV.nex	90	NeighborNet	ok	0.01	366	563	198	699.10072	167	99.918	0.6109	1.5003
 PAegRV.nex	90	RazorNet	ok	57.02	269	382	114	2056.5	0	100.000	1.0000	1.0000
 PAegRV.nex	90	RazorNet+Simplify	ok	59.48	132	144	13	519.5	0	99.648	1.0000	1.2222
+snow-sheep.nex	14	NeighborNet	ok	0.01	117	195	79	3.112867	37	99.688	0.7300	1.3055
+snow-sheep.nex	14	RazorNet	ok	4.85	61	83	23	2.408	0	99.375	0.8010	1.0000
+snow-sheep.nex	14	RazorNet+Simplify	ok	4.90	34	40	7	1.76	0	99.368	0.8148	1.0930
