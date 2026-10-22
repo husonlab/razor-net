@@ -1,0 +1,14 @@
+KAMCHATKA_S	<b><c 0x8a008bff><mark shape="Circle" fill="#8a008bff" height="6" width="6" stroke="black" node="true">KAMCHATKA_S
+KAMCHATKA_N	<b><c 0xdea0ddff><mark shape="Circle" fill="#dea0ddff" height="6" width="6" stroke="black" node="true">KAMCHATKA_N
+KORYAK	<b><c 0x2e8a57ff><mark shape="Circle" fill="#2e8a57ff" height="6" width="6" stroke="black" node="true">KORYAK
+CHUKOTKA	<b><c 0xfd8b01ff><mark shape="Circle" fill="#fd8b01ff" height="6" width="6" stroke="black" node="true">CHUKOTKA
+OKHOTSK	<b><c 0x898989ff><mark shape="Circle" fill="#898989ff" height="6" width="6" stroke="black" node="true">OKHOTSK
+MOMSKY	<b><c 0x26418cff><mark shape="Circle" fill="#26418cff" height="6" width="6" stroke="black" node="true">MOMSKY
+SELENNYAKH	<b><c 0x5f9fa0ff><mark shape="Circle" fill="#5f9fa0ff" height="6" width="6" stroke="black" node="true">SELENNYAKH
+CHERSKY	<b><c 0xdaa520ff><mark shape="Circle" fill="#daa520ff" height="6" width="6" stroke="black" node="true">CHERSKY
+SUNTAR_KHAYATA	<b><c 0x63b7ffff><mark shape="Circle" fill="#63b7ffff" height="6" width="6" stroke="black" node="true">SUNTAR_KHAYATA
+YABLONOV	<b><c 0x8b5a2cff><mark shape="Circle" fill="#8b5a2cff" height="6" width="6" stroke="black" node="true">YABLONOV
+VERKHOYANSK	<b><c 0xee2e2dff><mark shape="Circle" fill="#ee2e2dff" height="6" width="6" stroke="black" node="true">VERKHOYANSK
+ORULGAN	<b><c 0x9bcd31ff><mark shape="Circle" fill="#9bcd31ff" height="6" width="6" stroke="black" node="true">ORULGAN
+KHARAULAKH	<b><c 0xfed703ff><mark shape="Circle" fill="#fed703ff" height="6" width="6" stroke="black" node="true">KHARAULAKH
+PUTORANA	<b><c 0xbdb76bff><mark shape="Circle" fill="#bdb76bff" height="6" width="6" stroke="black" node="true">PUTORANA
