@@ -20,6 +20,7 @@
 
 package razornet.main;
 
+import splitstree6.algorithms.network.network2network.SimplifyFilter;
 import splitstree6.algorithms.network.network2view.ShowNetwork;
 import splitstree6.algorithms.source.source2characters.CharactersLoader;
 import splitstree6.algorithms.source.source2distances.DistancesLoader;
@@ -78,15 +79,19 @@ public class RazorNetProfile implements IAppProfile {
 			return true;
 		}
 		if (inputType.equals(DistancesBlock.class)) {
+			// a distance matrix is shown simplified: RazorNet -> Simplify filter (default target) -> network view
 			workflow.setupInputAndWorkingNodes(sourceBlock, new DistancesLoader(),
 					new TaxaBlock(), new DistancesBlock());
 			var networkNode = workflow.newDataNode(new NetworkBlock());
 			workflow.newAlgorithmNode(new razornet.algorithms.RazorNet(),
 					workflow.getWorkingTaxaNode(),
 					workflow.getWorkingDataNode(), networkNode);
+			var simplifiedNode = workflow.newDataNode(new NetworkBlock());
+			workflow.newAlgorithmNode(new SimplifyFilter(),
+					workflow.getWorkingTaxaNode(), networkNode, simplifiedNode);
 			var viewerNode = workflow.newDataNode(new ViewBlock());
 			workflow.newAlgorithmNode(new ShowNetwork(),
-					workflow.getWorkingTaxaNode(), networkNode, viewerNode);
+					workflow.getWorkingTaxaNode(), simplifiedNode, viewerNode);
 			return true;
 		}
 		if (inputType.equals(NetworkBlock.class)) {
