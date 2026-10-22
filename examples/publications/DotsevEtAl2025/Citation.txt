@@ -1,0 +1,10 @@
+Data in this directory is from the following paper (please cite it as source):
+
+Dotsev AV, Moradi MH, Deniskova TE, Esmailizadeh A, Bakoev NF, Koshkina OA, Griffin DK, Romanov MN, Zinovieva NA.
+Molecular Genetic Assessment Aids in Clarifying Phylogenetic Status of Iranian Kerman Wild Sheep.
+Animals 15(2): 238 (2025). https://doi.org/10.3390/ani15020238
+
+kerman-wild-sheep-fst.nex: the pairwise F_ST values among the 8 populations (Kerman wild sheep, the Asiatic
+mouflon O. gmelini and six urial groups; SNP genotypes), Supplementary Table S1 (animals-15-00238-s001.zip),
+the input of the Neighbor-Net of the paper's Figure 4 (SplitsTree 4.14.6). The SNP data are on Figshare,
+https://doi.org/10.6084/m9.figshare.28124693.

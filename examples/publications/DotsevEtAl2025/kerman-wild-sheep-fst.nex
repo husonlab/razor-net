@@ -1,0 +1,30 @@
+#nexus
+
+BEGIN TAXA;
+DIMENSIONS ntax=8;
+TAXLABELS
+'O. gmelini'
+'O. v. bocharensis (UZB)'
+'O. v. bocharensis (TJK)'
+'O. v. punjabiensis'
+'O. v. blanfordi'
+'O. v. cycloceros'
+'O. v. arkal'
+'KERMAN SHEEP'
+;
+END;
+
+BEGIN DISTANCES;
+DIMENSIONS ntax=8;
+FORMAT labels=left diagonal triangle=both;
+MATRIX
+'O. gmelini' 0 0.156 0.133 0.139 0.116 0.09 0.089 0.076
+'O. v. bocharensis (UZB)' 0.156 0 0.157 0.195 0.196 0.205 0.205 0.193
+'O. v. bocharensis (TJK)' 0.133 0.157 0 0.134 0.14 0.149 0.147 0.15
+'O. v. punjabiensis' 0.139 0.195 0.134 0 0.143 0.143 0.147 0.156
+'O. v. blanfordi' 0.116 0.196 0.14 0.143 0 0.125 0.13 0.128
+'O. v. cycloceros' 0.09 0.205 0.149 0.143 0.125 0 0.099 0.104
+'O. v. arkal' 0.089 0.205 0.147 0.147 0.13 0.099 0 0.109
+'KERMAN SHEEP' 0.076 0.193 0.15 0.156 0.128 0.104 0.109 0
+;
+END;

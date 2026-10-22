@@ -1,0 +1,19 @@
+Data in this directory is from the following paper (please cite it as source):
+
+Padilla-Iglesias C, Vinicius L, Mbolokene A, Bandama Pelayo J, Ingram AG, Pignataro B, Bauluz B, Migliano AB.
+Deep history of cultural and linguistic evolution among Central African hunter-gatherers.
+Nature Human Behaviour 8 (2024) 1263-1275. https://doi.org/10.1038/s41562-024-01891-y
+Data and code: https://github.com/ceciliapad/GenCultEvo (author list from that repository and the paper;
+check the spelling of the names against the article).
+
+Ten Central African hunter-gatherer groups (Aka, Babongo, Baka, Bakola, Bakoya, Batwa (East), Batwa (West),
+Bedzan, Efe, Sua). The paper's Figure 2 shows three NeighborNet graphs: musical instruments, genes and
+subsistence tools, built from dimensionality-reduced (PCoA) distance matrices.
+
+hunter-gatherers-music-jaccard.nex, hunter-gatherers-tools-jaccard.nex: Jaccard distances (1 - shared / union)
+between the presence-absence repertoires of 44 musical instruments and of 40 subsistence tools (files
+data/P_A_music.csv, data/P_A_subsistence.csv of the repository; two missing entries of the music table ignored
+pairwise), the distances the paper reduced before drawing; computed here directly, without the reduction.
+hunter-gatherers-genetics-fst.nex: pairwise Hudson F_ST between the groups on their hunter-gatherer ancestry
+segments (data/fst_masked.csv, with the Mbendjele column dropped as in the authors' code, since it duplicates
+the Aka; no genetic data for the Western Batwa; Efe and Sua coincide, they form the Mbuti).

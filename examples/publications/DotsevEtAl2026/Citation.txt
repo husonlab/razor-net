@@ -1,0 +1,12 @@
+Data in this directory is from the following paper (please cite it as source):
+
+Dotsev AV, Okhlopkov IM, Bondar MG, Litovka DI, Deniskova TE, Kharzinova VR, Romanov MN, Sipko TP, Mamaev NV,
+Semerikova MN, Koshkina OA, Bakoev NF, Bagirov VA, Sitsko AA, Medvedev DG, Kuksin AN, Moradi MH, Esmailizadeh A,
+Griffin DK, Reyer H, Wimmers K, Meszaros G, Soelkner J, Medugorac I, Brem G, Zinovieva NA.
+Unraveling the Evolutionary History of Snow Sheep (Ovis nivicola): Genome-Wide Single Nucleotide Polymorphism
+Analysis Reveals Genetic Diversity and Clarifies Taxonomy.
+Ecology and Evolution 16(8): e74182 (2026). https://doi.org/10.1002/ece3.74182
+
+snow-sheep-fst.nex: the pairwise F_ST values among the 14 populations (genome-wide SNPs), Table S1 of the
+supplementary archive (ECE3-16-e74182-s001.zip, Appendix.docx), the input of the paper's Neighbor-Net figure
+(computed with SplitsTree6). Population names as in the table.

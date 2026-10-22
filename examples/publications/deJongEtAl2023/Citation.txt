@@ -1,0 +1,16 @@
+Data in this directory is from the following paper (please cite it as source):
+
+de Jong MJ, Niamir A, Wolf M, Kitchener AC, Lecomte N, Seryodkin IV, Fain SR, Hagen SB, Saarma U, Janke A.
+Range-wide whole-genome resequencing of the brown bear reveals drivers of intraspecies divergence.
+Communications Biology 6: 153 (2023). https://doi.org/10.1038/s42003-023-04514-w
+Data (CC0): Dryad, https://doi.org/10.5061/dryad.qbzkh18n6
+
+brown-bear-populations-d.nex: genome-wide uncorrected genetic distances d between the 27 populations of the
+paper (25 brown bear populations, polar bears, American black bears), the input of the Neighbor-Net of the
+paper's Figure 4d, recomputed as the authors describe: d between two individuals is
+(n1 * 0.5 + n2he * 0.5 + n2ho) / (n0 + n1 + n2he + n2ho) from the genotype-pattern counts of
+Distances.brown135_auto.thin100.txt (thinned autosomal sites), and the distance between two populations is the
+mean of d over all pairs of their individuals (the paper's D_XY). Population names and membership from
+Brown135_popfile.allinfo.txt. brown-bear-populations-d-no-outgroups.nex: the same without polar and black
+bears. The values lie between 0.0018 and 0.0055: they include the within-population diversity, which is why
+the matrix is nearly constant among the brown bears.

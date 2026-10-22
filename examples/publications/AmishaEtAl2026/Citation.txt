@@ -1,0 +1,10 @@
+Data in this directory is from the following paper (please cite it as source):
+
+Amisha, Prakash V, Jyotsana B, Yadav A, Mahar K, Singh SK, Alex R, Gowane GR.
+Genome-wide analysis across Indian camel populations reveals genetic distinctiveness of the Kharai camel breed.
+BMC Genomics 27: 784 (2026). https://doi.org/10.1186/s12864-026-13134-7
+
+indian-camels-fst.nex: the pairwise F_ST values among the 12 populations (ten Indian dromedary breeds, the
+Indian Bactrian camel DH and the Arabian Peninsula dromedary APD; whole-genome SNPs, Weir and Cockerham in
+VCFtools), the table of Additional file 1. The paper's Neighbour-Net (Fig. 8) is drawn at the level of the 40
+individuals; the F_ST values are shown as a heatmap (Fig. 4).
