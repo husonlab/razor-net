@@ -67,15 +67,19 @@ public class RazorNetProfile implements IAppProfile {
 	@Override
 	public boolean setupWorkflow(Workflow workflow, Class<? extends DataBlock> inputType, SourceBlock sourceBlock) {
 		if (inputType.equals(CharactersBlock.class)) {
+			// an alignment is shown simplified: RazorHaploNet -> Simplify filter (default target) -> network view
 			workflow.setupInputAndWorkingNodes(sourceBlock, new CharactersLoader(),
 					new TaxaBlock(), new CharactersBlock());
 			var networkNode = workflow.newDataNode(new NetworkBlock());
 			workflow.newAlgorithmNode(new razornet.algorithms.RazorHaploNet(),
 					workflow.getWorkingTaxaNode(),
 					workflow.getWorkingDataNode(), networkNode);
+			var simplifiedNode = workflow.newDataNode(new NetworkBlock());
+			workflow.newAlgorithmNode(new SimplifyFilter(),
+					workflow.getWorkingTaxaNode(), networkNode, simplifiedNode);
 			var viewerNode = workflow.newDataNode(new ViewBlock());
 			workflow.newAlgorithmNode(new ShowNetwork(),
-					workflow.getWorkingTaxaNode(), networkNode, viewerNode);
+					workflow.getWorkingTaxaNode(), simplifiedNode, viewerNode);
 			return true;
 		}
 		if (inputType.equals(DistancesBlock.class)) {

@@ -33,8 +33,8 @@ STYLE = {
 NAMES = {
     'RazorNet': 'RazorNet', 'RazorNet+Simplify': 'RazorNet + Simplify', 'NeighborNet': 'Neighbor-Net',
     'Distances': 'the distances themselves', 'RazorHaploNet': 'RazorHaploNet',
-    'RazorHaploNet+Simplify': 'RazorHaploNet + Simplify', 'MedianJoining': 'median joining', 'TCS': 'TCS',
-    'Truth': 'true tree',
+    'RazorHaploNet+Simplify': 'RazorHaploNet + Simplify', 'MedianJoining': 'Median joining', 'TCS': 'TCS',
+    'Truth': 'True tree',
 }
 
 plt.rcParams.update({
