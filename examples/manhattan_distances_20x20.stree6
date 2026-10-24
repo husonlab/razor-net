@@ -1,0 +1,692 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=12 nAlgorithms=10;
+PROGRAM version='SplitsTree (version dev) - License GPL v3';
+WORKFLOW creationDate='1792856550264'; [Sat Oct 24 17:42:30 CEST 2026]
+END; [SPLITSTREE6]
+
+[
+Methods:
+Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.), (Hayamizu et al, 2026 ; M. Hayamizu, others, DH Huson, in preparation).
+The original input consisted of 20 taxa and a 20 x 20 distance matrix.
+The Razor Net method was used (default options) so as to obtain 44 nodes and 61 edges.
+The Neighbor Net method (Bryant & Moulton 2004, Bryant & Huson 2023) was used (default options) so as to obtain 50 splits, circular.
+The Razor Net method was used (default options, except Strategy=Strict) so as to obtain 48 nodes and 67 edges.
+The Show Splits method was used (default options) so as to obtain a Split Network visualization.
+The Shave Filter method was used (default options, except Target=None) so as to obtain 44 nodes and 61 edges.
+
+References:
+Bryant & Huson 2023: D. Bryant and DH Huson, NeighborNet- improved algorithms and implementation. Front. Bioinform. 3, 2023.
+Bryant & Moulton 2004: D. Bryant and V. Moulton. Neighbor-net: An agglomerative method for the construction of phylogenetic networks. Molecular Biology and Evolution, 21(2):255– 265, 2004.
+Hayamizu et al, 2026: M. Hayamizu, others, DH Huson, in preparation
+Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=20;
+TAXLABELS
+	[1] 't1'
+	[2] 't2'
+	[3] 't3'
+	[4] 't4'
+	[5] 't5'
+	[6] 't6'
+	[7] 't7'
+	[8] 't8'
+	[9] 't9'
+	[10] 't10'
+	[11] 't11'
+	[12] 't12'
+	[13] 't13'
+	[14] 't14'
+	[15] 't15'
+	[16] 't16'
+	[17] 't17'
+	[18] 't18'
+	[19] 't19'
+	[20] 't20'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+LINK ALGORITHM = 'Input Data Loader';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=20;
+TAXLABELS
+	[1] 't1'
+	[2] 't2'
+	[3] 't3'
+	[4] 't4'
+	[5] 't5'
+	[6] 't6'
+	[7] 't7'
+	[8] 't8'
+	[9] 't9'
+	[10] 't10'
+	[11] 't11'
+	[12] 't12'
+	[13] 't13'
+	[14] 't14'
+	[15] 't15'
+	[16] 't16'
+	[17] 't17'
+	[18] 't18'
+	[19] 't19'
+	[20] 't20'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN DISTANCES;
+TITLE 'Input Distances';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=20;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 't1'    0 24 17 7 17 9 20 6 15 8 8 8 17 3 15 11 11 8 20 17
+[2] 't2'    24 0 7 25 19 15 4 18 19 18 26 32 21 27 15 17 35 30 10 7
+[3] 't3'    17 7 0 18 18 8 3 11 16 11 19 25 18 20 14 10 28 23 11 4
+[4] 't4'    7 25 18 0 24 10 21 7 22 15 1 13 24 10 10 8 10 15 21 18
+[5] 't5'    17 19 18 24 0 20 19 21 2 9 25 13 2 14 32 28 16 11 15 22
+[6] 't6'    9 15 8 10 20 0 11 3 18 11 11 17 20 12 12 8 20 15 13 8
+[7] 't7'    20 4 3 21 19 11 0 14 17 14 22 28 19 23 13 13 31 26 12 3
+[8] 't8'    6 18 11 7 21 3 14 0 19 12 8 14 21 9 11 7 17 12 14 11
+[9] 't9'    15 19 16 22 2 18 17 19 0 7 23 13 2 12 30 26 16 11 15 20
+[10] 't10'   8 18 11 15 9 11 14 12 7 0 16 14 9 9 23 19 17 12 14 13
+[11] 't11'   8 26 19 1 25 11 22 8 23 16 0 14 25 11 11 9 11 16 22 19
+[12] 't12'   8 32 25 13 13 17 28 14 13 14 14 0 11 5 21 17 3 2 28 25
+[13] 't13'   17 21 18 24 2 20 19 21 2 9 25 11 0 14 32 28 14 9 17 22
+[14] 't14'   3 27 20 10 14 12 23 9 12 9 11 5 14 0 18 14 8 5 23 20
+[15] 't15'   15 15 14 10 32 12 13 11 30 23 11 21 32 18 0 4 20 23 25 10
+[16] 't16'   11 17 10 8 28 8 13 7 26 19 9 17 28 14 4 0 18 19 21 10
+[17] 't17'   11 35 28 10 16 20 31 17 16 17 11 3 14 8 20 18 0 5 31 28
+[18] 't18'   8 30 23 15 11 15 26 12 11 12 16 2 9 5 23 19 5 0 26 23
+[19] 't19'   20 10 11 21 15 13 12 14 15 14 22 28 17 23 25 21 31 26 0 15
+[20] 't20'   17 7 4 18 22 8 3 11 20 13 19 25 22 20 10 10 28 23 15 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK DISTANCES = 'Input Distances';
+NAME 'Distances Taxa Filter';
+END; [ALGORITHM]
+
+BEGIN DISTANCES;
+TITLE 'Working Distances';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=20;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 't1'    0 24 17 7 17 9 20 6 15 8 8 8 17 3 15 11 11 8 20 17
+[2] 't2'    24 0 7 25 19 15 4 18 19 18 26 32 21 27 15 17 35 30 10 7
+[3] 't3'    17 7 0 18 18 8 3 11 16 11 19 25 18 20 14 10 28 23 11 4
+[4] 't4'    7 25 18 0 24 10 21 7 22 15 1 13 24 10 10 8 10 15 21 18
+[5] 't5'    17 19 18 24 0 20 19 21 2 9 25 13 2 14 32 28 16 11 15 22
+[6] 't6'    9 15 8 10 20 0 11 3 18 11 11 17 20 12 12 8 20 15 13 8
+[7] 't7'    20 4 3 21 19 11 0 14 17 14 22 28 19 23 13 13 31 26 12 3
+[8] 't8'    6 18 11 7 21 3 14 0 19 12 8 14 21 9 11 7 17 12 14 11
+[9] 't9'    15 19 16 22 2 18 17 19 0 7 23 13 2 12 30 26 16 11 15 20
+[10] 't10'   8 18 11 15 9 11 14 12 7 0 16 14 9 9 23 19 17 12 14 13
+[11] 't11'   8 26 19 1 25 11 22 8 23 16 0 14 25 11 11 9 11 16 22 19
+[12] 't12'   8 32 25 13 13 17 28 14 13 14 14 0 11 5 21 17 3 2 28 25
+[13] 't13'   17 21 18 24 2 20 19 21 2 9 25 11 0 14 32 28 14 9 17 22
+[14] 't14'   3 27 20 10 14 12 23 9 12 9 11 5 14 0 18 14 8 5 23 20
+[15] 't15'   15 15 14 10 32 12 13 11 30 23 11 21 32 18 0 4 20 23 25 10
+[16] 't16'   11 17 10 8 28 8 13 7 26 19 9 17 28 14 4 0 18 19 21 10
+[17] 't17'   11 35 28 10 16 20 31 17 16 17 11 3 14 8 20 18 0 5 31 28
+[18] 't18'   8 30 23 15 11 15 26 12 11 12 16 2 9 5 23 19 5 0 26 23
+[19] 't19'   20 10 11 21 15 13 12 14 15 14 22 28 17 23 25 21 31 26 0 15
+[20] 't20'   17 7 4 18 22 8 3 11 20 13 19 25 22 20 10 10 28 23 15 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Razor Net';
+OPTIONS
+	Preprocessing = 'None',
+	Strategy = 'Both',
+	SignificantDigits = 6,
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Neighbor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Neighbor Net';
+OPTIONS
+	InferenceAlgorithm = 'ActiveSet';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Net-2';
+LINK DISTANCES = 'Working Distances';
+NAME 'Razor Net';
+OPTIONS
+	Preprocessing = 'None',
+	Strategy = 'Strict',
+	SignificantDigits = 6,
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Razor Net';
+DIMENSIONS nVertices=44 nEdges=61;
+TYPE DistanceNetwork;
+VERTICES
+	id=1 label='t1',
+	id=2 label='t2',
+	id=3 label='t3',
+	id=4 label='t4',
+	id=5 label='t5',
+	id=6 label='t6',
+	id=7 label='t7',
+	id=8 label='t8',
+	id=9 label='t9',
+	id=10 label='t10',
+	id=11 label='t11',
+	id=12 label='t12',
+	id=13 label='t13',
+	id=14 label='t14',
+	id=15 label='t15',
+	id=16 label='t16',
+	id=17 label='t17',
+	id=18 label='t18',
+	id=19 label='t19',
+	id=20 label='t20',
+	id=21,
+	id=22,
+	id=23,
+	id=24,
+	id=25,
+	id=26,
+	id=27,
+	id=28,
+	id=29,
+	id=30,
+	id=31,
+	id=32,
+	id=33,
+	id=34,
+	id=35,
+	id=36,
+	id=37,
+	id=38,
+	id=39,
+	id=40,
+	id=41,
+	id=42,
+	id=43,
+	id=44
+;
+EDGES
+	id=1 sid=1 tid=14 weight='3',
+	id=2 sid=1 tid=33 weight='1',
+	id=3 sid=1 tid=40 weight='1',
+	id=4 sid=2 tid=21 weight='7',
+	id=5 sid=2 tid=26 weight='3',
+	id=6 sid=3 tid=27 weight='1',
+	id=7 sid=3 tid=37 weight='1',
+	id=8 sid=4 tid=11 weight='1',
+	id=9 sid=4 tid=17 weight='10',
+	id=10 sid=4 tid=34 weight='1',
+	id=11 sid=5 tid=35 weight='11',
+	id=12 sid=5 tid=38 weight='1',
+	id=13 sid=6 tid=24 weight='1',
+	id=14 sid=6 tid=43 weight='3',
+	id=15 sid=7 tid=20 weight='3',
+	id=16 sid=7 tid=26 weight='1',
+	id=17 sid=7 tid=37 weight='2',
+	id=18 sid=8 tid=24 weight='2',
+	id=19 sid=8 tid=31 weight='3',
+	id=20 sid=8 tid=33 weight='5',
+	id=21 sid=9 tid=38 weight='1',
+	id=22 sid=9 tid=39 weight='9',
+	id=23 sid=9 tid=41 weight='4',
+	id=24 sid=10 tid=23 weight='6',
+	id=25 sid=10 tid=28 weight='6',
+	id=26 sid=10 tid=41 weight='3',
+	id=27 sid=12 tid=17 weight='3',
+	id=28 sid=12 tid=18 weight='2',
+	id=29 sid=12 tid=42 weight='4',
+	id=30 sid=13 tid=18 weight='9',
+	id=31 sid=13 tid=38 weight='1',
+	id=32 sid=14 tid=22 weight='1',
+	id=33 sid=14 tid=42 weight='1',
+	id=34 sid=15 tid=30 weight='3',
+	id=35 sid=15 tid=44 weight='9',
+	id=36 sid=16 tid=30 weight='1',
+	id=37 sid=16 tid=31 weight='4',
+	id=38 sid=16 tid=43 weight='5',
+	id=39 sid=18 tid=39 weight='2',
+	id=40 sid=19 tid=21 weight='3',
+	id=41 sid=20 tid=29 weight='2',
+	id=42 sid=20 tid=44 weight='1',
+	id=43 sid=21 tid=35 weight='1',
+	id=44 sid=22 tid=23 weight='2',
+	id=45 sid=22 tid=39 weight='2',
+	id=46 sid=23 tid=33 weight='1',
+	id=47 sid=24 tid=28 weight='4',
+	id=48 sid=25 tid=28 weight='2',
+	id=49 sid=25 tid=36 weight='1',
+	id=50 sid=25 tid=37 weight='4',
+	id=51 sid=26 tid=44 weight='3',
+	id=52 sid=27 tid=28 weight='4',
+	id=53 sid=27 tid=29 weight='1',
+	id=54 sid=29 tid=43 weight='3',
+	id=55 sid=30 tid=34 weight='6',
+	id=56 sid=31 tid=32 weight='2',
+	id=57 sid=32 tid=34 weight='1',
+	id=58 sid=32 tid=40 weight='4',
+	id=59 sid=35 tid=36 weight='1',
+	id=60 sid=36 tid=41 weight='6',
+	id=61 sid=40 tid=42 weight='3'
+;
+END; [NETWORK]
+
+BEGIN SPLITS;
+TITLE 'Splits';
+LINK ALGORITHM = 'Neighbor Net';
+DIMENSIONS ntax=20 nsplits=50;
+FORMAT labels=no weights=yes confidences=no;
+PROPERTIES fit=99 circular;
+CYCLE 1 11 4 15 16 8 6 20 7 2 3 19 10 9 5 13 17 12 18 14;
+MATRIX
+[1, size=1] 	 0 	 1,
+[2, size=2] 	 0.2934238 	 1 14,
+[3, size=9] 	 2.55896412 	 1 5 9 10 12 13 14 17 18,
+[4, size=4] 	 1.68211764 	 1 2 3 5 6 7 8 9 10 12 13 14 17 18 19 20,
+[5, size=3] 	 0.62985299 	 1 2 3 5 6 7 8 9 10 12 13 14 16 17 18 19 20,
+[6, size=2] 	 1.18012827 	 1 2 3 5 6 7 8 9 10 12 13 14 15 16 17 18 19 20,
+[7, size=1] 	 1.0012904 	 1 2 3 4 5 6 7 8 9 10 12 13 14 15 16 17 18 19 20,
+[8, size=1] 	 0.10500262 	 1 2 3 4 5 6 7 8 9 10 11 12 13 15 16 17 18 19 20,
+[9, size=7] 	 1.87080242 	 1 2 3 4 6 7 8 10 11 15 16 19 20,
+[10, size=8] 	 0.48414105 	 1 2 3 4 6 7 8 11 15 16 19 20,
+[11, size=9] 	 0.47847195 	 1 2 3 4 6 7 8 11 15 16 20,
+[12, size=1] 	 0.39644822 	 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 19 20,
+[13, size=4] 	 0.75779817 	 1 2 3 4 5 6 7 8 9 10 11 14 15 16 19 20,
+[14, size=5] 	 0.86030674 	 1 2 3 4 6 7 8 9 10 11 14 15 16 19 20,
+[15, size=6] 	 1.98467635 	 1 2 3 4 6 7 8 10 11 14 15 16 19 20,
+[16, size=1] 	 0.47823629 	 1 2 3 4 5 6 7 8 9 10 11 13 14 15 16 17 18 19 20,
+[17, size=2] 	 0.65488751 	 1 2 3 4 5 6 7 8 9 10 11 13 14 15 16 18 19 20,
+[18, size=1] 	 2.47832442 	 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 18 19 20,
+[19, size=1] 	 0.2823684 	 1 2 3 4 5 6 7 8 9 10 11 12 14 15 16 17 18 19 20,
+[20, size=3] 	 1.65161842 	 1 2 3 4 6 7 8 10 11 12 14 15 16 17 18 19 20,
+[21, size=7] 	 0.13970325 	 1 4 6 7 8 11 12 14 15 16 17 18 20,
+[22, size=8] 	 2.49480933 	 1 4 6 8 11 12 14 15 16 17 18 20,
+[23, size=9] 	 2.79508249 	 1 4 6 8 11 12 14 15 16 17 18,
+[24, size=10] 	 2.29911837 	 1 4 8 11 12 14 15 16 17 18,
+[25, size=9] 	 0.26715888 	 1 4 11 12 14 15 16 17 18,
+[26, size=7] 	 0.49763828 	 1 4 11 12 14 17 18,
+[27, size=1] 	 0.89914414 	 1 2 3 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20,
+[28, size=8] 	 0.01084296 	 1 4 11 12 13 14 17 18,
+[29, size=1] 	 0 	 1 2 3 4 5 6 7 8 10 11 12 13 14 15 16 17 18 19 20,
+[30, size=1] 	 0 	 1 2 3 4 5 6 7 8 9 11 12 13 14 15 16 17 18 19 20,
+[31, size=1] 	 5.08346494 	 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20,
+[32, size=3] 	 0.41284017 	 1 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20,
+[33, size=4] 	 0.01306332 	 1 4 5 6 8 9 10 11 12 13 14 15 16 17 18 20,
+[34, size=5] 	 0.60247485 	 1 4 5 6 8 9 10 11 12 13 14 15 16 17 18,
+[35, size=9] 	 2.27820654 	 1 4 5 9 10 11 12 13 14 17 18,
+[36, size=1] 	 0 	 1 2 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20,
+[37, size=4] 	 1.01378615 	 1 4 5 6 8 9 10 11 12 13 14 15 16 17 18 19,
+[38, size=8] 	 1.97134605 	 1 4 5 9 10 11 12 13 14 17 18 19,
+[39, size=1] 	 3.0737622 	 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20,
+[40, size=2] 	 0.48780051 	 1 3 4 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20,
+[41, size=3] 	 1.7983079 	 1 3 4 5 6 8 9 10 11 12 13 14 15 16 17 18 19,
+[42, size=1] 	 0 	 1 2 3 4 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20,
+[43, size=2] 	 0.37164634 	 1 2 3 4 5 6 8 9 10 11 12 13 14 15 16 17 18 19,
+[44, size=1] 	 0 	 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19,
+[45, size=1] 	 0.04446876 	 1 2 3 4 5 7 8 9 10 11 12 13 14 15 16 17 18 19 20,
+[46, size=1] 	 0 	 1 2 3 4 5 6 7 9 10 11 12 13 14 15 16 17 18 19 20,
+[47, size=1] 	 0.37702635 	 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 17 18 19 20,
+[48, size=2] 	 1.21097005 	 1 2 3 4 5 6 7 8 9 10 11 12 13 14 17 18 19 20,
+[49, size=1] 	 2.76850617 	 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 17 18 19 20,
+[50, size=1] 	 0 	 1 2 3 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20,
+;
+END; [SPLITS]
+
+BEGIN NETWORK;
+TITLE 'Network-3';
+LINK ALGORITHM = 'Razor Net-2';
+DIMENSIONS nVertices=48 nEdges=67;
+TYPE DistanceNetwork;
+PROPERTIES info ='Total length: 222, distortion: 1';
+VERTICES
+	id=1 label='t1' x='-184.9338' y='161.9939',
+	id=2 label='t2' x='279.9833' y='-264.8742',
+	id=3 label='t3' x='114.2521' y='-177.4687',
+	id=4 label='t4' x='-361.2762' y='-0.3147',
+	id=5 label='t5' x='251.5464' y='276.1244',
+	id=6 label='t6' x='-57.481' y='-74.6275',
+	id=7 label='t7' x='184.11' y='-266.4074',
+	id=8 label='t8' x='-129.6372' y='11.7621',
+	id=9 label='t9' x='208.6605' y='224.8155',
+	id=10 label='t10' x='48.7891' y='126.5993',
+	id=11 label='t11' x='-415.0902' y='0.5974',
+	id=12 label='t12' x='-201.6903' y='307.8499',
+	id=13 label='t13' x='147.3219' y='320.4363',
+	id=14 label='t14' x='-106.791' y='238.5651',
+	id=15 label='t15' x='-131.3359' y='-320.0984',
+	id=16 label='t16' x='-233.3493' y='-178.5119',
+	id=17 label='t17' x='-308.6063' y='262.1193',
+	id=18 label='t18' x='-83.9955' y='328.8745',
+	id=19 label='t19' x='379.1098' y='-42.3759',
+	id=20 label='t20' x='29.1644' y='-274.7539',
+	id=21 x='275.7644' y='-40.0532',
+	id=22 x='-315.6361' y='-33.3882',
+	id=23 x='285.8809' y='-208.5701',
+	id=24 x='263.3031' y='217.9248',
+	id=25 x='194.2265' y='282.7275',
+	id=26 x='219.0566' y='-221.3039',
+	id=27 x='131.5267' y='-259.7708',
+	id=28 x='188.4369' y='-147.8238',
+	id=29 x='-162.3327' y='-275.3925',
+	id=30 x='27.8997' y='-200.5233',
+	id=31 x='-234.9105' y='140.8961',
+	id=32 x='81.5615' y='-261.3583',
+	id=33 x='70.545' y='192.6648',
+	id=34 x='-203.2108' y='-25.7656',
+	id=35 x='-238.1965' y='-220.7331',
+	id=36 x='-260.3761' y='30.9865',
+	id=37 x='-50.4702' y='-20.7332',
+	id=38 x='87.3339' y='-0.5401',
+	id=39 x='-89.168' y='172.8879',
+	id=40 x='-68.7121' y='-170.1443',
+	id=41 x='-142.9556' y='325.814',
+	id=42 x='187.5878' y='-83.1086',
+	id=43 x='243.1895' y='9.1648',
+	id=44 x='95.5594' y='58.3006',
+	id=45 x='174.2674' y='154.5997',
+	id=46 x='-135.9965' y='142.8427',
+	id=47 x='137.4614' y='-72.3383',
+	id=48 x='-190.3864' y='-147.5673'
+;
+EDGES
+	id=1 sid=1 tid=14 weight='3',
+	id=2 sid=1 tid=31 weight='1',
+	id=3 sid=1 tid=46 weight='1',
+	id=4 sid=2 tid=15 weight='15',
+	id=5 sid=2 tid=23 weight='1',
+	id=6 sid=3 tid=27 weight='2',
+	id=7 sid=3 tid=28 weight='2',
+	id=8 sid=3 tid=30 weight='2',
+	id=9 sid=3 tid=42 weight='4',
+	id=10 sid=4 tid=11 weight='1',
+	id=11 sid=4 tid=17 weight='10',
+	id=12 sid=4 tid=22 weight='1',
+	id=13 sid=5 tid=24 weight='1',
+	id=14 sid=5 tid=25 weight='1',
+	id=15 sid=6 tid=37 weight='1',
+	id=16 sid=6 tid=40 weight='3',
+	id=17 sid=7 tid=26 weight='1',
+	id=18 sid=7 tid=27 weight='1',
+	id=19 sid=8 tid=34 weight='2',
+	id=20 sid=8 tid=37 weight='2',
+	id=21 sid=8 tid=46 weight='5',
+	id=22 sid=9 tid=24 weight='1',
+	id=23 sid=9 tid=25 weight='1',
+	id=24 sid=9 tid=45 weight='2',
+	id=25 sid=10 tid=33 weight='2',
+	id=26 sid=10 tid=39 weight='6',
+	id=27 sid=10 tid=44 weight='2',
+	id=28 sid=12 tid=17 weight='3',
+	id=29 sid=12 tid=31 weight='7',
+	id=30 sid=12 tid=41 weight='1',
+	id=31 sid=13 tid=18 weight='9',
+	id=32 sid=13 tid=25 weight='1',
+	id=33 sid=14 tid=33 weight='7',
+	id=34 sid=14 tid=41 weight='4',
+	id=35 sid=15 tid=29 weight='1',
+	id=36 sid=16 tid=35 weight='1',
+	id=37 sid=16 tid=48 weight='1',
+	id=38 sid=18 tid=39 weight='6',
+	id=39 sid=18 tid=41 weight='1',
+	id=40 sid=19 tid=21 weight='3',
+	id=41 sid=20 tid=29 weight='9',
+	id=42 sid=20 tid=30 weight='2',
+	id=43 sid=20 tid=32 weight='1',
+	id=44 sid=21 tid=23 weight='6',
+	id=45 sid=21 tid=42 weight='4',
+	id=46 sid=21 tid=43 weight='1',
+	id=47 sid=22 tid=35 weight='6',
+	id=48 sid=22 tid=36 weight='2',
+	id=49 sid=23 tid=26 weight='2',
+	id=50 sid=24 tid=43 weight='10',
+	id=51 sid=26 tid=28 weight='2',
+	id=52 sid=27 tid=32 weight='1',
+	id=53 sid=28 tid=45 weight='12',
+	id=54 sid=29 tid=35 weight='2',
+	id=55 sid=30 tid=40 weight='3',
+	id=56 sid=31 tid=36 weight='3',
+	id=57 sid=32 tid=47 weight='6',
+	id=58 sid=33 tid=45 weight='3',
+	id=59 sid=34 tid=36 weight='2',
+	id=60 sid=34 tid=48 weight='4',
+	id=61 sid=37 tid=38 weight='4',
+	id=62 sid=38 tid=43 weight='4',
+	id=63 sid=38 tid=44 weight='4',
+	id=64 sid=39 tid=46 weight='1',
+	id=65 sid=40 tid=48 weight='4',
+	id=66 sid=42 tid=47 weight='1',
+	id=67 sid=44 tid=47 weight='4'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Shave Filter';
+LINK NETWORK = 'Network';
+NAME 'Shave Filter';
+OPTIONS
+	Target = 'None',
+	TargetValue = 0,
+	Deviation = 'Auto',
+	DeviationQuantilePercent = 100,
+	ReportTable = 'true';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Show Splits';
+LINK SPLITS = 'Splits';
+NAME 'Show Splits';
+OPTIONS
+	View = 'SplitNetwork';
+END; [ALGORITHM]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network-2';
+LINK NETWORK = 'Network-3';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network-2';
+LINK ALGORITHM = 'Shave Filter';
+DIMENSIONS nVertices=44 nEdges=61;
+TYPE DistanceNetwork;
+PROPERTIES info ='Total length: 192, distortion: 1';
+VERTICES
+	id=1 label='t1',
+	id=2 label='t2',
+	id=3 label='t3',
+	id=4 label='t4',
+	id=5 label='t5',
+	id=6 label='t6',
+	id=7 label='t7',
+	id=8 label='t8',
+	id=9 label='t9',
+	id=10 label='t10',
+	id=11 label='t11',
+	id=12 label='t12',
+	id=13 label='t13',
+	id=14 label='t14',
+	id=15 label='t15',
+	id=16 label='t16',
+	id=17 label='t17',
+	id=18 label='t18',
+	id=19 label='t19',
+	id=20 label='t20',
+	id=21,
+	id=22,
+	id=23,
+	id=24,
+	id=25,
+	id=26,
+	id=27,
+	id=28,
+	id=29,
+	id=30,
+	id=31,
+	id=32,
+	id=33,
+	id=34,
+	id=35,
+	id=36,
+	id=37,
+	id=38,
+	id=39,
+	id=40,
+	id=41,
+	id=42,
+	id=43,
+	id=44
+;
+EDGES
+	id=1 sid=1 tid=14 weight='3',
+	id=2 sid=1 tid=33 weight='1',
+	id=3 sid=1 tid=40 weight='1',
+	id=4 sid=2 tid=21 weight='7',
+	id=5 sid=2 tid=26 weight='3',
+	id=6 sid=3 tid=27 weight='1',
+	id=7 sid=3 tid=37 weight='1',
+	id=8 sid=4 tid=11 weight='1',
+	id=9 sid=4 tid=17 weight='10',
+	id=10 sid=4 tid=34 weight='1',
+	id=11 sid=5 tid=35 weight='11',
+	id=12 sid=5 tid=38 weight='1',
+	id=13 sid=6 tid=24 weight='1',
+	id=14 sid=6 tid=43 weight='3',
+	id=15 sid=7 tid=20 weight='3',
+	id=16 sid=7 tid=26 weight='1',
+	id=17 sid=7 tid=37 weight='2',
+	id=18 sid=8 tid=24 weight='2',
+	id=19 sid=8 tid=31 weight='3',
+	id=20 sid=8 tid=33 weight='5',
+	id=21 sid=9 tid=38 weight='1',
+	id=22 sid=9 tid=39 weight='9',
+	id=23 sid=9 tid=41 weight='4',
+	id=24 sid=10 tid=23 weight='6',
+	id=25 sid=10 tid=28 weight='6',
+	id=26 sid=10 tid=41 weight='3',
+	id=27 sid=12 tid=17 weight='3',
+	id=28 sid=12 tid=18 weight='2',
+	id=29 sid=12 tid=42 weight='4',
+	id=30 sid=13 tid=18 weight='9',
+	id=31 sid=13 tid=38 weight='1',
+	id=32 sid=14 tid=22 weight='1',
+	id=33 sid=14 tid=42 weight='1',
+	id=34 sid=15 tid=30 weight='3',
+	id=35 sid=15 tid=44 weight='9',
+	id=36 sid=16 tid=30 weight='1',
+	id=37 sid=16 tid=31 weight='4',
+	id=38 sid=16 tid=43 weight='5',
+	id=39 sid=18 tid=39 weight='2',
+	id=40 sid=19 tid=21 weight='3',
+	id=41 sid=20 tid=29 weight='2',
+	id=42 sid=20 tid=44 weight='1',
+	id=43 sid=21 tid=35 weight='1',
+	id=44 sid=22 tid=23 weight='2',
+	id=45 sid=22 tid=39 weight='2',
+	id=46 sid=23 tid=33 weight='1',
+	id=47 sid=24 tid=28 weight='4',
+	id=48 sid=25 tid=28 weight='2',
+	id=49 sid=25 tid=36 weight='1',
+	id=50 sid=25 tid=37 weight='4',
+	id=51 sid=26 tid=44 weight='3',
+	id=52 sid=27 tid=28 weight='4',
+	id=53 sid=27 tid=29 weight='1',
+	id=54 sid=29 tid=43 weight='3',
+	id=55 sid=30 tid=34 weight='6',
+	id=56 sid=31 tid=32 weight='2',
+	id=57 sid=32 tid=34 weight='1',
+	id=58 sid=32 tid=40 weight='4',
+	id=59 sid=35 tid=36 weight='1',
+	id=60 sid=36 tid=41 weight='6',
+	id=61 sid=40 tid=42 weight='3'
+;
+END; [NETWORK]
+
+BEGIN VIEW;
+TITLE 'SplitNetwork';
+LINK ALGORITHM = 'Show Splits';
+NAME 'SplitNetworkView';
+INPUT 'SPLITS';
+OPTIONS
+	Diagram = 'Splits',
+	Orientation = 'FlipRotate165Deg',
+	Rooting = 'None',
+	ZoomFactor = 0.23862843,
+	FontScaleFactor = 1,
+	RootAngle = 160,
+	OutlineFill = 0xa9a9a9ff,
+	LabelSplitsBy = 'None',
+	ShowQRCode = 'false';
+END; [VIEW]
+
+BEGIN VIEW;
+TITLE 'Network-4';
+LINK ALGORITHM = 'Show Network-2';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'None',
+	Edits = 'lp:1:-23.18,-8.35' 'lp:2:-19.08,13.63' 'lp:3:6.84,-18.32' 'lp:4:-24.96,-12.25' 'lp:5:5.99,1.03' 'lp:6:-4.12,-29.53' 'lp:7:-24.61,-2.46' 'lp:8:-50.64,-6.22' 'lp:9:-4.36,-27.56' 'lp:10:-34.62,-19.27' 'lp:11:-9.49,-29.64' 'lp:12:13.15,-12.63' 'lp:13:10.12,-5.93' 'lp:14:-1.02,15.33' 'lp:15:-32.27,-13.47' 'lp:16:10.88,-9.03' 'lp:17:-0.75,-25.39' 'lp:18:14,-7.93' 'lp:19:-10.05,14' 'lp:20:-33.35,-6.05' 'mn:1:61.09,-69.75' 'mn:2:-99.9,105.59' 'mn:3:-66.93,43.09' 'mn:4:-0.12,-136.25' 'mn:5:104.14,94.87' 'mn:6:-28.15,-21.68' 'mn:7:-100.47,69.44' 'mn:8:4.44,-48.89' 'mn:9:84.79,78.69' 'mn:10:47.75,18.4' 'mn:11:0.23,-156.55' 'mn:12:116.1,-76.07' 'mn:13:120.85,55.56' 'mn:14:89.97,-40.28' 'mn:15:-120.72,-49.53' 'mn:16:-67.32,-88.01' 'mn:17:98.86,-116.39' 'mn:18:124.03,-31.68' 'mn:19:-15.98,142.98' 'mn:20:-103.62,11' 'mn:21:-15.11,104' 'mn:22:-12.59,-119.04' 'mn:23:-78.66,107.82' 'mn:24:82.19,99.3' 'mn:25:106.63,73.25' 'mn:26:-83.46,82.62' 'mn:27:-97.97,49.6' 'mn:28:-55.75,71.07' 'mn:29:-103.86,-61.22' 'mn:30:-75.63,10.52' 'mn:31:53.14,-88.59' 'mn:32:-98.57,30.76' 'mn:33:72.66,26.61' 'mn:34:-9.72,-76.64' 'mn:35:-83.25,-89.83' 'mn:36:11.69,-98.2' 'mn:37:-7.82,-19.03' 'mn:38:-0.2,32.94' 'mn:39:65.2,-33.63' 'mn:40:-64.17,-25.91' 'mn:41:122.88,-53.91' 'mn:42:-31.34,70.75' 'mn:43:3.46,91.72' 'mn:44:21.99,36.04' 'mn:45:58.31,65.72' 'mn:46:53.87,-51.29' 'mn:47:-27.28,51.84' 'mn:48:-55.65,-71.8',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'MDS';
+END; [VIEW]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network-2';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network-5';
+LINK ALGORITHM = 'Show Network';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'None',
+	Edits = 'lp:1:-25.32,-10.98' 'lp:2:-18.71,6.58' 'lp:3:5.45,-9.37' 'lp:4:-20.46,-11.53' 'lp:5:-2,7.73' 'lp:6:-12.49,3.05' 'lp:7:0.2,6.24' 'lp:8:-21.01,-10.52' 'lp:9:-11.22,-19.94' 'lp:10:-26.11,-25.08' 'lp:11:-8.12,-24.55' 'lp:12:8.73,-9.54' 'lp:13:5.52,5.44' 'lp:14:5.3,-2.16' 'lp:15:-26.78,-16.31' 'lp:16:1.69,6.37' 'lp:17:3.36,-23.41' 'lp:18:13.92,-6.33' 'lp:19:-10.24,9.99' 'lp:20:-5.75,-24.49' 'mn:1:46.5,-47.87' 'mn:2:-89.62,90.75' 'mn:3:-68.64,36.21' 'mn:4:14.43,-108.22' 'mn:5:69.05,85.88' 'mn:6:-35.7,-17.93' 'mn:7:-95.76,50.37' 'mn:8:-4.53,-33.72' 'mn:9:71.87,60.1' 'mn:10:25.8,28.33' 'mn:11:16.23,-123.79' 'mn:12:114.9,-42.68' 'mn:13:95.66,66.09' 'mn:14:77.93,-35.33' 'mn:15:-89.32,-67.23' 'mn:16:-51.89,-69.92' 'mn:17:100.75,-82.01' 'mn:18:116.34,-11.63' 'mn:19:-24.7,132.84' 'mn:20:-102.11,13.74' 'mn:21:-23.51,100.34' 'mn:22:75.75,-18.76' 'mn:23:48.6,-17.92' 'mn:24:-20.71,-12' 'mn:25:-27.02,57.36' 'mn:26:-108.58,55.69' 'mn:27:-67.08,20.24' 'mn:28:-25.28,29.95' 'mn:29:-77.77,7.02' 'mn:30:-55,-83.88' 'mn:31:-12.92,-67.5' 'mn:32:9.39,-81.37' 'mn:33:40.28,-32.51' 'mn:34:3.63,-96.03' 'mn:35:-13.89,86.9' 'mn:36:-17.05,70.89' 'mn:37:-69.39,51.88' 'mn:38:80.35,73.08' 'mn:39:95.29,-0.85' 'mn:40:47.62,-63.92' 'mn:41:32.68,60.84' 'mn:42:80.99,-51.17' 'mn:43:-67.79,-26.28' 'mn:44:-115.8,14.02',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'MDS';
+END; [VIEW]
