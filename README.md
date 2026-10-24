@@ -64,7 +64,8 @@ java -cp ... razornet.testsuite.CompareHaplotypeMethods examples/rhabdoviruses/C
 `CompareDistanceMethods` compares NeighborNet with RazorNet (`CharactersToDistances` turns an alignment into the Hamming distances of its distinct sequences for it), and `CompareHaplotypeMethods` median joining and TCS
 with RazorHaploNet, each also followed by the Shave filter. `SimulateTreeMixtures` and `SimulateHaplotypes`
 generate data sets with a known truth for them (sequences are evolved with AliSim of IQ-TREE 2, which has to be
-installed), and `--truth` then reports how the quartet supports displayed by a network compare with the true ones.
+installed), and `--truth` then reports how the quartet supports displayed by a network compare with the true ones. `PopartCheck` writes the common input of the haplotype comparison in the NEXUS dialect that
+PopART reads and prints the size of our TCS construction on it, for a check against PopART (`examples/popart-check/`).
 
 `CompareStrategies` is restart-bound by default; point it at the generated tiers (`tests/<tier>-distances`)
 rather than at `tests`, since `tests/example-distances` holds matrices on which a run without a time budget takes

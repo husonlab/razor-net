@@ -30,7 +30,6 @@ import splitstree6.algorithms.network.network2network.ShaveFilter;
 import splitstree6.data.CharactersBlock;
 import splitstree6.data.NetworkBlock;
 import splitstree6.data.TaxaBlock;
-import splitstree6.io.readers.ImportManager;
 import splitstree6.io.writers.ExportManager;
 
 import java.io.File;
@@ -134,38 +133,10 @@ public class CompareHaplotypeMethods {
 		for (var input : inputs) {
 			var base = FileUtils.replaceFileSuffix(new File(input).getName(), "");
 			// the common input: complete deletion, identical sequences merged
-			var allTaxa = new TaxaBlock();
-			var allCharacters = new CharactersBlock();
-			read(input, allTaxa, allCharacters);
-			// a gap, a missing character, N or an IUPAC ambiguity code; any other symbol is a state (so are 0 and 1)
-			var incomplete = "-?NRYSWKMBDHV" + Character.toUpperCase(allCharacters.getGapCharacter())
-							 + Character.toUpperCase(allCharacters.getMissingCharacter());
-			var kept = new ArrayList<Integer>();
-			for (var j = 1; j <= allCharacters.getNchar(); j++) {
-				var complete = true;
-				for (var t = 1; t <= allTaxa.getNtax() && complete; t++)
-					complete = incomplete.indexOf(Character.toUpperCase(allCharacters.get(t, j))) < 0;
-				if (complete)
-					kept.add(j);
-			}
-			var haplotypes = new LinkedHashMap<String, String>(); // label -> sequence
-			var sequence2label = new LinkedHashMap<String, String>();
-			var members = new LinkedHashMap<String, List<String>>();
-			for (var t = 1; t <= allTaxa.getNtax(); t++) {
-				var buf = new StringBuilder();
-				for (var j : kept)
-					buf.append(Character.toUpperCase(allCharacters.get(t, j)));
-				var label = sequence2label.get(buf.toString());
-				if (label == null) {
-					label = allTaxa.getLabel(t).replaceAll("[^A-Za-z0-9_.-]", "_");
-					while (haplotypes.containsKey(label))
-						label += "_";
-					sequence2label.put(buf.toString(), label);
-					haplotypes.put(label, buf.toString());
-					members.put(label, new ArrayList<>());
-				}
-				members.get(label).add(allTaxa.getLabel(t));
-			}
+			var common = CommonInput.prepare(input);
+			var kept = common.kept();
+			var haplotypes = common.haplotypes();
+			var members = common.members();
 			var workDirectory = networksDirectory.isEmpty() ? Files.createTempDirectory("haplotypes").toFile() : new File(networksDirectory);
 			var haplotypeFile = new File(workDirectory, base + ".haplotypes.fasta");
 			try (var w = new PrintWriter(haplotypeFile)) {
@@ -178,7 +149,7 @@ public class CompareHaplotypeMethods {
 			}
 			var taxa = new TaxaBlock();
 			var characters = new CharactersBlock();
-			read(haplotypeFile.getPath(), taxa, characters);
+			CommonInput.read(haplotypeFile.getPath(), taxa, characters);
 			var labels = new ArrayList<>(haplotypes.keySet());
 			var n = labels.size();
 			if (taxa.getNtax() != n)
@@ -206,7 +177,7 @@ public class CompareHaplotypeMethods {
 				for (var i = 0; i < n; i++)
 					use[i] = !truth.getUnplaced().contains(labels.get(i));
 			}
-			var prefix = "%s\t%d\t%d\t%d".formatted(input, allTaxa.getNtax(), n, kept.size());
+			var prefix = "%s\t%d\t%d\t%d".formatted(input, common.sequences(), n, kept.size());
 
 			NetworkBlock razorNetwork = null;
 			var razorSeconds = 0.0;
@@ -324,13 +295,6 @@ public class CompareHaplotypeMethods {
 		if (out != System.out)
 			out.close();
 		System.exit(0); // the thread pool would keep the process alive
-	}
-
-	private static void read(String file, TaxaBlock taxa, CharactersBlock characters) throws IOException {
-		var reader = ImportManager.getInstance().getReader(file);
-		if (reader == null || !CharactersBlock.class.isAssignableFrom(reader.getToClass()))
-			throw new IOException("Not an alignment: " + file);
-		((splitstree6.io.utils.DataReaderBase<CharactersBlock>) reader).read(new ProgressSilent(), file, taxa, characters);
 	}
 
 	private static NetworkBlock compute(Characters2Network algorithm, TaxaBlock taxa, CharactersBlock characters) throws IOException {
