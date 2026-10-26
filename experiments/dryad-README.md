@@ -26,16 +26,16 @@ simulation tables add the measures against the truth that the Methods of the pap
 
 ## Sources of the published data sets
 
-| source | data | obtained from |
-|---|---|---|
-| Longdon et al. 2017, *Proc. R. Soc. B* 284:20162381 | three alignments of insect rhabdoviruses, CCapSV, DImmSV and PAegRV | the alignments of the paper, Figshare <https://doi.org/10.6084/m9.figshare.3409420>; sequences GenBank KX352837–KX353310 |
-| Xu et al. 2026, *Mol. Biol. Evol.* 43:msag052 | SARS-CoV-2 genomes of the Diamond Princess outbreak and contemporaneous genomes, 482 sequences over 444 variable sites | the example data distributed with HaploThread (TODO: URL) |
-| Saługa et al. 2022, *J. Biogeogr.* 49:1991–2004 | twelve alignments of nuclear and plastid markers of the mosses *Syntrichia sarconeurum* and *S. lithophila* | Dryad <https://doi.org/10.5061/dryad.h18931zp3> |
-| Estensmo et al. 2021, *Mol. Ecol. Resour.* 21:1141–1152 | ten ITS2 alignments of fungal species | Dryad <https://doi.org/10.5061/dryad.h18931zjq>, `ITSClustering.zip`, `Final_alignments` |
-| Morach et al. 2018, *Eur. J. Clin. Microbiol. Infect. Dis.* 37:527–536 | virulence gene profiles of 256 *Streptococcus agalactiae* isolates over 40 genes | as distributed with SplitsTree (TODO: the table of the paper) |
-| Greenhill 2015, *PLoS ONE* 10:e0141563 | cognate sets of 14 languages of the Huon Peninsula | TransNewGuinea.org, as distributed with SplitsTree |
-| Fitch and Margoliash 1967, *Science* 155:279–284 | cytochrome c mutation distances between 20 species | Table 3 of the paper, as distributed with SplitsTree |
-| Dotsev et al. 2026, *Ecol. Evol.* 16:e74182 | pairwise F_ST between 14 populations of the snow sheep | Table S1 of the paper's supplementary archive |
+| source                                                                 | data                                                                                                                   | obtained from                                                                                                            |
+|------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| Longdon et al. 2017, *Proc. R. Soc. B* 284:20162381                    | three alignments of insect rhabdoviruses, CCapSV, DImmSV and PAegRV                                                    | the alignments of the paper, Figshare <https://doi.org/10.6084/m9.figshare.3409420>; sequences GenBank KX352837–KX353310 |
+| Xu et al. 2026, *Mol. Biol. Evol.* 43:msag052                          | SARS-CoV-2 genomes of the Diamond Princess outbreak and contemporaneous genomes, 482 sequences over 444 variable sites | the supplementary materials of HaploThread, Zenodo <https://doi.org/10.5281/zenodo.18194187>                             |
+| Saługa et al. 2022, *J. Biogeogr.* 49:1991–2004                        | twelve alignments of nuclear and plastid markers of the mosses *Syntrichia sarconeurum* and *S. lithophila*            | Dryad <https://doi.org/10.5061/dryad.h18931zp3>                                                                          |
+| Estensmo et al. 2021, *Mol. Ecol. Resour.* 21:1141–1152                | ten ITS2 alignments of fungal species                                                                                  | Dryad <https://doi.org/10.5061/dryad.h18931zjq>, `ITSClustering.zip`, `Final_alignments`                                 |
+| Morach et al. 2018, *Eur. J. Clin. Microbiol. Infect. Dis.* 37:527–536 | virulence gene profiles of 256 *Streptococcus agalactiae* isolates over 40 genes                                       | as distributed with SplitsTree                                                                                           |
+| Greenhill 2015, *PLoS ONE* 10:e0141563                                 | cognate sets of 14 languages of the Huon Peninsula                                                                     | TransNewGuinea.org, as distributed with SplitsTree                                                                       |
+| Fitch and Margoliash 1967, *Science* 155:279–284                       | cytochrome c mutation distances between 20 species                                                                     | Table 3 of the paper, as distributed with SplitsTree                                                                     |
+| Dotsev et al. 2026, *Ecol. Evol.* 16:e74182                            | pairwise F_ST between 14 populations of the snow sheep                                                                 | Table S1 of the paper's supplementary archive                                                                            |
 
 ## How the data were prepared
 
