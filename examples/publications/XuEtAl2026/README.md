@@ -9,7 +9,8 @@ contemporaneous sequences from elsewhere, as distributed with:
 > <https://doi.org/10.1093/molbev/msag052>
 
 obtained from the supplementary materials of HaploThread on Zenodo,
-<https://doi.org/10.5281/zenodo.18194187> (record 18194187, version v1.0.0-rc.2 of 2026-01-09).
+<https://doi.org/10.5281/zenodo.18194187> (record 18194187, version v1.0.0-rc.2 of 2026-01-09). The record states no licence; the data are
+used here with the full citation above.
 
 482 sequences over 444 variable sites (alphabet `{A,C,G,T}` — no gaps, no ambiguity
 codes), collected 2019-12-24 … 2020-02-19. Collapsing identical sequences gives **257

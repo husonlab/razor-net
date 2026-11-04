@@ -1,0 +1,11 @@
+Data in this directory is from the Los Alamos HIV Sequence Database (please cite it as source):
+
+HIV Sequence Database, Theoretical Biology and Biophysics Group, Los Alamos National Laboratory,
+https://www.hiv.lanl.gov/ (the database asks to be referred to by this address or by its printed HIV Sequence
+Compendium; see https://www.hiv.lanl.gov/content/sequence/HIV/refer.html).
+
+HIV1_REF_2023_genome_DNA.fasta: the HIV-1 reference genome alignment of 2023 from the database's curated
+alignments, 518 genomes, as downloaded; the sequences are GenBank entries.
+HIV1_REF_2023_genome_DNA.hamming.dist: its Hamming distances as RazorHaploNet computes them.
+19-taxa.txt, 19-hamming.csv, 19-pdistance.csv: 14 of the sequences (three of subtype A1, four D, four G, three
+CRF19_cpx, an A1/D/G recombinant), their Hamming and p-distances.

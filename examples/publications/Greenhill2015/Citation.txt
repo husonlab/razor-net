@@ -1,0 +1,10 @@
+Data in this directory is from the following paper (please cite it as source):
+
+SJ Greenhill, TransNewGuinea.org: An Online Database of New Guinea Languages, PLoS ONE 10(10): e0141563 (2015),
+https://doi.org/10.1371/journal.pone.0141563
+Originally sourced from: McElhanon KA, Preliminary Observations on Huon Peninsula Languages, Oceanic Linguistics
+6: 1-45 (1967).
+
+Huon-languages.stree6: 391 cognate sets of 14 languages of the Huon Peninsula, as distributed with SplitsTree
+(its examples/publications/Greenhill2015), with Hamming distances and Neighbor-Net.
+Greenhill2015.stree6: the distances with Neighbor-Net, RazorNet and the Shave filter (Table 2 of the paper).

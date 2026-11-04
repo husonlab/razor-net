@@ -49,13 +49,13 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 # =============================================================================
 
 # Input distance matrix (.dist). Relative paths are from REPO_ROOT.
-INPUT_FILE="tests/example-distances/AmericanIndustry_sqrt1-r.dist"
+INPUT_FILE="tests/example-distances/manhattan_distances_20x20.dist"
 
 # Output file. Parent directories are created automatically.
 # Naming tips when both MDS and rounding are used:
 #   MDS -> round:  foo.mds2.r3.dist
 #   round -> MDS:  foo.r3.mds2.dist
-OUTPUT_FILE="tests/example-distances/AmericanIndustry_sqrt1-r.mds3.noround.dist"
+OUTPUT_FILE="tests/example-distances/manhattan_distances_20x20.mds2.noround.dist"
 
 # --- Classical MDS (optional) ------------------------------------------------
 # Set USE_MDS=true to embed distances in d-dimensional Euclidean space and
@@ -63,7 +63,7 @@ OUTPUT_FILE="tests/example-distances/AmericanIndustry_sqrt1-r.mds3.noround.dist"
 USE_MDS=true
 
 # Number of MDS dimensions (only used when USE_MDS=true). Default in the Java tool is 2.
-MDS_DIMENSION=3
+MDS_DIMENSION=2
 
 # --- Significant-digit rounding (optional) -----------------------------------
 # Set USE_ROUND=true to round every distance to ROUND_DIGITS significant figures.

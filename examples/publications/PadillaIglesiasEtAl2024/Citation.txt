@@ -1,10 +1,10 @@
 Data in this directory is from the following paper (please cite it as source):
 
-Padilla-Iglesias C, Vinicius L, Mbolokene A, Bandama Pelayo J, Ingram AG, Pignataro B, Bauluz B, Migliano AB.
-Deep history of cultural and linguistic evolution among Central African hunter-gatherers.
-Nature Human Behaviour 8 (2024) 1263-1275. https://doi.org/10.1038/s41562-024-01891-y
-Data and code: https://github.com/ceciliapad/GenCultEvo (author list from that repository and the paper;
-check the spelling of the names against the article).
+Padilla-Iglesias, C., Blanco-Portillo, J., Pricop, B. et al. Deep history of cultural and linguistic evolution among Central African hunter-gatherers.
+Nat Hum Behav 8, 1263–1275 (2024). https://doi.org/10.1038/s41562-024-01891-y
+Data and code: https://github.com/ceciliapad/GenCultEvo
+(the repository states no licence; the matrices here are our own computations from its tables, as described
+below)
 
 Ten Central African hunter-gatherer groups (Aka, Babongo, Baka, Bakola, Bakoya, Batwa (East), Batwa (West),
 Bedzan, Efe, Sua). The paper's Figure 2 shows three NeighborNet graphs: musical instruments, genes and

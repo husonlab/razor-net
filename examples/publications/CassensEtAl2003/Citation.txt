@@ -1,0 +1,9 @@
+Data in this directory is from the following paper (please cite it as source):
+
+Cassens I, Van Waerebeek K, Best PB, Crespo EA, Reyes J, Milinkovitch MC.
+The phylogeography of dusky dolphins (Lagenorhynchus obscurus): a critical examination of network methods and
+rooting procedures. Molecular Ecology 12(7): 1781-1792 (2003). https://doi.org/10.1046/j.1365-294X.2003.01876.x
+
+dusky_dolphins.stree6: the 36 mitochondrial haplotypes of the paper over their 60 variable sites, as distributed
+with SplitsTree (its example file dusky_dolphins.nex), with p-distances, Median-Joining,
+Neighbor-Net and RazorHaploNet.
