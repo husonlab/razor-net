@@ -2,8 +2,8 @@
 """Draws the twenty points of the grid example (Supplementary Figure S6a): the points of
 examples/manhattan_distances_20x20-points.tsv, whose Manhattan distances are examples/manhattan_distances_20x20.dist,
 with their taxon labels. The points were matched to the taxa by the distances (the matching is unique).
-Writes manuscript/figures/manhattan_distances_20x20-points.pdf. Needs matplotlib.
-  python3 manuscript/experiments/manhattan-points.py
+Writes experiments/figures/manhattan_distances_20x20-points.pdf. Needs matplotlib.
+  python3 experiments/manhattan-points.py
 """
 import os
 import matplotlib
@@ -11,9 +11,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.dirname(os.path.dirname(HERE))
+ROOT = os.path.dirname(HERE)
 POINTS = os.path.join(ROOT, "examples", "manhattan_distances_20x20-points.tsv")
-OUT = os.path.join(ROOT, "manuscript", "figures", "manhattan_distances_20x20-points.pdf")
+OUT = os.path.join(HERE, "figures", "manhattan_distances_20x20-points.pdf")
 
 # where the label of a point goes (dx, dy, horizontal alignment); the default is to the upper right
 PLACEMENT = {"t4": (-0.45, 0, "right"), "t5": (0, -0.95, "center"), "t9": (-0.45, 0.2, "right")}

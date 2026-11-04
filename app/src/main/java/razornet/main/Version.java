@@ -26,12 +26,12 @@ package razornet.main;
 public class Version {
 	static public final String NAME = "RazorNet";
 	public static final String SUFFIX = ".stree6";
-	static public String HOME_URL = "https://github.com/husonlab/razornet-app"; // sources and releases; "Check for Updates" reads the latest release
+	static public String HOME_URL = "https://github.com/husonlab/razor-net"; // sources and releases; "Check for Updates" reads the latest release
 
 	public static final String VERSION = resolveVersion();
 	public static final String SHORT_DESCRIPTION = NAME + " (version " + VERSION + ") - License GPL v3";
 
-	static public final String WEBSITE_URL = "https://husonlab.github.io/razornet-app"; // the user manual
+	static public final String WEBSITE_URL = "https://husonlab.github.io/razor-net"; // the user manual
 
 	public static String resolveVersion() {
 		// set by the packaged launcher (jpackage --java-options -Dapp.version=...)

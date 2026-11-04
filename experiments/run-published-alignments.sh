@@ -1,7 +1,7 @@
 #!/bin/bash
 # The haplotype network methods on the published alignments of examples/, with their default settings, one process
 # per alignment. Run from the root of the repository:
-#   manuscript/experiments/run-published-alignments.sh <output directory>
+#   experiments/run-published-alignments.sh <output directory>
 # JAVA_CP must hold the class path of the app module with its dependencies. Writes results/published-alignments.tsv.
 set -u
 OUT=${1:?output directory}

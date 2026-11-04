@@ -2,8 +2,8 @@
 """Draws panels (b) to (d) of Supplementary Figure S7, the idea behind RazorNet, on the five-point example
 examples/five.dist (panel (a) is its distance matrix, set in LaTeX): (b) the taxa-only realization, (c) the
 compactification of the slack point a, (d) the network of length 8 that RazorNet returns. Positions are placed
-by hand; the numbers come from the metric. Writes manuscript/figures/concept-{b,c,d}.pdf. Needs matplotlib.
-  python3 manuscript/experiments/concept-figure.py
+by hand; the numbers come from the metric. Writes experiments/figures/concept-{b,c,d}.pdf. Needs matplotlib.
+  python3 experiments/concept-figure.py
 """
 import os
 import matplotlib
@@ -11,7 +11,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FIGURES = os.path.join(os.path.dirname(HERE), "figures")
+FIGURES = os.path.join(HERE, "figures")
 TAXON = dict(s=70, color="black", zorder=4)
 AUX = dict(s=38, facecolors="white", edgecolors="black", linewidths=1.0, zorder=4)
 LABEL = dict(fontsize=11, ha="center", va="center", zorder=5)

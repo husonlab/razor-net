@@ -7,5 +7,5 @@ cd "$(dirname "$0")"
 PYTHON=${PYTHON:-python3}
 $PYTHON collect.py "$1" results/simulation-study-1.tsv
 $PYTHON collect.py "$2" results/simulation-study-2.tsv
-$PYTHON figures.py results/simulation-study-1.tsv results/simulation-study-2.tsv ../figures results
-$PYTHON tables.py results ../tables
+$PYTHON figures.py results/simulation-study-1.tsv results/simulation-study-2.tsv figures results
+$PYTHON tables.py results tables

@@ -5,7 +5,7 @@ Momoko Hayamizu (Waseda University) and Daniel H. Huson (University of Tübingen
 This deposit holds the data sets of the paper as they entered its comparisons, the results of the comparisons
 and of the two simulation studies, the workflow files that compute and draw the figures, and the inputs of a
 check against PopART. The software, RazorNet, with its source code, the generators of the simulated data and
-the scripts that produced everything here, is at <https://github.com/husonlab/razornet-app>. The published
+the scripts that produced everything here, is at <https://github.com/husonlab/razor-net>. The published
 data sets that the comparisons start from are available from their original sources, listed below; what is
 deposited here is derived from them.
 
@@ -44,7 +44,7 @@ sequences were merged into one haplotype; the haplotype network methods received
 distance matrices derived from alignments are the numbers of differences between the distinct haplotypes
 (`CharactersToDistances` of RazorNet). The matrices of SplitsTree's examples were used as they are. The
 protocol and the settings of every method are in the Methods and Supplementary Text S6 of the paper; the
-scripts `manuscript/experiments/run-published-alignments.sh`, `run-published-distances.sh`,
+scripts `experiments/run-published-alignments.sh`, `run-published-distances.sh`,
 `run-simulation-study-1.sh` and `run-simulation-study-2.sh` of the repository reproduce the results, and
 `make-dryad.sh` assembled this deposit. The simulated data sets are not deposited; they are generated again from
 the seeds in the scripts.

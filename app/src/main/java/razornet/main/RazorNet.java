@@ -82,7 +82,7 @@ public class RazorNet extends Application {
 		ProgramProperties.setProgramLicence("""
 				Copyright (C) 2026. This program comes with ABSOLUTELY NO WARRANTY.
 				This is free software, licensed under the terms of the GNU General Public License, Version 3.
-				Sources available at: https://github.com/husonlab/razornet-app
+				Sources available at: https://github.com/husonlab/razor-net
 				""");
 		SplashScreen.setVersionString(ProgramProperties.getProgramVersion());
 		SplashScreen.setImage(Utils.getImage(RazorNet.class, "RazorNet-Splash.png"));

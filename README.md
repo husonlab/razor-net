@@ -11,12 +11,15 @@ This repository holds:
    `razornet.algorithms`: `RazorNet` (distances → network), `RazorHaploNet` (sequences → haplotype
    network), and, for comparison on the same data under the same labeling, **TCS** with its haplotype variant.
    They register with SplitsTree6 through its `AlgorithmProvider` service, on the module path via
-   `module-info.java` and on the class path via `META-INF/services`. When RazorNet is released, SplitsTree6 will
-   offer them too; whether they move into the splitstree6 code base or SplitsTree6 uses `razornet-algorithms` as
-   an external dependency is not decided yet.
+   `module-info.java` and on the class path via `META-INF/services`, which is how SplitsTree6 offers them until
+   the paper on RazorNet is published; then they move into the splitstree6 code base.
 2. **The stand-alone RazorNet program** — module `app/`, artifact `razornet-app`: a JavaFX application built on
    SplitsTree6 through its `IAppProfile` interface (`razornet.main.RazorNet`), the command-line tool
    `razornet.tools.RunRazorNet`, and the test suite `razornet.testsuite`.
+3. **The experiments behind the paper** — `experiments/`: the comparisons on published data and the two simulation
+   studies, as scripts with their results, the generators of the figures and table rows, and the script that
+   assembles the Dryad deposit; see `experiments/README.md`. The manuscript itself is in its own repository,
+   `razornet-paper`.
 
 The algorithm has one extension step with two strategies, chosen by the `Strategy` option. **Strict** compactifies
 exactly the taxa that lie on no geodesic between two others, all in one pass, and is provably safe at the top
@@ -35,8 +38,7 @@ app/               the program, its tools and test suite
 examples/          data sets, among them manhattan_distances_20x20.dist: twenty points of a grid under the L1 distance
 tests/             generated test instances with reference lengths, five tiers x five sizes, and example matrices
 docs/              algorithm.md (the algorithm, with proofs and measurements), index.md (the user manual)
-manuscript/        the paper for MBE (LaTeX): main.tex is the working draft, main-oup.tex the journal layout,
-                   supplement.tex the proofs; see manuscript/README.md
+experiments/       the comparisons and simulation studies behind the paper: scripts, results, figures, table rows
 artwork/ release-notes/ scripts/ webapp/
 ```
 

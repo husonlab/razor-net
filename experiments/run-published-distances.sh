@@ -3,7 +3,7 @@
 # the candidates listed in its TODO). Alignments and character matrices enter as the Hamming distances of their
 # distinct sequences or profiles, prepared as for the haplotype comparison (CharactersToDistances); the distance
 # matrices of SplitsTree's examples enter as they are. Run from the root of the repository:
-#   manuscript/experiments/run-published-distances.sh <output directory> [<splitstree6 examples directory>]
+#   experiments/run-published-distances.sh <output directory> [<splitstree6 examples directory>]
 # JAVA_CP must hold the class path of the app module with its dependencies. Writes results/published-distances.tsv.
 set -u
 OUT=${1:?output directory}

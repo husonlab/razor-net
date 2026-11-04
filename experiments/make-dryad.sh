@@ -2,7 +2,7 @@
 # Assembles the Dryad deposit of the paper: the data sets as they entered the comparisons, the results, the
 # workflow files and exports of the figures, the PopART inputs, and the README. Run from the root of the
 # repository:
-#   manuscript/experiments/make-dryad.sh <output directory> [<splitstree6 examples directory>]
+#   experiments/make-dryad.sh <output directory> [<splitstree6 examples directory>]
 # JAVA_CP must hold the class path of the app module with its dependencies.
 set -eu
 OUT=${1:?output directory}
@@ -61,7 +61,7 @@ cp "$ST/publications/FitchMargoliash1967/table3.nex" "$OUT/distances/cytochrome-
 cp examples/publications/DotsevEtAl2026/snow-sheep-fst.nex "$OUT/distances/snow-sheep-fst.nex"
 
 # the results of the comparisons and the simulation studies
-cp manuscript/experiments/results/*.tsv manuscript/experiments/results/simulation-numbers.tex "$OUT/results/"
+cp experiments/results/*.tsv experiments/results/simulation-numbers.tex "$OUT/results/"
 
 # the figures: the workflow files that compute and draw them, and the exports
 cp examples/publications/SalugaEtAl2022/ALIGNMENT_ITS_Haplotype_Network_116_SEQ-Figure1a-PopART-TCS.stree6 \
@@ -69,7 +69,7 @@ cp examples/publications/SalugaEtAl2022/ALIGNMENT_ITS_Haplotype_Network_116_SEQ-
    examples/publications/SalugaEtAl2022/ALIGNMENT_ITS_Haplotype_Network_116_SEQ-haplotypes-fig1c.stree6 \
    examples/publications/XuEtAl2026/Diamond_Princess-four-razornet.stree6 \
    examples/publications/DotsevEtAl2026/snow-sheep-fst.stree6 \
-   manuscript/figures/*.pdf "$OUT/figures/"
+   experiments/figures/*.pdf "$OUT/figures/"
 
 # the PopART inputs of the check against PopART
 cp examples/popart-check/*.nex "$OUT/popart/"
