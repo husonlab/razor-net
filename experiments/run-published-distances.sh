@@ -1,6 +1,6 @@
 #!/bin/bash
 # Neighbor-Net, RazorNet and RazorNet with the Shave filter on published distance data (Table 2 of the paper and
-# the candidates listed in its TODO). Alignments and character matrices enter as the Hamming distances of their
+# the further matrices tried for it). Alignments and character matrices enter as the Hamming distances of their
 # distinct sequences or profiles, prepared as for the haplotype comparison (CharactersToDistances); the distance
 # matrices of SplitsTree's examples enter as they are. Run from the root of the repository:
 #   experiments/run-published-distances.sh <output directory> [<splitstree6 examples directory>]

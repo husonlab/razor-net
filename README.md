@@ -18,8 +18,8 @@ This repository holds:
    `razornet.tools.RunRazorNet`, and the test suite `razornet.testsuite`.
 3. **The experiments behind the paper** — `experiments/`: the comparisons on published data and the two simulation
    studies, as scripts with their results, the generators of the figures and table rows, and the script that
-   assembles the Dryad deposit; see `experiments/README.md`. The manuscript itself is in its own repository,
-   `razornet-paper`.
+   assembles the Dryad deposit; see `experiments/README.md`. The paper is in preparation; its manuscript is
+   kept separately.
 
 The algorithm has one extension step with two strategies, chosen by the `Strategy` option. **Strict** compactifies
 exactly the taxa that lie on no geodesic between two others, all in one pass, and is provably safe at the top
@@ -39,20 +39,25 @@ examples/          data sets, among them manhattan_distances_20x20.dist: twenty 
 tests/             generated test instances with reference lengths, five tiers x five sizes, and example matrices
 docs/              algorithm.md (the algorithm, with proofs and measurements), index.md (the user manual)
 experiments/       the comparisons and simulation studies behind the paper: scripts, results, figures, table rows
-artwork/ release-notes/ scripts/ webapp/
+artwork/           the program's icons
+release-notes/     one file per release
+scripts/           helper scripts
+webapp/            Lattice Picker, a browser page that produces 3-D Manhattan distance matrices for testing
 ```
 
 ## Build and run
 
-Maven, Java 17 sources, run on JDK 23. `jloda3` and `splitstree6` are resolved from `~/.m2`, so install them
-first (jloda3 → splitstree6 → this repository):
+Maven, Java 17 sources, run on JDK 23. The build takes [jloda3](https://github.com/husonlab/jloda3) and
+[splitstree6](https://github.com/husonlab/splitstree6) from the local Maven repository, so clone and install
+those first, in that order, then this repository:
 
 ```bash
-mvn -o -q -DskipTests install
+mvn -q -DskipTests install
 ```
 
 The program: `razornet.main.RazorNet` (JavaFX; from IntelliJ, or `mvn javafx:run` in `app/`). Headless, with
-`app/target/classes` plus the class path from `mvn dependency:build-classpath` in `app/`:
+`app/target/classes` plus the class path from `mvn dependency:build-classpath` in `app/`
+(`experiments/README.md` spells the command out):
 
 ```bash
 java -cp ... razornet.tools.RunRazorNet -i examples/manhattan_distances_20x20.dist -strategy Both -t 0
@@ -73,8 +78,8 @@ PopART reads and prints the size of our TCS construction on it, for a check agai
 rather than at `tests`, since `tests/example-distances` holds matrices on which a run without a time budget takes
 very long.
 
-Installers are built by `build-installers` (`apps/razornet/config.json`) and published as releases of this
-repository, which is where the program's *Check for Updates* looks (`razornet.main.Version.HOME_URL`).
+Installers for macOS, Linux and Windows are published as releases of this repository, where the program's
+*Check for Updates* looks as well.
 
 ## Options of RazorNet
 
@@ -119,3 +124,8 @@ Strict:      3 restarts, best 232 (0.06 s; stopped: a whole batch brought no imp
 after finishing polish: Relaxed 192 -> 192, Strict 232 -> 222
 winner: Relaxed strategy, length 192
 ```
+
+## Citation and contact
+
+A paper describing RazorNet and RazorHaploNet, by Momoko Hayamizu and Daniel H. Huson, is in preparation.
+Until it appears, please cite this repository. Questions and problems go to the issues of this repository.
