@@ -2,7 +2,7 @@
 
 Marta Saługa, Ryszard Ochyra, Michał Ronikier. *Phylogeographical break and limited connectivity between
 multiple refugia in panantarctic moss species.* Journal of Biogeography 49 (2022) 1991–2004,
-<https://doi.org/10.1111/jbi.14476>. The paper is `2022_JBiogeogr_Saluga-etal_Syntrichia.pdf`; the data are
+<https://doi.org/10.1111/jbi.14476>. The data are
 the Dryad deposit `doi_10_5061_dryad_h18931zp3__v20220812/` (Dryad 10.5061/dryad.h18931zp3, with its own
 README; the `.hamming.dist` files next to the alignments are ours, written by `CharactersToDistances`).
 
