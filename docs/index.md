@@ -2,7 +2,7 @@
 
 > **Draft — work in progress.**
 >
-> **References note.** The reference list below is indicative and should be verified and completed before release.
+> **References note.** The reference list requires work.
 
 ## 1. What is RazorNet?
 
