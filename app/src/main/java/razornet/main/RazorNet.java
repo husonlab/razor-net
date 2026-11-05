@@ -35,6 +35,7 @@ import jloda.fx.window.WindowGeometry;
 import jloda.util.Basic;
 import jloda.util.ProgramExecutorService;
 import jloda.util.UsageException;
+import razornet.examples.ExamplesSupport;
 import splitstree6.cite.ExtractCitations;
 import splitstree6.main.AppProfile;
 import splitstree6.main.SplitsTree6;
@@ -146,6 +147,7 @@ public class RazorNet extends Application {
 		try {
 			stage.setTitle("Untitled - " + ProgramProperties.getProgramName());
 			NotificationManager.setShowNotifications(true);
+			ExamplesSupport.installInAllWindows(); // File -> Examples, in this window and every later one
 			final var window = new MainWindow();
 			WindowGeometry.setToStage(stage);
 			window.show(stage, stage.getX(), stage.getY(), stage.getWidth(), stage.getHeight());

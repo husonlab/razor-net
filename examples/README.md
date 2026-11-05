@@ -20,6 +20,22 @@ you use its data.
 | `manhattan_distances_20x20-points.tsv`, `manhattan_distances_20x20.dist`, `manhattan_distances_20x20.stree6` | the grid example of the paper: 20 random points on an integer grid, their Manhattan distances, and the workflow with Neighbor-Net, RazorNet and the Shave filter (Supplementary Figure S6) | ours, generated |
 | `popart-example.stree6` | PopART's example NEXUS file (7 sequences × 56 sites with traits, modified from a DnaSP sample; the source URL is in the file), with Median-Joining and RazorHaploNet | PopART's example data, <http://popart.otago.ac.nz/examplenex.shtml> |
 
+## `bundled/`
+
+The six files of the program's File → Examples menu, small and quick to compute: the three distance matrices
+open with RazorNet, the three alignments with RazorHaploNet. `scripts/make-examples.sh examples/bundled
+app/src/main/resources/razornet/examples` copies them into the program's resources, as `.dat` files with an
+`index.dat` that keeps the menu order and the display names.
+
+| file | what it is | source |
+|---|---|---|
+| `snow-sheep-fst.nex` | `publications/DotsevEtAl2026/snow-sheep-fst.nex` with the display labels of `snow-sheep-fst-labels.txt` in its TAXA block | Dotsev et al. 2026 (CC BY) |
+| `ImrichEtAl1984.dist` | a copy of the file at the top level | Imrich et al. 1984 |
+| `manhattan_distances_20x20.dist` | a copy of the file at the top level | ours |
+| `dusky_dolphins.nex` | the TAXA and CHARACTERS blocks of SplitsTree's example `dusky_dolphins.nex` | Cassens et al. 2003 |
+| `CCapSV.nex` | `rhabdoviruses/CCapSV.fas` as a NEXUS file, with the countries of `CCapSV_traits.txt` as a TRAITS block with coordinates | Longdon et al. 2017 (CC BY) |
+| `syntrichia-its-haplotypes.nex` | the input blocks (16 haplotypes, their sample counts as traits) of the Figure 1 workflow `publications/SalugaEtAl2022/ALIGNMENT_ITS_Haplotype_Network_116_SEQ-haplotypes-fig1b.stree6` | Saługa et al. 2022 (CC0) |
+
 ## `hiv-recombination-data/`
 
 The HIV-1 reference genome alignment of 2023 of the Los Alamos HIV Sequence Database, <https://www.hiv.lanl.gov/>;

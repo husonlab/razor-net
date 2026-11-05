@@ -1,0 +1,62 @@
+#nexus
+
+[Pairwise F_ST among 14 populations of the snow sheep (Ovis nivicola), Table S1 of
+ Dotsev et al. 2026, Ecology and Evolution 16:e74182 (CC BY), with the colours of the paper as display labels.
+ Figure 3 of the RazorNet paper shows this matrix as a Neighbor-Net and as a RazorNet with the Shave filter.]
+
+BEGIN TAXA;
+DIMENSIONS ntax=14;
+TAXLABELS
+	[1] 'KAMCHATKA_S'
+	[2] 'KAMCHATKA_N'
+	[3] 'KORYAK'
+	[4] 'CHUKOTKA'
+	[5] 'OKHOTSK'
+	[6] 'MOMSKY'
+	[7] 'SELENNYAKH'
+	[8] 'CHERSKY'
+	[9] 'SUNTAR_KHAYATA'
+	[10] 'YABLONOV'
+	[11] 'VERKHOYANSK'
+	[12] 'ORULGAN'
+	[13] 'KHARAULAKH'
+	[14] 'PUTORANA'
+;
+DISPLAYLABELS
+	[1] '<b><c 0x8a008bff><mark shape="Circle" fill="#8a008bff" height="6" width="6" stroke="black" node="true">KAMCHATKA_S'
+	[2] '<b><c 0xdea0ddff><mark shape="Circle" fill="#dea0ddff" height="6" width="6" stroke="black" node="true">KAMCHATKA_N'
+	[3] '<b><c 0x2e8a57ff><mark shape="Circle" fill="#2e8a57ff" height="6" width="6" stroke="black" node="true">KORYAK'
+	[4] '<b><c 0xfd8b01ff><mark shape="Circle" fill="#fd8b01ff" height="6" width="6" stroke="black" node="true">CHUKOTKA'
+	[5] '<b><c 0x898989ff><mark shape="Circle" fill="#898989ff" height="6" width="6" stroke="black" node="true">OKHOTSK'
+	[6] '<b><c 0x26418cff><mark shape="Circle" fill="#26418cff" height="6" width="6" stroke="black" node="true">MOMSKY'
+	[7] '<b><c 0x5f9fa0ff><mark shape="Circle" fill="#5f9fa0ff" height="6" width="6" stroke="black" node="true">SELENNYAKH'
+	[8] '<b><c 0xdaa520ff><mark shape="Circle" fill="#daa520ff" height="6" width="6" stroke="black" node="true">CHERSKY'
+	[9] '<b><c 0x63b7ffff><mark shape="Circle" fill="#63b7ffff" height="6" width="6" stroke="black" node="true">SUNTAR_KHAYATA'
+	[10] '<b><c 0x8b5a2cff><mark shape="Circle" fill="#8b5a2cff" height="6" width="6" stroke="black" node="true">YABLONOV'
+	[11] '<b><c 0xee2e2dff><mark shape="Circle" fill="#ee2e2dff" height="6" width="6" stroke="black" node="true">VERKHOYANSK'
+	[12] '<b><c 0x9bcd31ff><mark shape="Circle" fill="#9bcd31ff" height="6" width="6" stroke="black" node="true">ORULGAN'
+	[13] '<b><c 0xfed703ff><mark shape="Circle" fill="#fed703ff" height="6" width="6" stroke="black" node="true">KHARAULAKH'
+	[14] '<b><c 0xbdb76bff><mark shape="Circle" fill="#bdb76bff" height="6" width="6" stroke="black" node="true">PUTORANA'
+;
+END; [TAXA]
+
+BEGIN DISTANCES;
+DIMENSIONS ntax=14;
+FORMAT labels=left diagonal triangle=both;
+MATRIX
+'KAMCHATKA_S' 0 0.136 0.248 0.354 0.316 0.392 0.417 0.339 0.307 0.451 0.337 0.359 0.41 0.645
+'KAMCHATKA_N' 0.136 0 0.117 0.205 0.196 0.268 0.284 0.222 0.204 0.339 0.231 0.269 0.324 0.642
+'KORYAK' 0.248 0.117 0 0.109 0.113 0.189 0.202 0.141 0.136 0.239 0.167 0.199 0.248 0.443
+'CHUKOTKA' 0.354 0.205 0.109 0 0.036 0.146 0.171 0.091 0.086 0.206 0.123 0.166 0.218 0.543
+'OKHOTSK' 0.316 0.196 0.113 0.036 0 0.104 0.122 0.057 0.058 0.169 0.095 0.136 0.187 0.426
+'MOMSKY' 0.392 0.268 0.189 0.146 0.104 0 0.103 0.054 0.083 0.206 0.111 0.154 0.212 0.505
+'SELENNYAKH' 0.417 0.284 0.202 0.171 0.122 0.103 0 0.066 0.086 0.226 0.111 0.15 0.202 0.583
+'CHERSKY' 0.339 0.222 0.141 0.091 0.057 0.054 0.066 0 0.027 0.149 0.055 0.097 0.152 0.427
+'SUNTAR_KHAYATA' 0.307 0.204 0.136 0.086 0.058 0.083 0.086 0.027 0 0.126 0.044 0.092 0.141 0.381
+'YABLONOV' 0.451 0.339 0.239 0.206 0.169 0.206 0.226 0.149 0.126 0 0.166 0.196 0.254 0.599
+'VERKHOYANSK' 0.337 0.231 0.167 0.123 0.095 0.111 0.111 0.055 0.044 0.166 0 0.048 0.101 0.401
+'ORULGAN' 0.359 0.269 0.199 0.166 0.136 0.154 0.15 0.097 0.092 0.196 0.048 0 0.039 0.415
+'KHARAULAKH' 0.41 0.324 0.248 0.218 0.187 0.212 0.202 0.152 0.141 0.254 0.101 0.039 0 0.467
+'PUTORANA' 0.645 0.642 0.443 0.543 0.426 0.505 0.583 0.427 0.381 0.599 0.401 0.415 0.467 0
+;
+END;

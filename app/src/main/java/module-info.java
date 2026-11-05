@@ -19,6 +19,8 @@ module razornet {
 	exports razornet.main;
 	opens razornet.main;
 
+	opens razornet.examples; // the bundled example files, read by jloda's ExamplesManager
+
 	exports razornet.testsuite;
 	exports razornet.tools;
 }
