@@ -32,9 +32,9 @@ files with an `index.dat` that keeps the menu order and the display names.
 |---|---|---|
 | `snow-sheep-fst.stree6` | `publications/DotsevEtAl2026/snow-sheep-fst-with-labels.nex` | Dotsev et al. 2026 (CC BY) |
 | `ImrichEtAl1984.stree6` | `ImrichEtAl1984.dist` | Imrich et al. 1984 |
-| `manhattan-grid-20.stree6` | `manhattan_distances_20x20.dist` | ours |
+| `manhattan-grid-20.stree6` | `manhattan_distances_20x20.dist`, with the Shave filter's target set to None, so that the exact grid network is shown | ours |
 | `dusky-dolphins.stree6` | `publications/CassensEtAl2003/dusky_dolphins.nex` | Cassens et al. 2003 |
-| `CCapSV.stree6` | `rhabdoviruses/CCapSV.nex` | Longdon et al. 2017 (CC BY) |
+| `PAegRV-haplotypes.stree6` | `rhabdoviruses/PAegRV-haplotypes.nex` | Longdon et al. 2017 (CC BY) |
 | `syntrichia-its-haplotypes.stree6` | `publications/SalugaEtAl2022/syntrichia-its-haplotypes.nex` | Saługa et al. 2022 (CC0) |
 
 ## `hiv-recombination-data/`
@@ -92,7 +92,8 @@ deposit <https://doi.org/10.6084/m9.figshare.3409420> (CC BY); the sequences are
 |---|---|---|
 | `CCapSV.fas`, `DImmSV.fas`, `PAegRV.fas` | the three alignments of the paper: Ceratitis capitata sigmavirus (19 sequences), Drosophila immigrans sigmavirus (87), Pararge aegeria rhabdovirus (131), 1277 to 1281 sites | the authors' deposit |
 | `CCapSV_traits.txt`, `DImmSV_traits.txt`, `PAegRV_traits.txt` | one line per sequence: country and coordinates (country centroids), for the trait pie charts and the map | ours, from the paper's sampling information |
-| `CCapSV.nex` | the CCapSV alignment as a NEXUS file with the countries of `CCapSV_traits.txt` as a TRAITS block with coordinates, the input of the bundled example | ours, derived |
+| `CCapSV.nex`, `PAegRV.nex` | the CCapSV and PAegRV alignments as NEXUS files with the countries or sites of the `_traits.txt` files as TRAITS blocks with coordinates | ours, derived |
+| `PAegRV-haplotypes.nex` | the 131 PAegRV sequences collapsed to their 90 distinct haplotypes with the sites' counts pooled, as File → Open Haplotype Data does (made with SplitsTree's `CollapseIdenticalHyplotypes`); the input of the bundled example | ours, derived |
 | `CCapSV.stree6`, `DImmSV.stree6`, `PAegRV.stree6`, `PAegRV-haplotypes.stree6` | workflows: Median-Joining and RazorHaploNet on each alignment; `PAegRV-haplotypes` with the Shave filter and the traits | ours, derived |
 
 ## `Issakka_ITSClustering/`

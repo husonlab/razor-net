@@ -42,7 +42,8 @@ refer to the [SplitsTree documentation](https://husonlab.github.io/splitstree6).
 **File → Examples** opens one of six documents that come with the program: three distance matrices with their
 RazorNet networks and three sequence alignments with their RazorHaploNet networks, computed already, each
 followed by the Shave filter (see **Simplifying a network** below), so what appears is the simplified network,
-with the exact network as the step before the filter in the workflow. An example is loaded from the program's
+with the exact network as the step before the filter in the workflow; the grid example alone keeps the filter
+switched off. An example is loaded from the program's
 memory and never written to disk: it opens in the current window if that is still empty, otherwise in a new
 window, and Save asks where to save it. The six documents are also in the `examples/bundled` directory of the
 source repository, and each carries a comment naming its source.
@@ -51,9 +52,9 @@ source repository, and each carries a comment naming its source.
 |---|---|---|
 | Snow sheep FST, 14 populations (RazorNet) | pairwise F_ST between 14 populations of the snow sheep, with the colours of the paper as display labels: Figure 3 of the RazorNet paper. F_ST values do not satisfy the triangle inequality; RazorNet reports this in the message window and takes the metric closure of the distances before the search | Dotsev et al. (2026), Table S1 |
 | Imrich et al. 1984, 24 points (RazorNet) | a metric on 24 points from the paper that introduced optimal realizations | Imrich, Simões-Pereira and Zamfirescu (1984) |
-| Manhattan grid, 20 points (RazorNet) | 20 random points on an integer grid and their Manhattan distances; the network recovers the grid (Supplementary Figure S6 of the paper) | the authors |
+| Manhattan grid, 20 points (RazorNet) | 20 random points on an integer grid and their Manhattan distances; the network recovers the grid exactly, so this example has the Shave filter switched off (target None) and shows the exact network (Supplementary Figure S6 of the paper) | the authors |
 | Dusky dolphins mtDNA, 36 haplotypes (RazorHaploNet) | 36 mitochondrial haplotypes over 60 variable sites, the data of a classic comparison of network methods | Cassens et al. (2003), as distributed with SplitsTree |
-| Sigmavirus CCapSV with countries, 19 sequences (RazorHaploNet) | 19 sequences of the *Ceratitis capitata* sigmavirus, 1277 sites, each with its country (Morocco or Crete) as a trait with coordinates: try the trait pie charts and the world map | Longdon et al. (2017) |
+| Rhabdovirus PAegRV, 90 haplotypes at 8 sites (RazorHaploNet) | the 131 sequences of the *Pararge aegeria* rhabdovirus, 1281 sites, collapsed to their 90 distinct haplotypes as File → Open Haplotype Data does, with the eight sampling sites (six in Britain, Corsica, Sardinia) as traits with coordinates: try the trait pie charts and the world map | Longdon et al. (2017) |
 | Syntrichia ITS haplotypes with counts (RazorHaploNet) | 16 ITS haplotypes of the moss *Syntrichia*, 951 sites, and the number of samples of each as traits: Figure 1 of the RazorNet paper | Saługa, Ochyra and Ronikier (2022) |
 
 ## 5. Related methods, for comparison

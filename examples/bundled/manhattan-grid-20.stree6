@@ -3,18 +3,19 @@
 BEGIN SPLITSTREE6;
 DIMENSIONS nDataNodes=8 nAlgorithms=6;
 PROGRAM version='SplitsTree (version 1.0.0-SNAPSHOT) - License GPL v3';
-WORKFLOW creationDate='1793974102698'; [Fri Nov 06 15:08:22 CET 2026]
+WORKFLOW creationDate='1793974725274'; [Fri Nov 06 15:18:45 CET 2026]
 END; [SPLITSTREE6]
 
 [!20 random points on an integer grid and their Manhattan distances (examples/manhattan_distances_20x20-points.tsv
-of the RazorNet repository); RazorNet recovers the grid. Supplementary Figure S6 of the RazorNet paper.]
+of the RazorNet repository); RazorNet recovers the grid, shown without simplification (Shave filter target None).
+Supplementary Figure S6 of the RazorNet paper.]
 
 [
 Methods:
 Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.).
 The original input consisted of 20 taxa and a 20 x 20 distance matrix.
 The Razor Net method was used (default options) so as to obtain 44 nodes and 61 edges.
-The Shave Filter method was used (default options) so as to obtain 29 nodes and 35 edges.
+The Shave Filter method was used (default options, except Target=None) so as to obtain 44 nodes and 61 edges.
 
 References:
 Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
@@ -284,7 +285,7 @@ TITLE 'Shave Filter';
 LINK NETWORK = 'Network';
 NAME 'Shave Filter';
 OPTIONS
-	Target = 'Balanced',
+	Target = 'None',
 	TargetValue = 0,
 	Deviation = 'Auto',
 	DeviationQuantilePercent = 100,
@@ -294,9 +295,9 @@ END; [ALGORITHM]
 BEGIN NETWORK;
 TITLE 'Network-2';
 LINK ALGORITHM = 'Shave Filter';
-DIMENSIONS nVertices=29 nEdges=35;
+DIMENSIONS nVertices=44 nEdges=61;
 TYPE DistanceNetwork;
-PROPERTIES info ='Total length: 130, distortion: 1.533333';
+PROPERTIES info ='Total length: 192, distortion: 1';
 VERTICES
 	id=1 label='t1',
 	id=2 label='t2',
@@ -319,51 +320,92 @@ VERTICES
 	id=19 label='t19',
 	id=20 label='t20',
 	id=21,
+	id=22,
+	id=23,
 	id=24,
+	id=25,
+	id=26,
 	id=27,
 	id=28,
 	id=29,
+	id=30,
 	id=31,
 	id=32,
 	id=33,
-	id=38
+	id=34,
+	id=35,
+	id=36,
+	id=37,
+	id=38,
+	id=39,
+	id=40,
+	id=41,
+	id=42,
+	id=43,
+	id=44
 ;
 EDGES
 	id=1 sid=1 tid=14 weight='3',
 	id=2 sid=1 tid=33 weight='1',
+	id=3 sid=1 tid=40 weight='1',
 	id=4 sid=2 tid=21 weight='7',
+	id=5 sid=2 tid=26 weight='3',
 	id=6 sid=3 tid=27 weight='1',
+	id=7 sid=3 tid=37 weight='1',
 	id=8 sid=4 tid=11 weight='1',
 	id=9 sid=4 tid=17 weight='10',
+	id=10 sid=4 tid=34 weight='1',
+	id=11 sid=5 tid=35 weight='11',
 	id=12 sid=5 tid=38 weight='1',
 	id=13 sid=6 tid=24 weight='1',
+	id=14 sid=6 tid=43 weight='3',
 	id=15 sid=7 tid=20 weight='3',
+	id=16 sid=7 tid=26 weight='1',
+	id=17 sid=7 tid=37 weight='2',
 	id=18 sid=8 tid=24 weight='2',
 	id=19 sid=8 tid=31 weight='3',
 	id=20 sid=8 tid=33 weight='5',
 	id=21 sid=9 tid=38 weight='1',
+	id=22 sid=9 tid=39 weight='9',
+	id=23 sid=9 tid=41 weight='4',
+	id=24 sid=10 tid=23 weight='6',
 	id=25 sid=10 tid=28 weight='6',
+	id=26 sid=10 tid=41 weight='3',
 	id=27 sid=12 tid=17 weight='3',
 	id=28 sid=12 tid=18 weight='2',
+	id=29 sid=12 tid=42 weight='4',
 	id=30 sid=13 tid=18 weight='9',
 	id=31 sid=13 tid=38 weight='1',
+	id=32 sid=14 tid=22 weight='1',
+	id=33 sid=14 tid=42 weight='1',
+	id=34 sid=15 tid=30 weight='3',
+	id=35 sid=15 tid=44 weight='9',
+	id=36 sid=16 tid=30 weight='1',
 	id=37 sid=16 tid=31 weight='4',
+	id=38 sid=16 tid=43 weight='5',
+	id=39 sid=18 tid=39 weight='2',
 	id=40 sid=19 tid=21 weight='3',
 	id=41 sid=20 tid=29 weight='2',
+	id=42 sid=20 tid=44 weight='1',
+	id=43 sid=21 tid=35 weight='1',
+	id=44 sid=22 tid=23 weight='2',
+	id=45 sid=22 tid=39 weight='2',
+	id=46 sid=23 tid=33 weight='1',
 	id=47 sid=24 tid=28 weight='4',
+	id=48 sid=25 tid=28 weight='2',
+	id=49 sid=25 tid=36 weight='1',
+	id=50 sid=25 tid=37 weight='4',
+	id=51 sid=26 tid=44 weight='3',
 	id=52 sid=27 tid=28 weight='4',
 	id=53 sid=27 tid=29 weight='1',
+	id=54 sid=29 tid=43 weight='3',
+	id=55 sid=30 tid=34 weight='6',
 	id=56 sid=31 tid=32 weight='2',
-	id=63 sid=10 tid=33 weight='7',
-	id=65 sid=2 tid=7 weight='4',
-	id=66 sid=15 tid=16 weight='4',
-	id=67 sid=4 tid=32 weight='2',
-	id=69 sid=28 tid=21 weight='5',
-	id=70 sid=3 tid=7 weight='3',
-	id=71 sid=18 tid=14 weight='5',
-	id=72 sid=1 tid=32 weight='5',
-	id=73 sid=9 tid=10 weight='7',
-	id=74 sid=16 tid=29 weight='8'
+	id=57 sid=32 tid=34 weight='1',
+	id=58 sid=32 tid=40 weight='4',
+	id=59 sid=35 tid=36 weight='1',
+	id=60 sid=36 tid=41 weight='6',
+	id=61 sid=40 tid=42 weight='3'
 ;
 END; [NETWORK]
 
@@ -386,7 +428,7 @@ OPTIONS
 	TraitLegend = 'False',
 	TraitSize = 32,
 	SitesStyle = 'None',
-	Edits = 'lp:1:4.69,15.82' 'lp:2:-26.1,-20.19' 'lp:3:3.37,-32.26' 'lp:4:-27.97,1.95' 'lp:5:-1.14,-28.83' 'lp:6:-24.45,-2.1' 'lp:7:-25.56,-6.01' 'lp:8:-25.32,-4.7' 'lp:9:-9.85,-29.05' 'lp:10:-14.6,-28.77' 'lp:11:-6.26,13.56' 'lp:12:14,-8.12' 'lp:13:15.36,-19' 'lp:14:-5.61,13.38' 'lp:15:-19.65,16.21' 'lp:16:0.37,16.09' 'lp:17:3.16,13.95' 'lp:18:12.92,-13.21' 'lp:19:-11.82,-29.48' 'lp:20:-21.24,15.12',
+	Edits = 'lp:1:12.88,-13.3' 'lp:2:7.58,13.45' 'lp:3:13.57,-11.24' 'lp:4:15.74,-18.47' 'lp:5:-9.37,13.55' 'lp:6:-14.78,-32.4' 'lp:7:-5.75,14' 'lp:8:13.04,-12.92' 'lp:9:-60.56,-4.46' 'lp:10:-32.84,-3.69' 'lp:11:-13.73,-29.06' 'lp:12:-33.46,-8.12' 'lp:13:-21.9,14.59' 'lp:14:-32.68,-3.21' 'lp:15:2.2,-30.43' 'lp:16:13.6,-11.14' 'lp:17:-34.74,-19.11' 'lp:18:-32.91,-3.93' 'lp:19:-6.8,13.69' 'lp:20:-10.15,-29.63',
 	LayoutSeed = 1,
 	LayoutAlgorithm = 'MDS';
 END; [VIEW]
