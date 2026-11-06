@@ -35,7 +35,8 @@ measurements; [docs/index.md](docs/index.md) is the user manual.
 ```
 algorithms/        the algorithms (see above)
 app/               the program, its tools and test suite
-examples/          data sets, among them manhattan_distances_20x20.dist: twenty points of a grid under the L1 distance
+examples/          data sets (provenance in examples/README.md); bundled/ holds the six documents of File → Examples,
+                   manhattan_distances_20x20.dist is twenty points of a grid under the L1 distance
 tests/             generated test instances with reference lengths, five tiers x five sizes, and example matrices
 docs/              algorithm.md (the algorithm, with proofs and measurements), index.md (the user manual)
 experiments/       the comparisons and simulation studies behind the paper: scripts, results, figures, table rows
