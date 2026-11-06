@@ -22,19 +22,20 @@ you use its data.
 
 ## `bundled/`
 
-The six files of the program's File → Examples menu, small and quick to compute: the three distance matrices
-open with RazorNet, the three alignments with RazorHaploNet. `scripts/make-examples.sh examples/bundled
-app/src/main/resources/razornet/examples` copies them into the program's resources, as `.dat` files with an
-`index.dat` that keeps the menu order and the display names.
+The six documents of the program's File → Examples menu: complete workflow files with the networks computed,
+each made by opening the input named below in the program with its default options (the method, then the
+Shave filter) and saving, with a comment naming the source added after the header. `scripts/make-examples.sh
+examples/bundled app/src/main/resources/razornet/examples` copies them into the program's resources, as `.dat`
+files with an `index.dat` that keeps the menu order and the display names.
 
-| file | what it is | source |
+| file | input | source |
 |---|---|---|
-| `snow-sheep-fst.nex` | `publications/DotsevEtAl2026/snow-sheep-fst.nex` with the display labels of `snow-sheep-fst-labels.txt` in its TAXA block | Dotsev et al. 2026 (CC BY) |
-| `ImrichEtAl1984.dist` | a copy of the file at the top level | Imrich et al. 1984 |
-| `manhattan_distances_20x20.dist` | a copy of the file at the top level | ours |
-| `dusky_dolphins.nex` | the TAXA and CHARACTERS blocks of SplitsTree's example `dusky_dolphins.nex` | Cassens et al. 2003 |
-| `CCapSV.nex` | `rhabdoviruses/CCapSV.fas` as a NEXUS file, with the countries of `CCapSV_traits.txt` as a TRAITS block with coordinates | Longdon et al. 2017 (CC BY) |
-| `syntrichia-its-haplotypes.nex` | the input blocks (16 haplotypes, their sample counts as traits) of the Figure 1 workflow `publications/SalugaEtAl2022/ALIGNMENT_ITS_Haplotype_Network_116_SEQ-haplotypes-fig1b.stree6` | Saługa et al. 2022 (CC0) |
+| `snow-sheep-fst.stree6` | `publications/DotsevEtAl2026/snow-sheep-fst-with-labels.nex` | Dotsev et al. 2026 (CC BY) |
+| `ImrichEtAl1984.stree6` | `ImrichEtAl1984.dist` | Imrich et al. 1984 |
+| `manhattan-grid-20.stree6` | `manhattan_distances_20x20.dist` | ours |
+| `dusky-dolphins.stree6` | `publications/CassensEtAl2003/dusky_dolphins.nex` | Cassens et al. 2003 |
+| `CCapSV.stree6` | `rhabdoviruses/CCapSV.nex` | Longdon et al. 2017 (CC BY) |
+| `syntrichia-its-haplotypes.stree6` | `publications/SalugaEtAl2022/syntrichia-its-haplotypes.nex` | Saługa et al. 2022 (CC0) |
 
 ## `hiv-recombination-data/`
 
@@ -91,6 +92,7 @@ deposit <https://doi.org/10.6084/m9.figshare.3409420> (CC BY); the sequences are
 |---|---|---|
 | `CCapSV.fas`, `DImmSV.fas`, `PAegRV.fas` | the three alignments of the paper: Ceratitis capitata sigmavirus (19 sequences), Drosophila immigrans sigmavirus (87), Pararge aegeria rhabdovirus (131), 1277 to 1281 sites | the authors' deposit |
 | `CCapSV_traits.txt`, `DImmSV_traits.txt`, `PAegRV_traits.txt` | one line per sequence: country and coordinates (country centroids), for the trait pie charts and the map | ours, from the paper's sampling information |
+| `CCapSV.nex` | the CCapSV alignment as a NEXUS file with the countries of `CCapSV_traits.txt` as a TRAITS block with coordinates, the input of the bundled example | ours, derived |
 | `CCapSV.stree6`, `DImmSV.stree6`, `PAegRV.stree6`, `PAegRV-haplotypes.stree6` | workflows: Median-Joining and RazorHaploNet on each alignment; `PAegRV-haplotypes` with the Shave filter and the traits | ours, derived |
 
 ## `Issakka_ITSClustering/`
@@ -114,11 +116,11 @@ Each directory holds a `Citation.txt` or `README.md` with the paper and the depo
 | directory and files | what it is | source, licence |
 |---|---|---|
 | `AmishaEtAl2026/Citation.txt`, `indian-camels-fst.nex` | pairwise F_ST among 12 camel populations, from Additional file 1 of the paper | Amisha et al. 2026, BMC Genomics 27:784 (open access, CC BY); the table transcribed by us |
-| `CassensEtAl2003/Citation.txt`, `dusky_dolphins.stree6` | 36 mitochondrial haplotypes of the dusky dolphin over 60 variable sites, with p-distances, Median-Joining, Neighbor-Net and RazorHaploNet | Cassens et al. 2003, Molecular Ecology 12:1781–1792, as distributed with SplitsTree (`dusky_dolphins.nex`) |
+| `CassensEtAl2003/Citation.txt`, `dusky_dolphins.stree6`, `dusky_dolphins.nex` | 36 mitochondrial haplotypes of the dusky dolphin over 60 variable sites, with p-distances, Median-Joining, Neighbor-Net and RazorHaploNet; the `.nex` holds the TAXA and CHARACTERS blocks of SplitsTree's file, the input of the bundled example | Cassens et al. 2003, Molecular Ecology 12:1781–1792, as distributed with SplitsTree (`dusky_dolphins.nex`) |
 | `DotsevEtAl2025/Citation.txt`, `kerman-wild-sheep-fst.nex` | pairwise F_ST among 8 wild sheep populations, Supplementary Table S1 | Dotsev et al. 2025, Animals 15:238 (open access, CC BY) |
-| `DotsevEtAl2026/Citation.txt`, `snow-sheep-fst.nex`, `snow-sheep-fst-labels.txt`, `snow-sheep-fst.stree6` | pairwise F_ST among 14 snow sheep populations (Table S1 of the paper's supplement), display labels with the paper's colours, and the workflow of Figure 3 (Neighbor-Net, RazorNet, Shave filter) | Dotsev et al. 2026, Ecology and Evolution 16:e74182 (open access, CC BY) |
+| `DotsevEtAl2026/Citation.txt`, `snow-sheep-fst.nex`, `snow-sheep-fst-labels.txt`, `snow-sheep-fst.stree6`, `snow-sheep-fst-with-labels.nex` | pairwise F_ST among 14 snow sheep populations (Table S1 of the paper's supplement), display labels with the paper's colours, the workflow of Figure 3 (Neighbor-Net, RazorNet, Shave filter), and the matrix with the labels in its TAXA block, the input of the bundled example | Dotsev et al. 2026, Ecology and Evolution 16:e74182 (open access, CC BY) |
 | `Greenhill2015/Citation.txt`, `Huon-languages.stree6`, `Greenhill2015.stree6` | 391 cognate sets of 14 Huon Peninsula languages with Hamming distances and Neighbor-Net; the distances with Neighbor-Net, RazorNet and the Shave filter (Table 2) | Greenhill 2015, PLoS ONE 10:e0141563; the data from TransNewGuinea.org as distributed with SplitsTree |
 | `PadillaIglesiasEtAl2024/Citation.txt`, `hunter-gatherers-genetics-fst.nex`, `-music-jaccard.nex`, `-tools-jaccard.nex`, and the three `.stree6` | F_ST and Jaccard distances among ten Central African hunter-gatherer groups, computed by us from the authors' repository as `Citation.txt` describes, and the workflows | Padilla-Iglesias et al. 2024, Nature Human Behaviour 8:1263–1275; data and code <https://github.com/ceciliapad/GenCultEvo>, which states no licence; the matrices are our own computations from its tables |
-| `SalugaEtAl2022/README.md`, `doi_10_5061_dryad_h18931zp3__v20220812/` (20 alignments `.fas`/`.fasta`, their `README.txt`, and our 20 `.hamming.dist`), `ALIGNMENT_ITS_Haplotype_Network_116_SEQ.stree6`, `…-Figure1a-PopART-TCS.stree6`, `…-haplotypes-fig1b.stree6`, `…-haplotypes-fig1c.stree6`, `ALIGNMENT_cpDNA_Haplotype_Network_111_SEQ.stree6`, `…-popart.nex`, `make-popart.py`, `traits.txt`, `display-labels.txt` | the Dryad deposit of the paper (twelve alignments of *Syntrichia* markers, several in two copies with different names), the workflows of Figure 1 and of the cpDNA network, the PopART file and the script that writes it, the traits and display labels | Saługa et al. 2022, Journal of Biogeography 49:1991–2004; Dryad <https://doi.org/10.5061/dryad.h18931zp3> (CC0) |
+| `SalugaEtAl2022/README.md`, `doi_10_5061_dryad_h18931zp3__v20220812/` (20 alignments `.fas`/`.fasta`, their `README.txt`, and our 20 `.hamming.dist`), `ALIGNMENT_ITS_Haplotype_Network_116_SEQ.stree6`, `…-Figure1a-PopART-TCS.stree6`, `…-haplotypes-fig1b.stree6`, `…-haplotypes-fig1c.stree6`, `ALIGNMENT_cpDNA_Haplotype_Network_111_SEQ.stree6`, `…-popart.nex`, `make-popart.py`, `traits.txt`, `display-labels.txt`, `syntrichia-its-haplotypes.nex` | the Dryad deposit of the paper (twelve alignments of *Syntrichia* markers, several in two copies with different names), the workflows of Figure 1 and of the cpDNA network, the PopART file and the script that writes it, the traits and display labels, and the 16 ITS haplotypes with their sample counts as traits (the input blocks of the Figure 1b workflow), the input of the bundled example | Saługa et al. 2022, Journal of Biogeography 49:1991–2004; Dryad <https://doi.org/10.5061/dryad.h18931zp3> (CC0) |
 | `XuEtAl2026/README.md`, `Diamond_Princess.phy`, `.tsv`, `.vcf` (as received), `Diamond_Princess.nex`, `-traits-matrix.tsv`, `-popart.nex`, `make-traits.py`, and the four `.stree6` | 482 SARS-CoV-2 genomes of the Diamond Princess outbreak and contemporaneous genomes over 444 variable sites, with sampling locations and dates; our NEXUS, traits and PopART versions, the script that writes them, and the workflows of Figure 2 | Xu et al. 2026, Molecular Biology and Evolution 43:msag052; the data from the supplementary materials of HaploThread on Zenodo, <https://doi.org/10.5281/zenodo.18194187>, which states no licence; used with the full citation |
 | `deJongEtAl2023/Citation.txt`, `brown-bear-populations-d.nex`, `brown-bear-populations-d-no-outgroups.nex` | genome-wide distances among 27 bear populations, recomputed by us from the deposit as `Citation.txt` describes (not used in the paper) | de Jong et al. 2023, Communications Biology 6:153; Dryad <https://doi.org/10.5061/dryad.qbzkh18n6> (CC0) |

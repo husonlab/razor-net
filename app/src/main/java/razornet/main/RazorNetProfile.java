@@ -124,7 +124,7 @@ public class RazorNetProfile implements IAppProfile {
 				.noneMatch(a -> a instanceof razornet.algorithms.RazorNet || a instanceof razornet.algorithms.RazorHaploNet);
 	}
 
-	private static final Set<String> KEEP_MENU_IDS = Set.of("newMenuItem", "openMenuItem", "openRecentMenu", "replaceDataMenuItem",
+	private static final Set<String> KEEP_MENU_IDS = Set.of("newMenuItem", "openMenuItem", "openRecentMenu", "examplesMenu", "replaceDataMenuItem",
 			"editInputMenuItem", "importDialogMenuItem", "importHaplotypeMenuItem", "importTaxonDisplayMenuItem", "importTaxonTraitsMenuItem",
 			"saveMenuItem", "saveAsMenuItem", "exportImageMenuItem", "exportTaxonDisplayLabelsMenuItem", "exportTaxonTraitsMenuItem",
 			"exportWorkflowMenuItem", "pageSetupMenuItem", "printMenuItem", "closeMenuItem", "quitMenuItem",

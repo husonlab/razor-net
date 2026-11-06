@@ -1,0 +1,521 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=9 nAlgorithms=6;
+PROGRAM version='SplitsTree (version 1.0.0-SNAPSHOT) - License GPL v3';
+WORKFLOW creationDate='1793974111717'; [Fri Nov 06 15:08:31 CET 2026]
+END; [SPLITSTREE6]
+
+[!Dusky dolphin (Lagenorhynchus obscurus) mitochondrial haplotypes from Cassens et al. (2003), Mol Ecol 12:1781-1792,
+DOI 10.1046/j.1365-294x.2003.01876.x: 36 haplotypes over 60 variable sites, as distributed with SplitsTree.
+RazorHaploNet with the Shave filter.]
+
+[
+Methods:
+Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.).
+The original input consisted of 36 taxa and 36 DNA sequences of length 60.
+The Razor Haplo Net method was used (default options) so as to obtain 55 nodes and 64 edges.
+The Shave Filter method was used (default options) so as to obtain 51 nodes and 56 edges.
+
+References:
+Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=36;
+TAXLABELS
+	[1] 'A1.1'
+	[2] 'A1.2'
+	[3] 'A1.3'
+	[4] 'A1.4'
+	[5] 'A1.5'
+	[6] 'A2.1'
+	[7] 'A2.2'
+	[8] 'A3'
+	[9] 'A4'
+	[10] 'A5'
+	[11] 'A6'
+	[12] 'A7'
+	[13] 'A8.1'
+	[14] 'A8.2'
+	[15] 'A9'
+	[16] 'A10'
+	[17] 'A11'
+	[18] 'A12'
+	[19] 'A14'
+	[20] 'A17'
+	[21] 'A18'
+	[22] 'A19'
+	[23] 'P1'
+	[24] 'P2.1'
+	[25] 'P2.2'
+	[26] 'P3.1'
+	[27] 'P3.2'
+	[28] 'P4.1'
+	[29] 'P4.2'
+	[30] 'P5.1'
+	[31] 'P5.2'
+	[32] 'P5.3'
+	[33] 'P5.4'
+	[34] 'P6.1'
+	[35] 'P6.2'
+	[36] 'P7'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+LINK ALGORITHM = 'Input Data Loader';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=36;
+TAXLABELS
+	[1] 'A1.1'
+	[2] 'A1.2'
+	[3] 'A1.3'
+	[4] 'A1.4'
+	[5] 'A1.5'
+	[6] 'A2.1'
+	[7] 'A2.2'
+	[8] 'A3'
+	[9] 'A4'
+	[10] 'A5'
+	[11] 'A6'
+	[12] 'A7'
+	[13] 'A8.1'
+	[14] 'A8.2'
+	[15] 'A9'
+	[16] 'A10'
+	[17] 'A11'
+	[18] 'A12'
+	[19] 'A14'
+	[20] 'A17'
+	[21] 'A18'
+	[22] 'A19'
+	[23] 'P1'
+	[24] 'P2.1'
+	[25] 'P2.2'
+	[26] 'P3.1'
+	[27] 'P3.2'
+	[28] 'P4.1'
+	[29] 'P4.2'
+	[30] 'P5.1'
+	[31] 'P5.2'
+	[32] 'P5.3'
+	[33] 'P5.4'
+	[34] 'P6.1'
+	[35] 'P6.2'
+	[36] 'P7'
+;
+[DISPLAYLABELS;]
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN CHARACTERS;
+TITLE 'Input Characters';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=36 nchar=60;
+FORMAT
+	datatype='DNA' missing=? matchChar=. gap=- symbols="atgc" labels=left transpose=no interleave=no;
+MATRIX
+'A1.1' cggccttctatctctcttcttctagctcacctagttccgcgttttgtttcacgattttcc
+'A1.2' ...........................t....................c...........
+'A1.3' .............................................c..............
+'A1.4' .........................t...........t....................t.
+'A1.5' ...........................t..........a.........c...........
+'A2.1' .....................t....c.gt..g...........................
+'A2.2' .....................t...........................t..........
+A3     .......t........c...c.....c.gt..g...........................
+A4     .........g................c....cg....t...c..............c...
+A5     t........g................c....cg....t...c..............c...
+A6     ...............t..........c.....g..........c........a....c..
+A7     ................c.t.c.....c.gt..g...........................
+'A8.1' ..............c...........................c.....c...........
+'A8.2' ..............c...........................c.....c...a.......
+A9     ..........c.c.............c.....g.............c.............
+A10    ......c............................c...........c............
+A11    .....c.....................t..........a.........c...........
+A12    ................c........t..................................
+A14    ........c............t.......................a...t..........
+A17    ................c........t.........c........................
+A18    ...t..........c....c...t..c...t.g...........................
+A19    ..............c.......c.................a.c.....c...........
+P1     ..a.t..........t.c......a.c.....g...........................
+'P2.1' ..a..........t...c......a.c.....g.................g.........
+'P2.2' ..a..........t...c......a.c.....g...........................
+'P3.1' ..a.t............c......a.c.....g...........................
+'P3.2' ..a.t............c......a.c.....ga....................c.....
+'P4.1' ..a.......ct.....c......a.c.....gac....a....................
+'P4.2' ..a.......ct.....c......a.c.....ga.....a....................
+'P5.1' .aa..............c......a.c.....g...t.......................
+'P5.2' .aa..............c......a.c.....g...t......................t
+'P5.3' .aa..............c......a.c.....g...t..............t........
+'P5.4' .aa..............c......a.c.....g...t.......c...............
+'P6.1' ..a..............c......a.c.....g...........................
+'P6.2' ..a..............c......a.c.....g....................g.c....
+P7     ..a..............c.c....a.c.....g....................g.c....
+;
+END; [CHARACTERS]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK CHARACTERS = 'Input Characters';
+NAME 'Characters Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN CHARACTERS;
+TITLE 'Working Characters';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=36 nchar=60;
+FORMAT
+	datatype='DNA' missing=? matchChar=. gap=- symbols="atgc" labels=left transpose=no interleave=no;
+MATRIX
+'A1.1' cggccttctatctctcttcttctagctcacctagttccgcgttttgtttcacgattttcc
+'A1.2' ...........................t....................c...........
+'A1.3' .............................................c..............
+'A1.4' .........................t...........t....................t.
+'A1.5' ...........................t..........a.........c...........
+'A2.1' .....................t....c.gt..g...........................
+'A2.2' .....................t...........................t..........
+A3     .......t........c...c.....c.gt..g...........................
+A4     .........g................c....cg....t...c..............c...
+A5     t........g................c....cg....t...c..............c...
+A6     ...............t..........c.....g..........c........a....c..
+A7     ................c.t.c.....c.gt..g...........................
+'A8.1' ..............c...........................c.....c...........
+'A8.2' ..............c...........................c.....c...a.......
+A9     ..........c.c.............c.....g.............c.............
+A10    ......c............................c...........c............
+A11    .....c.....................t..........a.........c...........
+A12    ................c........t..................................
+A14    ........c............t.......................a...t..........
+A17    ................c........t.........c........................
+A18    ...t..........c....c...t..c...t.g...........................
+A19    ..............c.......c.................a.c.....c...........
+P1     ..a.t..........t.c......a.c.....g...........................
+'P2.1' ..a..........t...c......a.c.....g.................g.........
+'P2.2' ..a..........t...c......a.c.....g...........................
+'P3.1' ..a.t............c......a.c.....g...........................
+'P3.2' ..a.t............c......a.c.....ga....................c.....
+'P4.1' ..a.......ct.....c......a.c.....gac....a....................
+'P4.2' ..a.......ct.....c......a.c.....ga.....a....................
+'P5.1' .aa..............c......a.c.....g...t.......................
+'P5.2' .aa..............c......a.c.....g...t......................t
+'P5.3' .aa..............c......a.c.....g...t..............t........
+'P5.4' .aa..............c......a.c.....g...t.......c...............
+'P6.1' ..a..............c......a.c.....g...........................
+'P6.2' ..a..............c......a.c.....g....................g.c....
+P7     ..a..............c.c....a.c.....g....................g.c....
+;
+END; [CHARACTERS]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Haplo Net';
+LINK CHARACTERS = 'Working Characters';
+NAME 'Razor Haplo Net';
+OPTIONS
+	Strategy = 'Both',
+	Labeling = 'MinExcess',
+	RemoveSuperfluous = 'true',
+	ContractUnlabeled = 'true',
+	MissingAsState = 'false',
+	MaskGapSites = 'false',
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Razor Haplo Net';
+DIMENSIONS nVertices=55 nEdges=64;
+TYPE HaplotypeNetwork;
+VERTICES
+	id=1 label='A1.1' states='CGGCCTTCTATCTCTCTTCTTCTAGCTCACCTAGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=2 label='A1.2' states='CGGCCTTCTATCTCTCTTCTTCTAGCTTACCTAGTTCCGCGTTTTGTTCCACGATTTTCC',
+	id=3 label='A1.3' states='CGGCCTTCTATCTCTCTTCTTCTAGCTCACCTAGTTCCGCGTTTTCTTTCACGATTTTCC',
+	id=4 label='A1.4' states='CGGCCTTCTATCTCTCTTCTTCTAGTTCACCTAGTTCTGCGTTTTGTTTCACGATTTTTC',
+	id=5 label='A1.5' states='CGGCCTTCTATCTCTCTTCTTCTAGCTTACCTAGTTCCACGTTTTGTTCCACGATTTTCC',
+	id=6 label='A2.1' states='CGGCCTTCTATCTCTCTTCTTTTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=7 label='A2.2' states='CGGCCTTCTATCTCTCTTCTTTTAGCTCACCTAGTTCCGCGTTTTGTTTTACGATTTTCC',
+	id=8 label='A3' states='CGGCCTTTTATCTCTCCTCTCCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=9 label='A4' states='CGGCCTTCTGTCTCTCTTCTTCTAGCCCACCCGGTTCTGCGCTTTGTTTCACGATTCTCC',
+	id=10 label='A5' states='TGGCCTTCTGTCTCTCTTCTTCTAGCCCACCCGGTTCTGCGCTTTGTTTCACGATTCTCC',
+	id=11 label='A6' states='CGGCCTTCTATCTCTTTTCTTCTAGCCCACCTGGTTCCGCGTTCTGTTTCACAATTTCCC',
+	id=12 label='A7' states='CGGCCTTCTATCTCTCCTTTCCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=13 label='A8.1' states='CGGCCTTCTATCTCCCTTCTTCTAGCTCACCTAGTTCCGCGTCTTGTTCCACGATTTTCC',
+	id=14 label='A8.2' states='CGGCCTTCTATCTCCCTTCTTCTAGCTCACCTAGTTCCGCGTCTTGTTCCACAATTTTCC',
+	id=15 label='A9' states='CGGCCTTCTACCCCTCTTCTTCTAGCCCACCTGGTTCCGCGTTTTGCTTCACGATTTTCC',
+	id=16 label='A10' states='CGGCCTCCTATCTCTCTTCTTCTAGCTCACCTAGTCCCGCGTTTTGTCTCACGATTTTCC',
+	id=17 label='A11' states='CGGCCCTCTATCTCTCTTCTTCTAGCTTACCTAGTTCCACGTTTTGTTCCACGATTTTCC',
+	id=18 label='A12' states='CGGCCTTCTATCTCTCCTCTTCTAGTTCACCTAGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=19 label='A14' states='CGGCCTTCCATCTCTCTTCTTTTAGCTCACCTAGTTCCGCGTTTTATTTTACGATTTTCC',
+	id=20 label='A17' states='CGGCCTTCTATCTCTCCTCTTCTAGTTCACCTAGTCCCGCGTTTTGTTTCACGATTTTCC',
+	id=21 label='A18' states='CGGTCTTCTATCTCCCTTCCTCTTGCCCACTTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=22 label='A19' states='CGGCCTTCTATCTCCCTTCTTCCAGCTCACCTAGTTCCGCATCTTGTTCCACGATTTTCC',
+	id=23 label='P1' states='CGACTTTCTATCTCTTTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=24 label='P2.1' states='CGACCTTCTATCTTTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCGCGATTTTCC',
+	id=25 label='P2.2' states='CGACCTTCTATCTTTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=26 label='P3.1' states='CGACTTTCTATCTCTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=27 label='P3.2' states='CGACTTTCTATCTCTCTCCTTCTAACCCACCTGATTCCGCGTTTTGTTTCACGACTTTCC',
+	id=28 label='P4.1' states='CGACCTTCTACTTCTCTCCTTCTAACCCACCTGACTCCGAGTTTTGTTTCACGATTTTCC',
+	id=29 label='P4.2' states='CGACCTTCTACTTCTCTCCTTCTAACCCACCTGATTCCGAGTTTTGTTTCACGATTTTCC',
+	id=30 label='P5.1' states='CAACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTTCGCGTTTTGTTTCACGATTTTCC',
+	id=31 label='P5.2' states='CAACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTTCGCGTTTTGTTTCACGATTTTCT',
+	id=32 label='P5.3' states='CAACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTTCGCGTTTTGTTTCATGATTTTCC',
+	id=33 label='P5.4' states='CAACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTTCGCGTTTCGTTTCACGATTTTCC',
+	id=34 label='P6.1' states='CGACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=35 label='P6.2' states='CGACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGGTCTTCC',
+	id=36 label='P7' states='CGACCTTCTATCTCTCTCCCTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGGTCTTCC',
+	id=37 states='CGGCCTTCTATCTCCCTTCCTCTAGCCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=38 states='CGGCCTTCTATCTCTCTTCTTCTAGCTCACCTAGTCCCGCGTTTTGTTTCACGATTTTCC',
+	id=39 states='CGGCCTTCTATCTCTTTTCTTCTAGCCCACCTGGTTCCGCGTTTTGTTTCACAATTTTCC',
+	id=40 states='CGGCCTTCTACCTCTCTTCTTCTAGCCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=42 states='CGACTTTCTATCTCTCTCCTTCTAACCCACCTGATTCCGCGTTTTGTTTCACGATTTTCC',
+	id=43 states='CGGCCTTCTATCTCTCCTCTCCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=44 states='CGGCCTTCTATCTCTCTTCTTCTAGTTCACCTAGTTCTGCGTTTTGTTTCACGATTTTCC',
+	id=46 states='CGGCCTTCTATCTCTCTTCTTCTAGCCCACCTGGTTCTGCGTTTTGTTTCACGATTTTCC',
+	id=47 states='CGACCTTCTACCTCTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=48 states='CGGCCTTCTATCTCTCTTCTTCTAGCCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=49 states='CGGCCTTCTATCTCTCTTCTTTTAGCTCACCTAGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=50 states='CGGCCTTCTATCTCTCCTCTTCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=51 states='CGGCCTTCTATCTCCCTTCTTCTAGCTCACCTAGTTCCGCGTTTTGTTCCACGATTTTCC',
+	id=52 states='CGGCCTTCTATCTCCCTTCTTCTAGCCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=53 states='CGGCCTTCTATCTCTCTTCTTCTAGCTCACCTAGTTCCGCGTTTTGTTCCACGATTTTCC',
+	id=54 states='CGGCCTTCTATCTCTCTTCTTCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=55 states='CGGCCTTCTATCTCTCTTCTTCTAGTTCACCTAGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=56 states='CGGCCTTCTATCTCTCTTCTTCTAGCCCACCTGGTTCCGCGTTTTGTTTCACAATTTTCC',
+	id=57 states='CGACCTTCTACCTCTCTCCTTCTAACCCACCTGATTCCGCGTTTTGTTTCACGATTTTCC'
+;
+EDGES
+	id=1 sid=1 tid=38 weight='1' sites='36',
+	id=3 sid=1 tid=48 weight='2' sites='27,33',
+	id=4 sid=1 tid=49 weight='1' sites='22',
+	id=5 sid=1 tid=53 weight='1' sites='49',
+	id=6 sid=1 tid=55 weight='1' sites='26',
+	id=7 sid=2 tid=5 weight='1' sites='39',
+	id=8 sid=2 tid=53 weight='1' sites='28',
+	id=10 sid=4 tid=44 weight='1' sites='59',
+	id=11 sid=5 tid=17 weight='1' sites='6',
+	id=12 sid=6 tid=49 weight='4' sites='27,29,30,33',
+	id=13 sid=6 tid=54 weight='1' sites='22',
+	id=15 sid=7 tid=49 weight='1' sites='50',
+	id=16 sid=8 tid=43 weight='1' sites='8',
+	id=17 sid=9 tid=10 weight='1' sites='1',
+	id=18 sid=9 tid=46 weight='4' sites='10,32,42,57',
+	id=19 sid=11 tid=39 weight='2' sites='44,58',
+	id=20 sid=12 tid=43 weight='1' sites='19',
+	id=21 sid=13 tid=14 weight='1' sites='53',
+	id=22 sid=13 tid=22 weight='2' sites='23,41',
+	id=23 sid=13 tid=51 weight='1' sites='43',
+	id=24 sid=14 tid=56 weight='5' sites='15,27,33,43,49',
+	id=25 sid=15 tid=40 weight='2' sites='13,47',
+	id=26 sid=16 tid=38 weight='2' sites='7,48',
+	id=27 sid=18 tid=20 weight='1' sites='36',
+	id=28 sid=18 tid=50 weight='5' sites='26,27,29,30,33',
+	id=29 sid=18 tid=55 weight='1' sites='17',
+	id=31 sid=20 tid=38 weight='2' sites='17,26',
+	id=32 sid=21 tid=37 weight='3' sites='4,24,31',
+	id=33 sid=23 tid=26 weight='1' sites='16',
+	id=34 sid=23 tid=39 weight='5' sites='3,5,18,25,53',
+	id=35 sid=24 tid=25 weight='1' sites='51',
+	id=36 sid=25 tid=34 weight='1' sites='14',
+	id=37 sid=26 tid=34 weight='1' sites='5',
+	id=38 sid=26 tid=42 weight='1' sites='34',
+	id=39 sid=27 tid=42 weight='1' sites='55',
+	id=40 sid=28 tid=29 weight='1' sites='35',
+	id=41 sid=29 tid=57 weight='2' sites='12,40',
+	id=42 sid=30 tid=31 weight='1' sites='60',
+	id=43 sid=30 tid=32 weight='1' sites='52',
+	id=44 sid=30 tid=33 weight='1' sites='45',
+	id=45 sid=30 tid=34 weight='2' sites='2,37',
+	id=46 sid=34 tid=35 weight='2' sites='54,56',
+	id=47 sid=34 tid=47 weight='1' sites='11',
+	id=48 sid=34 tid=48 weight='3' sites='3,18,25',
+	id=49 sid=35 tid=36 weight='1' sites='20',
+	id=50 sid=36 tid=37 weight='6' sites='3,15,18,25,54,56',
+	id=51 sid=37 tid=52 weight='1' sites='20',
+	id=52 sid=39 tid=56 weight='1' sites='16',
+	id=53 sid=40 tid=47 weight='3' sites='3,18,25',
+	id=54 sid=40 tid=48 weight='1' sites='11',
+	id=56 sid=42 tid=57 weight='2' sites='5,11',
+	id=57 sid=43 tid=50 weight='1' sites='21',
+	id=58 sid=44 tid=46 weight='3' sites='26,27,33',
+	id=59 sid=44 tid=55 weight='1' sites='38',
+	id=60 sid=46 tid=48 weight='1' sites='38',
+	id=61 sid=47 tid=57 weight='1' sites='34',
+	id=62 sid=48 tid=52 weight='1' sites='15',
+	id=63 sid=48 tid=54 weight='2' sites='29,30',
+	id=64 sid=48 tid=56 weight='1' sites='53',
+	id=65 sid=50 tid=54 weight='1' sites='17',
+	id=66 sid=51 tid=52 weight='3' sites='27,33,49',
+	id=67 sid=51 tid=53 weight='1' sites='15',
+	id=68 sid=7 tid=19 weight='2' sites='9,46',
+	id=69 sid=1 tid=3 weight='1' sites='46'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Shave Filter';
+LINK NETWORK = 'Network';
+NAME 'Shave Filter';
+OPTIONS
+	Target = 'Balanced',
+	TargetValue = 0,
+	Deviation = 'Auto',
+	DeviationQuantilePercent = 100,
+	ReportTable = 'true';
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network-2';
+LINK ALGORITHM = 'Shave Filter';
+DIMENSIONS nVertices=51 nEdges=56;
+TYPE HaplotypeNetwork;
+PROPERTIES info ='Total length: 91, excess: 9';
+VERTICES
+	id=1 label='A1.1' states='CGGCCTTCTATCTCTCTTCTTCTAGCTCACCTAGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=2 label='A1.2' states='CGGCCTTCTATCTCTCTTCTTCTAGCTTACCTAGTTCCGCGTTTTGTTCCACGATTTTCC',
+	id=3 label='A1.3' states='CGGCCTTCTATCTCTCTTCTTCTAGCTCACCTAGTTCCGCGTTTTCTTTCACGATTTTCC',
+	id=4 label='A1.4' states='CGGCCTTCTATCTCTCTTCTTCTAGTTCACCTAGTTCTGCGTTTTGTTTCACGATTTTTC',
+	id=5 label='A1.5' states='CGGCCTTCTATCTCTCTTCTTCTAGCTTACCTAGTTCCACGTTTTGTTCCACGATTTTCC',
+	id=6 label='A2.1' states='CGGCCTTCTATCTCTCTTCTTTTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=7 label='A2.2' states='CGGCCTTCTATCTCTCTTCTTTTAGCTCACCTAGTTCCGCGTTTTGTTTTACGATTTTCC',
+	id=8 label='A3' states='CGGCCTTTTATCTCTCCTCTCCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=9 label='A4' states='CGGCCTTCTGTCTCTCTTCTTCTAGCCCACCCGGTTCTGCGCTTTGTTTCACGATTCTCC',
+	id=10 label='A5' states='TGGCCTTCTGTCTCTCTTCTTCTAGCCCACCCGGTTCTGCGCTTTGTTTCACGATTCTCC',
+	id=11 label='A6' states='CGGCCTTCTATCTCTTTTCTTCTAGCCCACCTGGTTCCGCGTTCTGTTTCACAATTTCCC',
+	id=12 label='A7' states='CGGCCTTCTATCTCTCCTTTCCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=13 label='A8.1' states='CGGCCTTCTATCTCCCTTCTTCTAGCTCACCTAGTTCCGCGTCTTGTTCCACGATTTTCC',
+	id=14 label='A8.2' states='CGGCCTTCTATCTCCCTTCTTCTAGCTCACCTAGTTCCGCGTCTTGTTCCACAATTTTCC',
+	id=15 label='A9' states='CGGCCTTCTACCCCTCTTCTTCTAGCCCACCTGGTTCCGCGTTTTGCTTCACGATTTTCC',
+	id=16 label='A10' states='CGGCCTCCTATCTCTCTTCTTCTAGCTCACCTAGTCCCGCGTTTTGTCTCACGATTTTCC',
+	id=17 label='A11' states='CGGCCCTCTATCTCTCTTCTTCTAGCTTACCTAGTTCCACGTTTTGTTCCACGATTTTCC',
+	id=18 label='A12' states='CGGCCTTCTATCTCTCCTCTTCTAGTTCACCTAGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=19 label='A14' states='CGGCCTTCCATCTCTCTTCTTTTAGCTCACCTAGTTCCGCGTTTTATTTTACGATTTTCC',
+	id=20 label='A17' states='CGGCCTTCTATCTCTCCTCTTCTAGTTCACCTAGTCCCGCGTTTTGTTTCACGATTTTCC',
+	id=21 label='A18' states='CGGTCTTCTATCTCCCTTCCTCTTGCCCACTTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=22 label='A19' states='CGGCCTTCTATCTCCCTTCTTCCAGCTCACCTAGTTCCGCATCTTGTTCCACGATTTTCC',
+	id=23 label='P1' states='CGACTTTCTATCTCTTTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=24 label='P2.1' states='CGACCTTCTATCTTTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCGCGATTTTCC',
+	id=25 label='P2.2' states='CGACCTTCTATCTTTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=26 label='P3.1' states='CGACTTTCTATCTCTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=27 label='P3.2' states='CGACTTTCTATCTCTCTCCTTCTAACCCACCTGATTCCGCGTTTTGTTTCACGACTTTCC',
+	id=28 label='P4.1' states='CGACCTTCTACTTCTCTCCTTCTAACCCACCTGACTCCGAGTTTTGTTTCACGATTTTCC',
+	id=29 label='P4.2' states='CGACCTTCTACTTCTCTCCTTCTAACCCACCTGATTCCGAGTTTTGTTTCACGATTTTCC',
+	id=30 label='P5.1' states='CAACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTTCGCGTTTTGTTTCACGATTTTCC',
+	id=31 label='P5.2' states='CAACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTTCGCGTTTTGTTTCACGATTTTCT',
+	id=32 label='P5.3' states='CAACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTTCGCGTTTTGTTTCATGATTTTCC',
+	id=33 label='P5.4' states='CAACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTTCGCGTTTCGTTTCACGATTTTCC',
+	id=34 label='P6.1' states='CGACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=35 label='P6.2' states='CGACCTTCTATCTCTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGGTCTTCC',
+	id=36 label='P7' states='CGACCTTCTATCTCTCTCCCTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGGTCTTCC',
+	id=40 states='CGGCCTTCTACCTCTCTTCTTCTAGCCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=42 states='CGACTTTCTATCTCTCTCCTTCTAACCCACCTGATTCCGCGTTTTGTTTCACGATTTTCC',
+	id=43 states='CGGCCTTCTATCTCTCCTCTCCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=44 states='CGGCCTTCTATCTCTCTTCTTCTAGTTCACCTAGTTCTGCGTTTTGTTTCACGATTTTCC',
+	id=46 states='CGGCCTTCTATCTCTCTTCTTCTAGCCCACCTGGTTCTGCGTTTTGTTTCACGATTTTCC',
+	id=47 states='CGACCTTCTACCTCTCTCCTTCTAACCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=48 states='CGGCCTTCTATCTCTCTTCTTCTAGCCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=49 states='CGGCCTTCTATCTCTCTTCTTTTAGCTCACCTAGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=50 states='CGGCCTTCTATCTCTCCTCTTCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=51 states='CGGCCTTCTATCTCCCTTCTTCTAGCTCACCTAGTTCCGCGTTTTGTTCCACGATTTTCC',
+	id=52 states='CGGCCTTCTATCTCCCTTCTTCTAGCCCACCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=53 states='CGGCCTTCTATCTCTCTTCTTCTAGCTCACCTAGTTCCGCGTTTTGTTCCACGATTTTCC',
+	id=54 states='CGGCCTTCTATCTCTCTTCTTCTAGCCCGTCTGGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=55 states='CGGCCTTCTATCTCTCTTCTTCTAGTTCACCTAGTTCCGCGTTTTGTTTCACGATTTTCC',
+	id=57 states='CGACCTTCTACCTCTCTCCTTCTAACCCACCTGATTCCGCGTTTTGTTTCACGATTTTCC'
+;
+EDGES
+	id=3 sid=1 tid=48 weight='2' sites='27,33',
+	id=4 sid=1 tid=49 weight='1' sites='22',
+	id=5 sid=1 tid=53 weight='1' sites='49',
+	id=6 sid=1 tid=55 weight='1' sites='26',
+	id=7 sid=2 tid=5 weight='1' sites='39',
+	id=8 sid=2 tid=53 weight='1' sites='28',
+	id=10 sid=4 tid=44 weight='1' sites='59',
+	id=11 sid=5 tid=17 weight='1' sites='6',
+	id=12 sid=6 tid=49 weight='4' sites='27,29,30,33',
+	id=13 sid=6 tid=54 weight='1' sites='22',
+	id=15 sid=7 tid=49 weight='1' sites='50',
+	id=16 sid=8 tid=43 weight='1' sites='8',
+	id=17 sid=9 tid=10 weight='1' sites='1',
+	id=18 sid=9 tid=46 weight='4' sites='10,32,42,57',
+	id=20 sid=12 tid=43 weight='1' sites='19',
+	id=21 sid=13 tid=14 weight='1' sites='53',
+	id=22 sid=13 tid=22 weight='2' sites='23,41',
+	id=23 sid=13 tid=51 weight='1' sites='43',
+	id=25 sid=15 tid=40 weight='2' sites='13,47',
+	id=27 sid=18 tid=20 weight='1' sites='36',
+	id=28 sid=18 tid=50 weight='5' sites='26,27,29,30,33',
+	id=29 sid=18 tid=55 weight='1' sites='17',
+	id=33 sid=23 tid=26 weight='1' sites='16',
+	id=35 sid=24 tid=25 weight='1' sites='51',
+	id=36 sid=25 tid=34 weight='1' sites='14',
+	id=37 sid=26 tid=34 weight='1' sites='5',
+	id=38 sid=26 tid=42 weight='1' sites='34',
+	id=39 sid=27 tid=42 weight='1' sites='55',
+	id=40 sid=28 tid=29 weight='1' sites='35',
+	id=41 sid=29 tid=57 weight='2' sites='12,40',
+	id=42 sid=30 tid=31 weight='1' sites='60',
+	id=43 sid=30 tid=32 weight='1' sites='52',
+	id=44 sid=30 tid=33 weight='1' sites='45',
+	id=45 sid=30 tid=34 weight='2' sites='2,37',
+	id=46 sid=34 tid=35 weight='2' sites='54,56',
+	id=47 sid=34 tid=47 weight='1' sites='11',
+	id=48 sid=34 tid=48 weight='3' sites='3,18,25',
+	id=49 sid=35 tid=36 weight='1' sites='20',
+	id=53 sid=40 tid=47 weight='3' sites='3,18,25',
+	id=54 sid=40 tid=48 weight='1' sites='11',
+	id=56 sid=42 tid=57 weight='2' sites='5,11',
+	id=57 sid=43 tid=50 weight='1' sites='21',
+	id=58 sid=44 tid=46 weight='3' sites='26,27,33',
+	id=59 sid=44 tid=55 weight='1' sites='38',
+	id=60 sid=46 tid=48 weight='1' sites='38',
+	id=61 sid=47 tid=57 weight='1' sites='34',
+	id=62 sid=48 tid=52 weight='1' sites='15',
+	id=63 sid=48 tid=54 weight='2' sites='29,30',
+	id=65 sid=50 tid=54 weight='1' sites='17',
+	id=66 sid=51 tid=52 weight='3' sites='27,33,49',
+	id=67 sid=51 tid=53 weight='1' sites='15',
+	id=68 sid=7 tid=19 weight='2' sites='9,46',
+	id=69 sid=1 tid=3 weight='1' sites='46',
+	id=70 sid=21 tid=52 weight='4' sites='4,24,31,20',
+	id=71 sid=1 tid=16 weight='3' sites='36,7,48',
+	id=73 sid=48 tid=11 weight='4' sites='53,44,58,16'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network-2';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network-3';
+LINK ALGORITHM = 'Show Network';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'Hatches',
+	Edits = 'lp:1:-42.37,-11.28' 'lp:2:-26.88,14.32' 'lp:3:-16.88,13.78' 'lp:4:-17.64,-29.26' 'lp:5:-23.14,16.87' 'lp:6:-18.66,-28.98' 'lp:7:12.87,-2.31' 'lp:8:-29.94,-13.46' 'lp:9:-18.08,16.45' 'lp:10:-32.91,-18.39' 'lp:11:3.57,14.63' 'lp:12:-8.16,-29.63' 'lp:13:-18.89,-28.9' 'lp:14:13.64,-4.67' 'lp:15:17.61,28.91' 'lp:16:0.96,-29.09' 'lp:17:12.81,-2.17' 'lp:18:88.44,2.12' 'lp:19:-8.23,-28.99' 'lp:20:-10.98,-29.56' 'lp:21:0.36,14.03' 'lp:22:12.62,-13.88' 'lp:23:-31.1,-7' 'lp:24:-45.59,-16.72' 'lp:25:-1.98,-30.02' 'lp:26:16.86,0.95' 'lp:27:-25.61,15.34' 'lp:28:-16.9,13.77' 'lp:29:13.87,-5.91' 'lp:30:10.48,-63.57' 'lp:31:-42.77,-6.88' 'lp:32:-26.17,-30.56' 'lp:33:-24.3,16.22' 'lp:34:13.99,-8.24' 'lp:35:16.55,-17.16' 'lp:36:-3.54,13.07',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'MDS';
+END; [VIEW]

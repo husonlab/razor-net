@@ -147,7 +147,7 @@ public class RazorNet extends Application {
 		try {
 			stage.setTitle("Untitled - " + ProgramProperties.getProgramName());
 			NotificationManager.setShowNotifications(true);
-			ExamplesSupport.installInAllWindows(); // File -> Examples, in this window and every later one
+			ExamplesSupport.installInAllWindows(); // RazorNet's examples in File -> Examples, in this window and every later one
 			final var window = new MainWindow();
 			WindowGeometry.setToStage(stage);
 			window.show(stage, stage.getX(), stage.getY(), stage.getWidth(), stage.getHeight());

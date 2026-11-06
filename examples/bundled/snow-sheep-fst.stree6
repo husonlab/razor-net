@@ -1,0 +1,448 @@
+#nexus [SplitsTree6]
+
+BEGIN SPLITSTREE6;
+DIMENSIONS nDataNodes=8 nAlgorithms=6;
+PROGRAM version='SplitsTree (version 1.0.0-SNAPSHOT) - License GPL v3';
+WORKFLOW creationDate='1793974088148'; [Fri Nov 06 15:08:08 CET 2026]
+END; [SPLITSTREE6]
+
+[!Pairwise F_ST among 14 populations of the snow sheep (Ovis nivicola), Table S1 of Dotsev et al. (2026),
+Ecology and Evolution 16:e74182, DOI 10.1002/ece3.74182 (CC BY), with the colours of the paper as display labels.
+Figure 3 of the RazorNet paper: RazorNet with the Shave filter.]
+
+[
+Methods:
+Analysis was performed using RazorNet (version dev)  (Huson and Bryant 2024 ; DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.).
+The original input consisted of 14 taxa and a 14 x 14 distance matrix.
+The Razor Net method was used (default options) so as to obtain 61 nodes and 83 edges.
+The Shave Filter method was used (default options) so as to obtain 34 nodes and 40 edges.
+
+References:
+Huson and Bryant 2024: DH Huson and D. Bryant, The SplitsTree App: interactive analysis and visualization using phylogenetic trees and networks. Nature Methods 21(10):1773-1774 2024.
+]
+
+BEGIN TAXA;
+TITLE 'Input Taxa';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=14;
+TAXLABELS
+	[1] 'KAMCHATKA_S'
+	[2] 'KAMCHATKA_N'
+	[3] 'KORYAK'
+	[4] 'CHUKOTKA'
+	[5] 'OKHOTSK'
+	[6] 'MOMSKY'
+	[7] 'SELENNYAKH'
+	[8] 'CHERSKY'
+	[9] 'SUNTAR_KHAYATA'
+	[10] 'YABLONOV'
+	[11] 'VERKHOYANSK'
+	[12] 'ORULGAN'
+	[13] 'KHARAULAKH'
+	[14] 'PUTORANA'
+;
+DISPLAYLABELS
+	[1] '<b><c 0x8a008bff><mark shape="Circle" fill="#8a008bff" height="6" width="6" stroke="black" node="true">KAMCHATKA_S'
+	[2] '<b><c 0xdea0ddff><mark shape="Circle" fill="#dea0ddff" height="6" width="6" stroke="black" node="true">KAMCHATKA_N'
+	[3] '<b><c 0x2e8a57ff><mark shape="Circle" fill="#2e8a57ff" height="6" width="6" stroke="black" node="true">KORYAK'
+	[4] '<b><c 0xfd8b01ff><mark shape="Circle" fill="#fd8b01ff" height="6" width="6" stroke="black" node="true">CHUKOTKA'
+	[5] '<b><c 0x898989ff><mark shape="Circle" fill="#898989ff" height="6" width="6" stroke="black" node="true">OKHOTSK'
+	[6] '<b><c 0x26418cff><mark shape="Circle" fill="#26418cff" height="6" width="6" stroke="black" node="true">MOMSKY'
+	[7] '<b><c 0x5f9fa0ff><mark shape="Circle" fill="#5f9fa0ff" height="6" width="6" stroke="black" node="true">SELENNYAKH'
+	[8] '<b><c 0xdaa520ff><mark shape="Circle" fill="#daa520ff" height="6" width="6" stroke="black" node="true">CHERSKY'
+	[9] '<b><c 0x63b7ffff><mark shape="Circle" fill="#63b7ffff" height="6" width="6" stroke="black" node="true">SUNTAR_KHAYATA'
+	[10] '<b><c 0x8b5a2cff><mark shape="Circle" fill="#8b5a2cff" height="6" width="6" stroke="black" node="true">YABLONOV'
+	[11] '<b><c 0xee2e2dff><mark shape="Circle" fill="#ee2e2dff" height="6" width="6" stroke="black" node="true">VERKHOYANSK'
+	[12] '<b><c 0x9bcd31ff><mark shape="Circle" fill="#9bcd31ff" height="6" width="6" stroke="black" node="true">ORULGAN'
+	[13] '<b><c 0xfed703ff><mark shape="Circle" fill="#fed703ff" height="6" width="6" stroke="black" node="true">KHARAULAKH'
+	[14] '<b><c 0xbdb76bff><mark shape="Circle" fill="#bdb76bff" height="6" width="6" stroke="black" node="true">PUTORANA'
+;
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN ALGORITHM;
+TITLE 'Taxa Filter';
+LINK ALGORITHM = 'Input Data Loader';
+NAME 'Taxa Filter';
+OPTIONS
+;
+END; [ALGORITHM]
+
+BEGIN TAXA;
+TITLE 'Working Taxa';
+LINK ALGORITHM = 'Taxa Filter';
+DIMENSIONS ntax=14;
+TAXLABELS
+	[1] 'KAMCHATKA_S'
+	[2] 'KAMCHATKA_N'
+	[3] 'KORYAK'
+	[4] 'CHUKOTKA'
+	[5] 'OKHOTSK'
+	[6] 'MOMSKY'
+	[7] 'SELENNYAKH'
+	[8] 'CHERSKY'
+	[9] 'SUNTAR_KHAYATA'
+	[10] 'YABLONOV'
+	[11] 'VERKHOYANSK'
+	[12] 'ORULGAN'
+	[13] 'KHARAULAKH'
+	[14] 'PUTORANA'
+;
+DISPLAYLABELS
+	[1] '<b><c 0x8a008bff><mark shape="Circle" fill="#8a008bff" height="6" width="6" stroke="black" node="true">KAMCHATKA_S'
+	[2] '<b><c 0xdea0ddff><mark shape="Circle" fill="#dea0ddff" height="6" width="6" stroke="black" node="true">KAMCHATKA_N'
+	[3] '<b><c 0x2e8a57ff><mark shape="Circle" fill="#2e8a57ff" height="6" width="6" stroke="black" node="true">KORYAK'
+	[4] '<b><c 0xfd8b01ff><mark shape="Circle" fill="#fd8b01ff" height="6" width="6" stroke="black" node="true">CHUKOTKA'
+	[5] '<b><c 0x898989ff><mark shape="Circle" fill="#898989ff" height="6" width="6" stroke="black" node="true">OKHOTSK'
+	[6] '<b><c 0x26418cff><mark shape="Circle" fill="#26418cff" height="6" width="6" stroke="black" node="true">MOMSKY'
+	[7] '<b><c 0x5f9fa0ff><mark shape="Circle" fill="#5f9fa0ff" height="6" width="6" stroke="black" node="true">SELENNYAKH'
+	[8] '<b><c 0xdaa520ff><mark shape="Circle" fill="#daa520ff" height="6" width="6" stroke="black" node="true">CHERSKY'
+	[9] '<b><c 0x63b7ffff><mark shape="Circle" fill="#63b7ffff" height="6" width="6" stroke="black" node="true">SUNTAR_KHAYATA'
+	[10] '<b><c 0x8b5a2cff><mark shape="Circle" fill="#8b5a2cff" height="6" width="6" stroke="black" node="true">YABLONOV'
+	[11] '<b><c 0xee2e2dff><mark shape="Circle" fill="#ee2e2dff" height="6" width="6" stroke="black" node="true">VERKHOYANSK'
+	[12] '<b><c 0x9bcd31ff><mark shape="Circle" fill="#9bcd31ff" height="6" width="6" stroke="black" node="true">ORULGAN'
+	[13] '<b><c 0xfed703ff><mark shape="Circle" fill="#fed703ff" height="6" width="6" stroke="black" node="true">KHARAULAKH'
+	[14] '<b><c 0xbdb76bff><mark shape="Circle" fill="#bdb76bff" height="6" width="6" stroke="black" node="true">PUTORANA'
+;
+[TAXINFO;]
+END; [TAXA]
+
+BEGIN DISTANCES;
+TITLE 'Input Distances';
+LINK ALGORITHM = 'Input Data Loader';
+DIMENSIONS ntax=14;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 'KAMCHATKA_S'      0 0.136 0.248 0.354 0.316 0.392 0.417 0.339 0.307 0.451 0.337 0.359 0.41 0.645
+[2] 'KAMCHATKA_N'      0.136 0 0.117 0.205 0.196 0.268 0.284 0.222 0.204 0.339 0.231 0.269 0.324 0.642
+[3] 'KORYAK'           0.248 0.117 0 0.109 0.113 0.189 0.202 0.141 0.136 0.239 0.167 0.199 0.248 0.443
+[4] 'CHUKOTKA'         0.354 0.205 0.109 0 0.036 0.146 0.171 0.091 0.086 0.206 0.123 0.166 0.218 0.543
+[5] 'OKHOTSK'          0.316 0.196 0.113 0.036 0 0.104 0.122 0.057 0.058 0.169 0.095 0.136 0.187 0.426
+[6] 'MOMSKY'           0.392 0.268 0.189 0.146 0.104 0 0.103 0.054 0.083 0.206 0.111 0.154 0.212 0.505
+[7] 'SELENNYAKH'       0.417 0.284 0.202 0.171 0.122 0.103 0 0.066 0.086 0.226 0.111 0.15 0.202 0.583
+[8] 'CHERSKY'          0.339 0.222 0.141 0.091 0.057 0.054 0.066 0 0.027 0.149 0.055 0.097 0.152 0.427
+[9] 'SUNTAR_KHAYATA'   0.307 0.204 0.136 0.086 0.058 0.083 0.086 0.027 0 0.126 0.044 0.092 0.141 0.381
+[10] 'YABLONOV'         0.451 0.339 0.239 0.206 0.169 0.206 0.226 0.149 0.126 0 0.166 0.196 0.254 0.599
+[11] 'VERKHOYANSK'      0.337 0.231 0.167 0.123 0.095 0.111 0.111 0.055 0.044 0.166 0 0.048 0.101 0.401
+[12] 'ORULGAN'          0.359 0.269 0.199 0.166 0.136 0.154 0.15 0.097 0.092 0.196 0.048 0 0.039 0.415
+[13] 'KHARAULAKH'       0.41 0.324 0.248 0.218 0.187 0.212 0.202 0.152 0.141 0.254 0.101 0.039 0 0.467
+[14] 'PUTORANA'         0.645 0.642 0.443 0.543 0.426 0.505 0.583 0.427 0.381 0.599 0.401 0.415 0.467 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Input Data Filter';
+LINK DISTANCES = 'Input Distances';
+NAME 'Distances Taxa Filter';
+END; [ALGORITHM]
+
+BEGIN DISTANCES;
+TITLE 'Working Distances';
+LINK ALGORITHM = 'Input Data Filter';
+DIMENSIONS ntax=14;
+FORMAT labels=left diagonal triangle=Both;
+MATRIX
+[1] 'KAMCHATKA_S'      0 0.136 0.248 0.354 0.316 0.392 0.417 0.339 0.307 0.451 0.337 0.359 0.41 0.645
+[2] 'KAMCHATKA_N'      0.136 0 0.117 0.205 0.196 0.268 0.284 0.222 0.204 0.339 0.231 0.269 0.324 0.642
+[3] 'KORYAK'           0.248 0.117 0 0.109 0.113 0.189 0.202 0.141 0.136 0.239 0.167 0.199 0.248 0.443
+[4] 'CHUKOTKA'         0.354 0.205 0.109 0 0.036 0.146 0.171 0.091 0.086 0.206 0.123 0.166 0.218 0.543
+[5] 'OKHOTSK'          0.316 0.196 0.113 0.036 0 0.104 0.122 0.057 0.058 0.169 0.095 0.136 0.187 0.426
+[6] 'MOMSKY'           0.392 0.268 0.189 0.146 0.104 0 0.103 0.054 0.083 0.206 0.111 0.154 0.212 0.505
+[7] 'SELENNYAKH'       0.417 0.284 0.202 0.171 0.122 0.103 0 0.066 0.086 0.226 0.111 0.15 0.202 0.583
+[8] 'CHERSKY'          0.339 0.222 0.141 0.091 0.057 0.054 0.066 0 0.027 0.149 0.055 0.097 0.152 0.427
+[9] 'SUNTAR_KHAYATA'   0.307 0.204 0.136 0.086 0.058 0.083 0.086 0.027 0 0.126 0.044 0.092 0.141 0.381
+[10] 'YABLONOV'         0.451 0.339 0.239 0.206 0.169 0.206 0.226 0.149 0.126 0 0.166 0.196 0.254 0.599
+[11] 'VERKHOYANSK'      0.337 0.231 0.167 0.123 0.095 0.111 0.111 0.055 0.044 0.166 0 0.048 0.101 0.401
+[12] 'ORULGAN'          0.359 0.269 0.199 0.166 0.136 0.154 0.15 0.097 0.092 0.196 0.048 0 0.039 0.415
+[13] 'KHARAULAKH'       0.41 0.324 0.248 0.218 0.187 0.212 0.202 0.152 0.141 0.254 0.101 0.039 0 0.467
+[14] 'PUTORANA'         0.645 0.642 0.443 0.543 0.426 0.505 0.583 0.427 0.381 0.599 0.401 0.415 0.467 0
+;
+END; [DISTANCES]
+
+BEGIN ALGORITHM;
+TITLE 'Razor Net';
+LINK DISTANCES = 'Working Distances';
+NAME 'Razor Net';
+OPTIONS
+	Preprocessing = 'None',
+	Strategy = 'Both',
+	SignificantDigits = 6,
+	MaxSeconds = 60;
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network';
+LINK ALGORITHM = 'Razor Net';
+DIMENSIONS nVertices=61 nEdges=83;
+TYPE DistanceNetwork;
+VERTICES
+	id=1 label='KAMCHATKA_S',
+	id=2 label='KAMCHATKA_N',
+	id=3 label='KORYAK',
+	id=4 label='CHUKOTKA',
+	id=5 label='OKHOTSK',
+	id=6 label='MOMSKY',
+	id=7 label='SELENNYAKH',
+	id=8 label='CHERSKY',
+	id=9 label='SUNTAR_KHAYATA',
+	id=10 label='YABLONOV',
+	id=11 label='VERKHOYANSK',
+	id=12 label='ORULGAN',
+	id=13 label='KHARAULAKH',
+	id=14 label='PUTORANA',
+	id=15,
+	id=16,
+	id=17,
+	id=18,
+	id=19,
+	id=20,
+	id=21,
+	id=22,
+	id=23,
+	id=24,
+	id=25,
+	id=26,
+	id=27,
+	id=28,
+	id=29,
+	id=30,
+	id=31,
+	id=32,
+	id=33,
+	id=34,
+	id=35,
+	id=36,
+	id=37,
+	id=38,
+	id=39,
+	id=40,
+	id=41,
+	id=42,
+	id=43,
+	id=44,
+	id=45,
+	id=46,
+	id=47,
+	id=48,
+	id=49,
+	id=50,
+	id=51,
+	id=52,
+	id=53,
+	id=54,
+	id=55,
+	id=56,
+	id=57,
+	id=58,
+	id=59,
+	id=60,
+	id=61
+;
+EDGES
+	id=1 sid=1 tid=17 weight='0.1105',
+	id=2 sid=2 tid=25 weight='0.104',
+	id=3 sid=2 tid=26 weight='0.008',
+	id=4 sid=3 tid=22 weight='0.1045',
+	id=5 sid=3 tid=23 weight='0.008',
+	id=6 sid=4 tid=21 weight='0.016',
+	id=7 sid=5 tid=37 weight='0.014',
+	id=8 sid=5 tid=52 weight='0.001',
+	id=9 sid=6 tid=19 weight='0.0425',
+	id=10 sid=7 tid=18 weight='0.051',
+	id=11 sid=8 tid=38 weight='0.0025',
+	id=12 sid=8 tid=56 weight='0.001',
+	id=13 sid=9 tid=32 weight='0.002',
+	id=14 sid=9 tid=44 weight='0.009',
+	id=15 sid=9 tid=50 weight='0.0135',
+	id=16 sid=9 tid=53 weight='0.0105',
+	id=17 sid=10 tid=16 weight='0.1145',
+	id=18 sid=11 tid=31 weight='0.0025',
+	id=19 sid=11 tid=48 weight='0.0355',
+	id=20 sid=12 tid=13 weight='0.039',
+	id=21 sid=12 tid=20 weight='0.031',
+	id=22 sid=14 tid=15 weight='0.3295',
+	id=23 sid=15 tid=20 weight='0.0545',
+	id=24 sid=15 tid=22 weight='0.009',
+	id=25 sid=16 tid=34 weight='0.008',
+	id=26 sid=16 tid=41 weight='0.0025',
+	id=27 sid=16 tid=60 weight='0.0105',
+	id=28 sid=17 tid=26 weight='0.0175',
+	id=29 sid=17 tid=42 weight='0.1695',
+	id=30 sid=18 tid=35 weight='0.0065',
+	id=31 sid=18 tid=57 weight='0.0155',
+	id=32 sid=19 tid=35 weight='0.003',
+	id=33 sid=19 tid=51 weight='0.0455',
+	id=34 sid=20 tid=28 weight='0.004',
+	id=35 sid=21 tid=33 weight='0.016',
+	id=36 sid=21 tid=43 weight='0.0825',
+	id=37 sid=22 tid=24 weight='0.021',
+	id=38 sid=23 tid=43 weight='0.0025',
+	id=39 sid=23 tid=55 weight='0.024',
+	id=40 sid=24 tid=42 weight='0.0055',
+	id=41 sid=24 tid=53 weight='0.011',
+	id=42 sid=25 tid=27 weight='0.008',
+	id=43 sid=25 tid=43 weight='0.0025',
+	id=44 sid=26 tid=55 weight='0.088',
+	id=45 sid=27 tid=36 weight='0.006',
+	id=46 sid=27 tid=54 weight='0.092',
+	id=47 sid=28 tid=29 weight='0.004',
+	id=48 sid=28 tid=42 weight='0.044',
+	id=49 sid=29 tid=45 weight='0.004',
+	id=50 sid=29 tid=58 weight='0.033',
+	id=51 sid=30 tid=36 weight='0.0075',
+	id=52 sid=30 tid=50 weight='0.092',
+	id=53 sid=30 tid=55 weight='0.0025',
+	id=54 sid=31 tid=46 weight='0.002',
+	id=55 sid=31 tid=59 weight='0.042',
+	id=56 sid=32 tid=34 weight='0.0015',
+	id=57 sid=32 tid=48 weight='0.0065',
+	id=58 sid=33 tid=52 weight='0.003',
+	id=59 sid=33 tid=59 weight='0.0465',
+	id=60 sid=34 tid=59 weight='0.004',
+	id=61 sid=35 tid=38 weight='0.006',
+	id=62 sid=36 tid=51 weight='0.074',
+	id=63 sid=37 tid=51 weight='0.002',
+	id=64 sid=37 tid=60 weight='0.03',
+	id=65 sid=38 tid=54 weight='0.0255',
+	id=66 sid=39 tid=47 weight='0.0005',
+	id=67 sid=39 tid=49 weight='0.006',
+	id=68 sid=39 tid=58 weight='0.0055',
+	id=69 sid=40 tid=44 weight='0.004',
+	id=70 sid=40 tid=48 weight='0.0055',
+	id=71 sid=40 tid=49 weight='0.0005',
+	id=72 sid=41 tid=54 weight='0.009',
+	id=73 sid=41 tid=58 weight='0.007',
+	id=74 sid=44 tid=61 weight='0.003',
+	id=75 sid=45 tid=46 weight='0.0005',
+	id=76 sid=45 tid=50 weight='0.0355',
+	id=77 sid=46 tid=57 weight='0.04',
+	id=78 sid=47 tid=50 weight='0.0115',
+	id=79 sid=47 tid=61 weight='0.008',
+	id=80 sid=49 tid=56 weight='0.0125',
+	id=81 sid=52 tid=56 weight='0.055',
+	id=82 sid=53 tid=60 weight='0.0115',
+	id=83 sid=57 tid=61 weight='0.0075'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Shave Filter';
+LINK NETWORK = 'Network';
+NAME 'Shave Filter';
+OPTIONS
+	Target = 'Balanced',
+	TargetValue = 0,
+	Deviation = 'Auto',
+	DeviationQuantilePercent = 100,
+	ReportTable = 'true';
+END; [ALGORITHM]
+
+BEGIN NETWORK;
+TITLE 'Network-2';
+LINK ALGORITHM = 'Shave Filter';
+DIMENSIONS nVertices=34 nEdges=40;
+TYPE DistanceNetwork;
+PROPERTIES info ='Total length: 1.76, distortion: 1.341542';
+VERTICES
+	id=1 label='KAMCHATKA_S',
+	id=2 label='KAMCHATKA_N',
+	id=3 label='KORYAK',
+	id=4 label='CHUKOTKA',
+	id=5 label='OKHOTSK',
+	id=6 label='MOMSKY',
+	id=7 label='SELENNYAKH',
+	id=8 label='CHERSKY',
+	id=9 label='SUNTAR_KHAYATA',
+	id=10 label='YABLONOV',
+	id=11 label='VERKHOYANSK',
+	id=12 label='ORULGAN',
+	id=13 label='KHARAULAKH',
+	id=14 label='PUTORANA',
+	id=16,
+	id=17,
+	id=18,
+	id=21,
+	id=22,
+	id=24,
+	id=25,
+	id=28,
+	id=32,
+	id=33,
+	id=34,
+	id=35,
+	id=38,
+	id=42,
+	id=43,
+	id=46,
+	id=48,
+	id=52,
+	id=54,
+	id=56
+;
+EDGES
+	id=1 sid=1 tid=17 weight='0.1105',
+	id=2 sid=2 tid=25 weight='0.104',
+	id=4 sid=3 tid=22 weight='0.1045',
+	id=6 sid=4 tid=21 weight='0.016',
+	id=8 sid=5 tid=52 weight='0.001',
+	id=10 sid=7 tid=18 weight='0.051',
+	id=11 sid=8 tid=38 weight='0.0025',
+	id=12 sid=8 tid=56 weight='0.001',
+	id=13 sid=9 tid=32 weight='0.002',
+	id=17 sid=10 tid=16 weight='0.1145',
+	id=19 sid=11 tid=48 weight='0.0355',
+	id=20 sid=12 tid=13 weight='0.039',
+	id=25 sid=16 tid=34 weight='0.008',
+	id=29 sid=17 tid=42 weight='0.1695',
+	id=30 sid=18 tid=35 weight='0.0065',
+	id=35 sid=21 tid=33 weight='0.016',
+	id=36 sid=21 tid=43 weight='0.0825',
+	id=37 sid=22 tid=24 weight='0.021',
+	id=40 sid=24 tid=42 weight='0.0055',
+	id=43 sid=25 tid=43 weight='0.0025',
+	id=48 sid=28 tid=42 weight='0.044',
+	id=56 sid=32 tid=34 weight='0.0015',
+	id=57 sid=32 tid=48 weight='0.0065',
+	id=58 sid=33 tid=52 weight='0.003',
+	id=61 sid=35 tid=38 weight='0.006',
+	id=65 sid=38 tid=54 weight='0.0255',
+	id=81 sid=52 tid=56 weight='0.055',
+	id=84 sid=14 tid=22 weight='0.3385',
+	id=85 sid=6 tid=35 weight='0.0455',
+	id=86 sid=12 tid=28 weight='0.035',
+	id=87 sid=3 tid=43 weight='0.0105',
+	id=88 sid=2 tid=17 weight='0.0255',
+	id=89 sid=25 tid=54 weight='0.1',
+	id=91 sid=11 tid=46 weight='0.0045',
+	id=93 sid=16 tid=54 weight='0.0115',
+	id=94 sid=46 tid=28 weight='0.0085',
+	id=95 sid=56 tid=48 weight='0.0185',
+	id=96 sid=9 tid=24 weight='0.0215',
+	id=97 sid=18 tid=46 weight='0.0555',
+	id=98 sid=33 tid=34 weight='0.0505'
+;
+END; [NETWORK]
+
+BEGIN ALGORITHM;
+TITLE 'Show Network';
+LINK NETWORK = 'Network-2';
+NAME 'Show Network';
+OPTIONS
+	View = 'Network';
+END; [ALGORITHM]
+
+BEGIN VIEW;
+TITLE 'Network-3';
+LINK ALGORITHM = 'Show Network';
+NAME 'NetworkView';
+INPUT 'NETWORK';
+OPTIONS
+	Diagram = 'Network',
+	FontScaleFactor = 1,
+	TraitLegend = 'False',
+	TraitSize = 32,
+	SitesStyle = 'None',
+	Edits = 'lp:1:13.92,-9.27' 'lp:2:-28.32,58.43' 'lp:3:-24.59,12.77' 'lp:4:-44.48,13.28' 'lp:5:-83.37,-3.68' 'lp:6:-78.43,-18.91' 'lp:7:-49.75,-29.56' 'lp:8:-82.43,-8.71' 'lp:9:-65.66,13.91' 'lp:10:-93.34,-7.9' 'lp:11:-124.47,-18.72' 'lp:12:14.7,4.22' 'lp:13:-38.23,-30.74' 'lp:14:-9.08,31.63',
+	LayoutSeed = 1,
+	LayoutAlgorithm = 'MDS';
+END; [VIEW]
