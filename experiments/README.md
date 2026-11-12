@@ -1,8 +1,8 @@
 # The experiments behind the RazorNet paper
 
-What is needed to repeat the comparisons of the paper (Momoko Hayamizu and Daniel H. Huson, *RazorNet and
-RazorHaploNet: haplotype and phylogenetic networks that display distances exactly*, in preparation) and to
-regenerate its figures and tables. The manuscript itself is in its own repository, `razornet-paper`, which
+What is needed to repeat the comparisons of the paper (Momoko Hayamizu, additional authors, and Daniel H. Huson,
+*RazorNet and RazorHaploNet: haplotype and phylogenetic networks that display distances exactly*, in preparation)
+and to regenerate its figures and tables. The manuscript itself is in its own repository, `razornet-paper`, which
 holds copies of `results/`, `figures/` and `tables/` as they were when the text was written. The tools are in
 the `app` module (`razornet.testsuite`): `CompareHaplotypeMethods`, `CompareDistanceMethods`,
 `CharactersToDistances`, `CompareStrategies`, `PopartCheck`, `SimulateTreeMixtures` and `SimulateHaplotypes`;

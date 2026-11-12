@@ -5,6 +5,10 @@ sequences from which Hamming distances are computed, it builds a weighted graph,
 they help, whose shortest-path distances between the taxa reproduce the input and whose total edge length is as
 small as the search can make it. Momoko Hayamizu and Daniel H. Huson, 2026. GPL v3, see `LICENSE.txt`.
 
+**Authors.** The approach and the initial algorithm, from which the Strict strategy of this implementation
+derives, were developed by Momoko Hayamizu (Waseda University, Tokyo) and collaborators. Daniel H. Huson
+(University of Tübingen) developed the Relaxed strategy and wrote all the code of this implementation.
+
 This repository holds:
 
 1. **The algorithms** — module `algorithms/`, Maven artifact `razornet-algorithms`, Java module
@@ -128,5 +132,6 @@ winner: Relaxed strategy, length 192
 
 ## Citation and contact
 
-A paper describing RazorNet and RazorHaploNet, by Momoko Hayamizu and Daniel H. Huson, is in preparation.
-Until it appears, please cite this repository. Questions and problems go to the issues of this repository.
+A paper describing RazorNet and RazorHaploNet, by Momoko Hayamizu, additional authors, and Daniel H. Huson, is in
+preparation. Until it appears, please cite this repository. Questions and problems go to the issues of this
+repository.

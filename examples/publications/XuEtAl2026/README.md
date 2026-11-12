@@ -41,7 +41,7 @@ unique haplotypes**.
 
 1. **Open `Diamond_Princess.nex`.** Everything in one file, nothing to collapse or
    re-import. Keeps the exact per-sample `Date` (see below).
-2. **File → Open Haplotype Data**, sequences = `Diamond_Princess.phy`, traits =
+2. **File → Import → Haplotype Data**, sequences = `Diamond_Princess.phy`, traits =
    `Diamond_Princess-traits-matrix.tsv`. This collapses the 482 sequences to the 257
    unique haplotypes and pools the trait counts, then runs the chosen network method.
    Needs a SplitsTree built after 2026-08-20 — see below.
@@ -132,7 +132,7 @@ To change any of this, edit `POINT` / `COUNTRY` in `make-traits.py` and re-run i
   and `:362`). All three files here are ordered so that the last trait is a
   coordinate-free one anyway, so they were never affected and still work on an older
   build.
-- **Route 2 needs a SplitsTree built after 2026-08-20.** The Open Haplotype Data dialog
+- **Route 2 needs a SplitsTree built after 2026-08-20.** The Import Haplotype Data dialog
   used to read only a one-line-per-taxon traits layout, in which a line's single
   `(lat,long)` applies to *every* trait named on that line — so the month bins could not
   be left unplaced, and a separate file in that layout had to be shipped alongside this

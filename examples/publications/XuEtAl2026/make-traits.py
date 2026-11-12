@@ -7,7 +7,7 @@ and    Diamond_Princess.tsv  (no header; columns: *, name, date, location, *, *)
 
 Writes Diamond_Princess.nex                  TAXA + CHARACTERS + TRAITS, self-contained
        Diamond_Princess-traits-matrix.tsv    trait matrix with a Coordinates row; read by
-                                             the Open Haplotype Data dialog and by
+                                             the Import Haplotype Data dialog and by
                                              File -> Import -> Taxon Traits alike
        Diamond_Princess-popart.nex           the same sequences and the eight location
                                              traits in the NEXUS dialect PopART reads
@@ -223,7 +223,7 @@ def main():
     #
     # A header line of trait names, a Coordinates line giving each trait its own
     # 'lat,long' pair, then one line of values per taxon. File -> Import -> Taxon Traits
-    # has always read this; the Open Haplotype Data dialog does too, from 2026-08-20 --
+    # has always read this; the Import Haplotype Data dialog does too, from 2026-08-20 --
     # both go through ImportTaxonTraits.parse. Per-trait coordinates are what that
     # dialog's older one-line-per-taxon layout could not express: there a line's single
     # (lat,long) applied to every trait named on it, so the month bins could not be left

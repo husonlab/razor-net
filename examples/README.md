@@ -93,7 +93,7 @@ deposit <https://doi.org/10.6084/m9.figshare.3409420> (CC BY); the sequences are
 | `CCapSV.fas`, `DImmSV.fas`, `PAegRV.fas` | the three alignments of the paper: Ceratitis capitata sigmavirus (19 sequences), Drosophila immigrans sigmavirus (87), Pararge aegeria rhabdovirus (131), 1277 to 1281 sites | the authors' deposit |
 | `CCapSV_traits.txt`, `DImmSV_traits.txt`, `PAegRV_traits.txt` | one line per sequence: country and coordinates (country centroids), for the trait pie charts and the map | ours, from the paper's sampling information |
 | `CCapSV.nex`, `PAegRV.nex` | the CCapSV and PAegRV alignments as NEXUS files with the countries or sites of the `_traits.txt` files as TRAITS blocks with coordinates | ours, derived |
-| `PAegRV-haplotypes.nex` | the 131 PAegRV sequences collapsed to their 90 distinct haplotypes with the sites' counts pooled, as File → Open Haplotype Data does (made with SplitsTree's `CollapseIdenticalHyplotypes`); the input of the bundled example | ours, derived |
+| `PAegRV-haplotypes.nex` | the 131 PAegRV sequences collapsed to their 90 distinct haplotypes with the sites' counts pooled, as File → Import → Haplotype Data does (made with SplitsTree's `CollapseIdenticalHyplotypes`); the input of the bundled example | ours, derived |
 | `CCapSV.stree6`, `DImmSV.stree6`, `PAegRV.stree6`, `PAegRV-haplotypes.stree6` | workflows: Median-Joining and RazorHaploNet on each alignment; `PAegRV-haplotypes` with the Shave filter and the traits | ours, derived |
 
 ## `Issakka_ITSClustering/`

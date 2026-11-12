@@ -1,6 +1,6 @@
 # Data for: RazorNet and RazorHaploNet: haplotype and phylogenetic networks that display distances exactly
 
-Momoko Hayamizu (Waseda University) and Daniel H. Huson (University of Tübingen).
+Momoko Hayamizu (Waseda University), additional authors, and Daniel H. Huson (University of Tübingen).
 
 This deposit holds the data sets of the paper as they entered its comparisons, the results of the comparisons
 and of the two simulation studies, the workflow files that compute and draw the figures, and the inputs of a

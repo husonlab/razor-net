@@ -54,7 +54,7 @@ source repository, and each carries a comment naming its source.
 | Imrich et al. 1984, 24 points (RazorNet) | a metric on 24 points from the paper that introduced optimal realizations | Imrich, Simões-Pereira and Zamfirescu (1984) |
 | Manhattan grid, 20 points (RazorNet) | 20 random points on an integer grid and their Manhattan distances; the network recovers the grid exactly, so this example has the Shave filter switched off (target None) and shows the exact network (Supplementary Figure S6 of the paper) | the authors |
 | Dusky dolphins mtDNA, 36 haplotypes (RazorHaploNet) | 36 mitochondrial haplotypes over 60 variable sites, the data of a classic comparison of network methods | Cassens et al. (2003), as distributed with SplitsTree |
-| Rhabdovirus PAegRV, 90 haplotypes at 8 sites (RazorHaploNet) | the 131 sequences of the *Pararge aegeria* rhabdovirus, 1281 sites, collapsed to their 90 distinct haplotypes as File → Open Haplotype Data does, with the eight sampling sites (six in Britain, Corsica, Sardinia) as traits with coordinates: try the trait pie charts and the world map | Longdon et al. (2017) |
+| Rhabdovirus PAegRV, 90 haplotypes at 8 sites (RazorHaploNet) | the 131 sequences of the *Pararge aegeria* rhabdovirus, 1281 sites, collapsed to their 90 distinct haplotypes as File → Import → Haplotype Data does, with the eight sampling sites (six in Britain, Corsica, Sardinia) as traits with coordinates: try the trait pie charts and the world map | Longdon et al. (2017) |
 | Syntrichia ITS haplotypes with counts (RazorHaploNet) | 16 ITS haplotypes of the moss *Syntrichia*, 951 sites, and the number of samples of each as traits: Figure 1 of the RazorNet paper | Saługa, Ochyra and Ronikier (2022) |
 
 ## 5. Related methods, for comparison
@@ -147,5 +147,5 @@ In addition to **Strategy** and **Max seconds** (which behave as for RazorNet, a
 - A. R. Templeton, K. A. Crandall, and C. F. Sing. A cladistic analysis of phenotypic associations with
   haplotypes inferred from restriction endonuclease mapping and DNA sequence data. III. Cladogram estimation.
   *Genetics*, 132(2):619–633, 1992.
-- M. Hayamizu and others and D.H. Huson. RazorNet: minimum-length network representations of metrics.
-  *In preparation.*
+- M. Hayamizu, additional authors, and D. H. Huson. RazorNet and RazorHaploNet: haplotype and phylogenetic
+  networks that display distances exactly. *In preparation.*
