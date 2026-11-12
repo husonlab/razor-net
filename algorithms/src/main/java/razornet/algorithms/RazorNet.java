@@ -119,6 +119,18 @@ public class RazorNet extends Distances2Network {
 		// (enums), optionMaxPolishRounds, optionRemoveRedundant and optionLogFile
 	}
 
+	/**
+	 * the paper on RazorNet and RazorHaploNet, which is in preparation: its key and its entry in a list of
+	 * references, as the methods text of a workflow gives them
+	 */
+	public static final String CITATION_KEY = "Hayamizu et al, 2026";
+	public static final String CITATION = "M. Hayamizu, others, DH Huson, in preparation";
+
+	@Override
+	public String getCitation() {
+		return CITATION_KEY + ";" + CITATION;
+	}
+
 	@Override
 	public String getShortDescription() {
 		return "Computes a network that realizes the distances exactly, with as little total edge length as it can find.";

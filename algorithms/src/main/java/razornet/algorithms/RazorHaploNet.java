@@ -121,6 +121,11 @@ public class RazorHaploNet extends Characters2Network {
 	}
 
 	@Override
+	public String getCitation() {
+		return RazorNet.CITATION_KEY + ";" + RazorNet.CITATION;
+	}
+
+	@Override
 	public String getShortDescription() {
 		return "Computes a haplotype network from sequences: RazorNet on the Hamming distances, with mutations placed by parsimony.";
 	}

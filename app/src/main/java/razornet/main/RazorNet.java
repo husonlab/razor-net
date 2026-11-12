@@ -57,7 +57,7 @@ public class RazorNet extends Application {
 			ProgramProperties.store();
 		}));
 		ProgramProperties.setUseGUI(true);
-		ExtractCitations.addKeyCitation("Hayamizu et al, 2026", "M. Hayamizu, others, DH Huson, in preparation");
+		ExtractCitations.addKeyCitation(razornet.algorithms.RazorNet.CITATION_KEY, razornet.algorithms.RazorNet.CITATION);
 	}
 
 	/**
