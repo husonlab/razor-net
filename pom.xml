@@ -42,6 +42,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
+        <!-- the SplitsTree that both modules are built against. SplitsTree's installer build sets it to the
+             version it is building (-Dsplitstree.version=...), because it compiles the algorithms module
+             against the SplitsTree that it ships and puts the jar next to SplitsTree's own -->
+        <splitstree.version>1.0.0-SNAPSHOT</splitstree.version>
     </properties>
 
     <repositories>

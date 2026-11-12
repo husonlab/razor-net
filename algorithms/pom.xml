@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.husonlab</groupId>
             <artifactId>SplitsTree</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${splitstree.version}</version>
         </dependency>
     </dependencies>
 
