@@ -638,15 +638,11 @@ public class RazorNet extends Distances2Network {
 				search.consider(intGraph, core.strategy());
 			}
 
-			// the length this restart achieved, after edge removal
+			// the length this restart achieved, after edge removal; it goes to the analysis log and into the phase's
+			// summary line, and is not printed, as a run has a thousand restarts
 			var achieved = intGraph.getTotalLength(quantization.mapDistanceBack());
 			ExtensionTrace.recordRestartLength(achieved);
 			phase.record(achieved);
-
-			if (verbose) {
-				System.err.printf("Length achieved: %s (current best length: %s)%n",
-						StringUtils.trim(achieved), StringUtils.trim((float) search.bestLength()));
-			}
 		} catch (TimeoutProgress.DeadlineReachedException timedOut) {
 			// deadline reached: the best result so far is already recorded
 		}
