@@ -6,8 +6,8 @@ they help, whose shortest-path distances between the taxa reproduce the input an
 small as the search can make it. Momoko Hayamizu and Daniel H. Huson, 2026. GPL v3, see `LICENSE.txt`.
 
 **Authors.** The approach and the initial algorithm, from which the Strict strategy of this implementation
-derives, were developed by Momoko Hayamizu (Waseda University, Tokyo) and collaborators. Daniel H. Huson
-(University of Tübingen) developed the Relaxed strategy and wrote all the code of this implementation.
+derives, were developed by Momoko Hayamizu (Waseda University, Tokyo). Daniel H. Huson (University of Tübingen)
+developed the Relaxed strategy and wrote all the code of this implementation.
 
 This repository holds:
 

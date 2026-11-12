@@ -105,7 +105,7 @@ public class RazorNet extends Application {
 
 	protected static void parseArguments(String[] args) throws UsageException {
 		var options = new ArgsOptions(args, RazorNet.class, "Run the RazorNet on an MSA or distances");
-		options.setAuthors("Daniel H. Huson");
+		options.setAuthors("Momoko Hayamizu and Daniel H. Huson");
 		options.setLicense(ProgramProperties.getProgramLicence());
 		options.setVersion(ProgramProperties.getProgramVersion());
 
