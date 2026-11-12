@@ -28,7 +28,6 @@ import splitstree6.algorithms.source.source2network.NetworkLoader;
 import splitstree6.data.*;
 import splitstree6.main.IAppProfile;
 import splitstree6.workflow.Algorithm;
-import splitstree6.workflow.AlgorithmNode;
 import splitstree6.workflow.DataBlock;
 import splitstree6.workflow.Workflow;
 
@@ -50,6 +49,8 @@ public class RazorNetProfile implements IAppProfile {
 			"RazorNet", "RazorHaploNet", "TCS", "TCSHaplotypeNetwork",
 			// related:
 			"NeighborNet", "MedianJoining", "MinSpanningNetwork",
+			// the haplotype import computes Hamming distances for a minimum spanning network
+			"HammingDistance",
 			// Viewers: a saved workflow names them, and the loader can only create what the filter lets through
 			"ShowNetwork", "ShowSplits"
 	);
@@ -113,15 +114,6 @@ public class RazorNetProfile implements IAppProfile {
 	@Override
 	public Predicate<Class<? extends DataBlock>> getOpenableInputTypeFilter() {
 		return t -> t == CharactersBlock.class || t == DistancesBlock.class || t == NetworkBlock.class;
-	}
-
-	@Override
-	public boolean shouldReplaceWorkflow(Workflow loadedWorkflow) {
-		// Keep as-is only if the workflow already contains a RazorNet algorithm.
-		return loadedWorkflow.nodes().stream()
-				.filter(n -> n instanceof AlgorithmNode)
-				.map(n -> ((AlgorithmNode<?, ?>) n).getAlgorithm())
-				.noneMatch(a -> a instanceof razornet.algorithms.RazorNet || a instanceof razornet.algorithms.RazorHaploNet);
 	}
 
 	private static final Set<String> KEEP_MENU_IDS = Set.of("newMenuItem", "openMenuItem", "openRecentMenu", "examplesMenu", "replaceDataMenuItem",
