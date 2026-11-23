@@ -127,7 +127,8 @@ public class RazorNetProfile implements IAppProfile {
 			"decreaseFontSizeMenuItem", "zoomInMenuItem", "zoomOutMenuItem", "zoomInHorizontalMenuItem", "zoomOutHorizontalMenuItem",
 			"resetMenuItem", "rotateLeftMenuItem", "rotateRightMenuItem", "flipMenuItem", "layoutLabelsMenuItem",
 			"filterTaxaMenuItem", "filterCharactersMenuItem", "GroupIdenticalHaplotypesMenuItem", "traitsMenuItem",
-			"showMessageWindowMenuItem", "setWindowSizeMenuItem", "checkForUpdatesMenuItem", "aboutMenuItem");
+			"showMessageWindowMenuItem", "setWindowSizeMenuItem", "checkForUpdatesMenuItem", "aboutMenuItem",
+			"openManualInBrowserMenuItem");
 
 	@Override
 	public Set<String> getKeepMenuIds() {
